@@ -44,7 +44,14 @@ e produzindo agrupamentos que realmente convertem em estrutura de conteúdo.
 - [[03-Produtos/growth-machine]] — implementação de blog e conteúdo MPI Plus
   dependem deste fluxo para não cair em keyword isolada.
 
+## Prompt operacional
+A materialização prática deste fluxo num prompt de IA está versionada em
+[[02-Fluxos/prompt-avaliacao-keywords]] — o prompt v1 em uso ainda não
+incorpora clusterização, anti-canibalização nem variação local; é o que está
+sendo desenhado agora na v2.
+
 ## Notas relacionadas
 - [[00-Cerebro]]
 - [[02-Fluxos/processo-kickoff-discovery]]
+- [[02-Fluxos/prompt-avaliacao-keywords]]
 - [[03-Produtos/growth-machine]]

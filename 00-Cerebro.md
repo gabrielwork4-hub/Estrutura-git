@@ -27,6 +27,7 @@ Como o cofre opera no dia a dia: como ideias entram, como viram fluxo, como flux
 Lista dos fluxos centrais em operação, linkados para [[02-Fluxos]].
 - [[02-Fluxos/estudo-de-keywords]] — como o estudo de keywords deve pensar clusterização, evitar canibalização e tratar variações locais.
 - [[02-Fluxos/processo-kickoff-discovery]] — kick-off → discovery (2 semanas) → aprovação de documentação → quebra de backlog.
+- [[02-Fluxos/prompt-avaliacao-keywords]] — prompt v1 (registrado para referência) avalia keyword isolada; v2 em desenho para incorporar clusterização, anti-canibalização e variação local.
 
 ## Problemáticas atuais
 Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou que são recorrentes o suficiente para ficar visíveis aqui.
