@@ -26,6 +26,7 @@ Como o cofre opera no dia a dia: como ideias entram, como viram fluxo, como flux
 ## Fluxos ativos
 Lista dos fluxos centrais em operação, linkados para [[02-Fluxos]].
 - [[02-Fluxos/estudo-de-keywords]] — como o estudo de keywords deve pensar clusterização, evitar canibalização e tratar variações locais.
+- [[02-Fluxos/processo-kickoff-discovery]] — kick-off → discovery (2 semanas) → aprovação de documentação → quebra de backlog.
 
 ## Problemáticas atuais
 Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou que são recorrentes o suficiente para ficar visíveis aqui.
@@ -37,7 +38,9 @@ Itens de [[05-Backlog]] que nasceram de problemas listados acima.
 
 ## Produtos em desenvolvimento
 Linka para [[03-Produtos]] os produtos atualmente ativos.
--
+- [[03-Produtos/growth-machine]] — conectar Wiki Data ao fluxo, indicadores, briefing como base de estratégia, implementação de blog.
+- [[03-Produtos/mpi-plus]] — refatoração de processo e palavras-chave (v2).
+- [[03-Produtos/ideal-tracker]] — ainda sem detalhes, só citado no kick-off.
 
 ## Decisões fundadoras
 Decisões em [[04-Decisões]] que moldam o funcionamento descrito aqui.

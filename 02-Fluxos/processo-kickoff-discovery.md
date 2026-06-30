@@ -31,9 +31,9 @@ Regra: **sempre questionar — falar menos e trazer menos solução pronta.**
 Após aprovação, segue para quebra de backlog e execução.
 
 ## Projetos mencionados nessa transcrição
-- **MPI Plus** — refatorou todo o processo e as palavras-chave (v2). Ver [[03-Produtos]].
+- **MPI Plus** — refatorou todo o processo e as palavras-chave (v2). Ver [[03-Produtos/mpi-plus]].
 - **Growth Machine** — ver [[03-Produtos/growth-machine]].
-- **Ideal Tracker** — ainda sem nota própria em [[03-Produtos]].
+- **Ideal Tracker** — ver [[03-Produtos/ideal-tracker]].
 
 ## Cruzamento com outras notas
 - O passo de "questionamento de palavras-chave" e "mapear para validar fluxo"
@@ -45,3 +45,5 @@ Após aprovação, segue para quebra de backlog e execução.
 - [[00-Cerebro]]
 - [[02-Fluxos/estudo-de-keywords]]
 - [[03-Produtos/growth-machine]]
+- [[03-Produtos/mpi-plus]]
+- [[03-Produtos/ideal-tracker]]
