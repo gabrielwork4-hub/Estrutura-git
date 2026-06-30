@@ -25,11 +25,11 @@ Como o cofre opera no dia a dia: como ideias entram, como viram fluxo, como flux
 
 ## Fluxos ativos
 Lista dos fluxos centrais em operação, linkados para [[02-Fluxos]].
-- [[02-Fluxos/...]]
+- [[02-Fluxos/estudo-de-keywords]] — como o estudo de keywords deve pensar clusterização, evitar canibalização e tratar variações locais.
 
 ## Problemáticas atuais
 Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou que são recorrentes o suficiente para ficar visíveis aqui.
--
+- Estudo de keywords partia direto da keyword isolada, sem clusterizar por intenção, gerando risco de canibalização entre páginas e variações locais tratadas fora do cluster. Ajustado em [[02-Fluxos/estudo-de-keywords]].
 
 ## Backlog gerado
 Itens de [[05-Backlog]] que nasceram de problemas listados acima.
