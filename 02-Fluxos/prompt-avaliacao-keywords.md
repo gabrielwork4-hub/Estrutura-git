@@ -283,3 +283,4 @@ Pense como Google: intenção + contexto + profundidade
 - [[00-Cerebro]]
 - [[02-Fluxos/estudo-de-keywords]]
 - [[04-Decisões/migracao-prompt-keywords-v2]]
+- [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]]

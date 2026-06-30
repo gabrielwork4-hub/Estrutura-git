@@ -110,3 +110,4 @@ Conteúdo de Suporte**.
 ## Relacionados
 - Prompt completo (v1 e v2): [[02-Fluxos/prompt-avaliacao-keywords]]
 - Fluxo de origem: [[02-Fluxos/estudo-de-keywords]]
+- Especificação técnica detalhada (entrada, pipeline, formato de saída, riscos de implementação): [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]]
