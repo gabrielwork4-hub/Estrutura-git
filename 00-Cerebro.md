@@ -34,13 +34,18 @@ Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou q
 
 ## Backlog gerado
 Itens de [[05-Backlog]] que nasceram de problemas listados acima.
--
+- [[05-Backlog/ideal-track-definir-metodologia-sov]] — metodologia de medição do Share of Voice ainda indefinida no MVP do Ideal Track.
 
 ## Produtos em desenvolvimento
-Linka para [[03-Produtos]] os produtos atualmente ativos.
-- [[03-Produtos/growth-machine]] — conectar Wiki Data ao fluxo, indicadores, briefing como base de estratégia, implementação de blog.
-- [[03-Produtos/mpi-plus]] — refatoração de processo e palavras-chave (v2).
-- [[03-Produtos/ideal-tracker]] — ainda sem detalhes, só citado no kick-off.
+Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
+pasta do Drive em 2026-06-30 (16 pastas de projeto ao todo; só os 3 abaixo
+foram aprofundados até agora).
+- [[03-Produtos/growth-machine]] — orquestração de SEO para ~2.500 projetos MPI, 4 fases (briefing → percepção → auditoria 10 dimensões → fila de ações no Salesforce). PRD v1.9.14 já existe no Drive.
+- [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave (v2); sem PRD próprio encontrado no Drive ainda.
+- [[03-Produtos/ideal-tracker]] (Ideal Track) — ferramenta de GEO/visibilidade em LLMs; tem PRD, doc de funcionalidades e briefing de UX no Drive, mas com pontos críticos em aberto (ver backlog acima).
+
+## Outras pastas de projeto no Drive (não aprofundadas ainda)
+Ideal Sync - Pix Automático BB, Auditoria Ideal, Procedimentos Depto Infraestrutura, Perfil Colaboradores, Infra Central, Ideal Sales, Ideal Multibusiness, SE - Sales Enablement, Ideal Pro, Soluções Industriais, Clínica Ideal, Projeto Matriz.
 
 ## Decisões fundadoras
 Decisões em [[04-Decisões]] que moldam o funcionamento descrito aqui.
