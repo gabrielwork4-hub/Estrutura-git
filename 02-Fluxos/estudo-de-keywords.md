@@ -37,5 +37,14 @@ e produzindo agrupamentos que realmente convertem em estrutura de conteúdo.
 ## Problemáticas identificadas
 - Estudo anterior gerava listas de keywords soltas sem agrupamento por intenção → ver [[05-Backlog]] para itens derivados.
 
+## Cruzamento com transcrições (Notion, 2026-06-30)
+- [[02-Fluxos/processo-kickoff-discovery]] — no Discovery, o "questionamento de
+  palavras-chave" e o "mapear para validar fluxo" são o ponto onde esse
+  estudo de keywords começa, antes de virar cluster formal.
+- [[03-Produtos/growth-machine]] — implementação de blog e conteúdo MPI Plus
+  dependem deste fluxo para não cair em keyword isolada.
+
 ## Notas relacionadas
 - [[00-Cerebro]]
+- [[02-Fluxos/processo-kickoff-discovery]]
+- [[03-Produtos/growth-machine]]
