@@ -270,6 +270,61 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Módulo Sentinela
+
+### Pontos fortes
+1. **Cobrir 100% dos sites, inclusive os bloqueados/em maturação, é a
+   decisão mais importante do módulo.** Resolve um furo real: um cliente
+   "em maturação" (60 dias sem reanálise) poderia ter o site fora do ar por
+   semanas sem que ninguém percebesse, já que o ciclo normal está pausado
+   para ele. O Sentinela fecha exatamente essa lacuna.
+2. **Separação de custo por design.** Reconhecer explicitamente que
+   vigilância diária não pode usar APIs caras (DataForSEO, PageSpeed) é uma
+   decisão de arquitetura consciente sobre escala.
+3. **Sobreposição inteligente ao bloqueio de maturação (RN-68/RN-94).** A
+   regra "não reprocessa com ações pendentes" é correta na maior parte do
+   tempo, mas ter exceção clara para incidentes de infraestrutura crítica
+   (site fora, SSL expirado) evita que a proteção contra reprocessamento
+   vire proteção contra alertar sobre um problema real.
+4. **Alerta escalonado de SSL (30/15/7 dias) em vez de aviso único.** Dá
+   tempo real de reação antes do certificado expirar.
+5. **Retry com 3 tentativas em horários diferentes antes de declarar "fora
+   do ar".** Evita falso positivo por instabilidade momentânea de rede.
+
+### Pontos fracos / riscos
+1. **Cobertura de "home e principais MPIs" para uptime, mas sem definição
+   precisa de quantas páginas por site são checadas.** Para 2.500 sites,
+   rodar em toda página seria caro; rodar só a home pode não detectar uma
+   página MPI específica fora do ar (relacionado à Q25 do PRD, ainda aberta).
+2. **Escopo exato do Sentinela por projeto ainda é questão em aberto (Q25),**
+   incluindo se há ping ativo do endpoint de formulário — o módulo já está
+   especificado como se estivesse pronto, mas a própria definição de escopo
+   está incompleta.
+3. **Infraestrutura do cron (Laravel Horizon interno vs. serviço externo de
+   uptime dedicado) também é questão em aberto (Q26).** Rodar monitoramento
+   de disponibilidade na própria infraestrutura da aplicação tem risco
+   lógico: se o problema for na infra/rede onde o próprio GM roda, o
+   Sentinela pode falhar exatamente quando mais precisa funcionar (sem
+   redundância geográfica óbvia mencionada).
+4. **Canal único documentado (E-mail + WhatsApp API) sem escalonamento se o
+   alerta não for visto.** Um "SSL expira em 7 dias" que ninguém abre não
+   tem escalonamento automático até virar alerta extremo (só no dia em que
+   já expirou/já caiu).
+5. **Retenção de histórico de uptime/SSL de ≥90 dias (NFR-23) é curta para
+   análise de tendência de longo prazo** — cliente de 2 anos de contrato não
+   tem visibilidade histórica completa além de 3 meses.
+
+### Observações candidatas a backlog
+- Resolver a Q25 (escopo exato de páginas monitoradas por projeto, incluindo
+  ping ativo de endpoint de formulário).
+- Resolver a Q26 (infraestrutura do cron — Horizon interno vs. serviço
+  externo dedicado — e redundância caso a própria infra do GM tenha
+  problema).
+- Definir escalonamento automático quando um alerta de SSL/uptime não é
+  reconhecido/agido dentro de um prazo.
+- Avaliar aumento do período de retenção de histórico de uptime/SSL além de
+  90 dias para clientes de contrato longo.
+
 ---
 
 ## Notas relacionadas
