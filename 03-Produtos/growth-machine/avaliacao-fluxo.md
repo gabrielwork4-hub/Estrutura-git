@@ -1,6 +1,6 @@
 ---
 tipo: fluxo
-status: fases-1-a-4-concluidas
+status: revisao-completa-prd-v1-9-14
 criado: 2026-07-01
 ultima-revisao: 2026-07-01
 tags: [growth-machine, avaliacao, revisao-critica, prd]
@@ -18,7 +18,82 @@ tags: [growth-machine, avaliacao, revisao-critica, prd]
 Servir de fonte avaliativa direta — não é o PRD em si (isso já está em
 [[03-Produtos/growth-machine]]), é a nossa leitura crítica sobre ele,
 fase por fase, para embasar decisões de ajuste antes/durante o
-desenvolvimento.
+desenvolvimento. Construído do ponto de vista de **PO**, para consolidar
+todo o diagnóstico num único lugar antes de decidir prioridade de ajuste.
+
+---
+
+## Síntese Executiva (visão de PO)
+
+Revisão completa do PRD v1.9.14 concluída: 4 fases, Módulo Sentinela,
+Agentes de IA, 11 Telas, Ferramentas Externas e Decisões
+Técnicas/NFRs — 8 blocos avaliados. Esta síntese consolida o que atravessa
+mais de um bloco, para orientar priorização.
+
+### Diagnóstico geral
+O PRD é **estruturalmente maduro**: fórmulas auditáveis, separação rígida
+de papéis entre os 3 sistemas (GM/MPI Plus/Salesforce), dupla aprovação
+humana em pontos críticos, e um contrato técnico padronizado (schema JSON,
+versionamento) para os agentes de IA. Isso não é comum em v1 de PRD — é
+sinal de que o desenho já passou por mais de uma rodada de maturação
+(o próprio histórico de versões, de v1.0 a v1.9.17, confirma isso).
+
+Mas o documento tem um padrão de lacuna que se repete e que, na minha
+leitura, é o que mais merece atenção como PO — não são bugs de desenho,
+são **decisões ainda não tomadas** disfarçadas de detalhe de implementação.
+
+### Os 4 padrões que atravessam o PRD inteiro
+
+1. **"Sem prazo automático" sem alerta de envelhecimento equivalente.**
+   Aparece no briefing (Fase 1), na validação pós-execução (Fase 4) e,
+   por extensão, no problema de fundo que o próprio produto quer resolver
+   (briefing/cliente "esquecido" sem ninguém notar). É o risco mais
+   recorrente do documento — mais do que qualquer risco técnico pontual.
+2. **Números de negócio sem origem/calibração documentada.** 70% de
+   similaridade, 50% de trava de pacote (Fase 1), 40/40/20 e taxa de
+   conversão 5% (Fase 2), cota de 400 req/dia do PageSpeed (Ferramentas) —
+   todos parecem definidos por julgamento de especialista, não por teste. Não
+   é necessariamente errado, mas não está registrado *como* chegaram nesses
+   números, o que dificulta revisar/calibrar depois.
+3. **Concentração de responsabilidade em pontos de controle críticos.** CS
+   sozinho valida briefing (Fase 1); Analista acumula aprovação inicial e
+   validação final, extinguindo o papel de Revisor (Fase 4) — reduz
+   segregação de funções em nome de agilidade, sem uma segunda camada de
+   verificação independente.
+4. **Fronteiras entre componentes sem critério de desempate explícito.**
+   Dim 5 vs. Dim 9 (front-end vs. servidor), IA vs. Analista na validação
+   (Fase 4) — quando dois lados divergem, o PRD não diz quem prevalece.
+5. **17 de 30 questões em aberto (mais de 50%) sem dono nem prazo,**
+   concentradas justamente na integração mais crítica do sistema (MPI Plus
+   como SPOF reconhecido pelo próprio documento). Isso é o maior risco de
+   cronograma do projeto — não um risco técnico, um risco de planejamento.
+
+### O risco que mais pesa (na minha leitura como avaliação, não como PRD)
+> *"A casa é entregue vazia; os móveis são os prompts."*
+
+Toda a arquitetura ao redor dos agentes de IA está correta — contrato,
+schema, versionamento, gates humanos. Mas a validade real do produto inteiro
+depende de um trabalho (o conteúdo fino dos 9 prompts) que está fora do
+escopo deste PRD, sem cronograma, dono ou processo de validação (golden-set)
+atribuído a ele. Esse é o item que, se eu fosse priorizar como PO, eu
+trataria como bloqueador de início de desenvolvimento — não como detalhe a
+resolver depois.
+
+### Recomendação de sequenciamento (se fosse decidir agora)
+1. Fechar as 7 questões de integração (Q18–Q21 Salesforce; Q27–Q30 MPI
+   Plus) — são pré-requisito técnico para qualquer coisa rodar de ponta a
+   ponta.
+2. Definir dono + prazo para as 17 questões em aberto restantes — transformar
+   "a definir" em backlog rastreável.
+3. Iniciar o desenho fino dos prompts em paralelo à Parte III técnica —
+   não pode ser a última etapa, porque é o maior risco de qualidade do
+   produto.
+4. Resolver os 4 padrões recorrentes (acima) como ajustes de governança do
+   PRD antes de congelar escopo para build — são baratos de corrigir agora
+   e caros de corrigir depois de codificados.
+
+Todos os pontos completos, fase a fase e bloco a bloco, estão detalhados
+abaixo.
 
 ---
 
@@ -559,6 +634,52 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
   diagnóstico/briefing/histórico para LGPD.
 - Registrar e mitigar a dependência de disponibilidade cruzada do SSO — GM
   fica inacessível se o MPI Plus cair, mesmo estando saudável.
+
+---
+
+## Questões em Aberto e Riscos Consolidados (fechamento do PRD)
+
+### Pontos fortes
+1. **O PRD é honesto sobre seus próprios riscos.** Tabela de riscos com
+   probabilidade e mitigação, e 30 questões em aberto numeradas e
+   rastreáveis — incomum e valioso; dá para saber exatamente o que falta.
+2. **"Dependência de dados legados (Scout/Kaique)" marcada como Alta
+   probabilidade é a única linha da tabela de riscos que menciona risco de
+   pessoa/processo, não de sistema** — reconhece que parte do risco é
+   organizacional, não técnico.
+3. **As mitigações propostas na tabela de riscos são, em sua maioria,
+   consistentes com o que já vimos implementado nas fases** (retry,
+   aprovação humana, alerta em N dias) — não é lista de boas intenções
+   desconectada do resto do documento.
+
+### Pontos fracos / riscos
+1. **A mitigação para "MPI Plus indisponível" ("GM segue com dados em
+   cache, ações pendentes") não tem duração máxima de cache definida.**
+   Quão velho pode ficar o dado em cache antes de a análise deixar de fazer
+   sentido? Não está quantificado.
+2. **"Dependência de dados legados (Scout/Kaique)" é Alta probabilidade mas
+   a mitigação é vaga** ("força-tarefa, prazo definido pela gestão") — sem
+   prazo real nem plano B se a força-tarefa não completar a tempo.
+3. **Nenhuma das 30 questões em aberto tem dono nem prazo atribuído no
+   próprio documento** — todas dizem "a definir com X", sem data. Combina
+   com o padrão já visto em vários blocos: o PRD é forte descrevendo o
+   **o quê**, sistematicamente fraco em **quando** e **quem**.
+4. **17 de 30 questões em aberto (mais da metade) ainda sem definição**,
+   incluindo pontos que tocam integrações críticas (Salesforce, MPI Plus) —
+   sinal de que o documento é melhor tratado como "v1 para validação", não
+   como especificação pronta para construção sem mais rodadas.
+
+### Observações candidatas a backlog
+- Definir duração máxima aceitável do cache de dados do MPI Plus antes de a
+  análise ser considerada obsoleta/inválida.
+- Atribuir prazo real e plano B para a força-tarefa de importação de dados
+  legados (Scout/Kaique) — hoje sem data.
+- Atribuir dono e prazo para cada uma das 17 questões em aberto restantes,
+  transformando-as de "a definir" em itens rastreáveis de backlog com
+  responsável.
+- Avaliar se o PRD deveria ter um ciclo formal de revisão/aprovação "v2"
+  antes do início da construção, dado o volume de questões em aberto (mais
+  de 50% do total).
 
 ---
 
