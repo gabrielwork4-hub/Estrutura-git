@@ -27,7 +27,7 @@ Como o cofre opera no dia a dia: como ideias entram, como viram fluxo, como flux
 Lista dos fluxos centrais em operação, linkados para [[02-Fluxos]].
 - [[02-Fluxos/estudo-de-keywords]] — como o estudo de keywords deve pensar clusterização, evitar canibalização e tratar variações locais.
 - [[02-Fluxos/processo-kickoff-discovery]] — kick-off → discovery (2 semanas) → aprovação de documentação → quebra de backlog.
-- [[02-Fluxos/prompt-avaliacao-keywords]] — prompt v1 (registrado para referência) avalia keyword isolada; v2 em desenho para incorporar clusterização, anti-canibalização e variação local.
+- [[02-Fluxos/prompt-avaliacao-keywords]] — v1/v2 registrados como histórico; **v3 é a versão oficial** (2026-07-01): Estudo SEO clusterizado com silo semântico, teste explícito de anti-canibalização e dados estimados rotulados como qualitativos.
 
 ## Problemáticas atuais
 Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou que são recorrentes o suficiente para ficar visíveis aqui.
@@ -42,7 +42,7 @@ Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
 pasta do Drive em 2026-06-30 (16 pastas de projeto ao todo; só os 3 abaixo
 foram aprofundados até agora).
 - [[03-Produtos/growth-machine]] — orquestração de SEO para ~2.500 projetos MPI, 4 fases (briefing → percepção → auditoria 10 dimensões → fila de ações no Salesforce). PRD v1.9.14 já existe no Drive.
-- [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave (v2); sem PRD próprio encontrado no Drive ainda.
+- [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave (v3 oficial, ver história Jira [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]); sem PRD próprio encontrado no Drive ainda.
 - [[03-Produtos/ideal-tracker]] (Ideal Track) — ferramenta de GEO/visibilidade em LLMs; tem PRD, doc de funcionalidades e briefing de UX no Drive, mas com pontos críticos em aberto (ver backlog acima).
 
 ## Outras pastas de projeto no Drive (não aprofundadas ainda)

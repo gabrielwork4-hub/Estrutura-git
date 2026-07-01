@@ -1,11 +1,19 @@
 ---
 tipo: decisao
-status: aceita
+status: historico-superado-por-v3
 criado: 2026-06-30
+ultima-revisao: 2026-07-01
 tags: [seo, keywords, prompt, llm, arquitetura-site, equipe-tecnologia]
 ---
 
 # Migração do prompt de avaliação de keywords (v1 → v2)
+
+> **Nota (2026-07-01): esta migração foi superada pelo v3, a versão
+> oficial do prompt.** Documento mantido como histórico da transição
+> v1→v2 e da rastreabilidade de decisão. Para o estado atual, ver
+> [[02-Fluxos/prompt-avaliacao-keywords]] (prompt v3 oficial) e
+> [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]
+> (história Jira oficial).
 
 > Documento de validação para a equipe de tecnologia: o que muda, por que
 > muda e o que precisa ser ajustado na integração (parâmetros de entrada e

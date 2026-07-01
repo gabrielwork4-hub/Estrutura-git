@@ -46,12 +46,17 @@ e produzindo agrupamentos que realmente convertem em estrutura de conteúdo.
 
 ## Prompt operacional
 A materialização prática deste fluxo num prompt de IA está versionada em
-[[02-Fluxos/prompt-avaliacao-keywords]] — o prompt v1 em uso ainda não
-incorpora clusterização, anti-canibalização nem variação local; é o que está
-sendo desenhado agora na v2.
+[[02-Fluxos/prompt-avaliacao-keywords]]. O **v3 é a versão oficial**
+(2026-07-01): Estudo SEO clusterizado com silo semântico, teste explícito
+de anti-canibalização, condicionais de contexto (empresa genérica,
+localização, peso do objetivo por seção) e dados de volume/KD/DR/tráfego
+rotulados como estimativa qualitativa a validar em keyword tools. v1 e v2
+ficam registrados como histórico. A história Jira de implementação está em
+[[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
 
 ## Notas relacionadas
 - [[00-Cerebro]]
 - [[02-Fluxos/processo-kickoff-discovery]]
 - [[02-Fluxos/prompt-avaliacao-keywords]]
 - [[03-Produtos/growth-machine]]
+- [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]

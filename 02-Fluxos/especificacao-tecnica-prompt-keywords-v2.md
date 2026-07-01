@@ -1,12 +1,18 @@
 ---
 tipo: fluxo
-status: ativo
+status: historico-superado-por-v3
 criado: 2026-06-30
-ultima-revisao: 2026-06-30
+ultima-revisao: 2026-07-01
 tags: [seo, keywords, prompt, llm, especificacao-tecnica, equipe-tecnologia]
 ---
 
 # Especificação Técnica — Prompt de Arquitetura de Keywords v2
+
+> **Nota (2026-07-01): o v2 foi superado pelo v3, a versão oficial do
+> prompt.** Esta especificação técnica documenta o v2 e fica mantida como
+> histórico. Para o texto oficial (v3) e a história Jira de implementação,
+> ver [[02-Fluxos/prompt-avaliacao-keywords]] e
+> [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
 
 > Documento técnico de referência para implementação/integração do prompt
 > v2. Foca nas características do prompt em si (entrada, processamento,
