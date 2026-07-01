@@ -503,6 +503,65 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Decisões Técnicas e Requisitos Não-Funcionais (NFRs)
+
+### Pontos fortes
+1. **Modelo de dados "instância única, base compartilhada" é coerente com a
+   necessidade de visão consolidada.** Como o Painel Gerencial (Tela 2)
+   precisa agregar as ~2.500 posições das 3 empresas, um multi-tenant
+   isolado tornaria essa visão consolidada muito mais cara de construir.
+2. **Padrão assíncrono explícito para MPI Plus (`IntegrationJob` + webhook)
+   em vez de chamada síncrona.** Correto para integração externa que pode
+   demorar — evita acoplamento temporal forte entre os dois sistemas.
+3. **RN-73 (sem custo na interface) reaparece como decisão de segurança
+   consistente**, junto com "credenciais de API nunca expostas no
+   frontend" — a preocupação de não vazar dado sensível permeia mais de uma
+   camada do sistema.
+4. **Migração de BullMQ (Node) para Laravel Horizon (Redis) é correção de
+   inconsistência de stack bem registrada.** Evita dois runtimes (PHP+Node)
+   para resolver o mesmo problema de fila.
+5. **NFR-12 distingue claramente falha "normal" de falha "crítica"
+   (ausência total de posicionamento).** Coerente com o Hard Stop da Fase 2
+   — o sistema degrada graciosamente na maioria dos casos, reservando a
+   parada total para o único cenário que realmente inviabiliza a análise.
+
+### Pontos fracos / riscos
+1. **Modelo de dados de instância única sem isolamento por tenant é também
+   um risco de segurança concentrado.** Se houver falha de escopo
+   (row-level access mal implementado), o vazamento potencial é entre as 3
+   empresas inteiras — o "blast radius" de um bug de autorização é o
+   sistema inteiro, não um tenant isolado.
+2. **7 questões em aberto (Q18–Q21 Salesforce; Q27–Q30 MPI Plus) são todas
+   sobre a camada de integração mais crítica do sistema — exatamente onde o
+   PRD já reconhece o MPI Plus como SPOF.** O ponto mais frágil da
+   arquitetura é também o ponto com mais perguntas não resolvidas — maior
+   risco de cronograma do projeto todo.
+3. **NFR-11 (≥99,5% disponibilidade em horário comercial) sem NFR
+   equivalente fora do horário comercial**, mesmo o Sentinela rodando 24/7 e
+   ações críticas (RN-94) precisando de reação a qualquer hora.
+4. **Retenção de dados "definida" para LGPD sem prazo específico
+   documentado nesta seção** (diferente do Sentinela, com 90 dias explícitos
+   em NFR-23) — vago quanto tempo dados de diagnóstico/briefing/histórico
+   são retidos.
+5. **SSO integrado ao MPI Plus sem senha própria no GM cria dependência de
+   disponibilidade cruzada:** se o MPI Plus cair, ninguém consegue logar no
+   GM também, mesmo que o GM esteja saudável — SPOF adicional não mencionado
+   explicitamente como tal.
+
+### Observações candidatas a backlog
+- Priorizar a resolução das 7 questões em aberto de integração (Q18–Q21,
+  Q27–Q30) como frente crítica, no ponto de maior fragilidade arquitetural.
+- Avaliar controles adicionais de auditoria/teste para o row-level access
+  entre empresas, dado o alto blast radius de uma falha de escopo.
+- Definir NFR de disponibilidade fora do horário comercial, coerente com o
+  Sentinela 24/7 e RN-94.
+- Documentar prazo específico de retenção de dados de
+  diagnóstico/briefing/histórico para LGPD.
+- Registrar e mitigar a dependência de disponibilidade cruzada do SSO — GM
+  fica inacessível se o MPI Plus cair, mesmo estando saudável.
+
+---
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[00-Cerebro]]
