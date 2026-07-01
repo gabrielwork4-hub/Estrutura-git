@@ -484,6 +484,11 @@ selecionar um cliente no Painel de Carteira.
 
 ---
 
+## Avaliação crítica (revisão fase a fase)
+A revisão crítica ponto a ponto do fluxo (pontos fortes, riscos e observações
+candidatas a backlog, fase por fase) está sendo construída em paralelo em
+[[03-Produtos/growth-machine/avaliacao-fluxo]].
+
 ## Cruzamento com outras notas
 - A implementação de blog e o conteúdo MPI Plus dependem diretamente de
   [[02-Fluxos/estudo-de-keywords]] (clusterização, anti-canibalização,
