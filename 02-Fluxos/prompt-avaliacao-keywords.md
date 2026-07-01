@@ -36,7 +36,7 @@ comparativo lado a lado e o motivo de cada mudança, ver
 |---|---|---|---|
 | v1 | (anterior, data de criação não registrada) | Versão original — avaliação individual de keyword (intenção, especificidade, relevância 0-5, justificativa) | Baseline em uso até 2026-06-30 |
 | v2 | 2026-06-30 | Saída passa de "lista de keywords avaliadas" para **arquitetura de site** (Pilar → Cluster → Suporte), com clusterização semântica, anti-canibalização explícita e SEO local incorporado como tipo de pilar | Alinhar o prompt ao ajuste registrado em [[02-Fluxos/estudo-de-keywords]] e decidido em [[04-Decisões/migracao-prompt-keywords-v2]] |
-| v3 | 2026-07-01 | Expande o v2 para um **Estudo SEO completo**: mantém a saída de cluster de keywords (intencao/especificidade/relevancia/justificativa, reaproveitando a modelagem de saída do "validador de keywords" do v1/v2) e adiciona Content Map (15-25 páginas, 1 keyword principal por página), Análise Competitiva (Top 5), Estratégia GEO (pirâmide de localização), Briefs de Conteúdo (5 páginas), Internal Linking Strategy, KPIs e Plano de Implementação em 3 fases | Levar o estudo de keywords a um artefato executável de ponta a ponta (arquitetura + competição + GEO + briefs + linkagem + KPIs + plano), não só a decisão de pilar/cluster |
+| v3 | 2026-07-01 | Expande o v2 mantendo o foco em **palavras para produção de conteúdo mais exata e ajustada**: cluster de keywords (intencao/especificidade/relevancia/justificativa, reaproveitando a modelagem de saída do "validador de keywords" do v1/v2), Content Map (15-25 páginas, 1 keyword principal por página), Análise Competitiva (Top 5) e Estratégia GEO (pirâmide de localização). Não inclui Briefs de Conteúdo, Internal Linking, KPIs nem Plano de Implementação — cortados em 2026-07-01 para manter o prompt focado em keywords/arquitetura, não em execução de conteúdo | Levar o estudo de keywords a um artefato de arquitetura + competição + GEO, sem expandir para escopo de execução (briefs, linkagem, KPIs, cronograma), que fica fora deste prompt |
 
 **Nota de escopo (v3):** o v3 é o prompt candidato a **substituir a etapa de
 avaliação/clusterização de keywords que hoje roda antes do pipeline de
@@ -384,45 +384,6 @@ Keywords locais
 Estratégia de conteúdo
 SEO local (Google Business Profile, schema, citações)
 
-BRIEFS DE CONTEÚDO (5 PÁGINAS MAIS IMPORTANTES)
-Para cada página:
-URL
-Keyword principal (intencao + relevancia)
-Intent
-Estrutura sugerida (H1, H2, H3)
-Seções obrigatórias
-Diferencial competitivo
-CTAs
-Extensão (palavras)
-Exemplos de subtítulos
-
-INTERNAL LINKING STRATEGY
-Fluxo de autoridade (Homepage → Pillars → Serviços → Long-tail)
-Links entre páginas
-Anchors recomendados (naturais, não spam)
-Regras de profundidade (máx 3 cliques)
-
-KPIs SEO
-Definir:
-Tráfego orgânico
-Keywords ranqueadas
-Leads gerados
-CTR
-Ranking local (Map Pack)
-DR / autoridade
-Com:
-Meta 6 meses
-Ferramenta
-Frequência de medição
-
-PLANO DE IMPLEMENTAÇÃO (3 FASES)
-Fase 1 (0–4 semanas)
-Estrutura base + páginas principais
-Fase 2 (5–12 semanas)
-Expansão de clusters + GEO + serviços
-Fase 3 (13+ semanas)
-Autoridade + backlinks + otimização contínua
-
 ⚠️ REGRAS CRÍTICAS
 Sem canibalização de keywords
 Máximo 1 keyword principal por página
@@ -440,13 +401,19 @@ Estratégia acionável (não teórica)
 
 ## Lacunas identificadas no v2 (frente ao v3)
 - v2 entrega só a arquitetura (pilar/cluster/suporte) — não gera Content
-  Map com contagem máxima de páginas (15-25), Análise Competitiva, GEO,
-  Briefs de conteúdo, Internal Linking ou KPIs.
-- v2 não define plano de implementação faseado (0-4 / 5-12 / 13+ semanas).
+  Map com contagem máxima de páginas (15-25), Análise Competitiva nem
+  Estratégia GEO estruturada em pirâmide de localização.
 - v2 não integra explicitamente o "validador de keywords" (v1) como
   sub-componente de saída reaproveitado — o v3 reaproveita a modelagem
   intencao/especificidade/relevancia/justificativa do v1 dentro de um
   entregável maior.
+
+## Escopo intencionalmente fora do v3 (decisão de 2026-07-01)
+Briefs de Conteúdo, Internal Linking Strategy, KPIs e Plano de
+Implementação foram cortados do prompt v3 para manter o foco em
+**palavras-chave para produção de conteúdo mais exata e ajustada** — não em
+execução/planejamento de projeto. Essas frentes ficam fora deste prompt e,
+se necessárias, devem ser tratadas em outro fluxo/prompt separado.
 
 ## Notas relacionadas
 - [[00-Cerebro]]
