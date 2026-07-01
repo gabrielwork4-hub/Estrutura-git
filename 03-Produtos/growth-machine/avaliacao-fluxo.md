@@ -395,6 +395,60 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## As 11 Telas
+
+### Pontos fortes
+1. **Separação global vs. contextual (RN-98) é coerente com o resto da
+   arquitetura.** Telas de projeto não poluem o menu principal — só aparecem
+   quando um cliente é selecionado, reduzindo ruído de navegação para quem
+   lida com 2.500 projetos.
+2. **Tela 6 (Status de Execução) é somente leitura por design.** Reforça na
+   UI a mesma regra de negócio da Fase 4: o GM não é gestor de tarefas, o
+   Salesforce é. Evita que o Front-end tenha dois lugares para "marcar como
+   feito".
+3. **Sem campos de custo na Tela 8 (RN-73) é decisão de segurança/governança
+   correta.** Impede que custo de API/token vaze para uma interface
+   operacional onde não deveria estar visível.
+4. **Tela 10 sem aprovação de cliente no GM (RN-104), reforçando "cliente
+   nunca acessa o GM".** A UI segue rigorosamente a separação de papéis
+   definida na arquitetura.
+5. **As 5 jornadas críticas cobrem o ciclo de vida completo** (aprovação →
+   execução → validação → alerta de infra) — bom conjunto mínimo para
+   prototipagem, evitando telas soltas sem fluxo de uso definido.
+
+### Pontos fracos / riscos
+1. **Tela 2 (Painel Gerencial) não menciona granularidade de drill-down até
+   o problema específico.** "Desempenho por analista e BU" é um resumo — não
+   fica claro se o gerente chega diretamente à causa raiz de um cliente
+   problemático sem passar pela Tela 1 do analista responsável.
+2. **Nenhuma tela documentada para o CS especificamente**, apesar de ser
+   peça central da Fase 1. A Tela 10 é "Analista + CS", mas não fica claro
+   se o CS tem visão própria (ex: fila de briefings pendentes) ou opera
+   dentro da mesma tela do analista.
+3. **"Aprovar tudo" (Tela 4) como ação global é risco de governança** se não
+   houver segunda confirmação ou amostragem mínima obrigatória antes de
+   aprovar múltiplas ações de uma vez — risco de virar hábito sem revisão
+   real, esvaziando o propósito da aprovação humana.
+4. **Sem tela dedicada de auditoria/log para revisar decisões passadas dos
+   agentes de IA** — o log obrigatório existe como dado, mas não aparece
+   como tela explícita nas 11 listadas.
+5. **Tela 11 (Sentinela) separada da Tela 1 (Carteira), mas o Sentinela
+   alimenta badges na Tela 1** — pode gerar duplicação de UI/fonte de
+   verdade se não houver clareza de que a Tela 1 é resumo e a Tela 11 é a
+   fonte completa.
+
+### Observações candidatas a backlog
+- Definir se existe (ou deveria existir) visão/fila própria para o CS na
+  Tela 10, separada da visão do Analista.
+- Definir salvaguarda para o botão "Aprovar tudo" na Tela 4 (confirmação
+  extra acima de N ações, ou amostragem obrigatória).
+- Definir se existe tela/aba explícita de auditoria de decisões de agentes
+  de IA, ou se fica implícito dentro do Prontuário/Tela 9.
+- Detalhar granularidade de drill-down da Tela 2 até a causa raiz de um
+  cliente específico.
+
+---
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[00-Cerebro]]
