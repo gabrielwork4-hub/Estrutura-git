@@ -36,8 +36,10 @@ pronta — a decisão de qual keyword/página existe roda **antes** dele, na
 etapa de avaliação/clusterização de keywords (ver
 [[02-Fluxos/prompt-avaliacao-keywords]]).
 
-Há uma história de mudança de prompt em andamento para essa etapa (v1 → v3):
-[[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
+A história Jira **oficial** de mudança de prompt para essa etapa (v1 → v3)
+está em
+[[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]], pronta
+para ser criada no board e refinada com o time de DEV.
 
 ## Cruzamento com outras notas
 - O conteúdo do MPI Plus é citado em [[03-Produtos/growth-machine]] como

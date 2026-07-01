@@ -1,8 +1,8 @@
 ---
 tipo: fluxo
-status: ativo
+status: v3-oficial
 criado: 2026-06-30
-ultima-revisao: 2026-06-30
+ultima-revisao: 2026-07-01
 tags: [seo, keywords, prompt, llm, arquitetura-site]
 ---
 
@@ -36,17 +36,17 @@ comparativo lado a lado e o motivo de cada mudança, ver
 |---|---|---|---|
 | v1 | (anterior, data de criação não registrada) | Versão original — avaliação individual de keyword (intenção, especificidade, relevância 0-5, justificativa) | Baseline em uso até 2026-06-30 |
 | v2 | 2026-06-30 | Saída passa de "lista de keywords avaliadas" para **arquitetura de site** (Pilar → Cluster → Suporte), com clusterização semântica, anti-canibalização explícita e SEO local incorporado como tipo de pilar | Alinhar o prompt ao ajuste registrado em [[02-Fluxos/estudo-de-keywords]] e decidido em [[04-Decisões/migracao-prompt-keywords-v2]] |
-| v3 | 2026-07-01 | Expande o v2 mantendo o foco em **palavras para produção de conteúdo mais exata e ajustada**: cluster de keywords (intencao/especificidade/relevancia/justificativa, reaproveitando a modelagem de saída do "validador de keywords" do v1/v2), Content Map (15-25 páginas, 1 keyword principal por página), Análise Competitiva (Top 5) e Estratégia GEO (pirâmide de localização). Não inclui Briefs de Conteúdo, Internal Linking, KPIs nem Plano de Implementação — cortados em 2026-07-01 para manter o prompt focado em keywords/arquitetura, não em execução de conteúdo | Levar o estudo de keywords a um artefato de arquitetura + competição + GEO, sem expandir para escopo de execução (briefs, linkagem, KPIs, cronograma), que fica fora deste prompt |
+| v3 | 2026-07-01 | **OFICIAL.** Estudo SEO clusterizado com silo semântico e teste explícito de anti-canibalização, condicionais de contexto (empresa genérica, localização, peso de `{$objetivo}` por seção), Volume/KD/DR/Tráfego rotulados como estimativa qualitativa a validar em keyword tools na próxima etapa. 4 seções: Cluster de Keywords (40-70), Content Map (15-25 páginas), Análise Competitiva (Top 5), Estratégia GEO (condicional). Sem Briefs de Conteúdo, Internal Linking, KPIs ou Plano de Implementação | Levar o estudo de keywords a um artefato de arquitetura + competição + GEO, executável por time de SEO/copywriting sem retrabalho, mantendo fora o escopo de execução de projeto |
 
-**Nota de escopo (v3):** o v3 é o prompt candidato a **substituir a etapa de
-avaliação/clusterização de keywords que hoje roda antes do pipeline de
-"Construção de Conteúdo" do MPI Plus** (ver cruzamento com
+**Nota de escopo (v3):** o v3 é o prompt **oficial** para substituir a etapa
+de avaliação/clusterização de keywords que hoje roda antes do pipeline de
+"Construção de Conteúdo" do MPI Plus (ver cruzamento com
 [[03-Produtos/mpi-plus]]) — o pipeline de conteúdo documentado no MPI Plus
 já recebe `{keyword}` pronta (SERP Search → Domain Classification →
 Pattern Analysis → Structure → Section → Cohesion → QA); ele **não contém**,
 hoje, nenhuma etapa de clusterização/anti-canibalização/content map — essa
-etapa roda antes e fora desse pipeline. O v3 é o candidato a preencher essa
-lacuna upstream.
+etapa roda antes e fora desse pipeline. A história de implementação está em
+[[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
 
 ## Prompt v1 (versão anterior — registrado em 2026-06-30 para referência)
 
@@ -290,130 +290,160 @@ Maximize autoridade temática
 Pense como Google: intenção + contexto + profundidade
 \`\`\`
 
-## Prompt v3 (candidato — enviado pelo usuário em 2026-07-01)
-Expande o v2: mantém a saída do "validador de keywords" (intencao,
-especificidade, relevancia, justificativa) como um sub-componente, mas o
-entregável final passa a ser um **Estudo SEO completo e executável**.
+## Prompt v3 (OFICIAL — versão final enviada pelo usuário em 2026-07-01)
+Substitui a versão candidata anterior. Introduz **silo semântico com teste
+de anti-canibalização explícito**, condicionais de contexto (empresa
+genérica, localização não informada, peso de `{$objetivo}` por seção) e
+rotula volume/KD/DR/tráfego como **estimativa qualitativa**, não dado real
+de ferramenta — validação de dado real fica para a próxima etapa do fluxo.
 
 \`\`\`
-Você é um estrategista sênior de SEO especializado em arquitetura de conteúdo, clusterização de palavras-chave e construção de topical authority.
-Crie um estudo SEO completo e estruturado em clusters, com foco em geração de tráfego orgânico e conversão.
+Você é um estrategista sênior de SEO especializado em arquitetura de conteúdo, clusterização semântica de palavras-chave e construção de topical authority. Seja rigoroso e prático: cada entrega deve ser executável por um time de SEO/copywriting, sem enrolação teórica. É melhor entregar menos clusters bem justificados do que inflar a lista com termos genéricos que não convertem.
 
-📌 CONTEXTO
-Empresa: {$empresaNome}
-Segmentos de atuação: {$segmentosAtuacao}
-Tipo de empresa: {$tipoEmpresa}
-Público-alvo da empresa: {$publicoAlvoEmpresa}
-Nicho: [EX: assistência técnica de notebook]
-Localização: [CIDADE/REGIÃO OU "BRASIL"]
-Serviço/produto principal: {$nomePrincipal}
-Nome secundário: {$nomeSecundario}
-Outros nomes / como o mercado também chama: {$outrosNomes}
-Tipo de produto/serviço: {$tipoProduto}
-Especificação técnica: {$especificacaoTecnica}
-Funcionalidades: {$funcionalidades}
-Benefícios: {$beneficios}
-Público-alvo do produto: {$publicoAlvoProduto}
-Informações adicionais: {$informacoesAdicionais}
-Objetivo: [LEADS / VENDAS / SEO LOCAL / AUTORIDADE]
+**Foco do entregável:** este estudo é uma **base de produção de conteúdo**, não um relatório teórico. Cada keyword, página e cluster deve estar pronto para virar pauta sem retrabalho — organizado por relação semântica real (silo), sem sobreposição de intenção entre páginas, e com justificativa amarrada a um motivo concreto de ranqueamento (não apenas de funil de conversão).
 
-🎯 KEYWORD PRINCIPAL (ANCHOR)
-Keyword principal: {nomePrincipal} (ou variação relevante entre {
-nomeSecundario} / {$outrosNomes})
-Intenção: [Informacional / Comercial / Local / Transacional / Comparação]
-Observações de mercado: [se houver]
+## A empresa
 
-🚨 TAREFA
-Gere um ESTUDO SEO COMPLETO CLUSTERIZADO com estrutura profissional e sem canibalização de palavras-chave.
+* Nome da empresa: {$empresaNome}
+* Nicho: {$nicho}
+* Localização: {$localizacao}
+* Serviço principal: {$servicoPrincipal}
+* Objetivo do estudo: {$objetivo}
+* Público-alvo: {$publicoAlvo}
 
-📊 ESTRUTURA OBRIGATÓRIA DA ENTREGA
+## Keyword âncora
 
-CLUSTER DE KEYWORDS (MÍNIMO 50–80 KEYWORDS)
-Crie clusters organizados com:
-Clusters obrigatórios:
-Pillar / Core
-Problemas / Sintomas
-Serviços específicos
-Marcas (se aplicável)
-GEO local (se aplicável)
-Comparação / preço / decisão
-FAQ / dúvidas
-Long-tail de baixa concorrência
-Para CADA keyword incluir:
-Keyword exata
-Intencao — uma das categorias: comercial / transacional / informacional / local / comparacao
-Especificidade — head / medio / long_tail
-Relevancia — nota de 0 a 5 de aderência ao produto/serviço avaliado
-Justificativa — uma frase curta explicando a nota de relevância
+* Keyword principal: {$keywordPrincipal}
+* Intenção da keyword principal: {$intencaoPrincipal}
+* Observações de mercado: {$observacoesMercado}
 
-Critério de corte: descarte (não inclua na tabela final) qualquer keyword com relevancia < 3.
+## Regra de silo semântico e anti-canibalização
 
-CONTENT MAP (15–25 PÁGINAS NO MÁXIMO)
-Criar tabela com:
-Tipo de página (Homepage / Pilar / Serviço / Marca / GEO / Blog)
-URL
-Keyword principal (1 por página apenas — SEM CANIBALIZAÇÃO)
-Keywords secundárias (até 3)
-Intenção
-Profundidade (cliques da homepage)
-📌 Regras:
-1 keyword principal por página
-Máximo 25 páginas
-Hierarquia clara de autoridade
-Zero canibalização
+Cada cluster deve funcionar como um **silo semântico**: uma página-pilar central e páginas-filhas que aprofundam subtemas dela, ligadas por relação de significado real — não apenas por conterem palavras parecidas. Antes de finalizar o Cluster de Keywords e o Content Map, aplique este teste em cada par de keywords que aponte para páginas diferentes:
 
-ANÁLISE COMPETITIVA (TOP 5)
+* Se duas keywords têm o mesmo intent E cobrem o mesmo subtema/tópico central, elas **não podem** virar páginas separadas — funda-as em uma página só (uma vira principal, a outra vira secundária/variação semântica dentro da mesma página).
+* Se o intent é diferente (ex: uma é informacional "o que é X" e outra é transacional "contratar X"), elas podem coexistir como páginas distintas mesmo dentro do mesmo silo, desde que a URL sugerida e o H1 deixem a diferença de intenção clara.
+* Toda keyword-filha de um silo deve ser citável/referenciável a partir da página-pilar via link interno (ver seção 6) — se uma keyword não tem relação semântica suficiente para ser linkada organicamente do pilar, ela não pertence a esse cluster.
+
+## Como interpretar o contexto
+
+* Quando {$empresaNome} for "Genérico", trate o estudo como um modelo replicável: não crie seção de branding/marca própria no Content Map, e no cluster "Marcas" liste apenas concorrentes/players do mercado, nunca a empresa avaliada.
+* Quando {$localizacao} for "Brasil" ou "Não informado", **pule inteiramente a seção 4 (Estratégia GEO)** e remova o cluster "GEO local" da seção 1 — não force segmentação geográfica onde não há escopo local definido. Só execute a seção 4 quando {$localizacao} for uma cidade, região ou conjunto de cidades específico.
+* {$objetivo} funciona como peso de priorização em todas as seções, não é só um rótulo:
+  * "Leads" ou "Vendas" → priorize keywords transacionais e comerciais no Content Map e nos briefs; CTAs devem ser diretos (orçamento, contato, compra).
+  * "SEO local" → força a execução da seção 4 mesmo com {$localizacao} amplo, e prioriza clusters GEO e comercial-local.
+  * "Autoridade" → priorize clusters informacionais, FAQ e pilares de conteúdo profundo; CTAs mais suaves (newsletter, conteúdo relacionado).
+* {$observacoesMercado} tem prioridade sobre suposições genéricas de mercado — se houver uma observação específica (ex: "concorrente X domina o cluster de preço"), ela deve alterar a Análise Competitiva e as oportunidades de ataque.
+* Se {$observacoesMercado} vier como "Não informado", ignore o campo e baseie a análise competitiva apenas no nicho e serviço informados.
+
+## Regra sobre dados estimados
+
+Volume, Keyword Difficulty, DR e Tráfego Orgânico neste estudo são **estimativas qualitativas de ordem de grandeza**, não substituem dado real de ferramenta (keyword tools) que serão validadas na próxima step do fluxo.
+
+## Tarefa
+
+Gere um estudo SEO completo clusterizado, com estrutura profissional e **sem canibalização de palavras-chave** (1 keyword principal por página, sempre).
+
+## Estrutura obrigatória da entrega
+
+### 1. Cluster de keywords (mínimo 40–70 keywords)
+
+Organize em clusters obrigatórios — pule "GEO local" se {$localizacao} não for específica (ver regra acima):
+
+* Pillar / Core
+* Problemas / Sintomas
+* Serviços específicos (derive de {$servicoPrincipal})
+* Marcas (se aplicável ao nicho)
+* GEO local (condicional — ver regra de {$localizacao})
+* Comparação / preço / decisão
+* FAQ / dúvidas
+* Long-tail de baixa concorrência
+
+Para cada keyword, incluir:
+
+* Keyword exata
+* Volume estimado (sera validada keyword tools)
+* Keyword Difficulty (sera validada keyword tools)
+* Intent (Informacional / Comercial / Local / Transacional / Comparação)
+* URL sugerida
+* Justificativa curta — deve indicar dois motivos, não um: (1) por que essa keyword existe no funil, amarrada a {publicoAlvo} ou {objetivo}; (2) por que essa keyword tem potencial real de ranqueamento nesta página (ex: baixa concorrência direta, correspondência exata de intent, gap identificado na concorrência)
+
+### 2. Content Map (15–25 páginas no máximo)
+
+Este mapa é a pauta de produção — cada linha deve ser suficiente para um redator abrir um documento e começar a escrever sem precisar voltar ao estudo. Tabela com:
+
+* Tipo de página (Homepage / Pilar / Serviço / Marca / GEO / Blog)
+* Silo semântico (a qual pilar essa página pertence)
+* URL
+* Keyword principal (1 por página — sem canibalização)
+* Keywords secundárias (até 3, semanticamente relacionadas — aplicar teste da seção "Regra de silo semântico")
+* Intenção
+* Profundidade (cliques da homepage)
+
+Regras: 1 keyword principal por página · máximo 25 páginas · hierarquia clara de autoridade · zero canibalização (validada pelo teste semântico) · priorização de tipo de página segue o peso de {$objetivo} definido acima.
+
+### 3. Análise competitiva (top 5)
+
 Para cada concorrente:
-Nome
-DR estimado
-Tráfego orgânico estimado
-Força principal (cluster dominante)
-Fraqueza
-Oportunidade de ataque SEO
-No final:
-3 oportunidades claras de ganho de mercado
 
-ESTRATÉGIA GEO (SE APLICÁVEL)
-Pirâmide de localização:
-Primária
-Secundária
-Terciária
-Para cada nível:
-Landing page sugerida
-Keywords locais
-Estratégia de conteúdo
-SEO local (Google Business Profile, schema, citações)
+* Nome
+* DR estimado
+* Tráfego orgânico estimado (faixa)
+* Força principal (cluster dominante)
+* Fraqueza
+* Oportunidade de ataque SEO
 
-⚠️ REGRAS CRÍTICAS
-Sem canibalização de keywords
-Máximo 1 keyword principal por página
-Usar a modelagem de output do validador de keywords (intencao, especificidade, relevancia, justificativa) — sem inferir volume ou keyword difficulty
-Evitar termos genéricos sem segmentação
-Entrega deve ser prática (executável por time de SEO/copywriting)
-Foco em arquitetura de site + conversão + autoridade
+Considere {$observacoesMercado} se preenchido. Ao final: 3 oportunidades claras de ganho de mercado.
 
-🎯 FORMATO DE SAÍDA
-Tabelas para dados
-Estrutura clara por seção
-Linguagem profissional
-Estratégia acionável (não teórica)
+### 4. Estratégia GEO — condicional a {$localizacao}
+
+**Só execute esta seção se {$localizacao} for cidade/região específica.** Caso contrário, escreva apenas: "Seção não aplicável — localização informada não permite segmentação geográfica (Brasil ou não informado)."
+
+Quando aplicável, pirâmide de localização (Primária / Secundária / Terciária), e para cada nível:
+
+* Landing page sugerida
+* Keywords locais
+* Estratégia de conteúdo
+* SEO local (Google Business Profile, schema, citações)
+
+## Regras críticas
+
+* Sem canibalização de keywords, sempre 1 keyword principal por página.
+* Volumes e métricas sempre como estimativa qualitativa rotulada — nunca como dado real (ver regra de dados estimados).
+* Evitar termos genéricos sem segmentação ligada a {nicho}, {servicoPrincipal} ou {$publicoAlvo}.
+* Seção GEO só existe se {$localizacao} justificar.
+* Entrega deve ser prática, executável por time de SEO/copywriting — não teórica.
+
+## Formato de saída
+
+* Tabelas para dados estruturados
+* Estrutura clara por seção, seguindo a ordem acima
+* Linguagem profissional, direta
+* Estratégia acionável, amarrada a {$objetivo} em cada seção relevante
 \`\`\`
 
-## Lacunas identificadas no v2 (frente ao v3)
-- v2 entrega só a arquitetura (pilar/cluster/suporte) — não gera Content
-  Map com contagem máxima de páginas (15-25), Análise Competitiva nem
-  Estratégia GEO estruturada em pirâmide de localização.
-- v2 não integra explicitamente o "validador de keywords" (v1) como
-  sub-componente de saída reaproveitado — o v3 reaproveita a modelagem
-  intencao/especificidade/relevancia/justificativa do v1 dentro de um
-  entregável maior.
-
-## Escopo intencionalmente fora do v3 (decisão de 2026-07-01)
-Briefs de Conteúdo, Internal Linking Strategy, KPIs e Plano de
-Implementação foram cortados do prompt v3 para manter o foco em
-**palavras-chave para produção de conteúdo mais exata e ajustada** — não em
-execução/planejamento de projeto. Essas frentes ficam fora deste prompt e,
-se necessárias, devem ser tratadas em outro fluxo/prompt separado.
+## Mudanças da versão candidata (2026-07-01, manhã) para a versão oficial (2026-07-01, final)
+- **Variáveis de entrada trocadas por um bloco mais enxuto**: de 12+ campos
+  do briefing completo (`{$segmentosAtuacao}`, `{$tipoProduto}`,
+  `{$especificacaoTecnica}` etc.) para 6 campos diretos (`{$empresaNome}`,
+  `{$nicho}`, `{$localizacao}`, `{$servicoPrincipal}`, `{$objetivo}`,
+  `{$publicoAlvo}`) + keyword âncora (`{$keywordPrincipal}`,
+  `{$intencaoPrincipal}`, `{$observacoesMercado}`).
+- **Regra de silo semântico com teste explícito de anti-canibalização**
+  (mesmo intent + mesmo subtema → funde página; intent diferente → pode
+  coexistir) — a versão candidata só dizia "zero canibalização" sem
+  critério de decisão.
+- **Condicionais de contexto formalizadas**: empresa genérica (não lista
+  a própria empresa no cluster Marcas), localização "Brasil"/"Não
+  informado" (pula Seção 4 e remove cluster GEO local), e `{$objetivo}`
+  como peso de priorização por seção (Leads/Vendas, SEO local, Autoridade).
+- **Campos Volume e Keyword Difficulty voltam à tabela de keywords**, mas
+  explicitamente rotulados como estimativa qualitativa a validar em
+  ferramenta de keyword na próxima etapa — a versão candidata havia
+  removido esses campos.
+- **Justificativa da keyword passa a exigir 2 motivos** (funil + potencial
+  real de ranqueamento), não 1 motivo genérico.
+- **Volume mínimo de keywords ajustado de 50–80 para 40–70.**
 
 ## Notas relacionadas
 - [[00-Cerebro]]
@@ -421,3 +451,4 @@ se necessárias, devem ser tratadas em outro fluxo/prompt separado.
 - [[04-Decisões/migracao-prompt-keywords-v2]]
 - [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]]
 - [[03-Produtos/mpi-plus]]
+- [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]
