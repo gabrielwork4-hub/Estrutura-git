@@ -36,6 +36,17 @@ comparativo lado a lado e o motivo de cada mudança, ver
 |---|---|---|---|
 | v1 | (anterior, data de criação não registrada) | Versão original — avaliação individual de keyword (intenção, especificidade, relevância 0-5, justificativa) | Baseline em uso até 2026-06-30 |
 | v2 | 2026-06-30 | Saída passa de "lista de keywords avaliadas" para **arquitetura de site** (Pilar → Cluster → Suporte), com clusterização semântica, anti-canibalização explícita e SEO local incorporado como tipo de pilar | Alinhar o prompt ao ajuste registrado em [[02-Fluxos/estudo-de-keywords]] e decidido em [[04-Decisões/migracao-prompt-keywords-v2]] |
+| v3 | 2026-07-01 | Expande o v2 para um **Estudo SEO completo**: mantém a saída de cluster de keywords (intencao/especificidade/relevancia/justificativa, reaproveitando a modelagem de saída do "validador de keywords" do v1/v2) e adiciona Content Map (15-25 páginas, 1 keyword principal por página), Análise Competitiva (Top 5), Estratégia GEO (pirâmide de localização), Briefs de Conteúdo (5 páginas), Internal Linking Strategy, KPIs e Plano de Implementação em 3 fases | Levar o estudo de keywords a um artefato executável de ponta a ponta (arquitetura + competição + GEO + briefs + linkagem + KPIs + plano), não só a decisão de pilar/cluster |
+
+**Nota de escopo (v3):** o v3 é o prompt candidato a **substituir a etapa de
+avaliação/clusterização de keywords que hoje roda antes do pipeline de
+"Construção de Conteúdo" do MPI Plus** (ver cruzamento com
+[[03-Produtos/mpi-plus]]) — o pipeline de conteúdo documentado no MPI Plus
+já recebe `{keyword}` pronta (SERP Search → Domain Classification →
+Pattern Analysis → Structure → Section → Cohesion → QA); ele **não contém**,
+hoje, nenhuma etapa de clusterização/anti-canibalização/content map — essa
+etapa roda antes e fora desse pipeline. O v3 é o candidato a preencher essa
+lacuna upstream.
 
 ## Prompt v1 (versão anterior — registrado em 2026-06-30 para referência)
 
@@ -279,8 +290,167 @@ Maximize autoridade temática
 Pense como Google: intenção + contexto + profundidade
 \`\`\`
 
+## Prompt v3 (candidato — enviado pelo usuário em 2026-07-01)
+Expande o v2: mantém a saída do "validador de keywords" (intencao,
+especificidade, relevancia, justificativa) como um sub-componente, mas o
+entregável final passa a ser um **Estudo SEO completo e executável**.
+
+\`\`\`
+Você é um estrategista sênior de SEO especializado em arquitetura de conteúdo, clusterização de palavras-chave e construção de topical authority.
+Crie um estudo SEO completo e estruturado em clusters, com foco em geração de tráfego orgânico e conversão.
+
+📌 CONTEXTO
+Empresa: {$empresaNome}
+Segmentos de atuação: {$segmentosAtuacao}
+Tipo de empresa: {$tipoEmpresa}
+Público-alvo da empresa: {$publicoAlvoEmpresa}
+Nicho: [EX: assistência técnica de notebook]
+Localização: [CIDADE/REGIÃO OU "BRASIL"]
+Serviço/produto principal: {$nomePrincipal}
+Nome secundário: {$nomeSecundario}
+Outros nomes / como o mercado também chama: {$outrosNomes}
+Tipo de produto/serviço: {$tipoProduto}
+Especificação técnica: {$especificacaoTecnica}
+Funcionalidades: {$funcionalidades}
+Benefícios: {$beneficios}
+Público-alvo do produto: {$publicoAlvoProduto}
+Informações adicionais: {$informacoesAdicionais}
+Objetivo: [LEADS / VENDAS / SEO LOCAL / AUTORIDADE]
+
+🎯 KEYWORD PRINCIPAL (ANCHOR)
+Keyword principal: {nomePrincipal} (ou variação relevante entre {
+nomeSecundario} / {$outrosNomes})
+Intenção: [Informacional / Comercial / Local / Transacional / Comparação]
+Observações de mercado: [se houver]
+
+🚨 TAREFA
+Gere um ESTUDO SEO COMPLETO CLUSTERIZADO com estrutura profissional e sem canibalização de palavras-chave.
+
+📊 ESTRUTURA OBRIGATÓRIA DA ENTREGA
+
+CLUSTER DE KEYWORDS (MÍNIMO 50–80 KEYWORDS)
+Crie clusters organizados com:
+Clusters obrigatórios:
+Pillar / Core
+Problemas / Sintomas
+Serviços específicos
+Marcas (se aplicável)
+GEO local (se aplicável)
+Comparação / preço / decisão
+FAQ / dúvidas
+Long-tail de baixa concorrência
+Para CADA keyword incluir:
+Keyword exata
+Intencao — uma das categorias: comercial / transacional / informacional / local / comparacao
+Especificidade — head / medio / long_tail
+Relevancia — nota de 0 a 5 de aderência ao produto/serviço avaliado
+Justificativa — uma frase curta explicando a nota de relevância
+
+Critério de corte: descarte (não inclua na tabela final) qualquer keyword com relevancia < 3.
+
+CONTENT MAP (15–25 PÁGINAS NO MÁXIMO)
+Criar tabela com:
+Tipo de página (Homepage / Pilar / Serviço / Marca / GEO / Blog)
+URL
+Keyword principal (1 por página apenas — SEM CANIBALIZAÇÃO)
+Keywords secundárias (até 3)
+Intenção
+Profundidade (cliques da homepage)
+📌 Regras:
+1 keyword principal por página
+Máximo 25 páginas
+Hierarquia clara de autoridade
+Zero canibalização
+
+ANÁLISE COMPETITIVA (TOP 5)
+Para cada concorrente:
+Nome
+DR estimado
+Tráfego orgânico estimado
+Força principal (cluster dominante)
+Fraqueza
+Oportunidade de ataque SEO
+No final:
+3 oportunidades claras de ganho de mercado
+
+ESTRATÉGIA GEO (SE APLICÁVEL)
+Pirâmide de localização:
+Primária
+Secundária
+Terciária
+Para cada nível:
+Landing page sugerida
+Keywords locais
+Estratégia de conteúdo
+SEO local (Google Business Profile, schema, citações)
+
+BRIEFS DE CONTEÚDO (5 PÁGINAS MAIS IMPORTANTES)
+Para cada página:
+URL
+Keyword principal (intencao + relevancia)
+Intent
+Estrutura sugerida (H1, H2, H3)
+Seções obrigatórias
+Diferencial competitivo
+CTAs
+Extensão (palavras)
+Exemplos de subtítulos
+
+INTERNAL LINKING STRATEGY
+Fluxo de autoridade (Homepage → Pillars → Serviços → Long-tail)
+Links entre páginas
+Anchors recomendados (naturais, não spam)
+Regras de profundidade (máx 3 cliques)
+
+KPIs SEO
+Definir:
+Tráfego orgânico
+Keywords ranqueadas
+Leads gerados
+CTR
+Ranking local (Map Pack)
+DR / autoridade
+Com:
+Meta 6 meses
+Ferramenta
+Frequência de medição
+
+PLANO DE IMPLEMENTAÇÃO (3 FASES)
+Fase 1 (0–4 semanas)
+Estrutura base + páginas principais
+Fase 2 (5–12 semanas)
+Expansão de clusters + GEO + serviços
+Fase 3 (13+ semanas)
+Autoridade + backlinks + otimização contínua
+
+⚠️ REGRAS CRÍTICAS
+Sem canibalização de keywords
+Máximo 1 keyword principal por página
+Usar a modelagem de output do validador de keywords (intencao, especificidade, relevancia, justificativa) — sem inferir volume ou keyword difficulty
+Evitar termos genéricos sem segmentação
+Entrega deve ser prática (executável por time de SEO/copywriting)
+Foco em arquitetura de site + conversão + autoridade
+
+🎯 FORMATO DE SAÍDA
+Tabelas para dados
+Estrutura clara por seção
+Linguagem profissional
+Estratégia acionável (não teórica)
+\`\`\`
+
+## Lacunas identificadas no v2 (frente ao v3)
+- v2 entrega só a arquitetura (pilar/cluster/suporte) — não gera Content
+  Map com contagem máxima de páginas (15-25), Análise Competitiva, GEO,
+  Briefs de conteúdo, Internal Linking ou KPIs.
+- v2 não define plano de implementação faseado (0-4 / 5-12 / 13+ semanas).
+- v2 não integra explicitamente o "validador de keywords" (v1) como
+  sub-componente de saída reaproveitado — o v3 reaproveita a modelagem
+  intencao/especificidade/relevancia/justificativa do v1 dentro de um
+  entregável maior.
+
 ## Notas relacionadas
 - [[00-Cerebro]]
 - [[02-Fluxos/estudo-de-keywords]]
 - [[04-Decisões/migracao-prompt-keywords-v2]]
 - [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]]
+- [[03-Produtos/mpi-plus]]
