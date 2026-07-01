@@ -449,6 +449,60 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Ferramentas Externas Integradas
+
+### Pontos fortes
+1. **"Divisão de funções acordada" explícita é boa prática de arquitetura
+   de integração.** Deixa claro, numa única lista, quem é dono de qual
+   dado — evita a armadilha de duas ferramentas "quase" fazendo a mesma
+   coisa sem hierarquia definida (o que quase aconteceu com Bright Data vs.
+   relatório MPI Plus, e foi corrigido).
+2. **Remoção consciente do Bright Data (v1.9.16) mostra maturidade de
+   decisão técnica.** Reconhecer que uma integração redundante não elimina
+   o SPOF real é economia de complexidade genuína, não só de custo.
+3. **W3C Validator self-hosted em Docker, sem limite externo.** Elimina
+   dependência de rate-limit/disponibilidade de terceiro para uma checagem
+   que roda em volume alto.
+4. **SendGrid com pull diário obrigatório e retenção local documentada
+   (≥3 meses).** Evita depender só do plano atual do SendGrid (7 dias de
+   log) — o GM se protege da limitação do provedor.
+5. **Ferramentas condicionais bem marcadas (DataForSEO/KeywordTools na Dim
+   1).** Evita gastar com API cara quando a auditoria nem indicou
+   necessidade — controle de custo embutido na lógica de quando chamar.
+
+### Pontos fracos / riscos
+1. **PageSpeed API com cota de 400 req/dia é pequena perto da escala do
+   produto.** Com ~2.500 clientes rodando páginas MPI elegíveis todo ciclo,
+   400 req/dia parece insuficiente sem estratégia de fila/priorização
+   explícita quantificada (quantos dias para cobrir a carteira inteira).
+2. **Nenhuma ferramenta tem SLA de disponibilidade documentado do
+   fornecedor, nem estratégia de circuit breaker/timeout padronizada entre
+   elas** — cada dimensão trata falha de API de forma um pouco diferente.
+3. **6 contas de Google Search Console para 2.500 clientes sem critério de
+   distribuição explicado**, nem menção de limite de propriedades por conta
+   que possa virar gargalo de escala.
+4. **SemRush Business sem menção de rate-limit/cota**, diferente do cuidado
+   dado ao PageSpeed (400/dia) — inconsistência no nível de detalhe de
+   dimensionamento entre ferramentas.
+5. **DataForSEO usado tanto para concorrentes (Dim 2, recorrente) quanto
+   para expansão de estudo (Dim 1, condicional) sem teto de chamadas
+   combinado** — pode gerar competição interna por cota entre dimensões do
+   mesmo cliente.
+
+### Observações candidatas a backlog
+- Dimensionar a cota de 400 req/dia do PageSpeed contra o volume real de
+  páginas MPI elegíveis da carteira.
+- Definir estratégia padronizada de circuit breaker/timeout/retry por
+  ferramenta externa.
+- Documentar o critério de distribuição de clientes entre as 6 contas de
+  Search Console e o limite de propriedades por conta.
+- Definir cota/rate-limit para SemRush Business, no mesmo nível de detalhe
+  já dado ao PageSpeed.
+- Definir teto de orçamento/chamadas combinado do DataForSEO entre Dim 1 e
+  Dim 2, evitando competição interna por cota.
+
+---
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[00-Cerebro]]
