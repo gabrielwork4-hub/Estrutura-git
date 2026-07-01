@@ -122,7 +122,68 @@ desenvolvimento.
   confiar cegamente no relatório.
 
 ## Fase 3 — Auditoria em 10 Dimensões
-> _A preencher na próxima etapa da revisão._
+
+### Pontos fortes
+1. **Travamento condicional só na Dim 1 (RN-88) é uma decisão de design
+   muito boa.** Evita o erro clássico de pipeline sequencial "trava tudo se
+   qualquer coisa falhar" — só a causa raiz genuína (estudo errado) trava; o
+   resto roda em paralelo, mais rápido e mais realista, já que as dimensões
+   2–10 são majoritariamente independentes entre si.
+2. **Separação rígida entre determinístico (Dim 4,5,6,7,9) e IA (Dim
+   1,2,3,8,10).** Maturidade de arquitetura: não usar LLM para o que uma
+   ferramenta determinística já resolve com 100% de precisão (W3C,
+   PageSpeed, Schema validator) evita alucinação onde não precisa e reduz
+   custo/latência.
+3. **Score de Saúde Técnica com fórmula auditável e pesos versionáveis.**
+   Assim como o Índice de Performance na Fase 2, dá rastreabilidade e
+   permite recalibração sem reescrever lógica.
+4. **Anti-duplicidade entre dimensões** (ex: Dim 8 não reage a algo já
+   coberto pela Dim 7 ou Dim 5). Evita que o cliente receba a mesma ação
+   recomendada por caminhos diferentes — problema comum em sistemas
+   multiagente sem coordenação.
+5. **Regra de direção de linkagem MPI (Dim 3) é tecnicamente correta e bem
+   formalizada** — silo hierárquico clássico, bem implementado como regra
+   auditável.
+
+### Pontos fracos / riscos
+1. **"Rodar em paralelo" não define como conflitos de recomendação entre
+   dimensões são resolvidos antes do Parecer Consolidado.** Se a Dim 2
+   recomenda "refazer conteúdo" e a Dim 3 recomenda "reestruturar
+   arquitetura" na mesma página ao mesmo tempo, quem prioriza a ordem de
+   execução na prática, além do Parecer (que é um agente de IA, não uma
+   regra determinística)?
+2. **Dependência de DataForSEO na Dim 2 é cara e recorrente** — rodar por
+   página MPI elegível, todo ciclo, para ~2.500 clientes pode ter
+   custo/rate-limit relevante. Não há menção de cache de resultado de SERP
+   entre ciclos (reaproveitar o padrão SERP se ele não mudou muito em 30
+   dias).
+3. **Régua da Dim 2 (score 60–79% → "Complementar") depende de julgamento de
+   IA sobre "cobertura de intenção/tópicos/entidades"**, inerentemente mais
+   subjetivo que as dimensões determinísticas. O PRD não menciona auditoria
+   de qualidade/amostragem humana periódica sobre os vereditos desse agente
+   — é o mais arriscado de todos por operar num critério qualitativo.
+4. **M3 (Dim 9) e Dim 5 têm fronteira que depende de julgamento — "problema
+   predominante de servidor" vs "front-end".** Pode gerar disputa/ambiguidade
+   de responsabilidade entre times técnicos sem um dono claro do critério de
+   desempate.
+5. **Nenhuma dimensão trata volume/priorização quando há muitas páginas MPI
+   elegíveis ao mesmo tempo.** Para clientes com centenas de páginas, rodar
+   9 dimensões (2–10) por página, todo ciclo, é uma carga de processamento
+   (e possivelmente de custo de API) que o PRD não dimensiona — sem SLA de
+   "quanto tempo leva para processar 1 cliente" nem estratégia de fila.
+
+### Observações candidatas a backlog
+- Definir regra de desempate/priorização quando duas ou mais dimensões
+  recomendam ações conflitantes na mesma página, antes do Parecer
+  Consolidado.
+- Avaliar estratégia de cache/reaproveitamento de SERP (Dim 2) entre ciclos
+  para reduzir custo/rate-limit de DataForSEO.
+- Definir processo de auditoria de qualidade periódica sobre os vereditos
+  qualitativos do Agente de Conteúdo (Dim 2), a dimensão mais subjetiva.
+- Definir critério de desempate objetivo entre Dim 5 e Dim 9 (front-end vs.
+  servidor) para evitar disputa de responsabilidade entre times.
+- Dimensionar SLA de processamento por cliente/ciclo e estratégia de fila
+  quando o volume de páginas MPI elegíveis for grande.
 
 ## Fase 4 — Workflow de Aprovação, Execução e Validação
 > _A preencher na próxima etapa da revisão._
