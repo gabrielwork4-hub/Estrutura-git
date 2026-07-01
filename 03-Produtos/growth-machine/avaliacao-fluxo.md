@@ -327,6 +327,74 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Agentes de IA
+
+### Pontos fortes
+1. **Contrato de prompt padronizado e schema JSON obrigatório para todo
+   agente é a decisão de engenharia mais forte deste bloco.** Sem isso, cada
+   agente viraria um "floco de neve" com prompt e saída próprios, impossível
+   de auditar em escala. Padronizar `dimension`, `status`, `confidence`,
+   `findings`, `recommended_actions` cria um contrato único que qualquer
+   parte do sistema pode consumir de forma previsível.
+2. **`requires_human_approval` e `do_not_act_reason` embutidos no schema, não
+   como convenção externa.** Força todo agente a declarar explicitamente
+   quando não vai agir e por quê — reduz o risco de "silêncio ambíguo"
+   (agente não fez nada e ninguém sabe se foi decisão ou falha).
+3. **Mecânica de entradas via context builder, proibindo o agente de buscar
+   dados sozinho.** Elimina uma classe inteira de bugs/riscos de segurança —
+   um agente não pode, por conta própria, consultar fonte fora do escopo ou
+   vazar dados entre projetos.
+4. **Log obrigatório com `ruleset_version_id` + `prompt_version_id` em toda
+   execução.** Dá rastreabilidade real: qual versão de regra e de prompt
+   gerou qualquer ação histórica — crítico para auditoria e debug de
+   regressões quando um prompt for atualizado.
+5. **Separação rígida detecção (GM) vs. geração (MPI Plus), com dois gates
+   humanos (Gate 1 gerar, Gate 2 revisar).** Reduz a chance de conteúdo de
+   baixa qualidade chegar ao cliente sem revisão — mesmo padrão de dupla
+   aprovação já visto como ponto forte na Fase 4.
+
+### Pontos fracos / riscos
+1. **"A casa é entregue vazia; os móveis são os prompts" — frase textual do
+   PRD, honesta e preocupante ao mesmo tempo.** O contrato/schema está
+   pronto, mas o conteúdo fino de cada prompt (o que realmente faz o agente
+   confiável) ainda não existe — risco de execução gigante não mitigado por
+   nenhuma arquitetura, por melhor que seja.
+2. **`confidence` é campo obrigatório no schema, mas sem regra documentada
+   de uso.** Existe menção de "confiança abaixo do mínimo parametrizado"
+   bloqueando execução, mas não está detalhado qual é esse mínimo, se é
+   igual para todos os agentes, ou como calibrar a confiança declarada por
+   um LLM (notoriamente mal calibrada — LLMs tendem a reportar confiança
+   alta mesmo errando).
+3. **Nenhum agente tem menção de teste de regressão antes de trocar de
+   versão de prompt.** Existe versionamento e rollback na Tela 9, mas não há
+   processo de validação/golden-set antes de promover um novo prompt para
+   produção — o versionamento permite reverter depois do estrago, não
+   previne.
+4. **A Camada de Tradução de Diagnóstico atravessa todas as dimensões e não
+   tem dono claro por dimensão.** Se ela traduzir errado o achado de uma
+   dimensão determinística (ex: PageSpeed), o erro pode nunca ser percebido
+   porque a fonte determinística estava certa — o erro está só na camada de
+   IA em cima.
+5. **Sem menção de limite de token/contexto por chamada**, considerando que
+   alguns agentes recebem entradas grandes (ex: Auditor de Conteúdo SERP
+   recebe conteúdo de múltiplos concorrentes + página do cliente +
+   histórico) — sem estratégia de truncamento/priorização documentada.
+
+### Observações candidatas a backlog
+- Priorizar o desenho fino dos prompts reais como frente de trabalho própria
+  e crítica — é o risco central do produto, segundo o próprio PRD.
+- Definir o mínimo de `confidence` por agente/dimensão e o processo de
+  calibração desse valor.
+- Criar processo de validação com golden-set antes de promover nova versão
+  de prompt para produção (hoje só existe rollback reativo).
+- Definir dono/responsável por dimensão para auditar a Camada de Tradução de
+  Diagnóstico, já que atravessa todas as dimensões e pode mascarar erro de
+  tradução sobre uma fonte determinística correta.
+- Definir estratégia de truncamento/priorização de conteúdo quando a entrada
+  de um agente se aproximar do limite de contexto.
+
+---
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[00-Cerebro]]
