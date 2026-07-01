@@ -70,7 +70,56 @@ desenvolvimento.
 ---
 
 ## Fase 2 — Motor de Percepção
-> _A preencher na próxima etapa da revisão._
+
+### Pontos fortes
+1. **Um único gatilho de calendário, para toda a carteira.** Simples,
+   previsível, sem ambiguidade sobre quando o ciclo roda.
+2. **Fórmula matemática explícita e determinística.** Índice calculado por
+   fórmula, não por julgamento humano — dá auditabilidade e repetibilidade.
+3. **Curva de maturidade e teto de crescimento contra "cliente novo mal
+   avaliado".** Reconhece que um site de 2 meses não pode ser cobrado pela
+   mesma régua de um site de 3 anos — evita punir cliente novo injustamente.
+4. **Regra de fronteira sem arredondamento.** Elimina ambiguidade de "quase
+   Top 10 conta como Top 10" — decisão de engenharia limpa.
+5. **Remoção do Bright Data como integração direta (v1.9.16).** Boa decisão
+   de simplificação: reconhecer que adicionar uma chamada redundante não
+   elimina o SPOF real é maturidade arquitetural.
+
+### Pontos fracos / riscos
+1. **Hard Stop sem fallback é um SPOF assumido, não mitigado.** Se o MPI
+   Plus atrasar a geração do relatório (~dia 1º/2 é aproximado, não
+   garantido), toda a carteira trava ao mesmo tempo. Não há plano B além de
+   "aguardar o relatório".
+2. **Pesos 40/40/20 e taxa de conversão default de 5% carecem de
+   origem/calibração documentada**, repetindo o padrão já visto na Fase 1
+   (thresholds de 70%/50%) — números de negócio importantes sem rastro de
+   como foram definidos.
+3. **Curva de maturidade trata todo cliente do mesmo segmento igual.** Um
+   e-commerce e um prestador de serviço local presumivelmente amadurecem em
+   ritmos diferentes, mas a curva parece única e genérica — o próprio PRD
+   reconhece isso como questão em aberto (Q23: régua de posicionamento por
+   período ainda não calibrada com Growth), mas ainda não resolvida.
+4. **`leads_real` multicanal (RN-107) depende inteiramente da qualidade do
+   dado do relatório MPI Plus.** Se o relatório não capturar corretamente um
+   canal (ex: WhatsApp mal instrumentado), o índice de leads fica
+   sistematicamente errado sem que o GM tenha visibilidade disso — confia
+   cegamente no relatório como fonte única.
+5. **Reclassificação de cadência (mensal↔trimestral) pode oscilar nas
+   bordas.** Um cliente que oscila entre 0,79 e 0,80 muda de cadência de
+   análise a cada mês — não há menção de histerese/período de estabilização
+   antes de mudar a cadência.
+
+### Observações candidatas a backlog
+- Definir plano de contingência para atraso/ausência do relatório mensal do
+  MPI Plus (hoje é Hard Stop puro).
+- Documentar a origem/calibração dos pesos 40/40/20 e da taxa de conversão
+  default de 5%.
+- Acompanhar a resolução da Q23 (régua de maturidade por segmento) — hoje é
+  genérica para todo cliente.
+- Avaliar mecanismo de histerese para evitar oscilação de cadência
+  mensal/trimestral nas bordas do threshold.
+- Definir validação de qualidade do dado de leads multicanal antes de
+  confiar cegamente no relatório.
 
 ## Fase 3 — Auditoria em 10 Dimensões
 > _A preencher na próxima etapa da revisão._
