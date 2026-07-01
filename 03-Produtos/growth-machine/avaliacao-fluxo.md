@@ -1,6 +1,6 @@
 ---
 tipo: fluxo
-status: em-construcao
+status: fases-1-a-4-concluidas
 criado: 2026-07-01
 ultima-revisao: 2026-07-01
 tags: [growth-machine, avaliacao, revisao-critica, prd]
@@ -186,7 +186,89 @@ desenvolvimento.
   quando o volume de páginas MPI elegíveis for grande.
 
 ## Fase 4 — Workflow de Aprovação, Execução e Validação
-> _A preencher na próxima etapa da revisão._
+
+### Pontos fortes
+1. **Double-check com validação automática por IA (RN-81) é a melhor
+   mitigação de risco do fluxo inteiro.** Em vez de confiar cegamente que "o
+   Front-end marcou como concluído", o sistema relê o site e confere de
+   fato — ataca diretamente o risco de tarefa marcada como feita sem ter
+   sido feita.
+2. **Gatilho da maturação atrelado à validação do analista, não à execução
+   técnica.** Evita que o relógio de 60 dias comece a contar sobre uma ação
+   que na prática não foi bem executada ou ainda está sendo ajustada.
+3. **Ação desconsiderada exige motivo e escala para Supervisor/Líder
+   (RN-45).** Fecha um vetor clássico de fluxo que "simplesmente evapora"
+   sem ninguém saber por quê.
+4. **Execução parcial tratada explicitamente (RN-46).** "2 de 6" não se
+   perde — reentra no ciclo seguinte. Bom controle de continuidade.
+5. **Separação de sistemas mantida rigidamente:** GM decide o quê,
+   Salesforce gerencia quem/quando/status, execução real é manual —
+   consistente com o resto do PRD e evita que o GM vire gestor de tarefas
+   paralelo ao Salesforce (RN-74).
+
+### Pontos fracos / riscos
+1. **RN-49 concentra aprovação inicial + validação técnica final na mesma
+   pessoa (o Analista), após extinguir a persona "Revisor".** Remove
+   segregação de funções que existia antes — o mesmo analista que aprovou a
+   ação é quem valida se ela foi bem executada, sem um segundo par de olhos
+   independente (viés de confirmação).
+2. **Sem SLA definido para o analista validar após a conclusão no
+   Salesforce.** Existe RN-28 (28 dias) para ação gerada e não executada,
+   mas não há regra equivalente para "ação concluída no Salesforce,
+   esperando o analista clicar em Validar" — pode atrasar indefinidamente o
+   início da maturação de 60 dias sem alerta.
+3. **Sem limite de reprovações antes de escalar.** Diferente do briefing
+   (máx. 2 iterações → escala gerência), quando IA+analista reprovam a ação
+   volta pra fila com notas, sem teto documentado — risco de loop de
+   reprovação sem escalonamento automático.
+4. **Sem regra de desempate quando IA e Analista divergem na validação.** O
+   PRD trata "IA + Analista reprovam" como bloco único, mas não descreve o
+   caso onde a IA valida e o analista reprova (ou vice-versa) — quem
+   prevalece não está definido.
+5. **Dependência forte do Salesforce como fonte única de status de
+   execução.** Se a sincronização falhar silenciosamente (bug de webhook,
+   atraso de API), o GM pode nunca saber que uma ação foi concluída —
+   travando a fila de "[!] Validar" sem visibilidade do problema técnico.
+
+### Observações candidatas a backlog
+- Avaliar reintrodução de segregação de papéis entre quem aprova a ação
+  inicialmente e quem valida a execução final (hoje concentrado no mesmo
+  Analista, RN-49).
+- Definir SLA/alerta para o tempo entre "Salesforce sincroniza conclusão" e
+  "Analista aciona Validar" — hoje sem prazo, análogo ao gap já visto no
+  briefing (Fase 1).
+- Definir limite de reprovações de uma mesma ação antes de escalar
+  automaticamente para Supervisor/Líder.
+- Documentar regra de desempate quando IA e Analista divergem no resultado
+  da validação.
+- Definir monitoramento/alerta de falha silenciosa de sincronização
+  Salesforce↔GM, para não deixar ações "presas" sem visibilidade.
+
+---
+
+## Síntese consolidada — padrões que se repetem nas 4 fases
+
+Ao longo da revisão das 4 fases, alguns padrões de risco aparecem de forma
+recorrente, não isolada:
+
+1. **"Sem prazo automático" aparece 3 vezes (Fase 1 — briefing; Fase 4 —
+   validação do analista) sem mecanismo de alerta de envelhecimento
+   equivalente ao RN-04/RN-28.** É o risco estrutural mais repetido do PRD.
+2. **Thresholds/pesos de negócio sem origem documentada** (70%/50% na Fase
+   1; 40/40/20 e taxa de conversão 5% na Fase 2) — sugere que a calibração
+   foi definida por julgamento de especialista, não por teste/dado, o que é
+   aceitável mas deveria ser registrado explicitamente como tal.
+3. **Concentração de responsabilidade numa única pessoa em pontos de
+   controle críticos** (CS na Fase 1; Analista acumulando aprovação +
+   validação na Fase 4) — reduz segregação de funções em nome de agilidade.
+4. **Fronteiras de responsabilidade entre componentes automatizados nem
+   sempre têm critério de desempate explícito** (Dim 5 vs Dim 9 na Fase 3;
+   IA vs Analista na Fase 4).
+
+Esses 4 padrões, mais que os itens pontuais, são o principal insumo para
+priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
+
+---
 
 ---
 
