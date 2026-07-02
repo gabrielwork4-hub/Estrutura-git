@@ -80,5 +80,6 @@ de build de ponta a ponta.
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]] — nota completa
 - [[03-Produtos/growth-machine/avaliacao-fluxo]] — avaliação crítica
+- [[03-Produtos/growth-machine/catalogo-regras-negocio]] — todas as 122 RNs
 - [[00-Painel-Estado]]
 - [[00-Glossario]]

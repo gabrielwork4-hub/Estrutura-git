@@ -416,6 +416,8 @@ selecionar um cliente no Painel de Carteira.
 ---
 
 ## Regras de negócio chave
+Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
+[[03-Produtos/growth-machine/catalogo-regras-negocio]].
 
 - **RN-01:** análise não avança sem validação ativa do cliente/CS — sem prazo automático.
 - **RN-02:** cadência Ruim/Regular = mensal; Bom/Ótimo = trimestral.
