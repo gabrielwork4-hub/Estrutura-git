@@ -492,6 +492,11 @@ A revisão crítica ponto a ponto do fluxo (pontos fortes, riscos e observaçõe
 candidatas a backlog, fase por fase) está sendo construída em paralelo em
 [[03-Produtos/growth-machine/avaliacao-fluxo]].
 
+## Cheat sheet
+Resumo de 1 página com só os números/regras que valem memorizar (pesos,
+thresholds, ordem das fases/dimensões, os 5 padrões de risco recorrentes)
+em [[03-Produtos/growth-machine/cheat-sheet]].
+
 ## Cruzamento com outras notas
 - A implementação de blog e o conteúdo MPI Plus dependem diretamente de
   [[02-Fluxos/estudo-de-keywords]] (clusterização, anti-canibalização,

@@ -12,6 +12,9 @@ tags: [painel, estado, core]
 > `status` no frontmatter, mas antes desta nota era preciso ler uma por
 > uma para montar essa visão. Atualizar sempre que um status mudar.
 
+## Cheat sheets (resumo de 1 página, para ter "na ponta da língua")
+- [[03-Produtos/growth-machine/cheat-sheet]] — números/regras do Growth Machine sem precisar abrir a nota completa.
+
 ## Produtos
 
 | Produto | Status | Prioridade | Nota |
