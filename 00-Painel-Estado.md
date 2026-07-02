@@ -47,7 +47,7 @@ tags: [painel, estado, core]
 |---|---|---|
 | [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]] | Oficial, aguardando envio ao Jira | MPI Plus |
 | [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] | **Enviada ao Jira (2026-07-03)** — resolve gargalo de geração de termos | MPI Plus |
-| [[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]] | Oficial, aguardando envio ao Jira — motivada por QA de produção real | MPI Plus |
+| [[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]] | **Versão final consolidada** (vigente para geração de termos), aguardando envio ao Jira — motivada por QA de produção real | MPI Plus |
 
 ## Backlog aberto por prioridade
 

@@ -56,10 +56,11 @@ KeywordTool só enriquecendo (volume/CPC/concorrência), sem filtrar nada.
 plataforma ("Consultoria Ambiental") revelou que os padrões antigos
 (concatenação mecânica "instalação"/"manutenção", GEO em lista genérica de
 cidades) ainda estavam presentes — sinal de que o pipeline em produção
-ainda não reflete o prompt já enviado ao Jira. Terceira história, também
-oficial, endurece as regras especificamente contra isso, sem alterar a
-stack/schema já usado:
-[[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]].
+ainda não reflete o prompt já enviado ao Jira.
+[[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]]
+é a **versão final consolidada** do prompt dessa etapa (cruza a história
+original + o endurecimento), sem alterar a stack/schema já usado — é a
+que deve ser considerada vigente para geração de termos.
 
 ## Cruzamento com outras notas
 - O conteúdo do MPI Plus é citado em [[03-Produtos/growth-machine]] como

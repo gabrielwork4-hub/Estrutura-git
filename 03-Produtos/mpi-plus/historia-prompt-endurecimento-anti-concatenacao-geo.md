@@ -1,6 +1,6 @@
 ---
 tipo: backlog
-status: oficial
+status: versao-final-consolidada
 prioridade: alta
 criado: 2026-07-03
 ultima-revisao: 2026-07-03
@@ -8,14 +8,19 @@ origem-fluxo: "[[02-Fluxos/estudo-de-keywords]]"
 tags: [mpi-plus, prompt, keywords, jira, historia, seo, geo, canibalizacao, qa]
 ---
 
-# Endurecer o prompt de geração de termos contra concatenação mecânica e GEO genérico
+# Prompt final de geração de termos — versão consolidada (base + endurecimento)
 
-> Documento **oficial**, novo e separado da história já enviada ao Jira
-> ([[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]]) —
-> aquela permanece intocada. Este documento nasce de **evidência real de
-> produção**: uma exportação da plataforma (CSV "Consultoria Ambiental",
-> validado em 2026-07-03) mostrando exatamente os padrões antigos que a
-> inversão de fluxo deveria ter eliminado, ainda presentes.
+> **Versão final e definitiva** para a etapa de geração de termos —
+> resultado do cruzamento entre a história original já enviada ao Jira
+> ([[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]]) e o
+> endurecimento motivado por evidência real de produção. Esta é a versão
+> que deve ser implementada/considerada vigente para esta etapa; a
+> história original permanece registrada por rastreabilidade, mas o
+> prompt de sistema/usuário abaixo é o que fecha as barreiras.
+>
+> Nasce de **evidência real de produção**: uma exportação da plataforma
+> (CSV "Consultoria Ambiental", validado em 2026-07-03) mostrando padrões
+> antigos que a inversão de fluxo deveria ter eliminado, ainda presentes.
 
 ## Restrição de escopo (importante)
 **Não altera a stack já utilizada.** Schema de saída permanece o mesmo da
@@ -99,23 +104,25 @@ solta, e sim de regra explícita e testável.
    termos for gerada, **então** ele não deve aparecer sozinho, repetido
    como se fosse 3 termos distintos, sem variação de busca real.
 
-## Prompt de Sistema
+## Prompt de Sistema (versão final consolidada)
 
 \`\`\`
 Você é um estrategista sênior de SEO especializado em pesquisa de palavras-chave. Gere termos de busca reais com base apenas no contexto do produto e da empresa fornecido — não invente características, tecnologias ou usos que não constem no contexto.
 
-Priorize termos comerciais e transacionais. Não gere concatenação mecânica de nenhum tipo: nunca combine um termo-base com uma lista fixa de sufixos (ex: "instalação", "manutenção", "reparo", "conserto") aplicada indistintamente a vários termos — cada termo deve nascer de uma busca real e distinta que uma pessoa digitaria, não de um template de combinação. Se dois termos representam a mesma busca com a mesma intenção, gere apenas um — nunca gere variações redundantes do mesmo significado só para aumentar a contagem.
+Priorize termos comerciais e transacionais; inclua alguns informacionais relevantes.
 
-Pense em como o público-alvo real buscaria: dúvidas, comparações, uso, problema que o produto resolve, sinônimos do setor. Não repita o nome completo do produto/empresa como termo isolado mais de uma vez.
+REGRA CRÍTICA — SEM CONCATENAÇÃO MECÂNICA: nunca combine um termo-base com uma lista fixa de sufixos operacionais (ex: "instalação", "manutenção", "reparo", "conserto") aplicada indistintamente a vários termos. Cada termo deve nascer de uma busca real e distinta que uma pessoa digitaria — pense em como o público-alvo real buscaria: dúvidas, comparações, uso, problema que o produto resolve, sinônimos do setor. Se o serviço realmente envolver instalação ou manutenção como oferta comercial concreta, isso pode gerar UM termo natural e específico (ex: "empresa de instalação de X") — nunca um padrão repetido mecanicamente em cima de cada termo-base da lista.
 
-Região: incorpore localização apenas quando o contexto indicar uma área de atuação real e específica. Se a localização não for específica (ex: "Brasil", "nacional", não informado), não gere nenhuma variação geográfica — não liste cidades por padrão.
+REGRA CRÍTICA — SEM TERMOS DUPLICADOS OU MORTOS: antes de finalizar, revise mentalmente a lista inteira. Se dois termos representam a mesma busca com a mesma intenção, mantenha apenas um — nunca gere variações redundantes do mesmo significado só para aumentar a contagem. Não repita o nome completo do produto/empresa como termo isolado mais de uma vez.
+
+REGRA CRÍTICA — REGIÃO SÓ QUANDO REAL: incorpore localização apenas quando o contexto indicar uma área de atuação real e específica. Se a localização não for específica (ex: "Brasil", "nacional", não informado), não gere nenhuma variação geográfica — não liste cidades por padrão, mesmo que sejam cidades de alto volume de busca.
 
 Evite canibalização: não gere termos que sejam a mesma busca com a mesma intenção — cada termo deve ser único em significado, não apenas em grafia.
 
 Responda exclusivamente com JSON válido. Sem markdown, sem comentários, sem texto fora do JSON.
 \`\`\`
 
-## Prompt de Usuário
+## Prompt de Usuário (versão final consolidada)
 
 \`\`\`
 Gere uma lista de termos de busca para este produto/serviço:
@@ -131,7 +138,7 @@ Objetivo: {objetivo}
 Diretrizes:
 - Gere entre {min_termos} e {max_termos} termos únicos que as pessoas realmente buscariam no Google.
 - Priorize intenção comercial e transacional; inclua alguns informacionais relevantes.
-- NUNCA gere um termo combinando mecanicamente o nome do produto/serviço com um sufixo operacional fixo (instalação, manutenção, reparo etc.) repetido em vários termos — cada termo precisa ser uma busca real e distinta.
+- NUNCA gere um termo combinando mecanicamente o nome do produto/serviço com um sufixo operacional fixo (instalação, manutenção, reparo etc.) repetido em vários termos — cada termo precisa ser uma busca real e distinta, não resultado de um template.
 - Antes de finalizar, revise a lista: se dois termos têm o mesmo significado e a mesma intenção, mantenha apenas um.
 - Use a localização apenas nos termos em que a busca local for real e específica — se {localizacao} for genérica ("Brasil", não informado), não gere nenhuma variação geográfica.
 - Não repita o nome completo do produto/empresa como termo isolado mais de uma vez.
@@ -145,7 +152,18 @@ Responda SOMENTE com JSON:
 }
 \`\`\`
 
+## O que mudou da versão de endurecimento (2026-07-03, primeira) para esta consolidada
+- Adicionada ressalva explícita na regra de concatenação: se
+  instalação/manutenção forem ofertas comerciais reais do serviço, o
+  modelo pode gerar **um termo natural específico** para isso — evita que
+  a regra, lida ao pé da letra, proíba até uma busca legítima. Fecha a
+  distinção entre "1 termo real" e "sufixação mecânica em cascata", que é
+  o erro observado de fato na exportação.
+- Reforço de linguagem com "REGRA CRÍTICA" nomeada por bloco, tornando as
+  3 barreiras (concatenação, duplicidade, GEO genérico) mais explícitas e
+  testáveis individualmente.
+
 ## Relacionados
-- [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] — história original, já enviada ao Jira, intocada por esta
+- [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] — história original, já enviada ao Jira; esta nota consolida a versão final do prompt dessa mesma etapa
 - [[02-Fluxos/estudo-de-keywords]] — fluxo de origem
 - [[03-Produtos/mpi-plus]] — produto onde o pipeline roda
