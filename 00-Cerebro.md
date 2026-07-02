@@ -77,6 +77,7 @@ Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou q
 Itens de [[05-Backlog]] que nasceram de problemas listados acima.
 - [[05-Backlog/ideal-track-definir-metodologia-sov]] — metodologia de medição do Share of Voice ainda indefinida no MVP do Ideal Track.
 - 10 itens derivados da avaliação crítica do PRD do Growth Machine (ver [[03-Produtos/growth-machine/avaliacao-fluxo]]), priorizados pela síntese executiva: [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]] (alta), [[05-Backlog/gm-atribuir-dono-prazo-questoes-abertas]] (alta), [[05-Backlog/gm-desenho-fino-prompts-agentes]] (alta), [[05-Backlog/gm-alerta-envelhecimento-sem-prazo-automatico]] (alta), [[05-Backlog/gm-calibracao-thresholds-numeros-negocio]] (média), [[05-Backlog/gm-segregacao-funcoes-pontos-controle]] (média), [[05-Backlog/gm-criterio-desempate-fronteiras-componentes]] (média), [[05-Backlog/gm-escopo-sentinela-infraestrutura-cron]] (média), [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]] (média), [[05-Backlog/gm-salvaguarda-aprovacao-massa-telas]] (baixa).
+- 6 itens derivados da avaliação de alinhamento SEO/GEO/AEO (2026-07-02, ver [[03-Produtos/growth-machine/avaliacao-fluxo]] e [[01-Ideias/growth-machine-geo-aeo-oportunidades]]): [[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]] (alta), [[05-Backlog/gm-segmentar-trafego-origem-ia]] (média), [[05-Backlog/gm-sinal-conteudo-original]] (média), [[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]] (média), [[05-Backlog/gm-checagem-presenca-entidade]] (baixa), [[05-Backlog/gm-cobertura-video-como-dimensao]] (baixa).
 
 ## Produtos em desenvolvimento
 Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
@@ -85,6 +86,11 @@ foram aprofundados até agora).
 - [[03-Produtos/growth-machine]] — orquestração de SEO para ~2.500 projetos MPI, 4 fases (briefing → percepção → auditoria 10 dimensões → fila de ações no Salesforce). PRD v1.9.14 já existe no Drive.
 - [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave em 2 etapas oficiais: geração de termos ([[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]]) e arquitetura de site ([[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]); sem PRD próprio encontrado no Drive ainda.
 - [[03-Produtos/ideal-tracker]] (Ideal Track) — ferramenta de GEO/visibilidade em LLMs; tem PRD, doc de funcionalidades e briefing de UX no Drive, mas com pontos críticos em aberto (ver backlog acima).
+
+## Ideias registradas
+Brainstorms/oportunidades soltas em [[01-Ideias]] — não são compromisso de
+roadmap, só registro para não perder a ideia.
+- [[01-Ideias/growth-machine-geo-aeo-oportunidades]] — oportunidades de GEO/AEO para o Growth Machine (2026-07-02), com destaque para a integração com [[03-Produtos/ideal-tracker]] ainda não explorada.
 
 ## Outras pastas de projeto no Drive (não aprofundadas ainda)
 Ideal Sync - Pix Automático BB, Auditoria Ideal, Procedimentos Depto Infraestrutura, Perfil Colaboradores, Infra Central, Ideal Sales, Ideal Multibusiness, SE - Sales Enablement, Ideal Pro, Soluções Industriais, Clínica Ideal, Projeto Matriz.

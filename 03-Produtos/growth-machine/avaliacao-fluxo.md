@@ -683,6 +683,72 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Alinhamento SEO/GEO/AEO com práticas atuais do Google (2026-07-02)
+
+> Avaliação adicional, fora da revisão fase a fase original — cruza o
+> fluxo do Growth Machine com práticas de SEO/GEO/AEO vigentes. Ideias e
+> oportunidades derivadas ficam registradas separadamente em
+> [[01-Ideias/growth-machine-geo-aeo-oportunidades]].
+
+### Onde está alinhado
+1. **E-E-A-T é princípio explícito nos prompts de conteúdo**, não
+   afterthought — auditado na prática pela Dimensão 2.
+2. **Dimensão 2C já cobre GEO/AEO de verdade**: "estrutura para mecanismos
+   generativos, FAQ, headings, resumo objetivo, entidades relevantes,
+   clareza contextual" — não é só SEO tradicional disfarçado.
+3. **RN-82 (AI Instructions/LLM.txt) é prática à frente da curva** — a
+   maioria das ferramentas de SEO do mercado ainda não oferece isso.
+4. **Dados estruturados (Dimensão 6) levados a sério**, com regra
+   anti-spam — importa mais agora, já que AI Overview e LLMs dependem de
+   extração estruturada.
+5. **Anti-canibalização + arquitetura em silo está alinhada com "topical
+   authority"**, exatamente o que o Helpful Content System do Google
+   recompensa.
+6. **Regra anti-alucinação no conteúdo gerado é mais crítica agora** —
+   erro factual citado por um LLM é erro visível na resposta da IA.
+
+### Onde fica atrás
+1. **Gap mais crítico: o GM prepara o site para ser citável, mas nunca
+   mede se ele está sendo citado.** O Índice de Performance (40/40/20) é
+   100% SEO tradicional (posicionamento/tráfego/leads) — nenhuma métrica
+   de GEO/AEO real (frequência de citação, Share of Voice em LLM). Essa
+   métrica **já existe no cofre**, isolada no [[03-Produtos/ideal-tracker]]
+   — os dois produtos não estão conectados.
+2. **Cadência de revisão de conteúdo (RN-59, 6 meses) é lenta** para o
+   ritmo que busca generativa exige — recompensa frescor mais que SEO
+   tradicional recompensava.
+3. **Sem estratégia de autoridade de entidade (Knowledge Graph)** —
+   Dimensão 2C cita "entidades relevantes" na estrutura da página, mas não
+   há nada sobre presença de entidade fora do site (Wikidata, consistência
+   de marca), cada vez mais decisivo para aparecer em AI Overview.
+4. **Vídeo é ponto cego total** — nenhuma das 10 dimensões toca conteúdo
+   em vídeo, que cresce em resultados de busca e respostas de IA.
+5. **Sem incentivo a dado/pesquisa original** — audita cobertura da SERP,
+   mas não há sinal para "informação exclusiva que só essa empresa tem",
+   justamente o que motores generativos preferem citar.
+6. **GA4 não segmenta tráfego de referência de IA** (ChatGPT, Perplexity
+   como origem) — fonte de tráfego crescente e hoje invisível no
+   diagnóstico.
+
+### Observações candidatas a backlog
+- Integrar sinal de citação em LLM (Ideal Tracker) ao diagnóstico do Growth Machine.
+- Revisar a cadência de 6 meses da RN-59 frente ao ritmo de busca generativa.
+- Adicionar segmentação de tráfego por origem de IA no GA4/Motor de Percepção.
+- Criar sinal de conteúdo original/dado exclusivo na Dimensão 2.
+- Criar checagem de presença de entidade (Knowledge Graph/Wikidata).
+- Avaliar cobertura de vídeo como nova dimensão ou subcritério.
+- Evoluir RN-82 de "existe sim/não" para avaliar qualidade/eficácia do AI Instructions/LLM.txt.
+
+Todas as 6 observações acima foram formalizadas em
+[[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]] (alta),
+[[05-Backlog/gm-segmentar-trafego-origem-ia]] (média),
+[[05-Backlog/gm-sinal-conteudo-original]] (média),
+[[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]] (média),
+[[05-Backlog/gm-checagem-presenca-entidade]] (baixa),
+[[05-Backlog/gm-cobertura-video-como-dimensao]] (baixa).
+
+---
+
 ## Itens de backlog formalizados
 As observações candidatas a backlog de todos os blocos acima foram
 agrupadas por tema e viraram 10 itens formais em [[05-Backlog]],
