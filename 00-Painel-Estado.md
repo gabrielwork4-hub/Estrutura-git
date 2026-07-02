@@ -14,6 +14,7 @@ tags: [painel, estado, core]
 
 ## Cheat sheets (resumo de 1 página, para ter "na ponta da língua")
 - [[03-Produtos/growth-machine/cheat-sheet]] — números/regras do Growth Machine sem precisar abrir a nota completa.
+- [[03-Produtos/growth-machine/prep-reuniao-po-lead]] — preparo para reunião com o responsável pelos POs (2026-07-03).
 
 ## Produtos
 

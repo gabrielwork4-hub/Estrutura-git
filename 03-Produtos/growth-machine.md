@@ -499,6 +499,12 @@ Resumo de 1 página com só os números/regras que valem memorizar (pesos,
 thresholds, ordem das fases/dimensões, os 5 padrões de risco recorrentes)
 em [[03-Produtos/growth-machine/cheat-sheet]].
 
+## Preparação de reunião
+Nota de preparo para reuniões com o responsável pelos POs — RNs mais
+prováveis de aparecer por tema, números-chave e as perguntas de
+confirmação (sem reabrir debate técnico já mapeado) em
+[[03-Produtos/growth-machine/prep-reuniao-po-lead]].
+
 ## Cruzamento com outras notas
 - A implementação de blog e o conteúdo MPI Plus dependem diretamente de
   [[02-Fluxos/estudo-de-keywords]] (clusterização, anti-canibalização,
