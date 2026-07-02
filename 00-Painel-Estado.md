@@ -40,12 +40,12 @@ tags: [painel, estado, core]
 | [[04-Decisões/migracao-prompt-keywords-v2]] | Histórico (superado pelo v3) |
 | [[04-Decisões/padrao-historia-jira]] | Aceita — vigente |
 
-## Histórias/prompts prontos para Jira (aguardando conexão do MCP)
+## Histórias/prompts do MPI Plus
 
 | História | Status | Produto |
 |---|---|---|
-| [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]] | Oficial, sem número Jira ainda | MPI Plus |
-| [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] | Oficial, sem número Jira ainda | MPI Plus |
+| [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]] | Oficial, aguardando envio ao Jira | MPI Plus |
+| [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] | **Enviada ao Jira (2026-07-03)** — resolve gargalo de geração de termos | MPI Plus |
 
 ## Backlog aberto por prioridade
 

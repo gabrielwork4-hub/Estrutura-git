@@ -1,17 +1,19 @@
 ---
 tipo: backlog
-status: oficial
+status: enviado-ao-jira
 prioridade: alta
 criado: 2026-07-02
-ultima-revisao: 2026-07-02
+ultima-revisao: 2026-07-03
 origem-fluxo: "[[02-Fluxos/estudo-de-keywords]]"
 tags: [mpi-plus, prompt, keywords, jira, historia, seo, keywordtool]
 ---
 
 # Inverter o fluxo de geração de termos: IA gera, KeywordTool só enriquece
 
-> Documento **oficial** (2026-07-02) — história + prompt para o time de DEV,
-> ainda sem número Jira (aguardando acesso ao board do MPI Plus). Escopo
+> **Status (2026-07-03): enviada ao Jira.** Resolve o gargalo que travava
+> o fluxo de geração de termos rodar de ponta a ponta — sementes +
+> Google Autocomplete + concatenação mecânica removidas, substituídas por
+> geração direta da IA + enriquecimento puro do KeywordTool. Escopo
 > diferente do prompt de arquitetura/cluster documentado em
 > [[02-Fluxos/prompt-avaliacao-keywords]] — este documento trata da etapa
 > de **geração de termos em si** (upstream), não da clusterização em

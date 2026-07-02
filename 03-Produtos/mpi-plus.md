@@ -44,9 +44,11 @@ está em
 [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]], pronta
 para ser criada no board e refinada com o time de DEV.
 
-Há uma segunda história **oficial**, complementar, mais upstream:
+Há uma segunda história, complementar, mais upstream — **enviada ao Jira
+em 2026-07-03**, resolvendo o gargalo que travava o fluxo de geração de
+termos rodar de ponta a ponta:
 [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] — inverte
-a etapa de **geração de termos** (hoje sementes + Google Autocomplete +
+a etapa de **geração de termos** (antes sementes + Google Autocomplete +
 concatenação mecânica) para a IA gerar os termos direto do briefing, com o
 KeywordTool só enriquecendo (volume/CPC/concorrência), sem filtrar nada.
 
