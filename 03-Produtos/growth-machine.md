@@ -499,6 +499,12 @@ Resumo de 1 página com só os números/regras que valem memorizar (pesos,
 thresholds, ordem das fases/dimensões, os 5 padrões de risco recorrentes)
 em [[03-Produtos/growth-machine/cheat-sheet]].
 
+## Comparativo de maturidade SEO vs. GEO/AEO
+Nota evolutiva, atualizada conforme houver progresso real: score atual
+(SEO ~75-80% / GEO/AEO ~25-30% / combinado ~55-60%, leitura de
+2026-07-03) e histórico de leituras em
+[[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
+
 ## Preparação de reunião
 Nota de preparo para reuniões com o responsável pelos POs — RNs mais
 prováveis de aparecer por tema, números-chave e as perguntas de

@@ -15,6 +15,7 @@ tags: [painel, estado, core]
 ## Cheat sheets (resumo de 1 página, para ter "na ponta da língua")
 - [[03-Produtos/growth-machine/cheat-sheet]] — números/regras do Growth Machine sem precisar abrir a nota completa.
 - [[03-Produtos/growth-machine/prep-reuniao-po-lead]] — preparo para reunião com o responsável pelos POs (2026-07-03).
+- [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]] — termômetro evolutivo de maturidade SEO vs. GEO/AEO (score atual: SEO ~75-80% / GEO ~25-30% / combinado ~55-60%).
 
 ## Produtos
 

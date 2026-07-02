@@ -688,7 +688,10 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 > Avaliação adicional, fora da revisão fase a fase original — cruza o
 > fluxo do Growth Machine com práticas de SEO/GEO/AEO vigentes. Ideias e
 > oportunidades derivadas ficam registradas separadamente em
-> [[01-Ideias/growth-machine-geo-aeo-oportunidades]].
+> [[01-Ideias/growth-machine-geo-aeo-oportunidades]]. O score de distância
+> (SEO ~75-80% / GEO ~25-30% / combinado ~55-60%) é acompanhado como nota
+> evolutiva à parte em
+> [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
 
 ### Onde está alinhado
 1. **E-E-A-T é princípio explícito nos prompts de conteúdo**, não
