@@ -58,6 +58,75 @@ outro produto do mesmo cofre, só não está ligada. Ver
 
 ---
 
+## 3 Lacunas de Pensamento — SEO (2026-07-03)
+
+> Diferente das lacunas operacionais já mapeadas (calibração de
+> thresholds, cadência, cotas) — estas são lacunas de **estratégia SEO**:
+> faltam no desenho do produto, não na execução dele.
+
+### Lacuna 1 — RN-84 bloqueia poda de conteúdo, que hoje é boa prática reconhecida
+
+**O que temos hoje:** RN-84 diz explicitamente: "o sistema nunca sugere
+remover páginas, exceto quando o CS informa pedido explícito do cliente."
+
+**Caminho ideal:** Desde que o Google formalizou o Helpful Content System,
+"poda de conteúdo" (remover/consolidar páginas finas, desatualizadas ou
+que nunca performaram) virou prática reconhecida — conteúdo ruim acumulado
+arrasta a qualidade percebida do domínio inteiro, prejudicando até as
+páginas boas.
+
+**Tradução prática:** O sistema deveria **identificar candidatas a poda**
+(baixo tráfego + baixa relevância + sem backlink + conteúdo fino) e
+**sugerir ao analista**, que decide — hoje ele nem chega a sugerir.
+
+**Estimativa:** Ajuste de RN-84 + lógica de scoring de "candidata a poda"
+na Dimensão 2. **2–3 sprints**, sem dependência de infraestrutura nova.
+
+### Lacuna 2 — Sem análise de crawl budget / log file, só sitemap declarado
+
+**O que temos hoje:** Dimensão 7 audita se sitemap.xml/robots.txt existem,
+estão corretos e sem conflito — o que o site **diz** que quer que o
+Google rastreie.
+
+**Caminho ideal:** SEO técnico avançado em escala (2.500 sites) audita o
+que o Googlebot **realmente** rastreia via log de servidor — revela
+páginas importantes nunca visitadas, orçamento de crawl desperdiçado,
+frequência real de recrawl.
+
+**Tradução prática:** Hoje o sistema audita a intenção declarada, não o
+comportamento real do crawler.
+
+**Estimativa:** Item mais caro dos 3 — precisa de acesso a log de servidor
+por cliente (nem sempre disponível), processamento em escala, nova
+sub-dimensão dentro da Dim 7 ou 9. **1–2 trimestres**, com dependência de
+negociar acesso a dado que o produto hoje nem pede.
+
+### Lacuna 3 — Só defesa (disavow), nenhuma ofensiva de autoridade/backlink
+
+**O que temos hoje:** Dimensão 8 só detecta backlinks tóxicos para
+desativar (disavow, sempre com revisão humana) — 100% postura defensiva.
+
+**Caminho ideal:** Backlink de qualidade continua entre os fatores de
+ranqueamento mais fortes — a régua ideal também sugere oportunidades de
+construção de autoridade (domínios relevantes sem link ainda, menções não
+linkadas, PR digital), não só limpa o que é ruim.
+
+**Tradução prática:** O sistema só reage a ameaça, sem função propositiva
+de ganho de autoridade — justamente a ação de mais alto impacto e mais
+difícil de escalar manualmente.
+
+**Estimativa:** Requer nova fonte de dado (ferramenta de backlink gap em
+modo prospecção) + agente de IA novo (Dim 8 expandida ou dimensão nova).
+**2–3 trimestres** — o mais estrutural dos 3, muda o papel da Dim 8 de
+reativa para proativa.
+
+### Tempo total estimado — SEO "literalmente ideal"
+Somando as 3 lacunas (baixa dependência entre si, não 100% paralelizáveis):
+**6–9 meses** de produto+dev. Lacuna 1 (poda de conteúdo) é o ganho mais
+rápido e barato; Lacuna 3 (ofensiva de autoridade) é o mais transformador.
+
+---
+
 ## Histórico de leituras
 | Data | Score SEO | Score GEO/AEO | Combinado | O que mudou |
 |---|---|---|---|---|
