@@ -127,6 +127,85 @@ rápido e barato; Lacuna 3 (ofensiva de autoridade) é o mais transformador.
 
 ---
 
+## 3 Lacunas de Pensamento — GEO (Generative Engine Optimization, 2026-07-03)
+
+> SEO otimiza pra aparecer na lista de resultados; GEO otimiza pra ser o
+> trecho que a IA copia e cola na resposta dela. Objetivo diferente, muda
+> o que "boa prática" significa.
+
+### Lacuna 1 — Conteúdo estruturado pra ranquear ≠ conteúdo estruturado pra ser extraído
+
+**O que temos hoje:** Dimensão 2C cobre "estrutura para mecanismos
+generativos, FAQ, headings, resumo objetivo, entidades relevantes" — bom
+passo, mas ainda pensa em página, não em trecho extraível.
+
+**Caminho ideal:** LLMs não citam a página inteira — extraem blocos
+autocontidos: um parágrafo que responde a pergunta sozinho, sem depender
+do contexto ao redor. "Resposta direta nas primeiras linhas, depois
+aprofundamento" — o oposto de muito conteúdo SEO clássico, que enrola a
+resposta pra aumentar tempo de leitura/scroll.
+
+**Tradução prática:** Falta checagem de **extrabilidade** — se cada seção
+consegue responder sozinha a uma pergunta específica, sem precisar do
+parágrafo anterior. Diferente de "tem FAQ" — é sobre a escrita de cada
+bloco, não só a presença de uma seção de perguntas.
+
+**Estimativa:** Agente/prompt novo dedicado — avaliação qualitativa de
+escrita, não dá pra estender checagem determinística existente.
+**1–2 trimestres.**
+
+### Lacuna 2 — Não sabemos se os crawlers de IA sequer estão visitando o site
+
+**O que temos hoje:** RN-82 verifica se **existe** AI Instructions/LLM.txt
+— presença, não uso real.
+
+**Caminho ideal:** Cada motor generativo tem crawler com user-agent
+próprio (GPTBot, PerplexityBot, ClaudeBot, Google-Extended). Prática
+correta: (1) confirmar que robots.txt não bloqueia esses bots sem querer,
+e (2) confirmar via log de servidor que eles de fato visitam o site — ter
+o arquivo certo não significa nada se o bot nunca passou por lá.
+
+**Tradução prática:** Mesmo tipo de lacuna da Lacuna 2 de SEO (log de
+servidor), aplicada a bots de IA em vez do Googlebot — faz sentido
+resolver as duas juntas, é a mesma infraestrutura de dado.
+
+**Estimativa:** Parte de permissão (robots.txt) é barata — estende o
+Módulo Sentinela, que já roda diário. Parte de confirmação real (log)
+depende da mesma infraestrutura da Lacuna 2 de SEO. Bundle: **1
+trimestre** se feito junto com o log de servidor.
+
+### Lacuna 3 — O produto só audita o site do cliente, nunca a presença dele fora do próprio domínio
+
+**O que temos hoje:** Todas as 10 dimensões auditam o site do cliente.
+Nenhuma olha para fora dele.
+
+**Caminho ideal:** Motores generativos frequentemente preferem citar
+fontes de terceiros percebidas como neutras — Reddit, fóruns
+especializados, Quora, reviews, Wikipedia — em vez do site institucional
+da própria marca, visto como "parcial" por natureza. GEO maduro inclui
+monitorar e influenciar essa presença fora do site.
+
+**Tradução prática:** Mudança de escopo mais estrutural das 3 — desloca a
+pergunta de "meu site está bom?" para "minha marca está bem representada
+onde as IAs realmente confiam?".
+
+**Estimativa:** Exige fonte de dado nova (monitoramento de menção/presença
+off-site) — capability nova do zero, não extensão de nada existente.
+**2–3 trimestres**, o mais caro e mais estratégico dos 3.
+
+### Tempo total estimado — GEO "literalmente ideal"
+**6–10 meses**, com boa parte da Lacuna 2 podendo ser resolvida junto com
+a Lacuna 2 de SEO (mesma infraestrutura de log). A Lacuna 3 é a que muda o
+produto de forma mais profunda — sai de "auditor de site" para "auditor de
+reputação de marca em fontes de IA".
+
+**Nota importante:** mesmo em número de meses parecido com SEO, GEO parte
+de uma base muito mais baixa (25-30% vs. 75-80%) — em termos absolutos,
+fechar GEO exige praticamente reconstruir uma capability nova do zero,
+enquanto SEO é polimento de algo já maduro.
+
+---
+
 ## Histórico de leituras
 | Data | Score SEO | Score GEO/AEO | Combinado | O que mudou |
 |---|---|---|---|---|
