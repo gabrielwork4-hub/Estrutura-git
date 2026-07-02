@@ -84,7 +84,7 @@ Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
 pasta do Drive em 2026-06-30 (16 pastas de projeto ao todo; só os 3 abaixo
 foram aprofundados até agora).
 - [[03-Produtos/growth-machine]] — orquestração de SEO para ~2.500 projetos MPI, 4 fases (briefing → percepção → auditoria 10 dimensões → fila de ações no Salesforce). PRD v1.9.14 já existe no Drive.
-- [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave em 2 etapas: geração de termos (**enviada ao Jira em 2026-07-03**, [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]], resolve o gargalo do fluxo) e arquitetura de site (oficial, aguardando envio, [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]); sem PRD próprio encontrado no Drive ainda.
+- [[03-Produtos/mpi-plus]] — pré-requisito de carteira da Growth Machine (RN-108); refatoração de processo e palavras-chave em 3 histórias: geração de termos (**enviada ao Jira em 2026-07-03**, [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]], resolve o gargalo do fluxo), endurecimento anti-concatenação/GEO genérico (oficial, motivada por QA de produção real, [[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]]) e arquitetura de site (oficial, aguardando envio, [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]); sem PRD próprio encontrado no Drive ainda.
 - [[03-Produtos/ideal-tracker]] (Ideal Track) — ferramenta de GEO/visibilidade em LLMs; tem PRD, doc de funcionalidades e briefing de UX no Drive, mas com pontos críticos em aberto (ver backlog acima).
 
 ## Ideias registradas

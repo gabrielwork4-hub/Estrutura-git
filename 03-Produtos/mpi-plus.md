@@ -52,6 +52,15 @@ a etapa de **geração de termos** (antes sementes + Google Autocomplete +
 concatenação mecânica) para a IA gerar os termos direto do briefing, com o
 KeywordTool só enriquecendo (volume/CPC/concorrência), sem filtrar nada.
 
+**QA de produção (2026-07-03):** validação de uma exportação real da
+plataforma ("Consultoria Ambiental") revelou que os padrões antigos
+(concatenação mecânica "instalação"/"manutenção", GEO em lista genérica de
+cidades) ainda estavam presentes — sinal de que o pipeline em produção
+ainda não reflete o prompt já enviado ao Jira. Terceira história, também
+oficial, endurece as regras especificamente contra isso, sem alterar a
+stack/schema já usado:
+[[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]].
+
 ## Cruzamento com outras notas
 - O conteúdo do MPI Plus é citado em [[03-Produtos/growth-machine]] como
   dependência da implementação de blog.
@@ -69,6 +78,9 @@ KeywordTool só enriquecendo (volume/CPC/concorrência), sem filtrar nada.
 - [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] —
   história para inverter a geração de termos (IA gera, KeywordTool só
   enriquece), etapa anterior à clusterização.
+- [[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]] —
+  endurecimento de regras contra concatenação mecânica e GEO genérico,
+  motivado por QA de produção real.
 
 ## Ideias relacionadas
 -
