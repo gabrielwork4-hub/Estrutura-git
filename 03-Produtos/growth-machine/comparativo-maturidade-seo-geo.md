@@ -206,10 +206,126 @@ enquanto SEO é polimento de algo já maduro.
 
 ---
 
+## 3 Lacunas de Pensamento — AEO (Answer Engine Optimization, 2026-07-03)
+
+> A régua mais estreita das três: SEO otimiza pra aparecer numa lista;
+> GEO otimiza pra ser citado dentro de uma resposta mais longa; AEO
+> otimiza pra **ser a resposta direta** — assistente de voz, chat, caixa
+> de resposta instantânea, onde não tem lista, tem uma única resposta
+> escolhida.
+
+### Lacuna 1 — Nenhuma auditoria de formato "resposta única, sem ambiguidade"
+
+**O que temos hoje:** Dimensão 2C trata FAQ como um bloco de conteúdo
+entre outros — não pensa em "qual é **a** resposta certa, numa frase, sem
+depender de contexto nenhum".
+
+**Caminho ideal:** Assistentes de voz e caixas de resposta direta (Google
+Featured Snippet no modo pergunta-resposta, Alexa, Siri, Google Assistant)
+escolhem uma única fonte pra responder — não citam múltiplas, não
+sintetizam várias visões como um LLM de chat faz. A prática ideal é ter,
+pra cada pergunta relevante do nicho, uma resposta de 1 frase objetiva e
+inequívoca, sem "depende", isolada num bloco que consiga ser lida sozinha.
+
+**Tradução prática:** Mais rígido que a "extrabilidade" de GEO — ali o LLM
+pode adaptar/parafrasear o trecho; aqui a resposta muitas vezes é lida
+literalmente, palavra por palavra.
+
+**Estimativa:** Extensão direta da Lacuna 1 de GEO — dá pra fazer junto,
+com checagem mais rígida em cima da mesma base. **1 trimestre**, se feito
+em conjunto com a Lacuna 1 de GEO; sozinho, teria custo redundante.
+
+### Lacuna 2 — Sem dado nenhum de "estou sendo a resposta escolhida" (nem por engano)
+
+**O que temos hoje:** Nenhuma dimensão mede se o cliente já é a resposta
+única em algum assistente de voz/caixa de resposta hoje.
+
+**Caminho ideal:** Monitorar periodicamente um conjunto de perguntas
+relevantes do nicho contra os principais assistentes (Google
+Assistant/Gemini, Alexa, Siri) e caixas de resposta direta do Google,
+registrando quem é a fonte escolhida — cliente, concorrente, ou ninguém.
+
+**Tradução prática:** É a métrica mais "de resultado" das três frentes e a
+mais ausente de todas — nem existe versão embrionária dela em lugar
+nenhum do cofre (diferente de GEO, que ao menos tem o Ideal Tracker
+medindo SoV em LLM de chat).
+
+**Estimativa:** Item mais caro e especulativo dos 3 — depende de
+automação de consulta a assistentes de voz (tecnicamente mais difícil que
+LLM de chat, que tem API) e de cobertura de mercado. **3+ trimestres**,
+com risco real de inviabilidade técnica dependendo do assistente.
+
+### Lacuna 3 — Nenhuma priorização de nicho/vertical onde AEO já é decisivo
+
+**O que temos hoje:** O sistema trata todos os ~2.500 clientes com a
+mesma régua, independente do quanto AEO importa pro nicho deles.
+
+**Caminho ideal:** AEO já é decisivo em nichos específicos — "onde
+encontro X perto de mim", "qual o telefone de Y", "como faço Z" (nichos
+locais, serviços, dúvidas práticas) viram resposta de voz/assistente. Em
+nichos B2B complexos, isso importa muito menos.
+
+**Tradução prática:** Investir a mesma régua de AEO em todos os 2.500
+clientes é ineficiente — a prática ideal prioriza AEO só onde o
+comportamento de busca do nicho realmente passa por assistente/resposta
+única.
+
+**Estimativa:** Não é funcionalidade nova, é **regra de priorização** —
+praticamente grátis tecnicamente, mas exige decisão de produto. **1
+sprint** de definição + reaproveita a segmentação de nicho que o briefing
+já coleta.
+
+### Tempo total estimado — AEO "literalmente ideal"
+**4–6 meses**, mais barato em tempo que SEO e GEO — mas o mais incerto dos
+três, porque a Lacuna 2 esbarra em limitação técnica real de acesso a
+dado, não só em esforço de engenharia.
+
+---
+
+## Panorama fechado das 3 frentes
+
+| Frente | Base atual | Tempo p/ ideal | Maior risco |
+|---|---|---|---|
+| SEO | ~75-80% | 6–9 meses | Nenhum — é polimento |
+| GEO | ~25-30% | 6–10 meses | Depende de negociar acesso a log de servidor com clientes |
+| AEO | Não medido (mais baixo que GEO) | 4–6 meses | Viabilidade técnica de consultar assistentes de voz programaticamente |
+
+**Ordem de prioridade recomendada, se fosse decidir hoje:** SEO (Lacuna 1,
+poda de conteúdo) → GEO+AEO Lacuna de log/crawler de IA (bundle) → GEO
+Lacuna 1 (extrabilidade, reaproveitada pra AEO Lacuna 1) → o resto,
+conforme prioridade de negócio.
+
+---
+
+## Tendências de Busca 2026 × Growth Machine Atual
+
+> Cruzamento entre o que hoje se reconhece como tendência ativa de busca
+> (SEO/GEO/AEO combinados) e o quanto o Growth Machine já cobre cada uma.
+> Serve de checklist rápido — se uma tendência nova aparecer, ela entra
+> como linha nova aqui antes de virar dimensão/RN formal.
+
+| Tendência de busca 2026 | O que significa na prática | Cobertura no Growth Machine | Gap |
+|---|---|---|---|
+| **AI Overview como "posição zero"** | Resposta gerada por IA no topo da SERP, antes de qualquer link orgânico — captura clique antes mesmo do usuário rolar a página | Dimensão 2C estrutura conteúdo pra isso, mas não mede se está sendo citado | Sem métrica de citação (ver Lacuna GEO 1 do score geral) |
+| **Zero-click search em crescimento** | Usuário obtém resposta sem clicar em nenhum link — tráfego orgânico tradicional cai mesmo com boa posição | Índice de Performance ainda mede só tráfego/clique | Sem métrica de "visibilidade sem clique" (impressão/citação) |
+| **Diversificação de crawlers de IA** (GPTBot, PerplexityBot, ClaudeBot, Google-Extended) | Cada motor generativo rastreia com bot próprio, permissões distintas no robots.txt | RN-82 só checa presença de LLM.txt | Sem monitoramento de acesso real desses bots (GEO Lacuna 2) |
+| **Conteúdo "resposta-primeiro" (answer-first)** | Resposta direta nas primeiras linhas, sem enrolação, pra ser extraível por IA | Dimensão 2C cobre estrutura geral, não o padrão de escrita por bloco | Sem checagem de extrabilidade (GEO Lacuna 1 / AEO Lacuna 1) |
+| **Busca por voz/assistente em nichos locais e práticos** | "Onde encontro X perto de mim" já responde direto por assistente, sem lista de resultados | Cluster GEO local já existe no prompt de keywords do MPI Plus | Sem priorização por nicho nem medição de "sou a resposta" (AEO Lacuna 2/3) |
+| **Helpful Content System penaliza conteúdo raso acumulado** | Qualidade do domínio inteiro é avaliada, não só página a página — conteúdo fraco arrasta o resto | RN-84 proíbe sugerir remoção de página | Contradiz a tendência diretamente (SEO Lacuna 1) |
+| **Crawl budget cada vez mais escasso em sites grandes** | Google (e bots de IA) não rastreiam tudo — prioriza o que já demonstrou valor | Dimensão 7 audita sitemap/robots declarado, não comportamento real | Sem análise de log de servidor (SEO Lacuna 2) |
+| **E-E-A-T mais rígido, principalmente YMYL** | Sinais de experiência/autoridade/confiança pesam mais a cada atualização de algoritmo | Já é princípio explícito nos prompts de conteúdo do MPI Plus | Coberto — ponto forte já reconhecido |
+| **Dados estruturados como "API" de leitura para IA** | Schema.org/JSON-LD vira a forma mais confiável de uma IA extrair fato certo, não só rich snippet | Dimensão 6 audita Schema com regra anti-spam | Coberto — ponto forte já reconhecido |
+| **Prova social fora do site (Reddit, fóruns, reviews)** | IA generativa cita fontes percebidas como neutras mais que o site institucional da marca | Nenhuma dimensão audita presença fora do domínio do cliente | Ausente (GEO Lacuna 3) |
+| **Busca conversacional multi-turno** | Usuário refina a pergunta em vários turnos com o mesmo assistente/chat, contexto acumulado | Fora do escopo de qualquer dimensão — GM audita site estático, não conversa | Ausente, não mapeado como lacuna formal ainda |
+| **Personalização de resposta por contexto do usuário** | LLM ajusta resposta com base em localização/histórico/dispositivo do usuário, não só na query | Fora do escopo do GM — decisão de produto do próprio motor de busca, não do site | Fora de controle do produto, apenas observar |
+
+---
+
 ## Histórico de leituras
 | Data | Score SEO | Score GEO/AEO | Combinado | O que mudou |
 |---|---|---|---|---|
 | 2026-07-03 | ~75-80% | ~25-30% | ~55-60% | Leitura inicial — baseline |
+| 2026-07-03 | ~75-80% | ~25-30% (AEO não medido, mais baixo) | ~55-60% | Adicionadas as 3 lacunas de pensamento por frente (SEO/GEO/AEO), tempo estimado pra "literalmente ideal" de cada uma, e tabela de Tendências de Busca 2026 x Growth Machine. Nenhuma mudança de score ainda — é aprofundamento de diagnóstico, não progresso real. |
 
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
