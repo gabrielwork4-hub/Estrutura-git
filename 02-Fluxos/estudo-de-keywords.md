@@ -45,14 +45,22 @@ e produzindo agrupamentos que realmente convertem em estrutura de conteúdo.
   dependem deste fluxo para não cair em keyword isolada.
 
 ## Prompt operacional
-A materialização prática deste fluxo num prompt de IA está versionada em
-[[02-Fluxos/prompt-avaliacao-keywords]]. O **v3 é a versão oficial**
-(2026-07-01): Estudo SEO clusterizado com silo semântico, teste explícito
-de anti-canibalização, condicionais de contexto (empresa genérica,
-localização, peso do objetivo por seção) e dados de volume/KD/DR/tráfego
-rotulados como estimativa qualitativa a validar em keyword tools. v1 e v2
-ficam registrados como histórico. A história Jira de implementação está em
-[[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
+O fluxo se materializa em duas etapas encadeadas, cada uma com seu prompt
+próprio:
+
+1. **Geração de termos** (upstream) — hoje sementes + Google Autocomplete +
+   concatenação mecânica (região/classificação), sem métrica real nas
+   long-tails. História oficial de inversão desse fluxo (IA gera os termos
+   direto do briefing, KeywordTool só enriquece, nada é descartado) em
+   [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]].
+2. **Arquitetura de site** (downstream) — consome os termos já enriquecidos
+   e organiza em Cluster/Content Map/Análise Competitiva/GEO. Prompt
+   versionado em [[02-Fluxos/prompt-avaliacao-keywords]] (**v3 é a versão
+   oficial**, 2026-07-01): silo semântico, teste explícito de
+   anti-canibalização, condicionais de contexto (empresa genérica,
+   localização, peso do objetivo por seção). v1 e v2 ficam registrados como
+   histórico. História Jira de implementação em
+   [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]].
 
 ## Notas relacionadas
 - [[00-Cerebro]]
@@ -60,3 +68,4 @@ ficam registrados como histórico. A história Jira de implementação está em
 - [[02-Fluxos/prompt-avaliacao-keywords]]
 - [[03-Produtos/growth-machine]]
 - [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]]
+- [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]]

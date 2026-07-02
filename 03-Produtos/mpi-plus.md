@@ -41,6 +41,12 @@ está em
 [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]], pronta
 para ser criada no board e refinada com o time de DEV.
 
+Há uma segunda história **oficial**, complementar, mais upstream:
+[[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] — inverte
+a etapa de **geração de termos** (hoje sementes + Google Autocomplete +
+concatenação mecânica) para a IA gerar os termos direto do briefing, com o
+KeywordTool só enriquecendo (volume/CPC/concorrência), sem filtrar nada.
+
 ## Cruzamento com outras notas
 - O conteúdo do MPI Plus é citado em [[03-Produtos/growth-machine]] como
   dependência da implementação de blog.
@@ -55,6 +61,9 @@ para ser criada no board e refinada com o time de DEV.
 - [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]] —
   história Jira para substituir o prompt v1 pelo v3 na etapa de
   avaliação/clusterização de keywords.
+- [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] —
+  história para inverter a geração de termos (IA gera, KeywordTool só
+  enriquece), etapa anterior à clusterização.
 
 ## Ideias relacionadas
 -
