@@ -51,3 +51,4 @@ Ideal Sync - Pix Automático BB, Auditoria Ideal, Procedimentos Depto Infraestru
 ## Decisões fundadoras
 Decisões em [[04-Decisões]] que moldam o funcionamento descrito aqui.
 - [[04-Decisões/migracao-prompt-keywords-v2]] — substituição do prompt de avaliação de keywords (v1 → v2): saída passa de tabela de keywords avaliadas para arquitetura completa de site (Pilar → Cluster → Suporte); documenta diferenças de parâmetros e formato de saída para a equipe de tecnologia. Especificação técnica detalhada em [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]].
+- [[04-Decisões/padrao-historia-jira]] — formaliza `_templates/template-historia-jira.md` como formato padrão para toda história de mudança técnica no cofre, preparando o terreno para quando o MCP do Jira for conectado.
