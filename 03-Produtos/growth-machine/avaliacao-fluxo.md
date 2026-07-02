@@ -683,6 +683,21 @@ priorizar o que vira item de [[05-Backlog]] a partir desta avaliação.
 
 ---
 
+## Itens de backlog formalizados
+As observações candidatas a backlog de todos os blocos acima foram
+agrupadas por tema e viraram 10 itens formais em [[05-Backlog]],
+priorizados pela Síntese Executiva:
+- [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]] (alta)
+- [[05-Backlog/gm-atribuir-dono-prazo-questoes-abertas]] (alta)
+- [[05-Backlog/gm-desenho-fino-prompts-agentes]] (alta)
+- [[05-Backlog/gm-alerta-envelhecimento-sem-prazo-automatico]] (alta)
+- [[05-Backlog/gm-calibracao-thresholds-numeros-negocio]] (média)
+- [[05-Backlog/gm-segregacao-funcoes-pontos-controle]] (média)
+- [[05-Backlog/gm-criterio-desempate-fronteiras-componentes]] (média)
+- [[05-Backlog/gm-escopo-sentinela-infraestrutura-cron]] (média)
+- [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]] (média)
+- [[05-Backlog/gm-salvaguarda-aprovacao-massa-telas]] (baixa)
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[00-Cerebro]]

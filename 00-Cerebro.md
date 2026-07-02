@@ -36,6 +36,7 @@ Problemas identificados nos fluxos que ainda não viraram itens de backlog, ou q
 ## Backlog gerado
 Itens de [[05-Backlog]] que nasceram de problemas listados acima.
 - [[05-Backlog/ideal-track-definir-metodologia-sov]] — metodologia de medição do Share of Voice ainda indefinida no MVP do Ideal Track.
+- 10 itens derivados da avaliação crítica do PRD do Growth Machine (ver [[03-Produtos/growth-machine/avaliacao-fluxo]]), priorizados pela síntese executiva: [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]] (alta), [[05-Backlog/gm-atribuir-dono-prazo-questoes-abertas]] (alta), [[05-Backlog/gm-desenho-fino-prompts-agentes]] (alta), [[05-Backlog/gm-alerta-envelhecimento-sem-prazo-automatico]] (alta), [[05-Backlog/gm-calibracao-thresholds-numeros-negocio]] (média), [[05-Backlog/gm-segregacao-funcoes-pontos-controle]] (média), [[05-Backlog/gm-criterio-desempate-fronteiras-componentes]] (média), [[05-Backlog/gm-escopo-sentinela-infraestrutura-cron]] (média), [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]] (média), [[05-Backlog/gm-salvaguarda-aprovacao-massa-telas]] (baixa).
 
 ## Produtos em desenvolvimento
 Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
