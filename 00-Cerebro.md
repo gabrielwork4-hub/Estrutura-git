@@ -12,16 +12,56 @@ tags: [core]
 > começar por aqui. Ela é a fonte de verdade da ideia inicial e do
 > funcionamento geral — tudo o resto do cofre existe para detalhar,
 > ajustar ou contestar o que está escrito aqui.
+>
+> Leitura complementar recomendada para quem chega agora: [[00-Glossario]]
+> (jargão do cofre), [[00-Painel-Estado]] (snapshot de onde cada coisa
+> está) e [[03-Produtos/mapa-dependencia-produtos]] (quem depende de quem
+> e ordem de prioridade).
 
 ## Ideia inicial
-Por que esse cofre existe, qual problema ele resolve, qual é a visão por trás dele.
+Este cofre existe para resolver **perda de contexto entre reuniões e
+decisões**: ideias, ajustes de fluxo e decisões de produto se perdiam
+espalhadas entre Notion, Drive, WhatsApp e reuniões, sem um lugar único que
+amarrasse tudo e explicasse o porquê de cada mudança.
 
-> _A preencher._
+Tem duas visões de uso, não excludentes:
+1. **Base de conhecimento para IA (RAG)** — alimentar assistentes de IA com
+   contexto estruturado e confiável sobre produtos, fluxos e decisões, sem
+   depender de o humano lembrar/repetir contexto a cada conversa.
+2. **Ferramenta pessoal de raciocínio do PO** — espaço para pensar, avaliar
+   criticamente (ver [[03-Produtos/growth-machine/avaliacao-fluxo]] como
+   exemplo do formato) e estruturar decisões antes de levar ao time.
+
+Não é, por enquanto, pensado como fonte de verdade formal para o time
+técnico consultar diretamente — as histórias/prompts que nascem aqui viram
+input para Jira/dev, mas o cofre em si é o espaço de elaboração do PO.
 
 ## Funcionamento
-Como o cofre opera no dia a dia: como ideias entram, como viram fluxo, como fluxo vira produto, como decisões são tomadas.
+O fluxo real, validado nesta sessão, é:
 
-> _A preencher._
+```
+Reunião / transcrição (Notion, WhatsApp, Drive)
+        │
+        ▼
+Vira nota no cofre (ideia, fluxo, produto ou decisão)
+        │
+        ▼
+Cruzamento com documentação existente (PRD, Drive, prompts em produção)
+        │
+        ▼
+Avaliação crítica (pontos fortes/riscos) quando aplicável
+        │
+        ▼
+Vira item de 05-Backlog ou história pronta para Jira/DEV
+        │
+        ▼
+00-Cerebro.md é atualizado com o link (nunca fica órfão)
+```
+
+Não é um processo fechado/formal ainda — está sendo descoberto e ajustado
+à medida que o cofre é usado. O padrão acima é o que já se repetiu de forma
+consistente (ex: estudo de keywords, PRD do Growth Machine, prompts do MPI
+Plus) e deve ser tratado como o funcionamento de referência até que mude.
 
 ## Fluxos ativos
 Lista dos fluxos centrais em operação, linkados para [[02-Fluxos]].
@@ -53,3 +93,8 @@ Ideal Sync - Pix Automático BB, Auditoria Ideal, Procedimentos Depto Infraestru
 Decisões em [[04-Decisões]] que moldam o funcionamento descrito aqui.
 - [[04-Decisões/migracao-prompt-keywords-v2]] — substituição do prompt de avaliação de keywords (v1 → v2): saída passa de tabela de keywords avaliadas para arquitetura completa de site (Pilar → Cluster → Suporte); documenta diferenças de parâmetros e formato de saída para a equipe de tecnologia. Especificação técnica detalhada em [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]].
 - [[04-Decisões/padrao-historia-jira]] — formaliza `_templates/template-historia-jira.md` como formato padrão para toda história de mudança técnica no cofre, preparando o terreno para quando o MCP do Jira for conectado.
+
+## Estrutura de apoio para onboarding
+- [[00-Glossario]] — siglas e conceitos recorrentes (RN, NFR, SPOF, GEO/AEO, silo semântico, palavra épica etc.).
+- [[00-Painel-Estado]] — snapshot único de status de produtos, fluxos, decisões e backlog, sem precisar ler nota por nota.
+- [[03-Produtos/mapa-dependencia-produtos]] — cadeia de dependência entre Growth Machine, MPI Plus e Ideal Tracker, e a ordem de prioridade de foco atual (Growth Machine → MPI Plus → Ideal Tracker, definida pelo PO em 2026-07-02).

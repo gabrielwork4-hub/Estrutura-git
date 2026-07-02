@@ -13,6 +13,9 @@ O que é, para quem, qual problema resolve.
 ## Status atual
 
 
+## Responsáveis
+_A preencher — PO ainda mapeando stakeholders (ver [[00-Painel-Estado]])._
+
 ## Funcionalidades
 - [ ]
 

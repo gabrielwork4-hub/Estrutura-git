@@ -471,6 +471,9 @@ selecionar um cliente no Painel de Carteira.
 - Implementação de blog (implementação + relatório).
 - Trabalhar com o **conteúdo MPI Plus**.
 
+## Responsáveis
+_A preencher — PO ainda mapeando stakeholders (ver [[00-Painel-Estado]])._
+
 ## Funcionalidades
 - [ ] Conectar Wiki Data ao fluxo
 - [ ] Definir principais indicadores (pesos posicionamento/tráfego/leads)

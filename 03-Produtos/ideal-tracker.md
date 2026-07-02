@@ -27,6 +27,9 @@ Autor/Head: Luis Ottoni. Status dos docs: rascunho (04–07/05/2026).
 ## Loop de valor
 Monitorar → IdealAgent acha o gap → gera conteúdo → publica → SoV sobe.
 
+## Responsáveis
+_A preencher — PO ainda mapeando stakeholders (ver [[00-Painel-Estado]])._
+
 ## Funcionalidades mapeadas
 - [ ] Cadastro/login (e-mail+senha ou Google OAuth), projeto padrão criado automaticamente, trial inicia no cadastro.
 - [ ] Onboarding guiado: marca, concorrentes, primeiros prompts de monitoramento.

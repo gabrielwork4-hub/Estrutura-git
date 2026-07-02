@@ -22,6 +22,9 @@ tags: [produto, mpi-plus, keywords]
 - Refatorou todo o processo e as palavras-chave (**v2**).
 - É pré-requisito de carteira para a Growth Machine (RN-108): cliente fora do MPI Plus entra primeiro nele.
 
+## Responsáveis
+_A preencher — PO ainda mapeando stakeholders (ver [[00-Painel-Estado]])._
+
 ## Funcionalidades
 - [ ] Documentar o PRD próprio do MPI Plus (não encontrado no Drive ainda — só templates)
 

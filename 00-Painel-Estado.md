@@ -1,0 +1,74 @@
+---
+tipo: cerebro
+status: vivo
+criado: 2026-07-02
+ultima-revisao: 2026-07-02
+tags: [painel, estado, core]
+---
+
+# Painel de Estado
+
+> Snapshot único de "onde cada coisa está" — cada nota tem seu próprio
+> `status` no frontmatter, mas antes desta nota era preciso ler uma por
+> uma para montar essa visão. Atualizar sempre que um status mudar.
+
+## Produtos
+
+| Produto | Status | Prioridade | Nota |
+|---|---|---|---|
+| [[03-Produtos/growth-machine]] | Em desenvolvimento — PRD v1.9.14 completo, avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 17 questões do PRD sem dono/prazo |
+| [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos | 2º | Dependência direta do Growth Machine (RN-108) |
+| [[03-Produtos/ideal-tracker]] | Em desenvolvimento — PRD/UX documentados | 3º | 6 pontos críticos em aberto, sem dependência cruzada |
+
+## Fluxos
+
+| Fluxo | Status | Nota |
+|---|---|---|
+| [[02-Fluxos/estudo-de-keywords]] | Ativo | Fluxo-mãe da lógica de clusterização/anti-canibalização |
+| [[02-Fluxos/prompt-avaliacao-keywords]] | **v3 oficial** | v1/v2 mantidos como histórico. Correção de keyword-âncora aplicada em 2026-07-02 |
+| [[02-Fluxos/processo-kickoff-discovery]] | Ativo | Kick-off → discovery → aprovação → backlog |
+| [[02-Fluxos/especificacao-tecnica-prompt-keywords-v2]] | Histórico (superado pelo v3) | Mantido para rastreabilidade |
+
+## Decisões
+
+| Decisão | Status |
+|---|---|
+| [[04-Decisões/migracao-prompt-keywords-v2]] | Histórico (superado pelo v3) |
+| [[04-Decisões/padrao-historia-jira]] | Aceita — vigente |
+
+## Histórias/prompts prontos para Jira (aguardando conexão do MCP)
+
+| História | Status | Produto |
+|---|---|---|
+| [[03-Produtos/mpi-plus/historia-jira-prompt-estudo-keywords-v3]] | Oficial, sem número Jira ainda | MPI Plus |
+| [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] | Oficial, sem número Jira ainda | MPI Plus |
+
+## Backlog aberto por prioridade
+
+**Alta**
+- [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]]
+- [[05-Backlog/gm-atribuir-dono-prazo-questoes-abertas]]
+- [[05-Backlog/gm-desenho-fino-prompts-agentes]]
+- [[05-Backlog/gm-alerta-envelhecimento-sem-prazo-automatico]]
+- [[05-Backlog/ideal-track-definir-metodologia-sov]]
+
+**Média**
+- [[05-Backlog/gm-calibracao-thresholds-numeros-negocio]]
+- [[05-Backlog/gm-segregacao-funcoes-pontos-controle]]
+- [[05-Backlog/gm-criterio-desempate-fronteiras-componentes]]
+- [[05-Backlog/gm-escopo-sentinela-infraestrutura-cron]]
+- [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]]
+
+**Baixa**
+- [[05-Backlog/gm-salvaguarda-aprovacao-massa-telas]]
+
+## Lacunas de onboarding conhecidas (não resolvidas ainda)
+- **Donos/responsáveis**: nenhum fluxo, produto ou decisão tem uma pessoa
+  nomeada como responsável — deliberadamente deixado em aberto (PO ainda
+  mapeando stakeholders, 2026-07-02). Retomar quando os nomes existirem.
+- **13 pastas do Drive** não avaliadas (ver [[03-Produtos/mapa-dependencia-produtos]]).
+
+## Notas relacionadas
+- [[00-Cerebro]]
+- [[00-Glossario]]
+- [[03-Produtos/mapa-dependencia-produtos]]
