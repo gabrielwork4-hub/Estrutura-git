@@ -2,7 +2,7 @@
 tipo: fluxo
 status: v3-oficial
 criado: 2026-06-30
-ultima-revisao: 2026-07-01
+ultima-revisao: 2026-07-02
 tags: [seo, keywords, prompt, llm, arquitetura-site]
 ---
 
@@ -313,8 +313,14 @@ Você é um estrategista sênior de SEO especializado em arquitetura de conteúd
 
 ## Keyword âncora
 
-* Keyword principal: {$keywordPrincipal}
-* Intenção da keyword principal: {$intencaoPrincipal}
+A keyword principal e sua intenção **não são fornecidas como entrada** —
+neste ponto do fluxo o Estudo ainda não existe, então não há de onde
+extrair uma keyword principal pronta. Derive a keyword-âncora a partir de
+{$servicoPrincipal} (com apoio de {$nicho} e {$publicoAlvo} para ajustar
+especificidade e intenção). Trate essa keyword derivada como ponto de
+partida do Cluster Pillar/Core, sujeita à mesma Regra de silo semântico e
+anti-canibalização abaixo — não como um dado fixo e definitivo.
+
 * Observações de mercado: {$observacoesMercado}
 
 ## Regra de silo semântico e anti-canibalização
@@ -427,8 +433,15 @@ Quando aplicável, pirâmide de localização (Primária / Secundária / Terciá
   do briefing completo (`{$segmentosAtuacao}`, `{$tipoProduto}`,
   `{$especificacaoTecnica}` etc.) para 6 campos diretos (`{$empresaNome}`,
   `{$nicho}`, `{$localizacao}`, `{$servicoPrincipal}`, `{$objetivo}`,
-  `{$publicoAlvo}`) + keyword âncora (`{$keywordPrincipal}`,
-  `{$intencaoPrincipal}`, `{$observacoesMercado}`).
+  `{$publicoAlvo}`) + `{$observacoesMercado}`.
+- **Correção (2026-07-02, feedback de revisão): removidas `{$keywordPrincipal}`
+  e `{$intencaoPrincipal}` como variáveis de entrada.** Nesta etapa do fluxo
+  o Estudo ainda não existe, então não há fonte de dado real para uma
+  "keyword principal" pronta — era uma dependência circular (o prompt pedia
+  como entrada algo que só existe como saída dele mesmo). A keyword-âncora
+  agora é **derivada pelo próprio prompt** a partir de `{$servicoPrincipal}`
+  (com apoio de `{$nicho}` e `{$publicoAlvo}`), consistente com o resto do
+  fluxo de clusterização — ver seção "Keyword âncora" acima.
 - **Regra de silo semântico com teste explícito de anti-canibalização**
   (mesmo intent + mesmo subtema → funde página; intent diferente → pode
   coexistir) — a versão candidata só dizia "zero canibalização" sem
