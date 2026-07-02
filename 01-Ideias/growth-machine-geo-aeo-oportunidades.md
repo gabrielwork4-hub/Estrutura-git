@@ -1,7 +1,8 @@
 ---
 tipo: ideia
-status: bruta
+status: direcao-confirmada-parcial
 criado: 2026-07-02
+ultima-revisao: 2026-07-03
 tags: [growth-machine, geo, aeo, seo, oportunidade, ideal-tracker]
 ---
 
@@ -43,12 +44,23 @@ Outras oportunidades identificadas na mesma avaliação:
 - Revisar a cadência de 6 meses de revisão de conteúdo (RN-59) — pode ser
   lenta demais para o ritmo de atualização que busca generativa recompensa.
 
+## Atualização (2026-07-03) — direção confirmada pelo PO
+A integração Growth Machine + Ideal Tracker deixou de ser hipótese em
+aberto. Plano concreto verbalizado pelo PO: **alimentar a aba GEO do
+projeto trazendo diretamente as especificidades da plataforma Ideal
+Tracker** para dentro do fluxo, centralizando em vez de manter os dois
+produtos isolados. Ainda é trabalho futuro (não iniciado), mas a decisão
+de fazer já está tomada — o que falta é detalhamento técnico (qual dado,
+qual frequência, como conecta). Item de backlog correspondente atualizado:
+[[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]].
+
 ## Próximos passos
-- [ ] Validar com o time de produto se integrar Growth Machine + Ideal
-  Tracker faz sentido de negócio (não é óbvio que devam ser o mesmo
-  sistema — pode fazer mais sentido como sinal de entrada, não fusão).
-- [ ] Priorizar, dentre as oportunidades listadas, quais viram item formal
-  de [[05-Backlog]] primeiro.
+- [x] ~~Validar com o time de produto se integrar Growth Machine + Ideal
+  Tracker faz sentido de negócio~~ — confirmado pelo PO em 2026-07-03.
+- [ ] Detalhar tecnicamente a integração da aba GEO (fonte de dado exata,
+  frequência de atualização, mecanismo de conexão com o Ideal Tracker).
+- [ ] Priorizar, dentre as demais oportunidades listadas, quais viram item
+  formal de [[05-Backlog]] em seguida.
 - [ ] Acompanhar se o mercado de GEO/AEO amadurece (ex: API oficial de AI
   Overview) antes de investir pesado nessa frente — hoje o próprio Ideal
   Tracker registra que não há API oficial (ver
