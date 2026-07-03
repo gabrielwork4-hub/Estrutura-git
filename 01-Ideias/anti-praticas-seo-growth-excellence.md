@@ -41,6 +41,10 @@ Coisas que, segundo o treinamento, **prejudicam** ranqueamento:
 1. **Keyword trabalhada em meta description, title e headings (H1/H2)** —
    colocação estratégica da palavra-chave nesses campos continua sendo
    oportunidade concreta, não descartada pelas mudanças recentes.
+   **Regra de padrão a validar em novas ações:** `meta description` com
+   até **160 caracteres** e `title` com até **60 caracteres** — limites
+   práticos para evitar truncamento no snippet de busca e manter a
+   keyword visível dentro do que o Google exibe.
 2. **Search intent / intent map** — necessário ter um mapeamento
    explícito de intenção de busca antes de produzir conteúdo (conceito
    próximo de lógica de clusterização já explorada em outros fluxos do
