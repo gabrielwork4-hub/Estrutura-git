@@ -95,6 +95,7 @@ Brainstorms/oportunidades soltas em [[01-Ideias]] — não são compromisso de
 roadmap, só registro para não perder a ideia.
 - [[01-Ideias/growth-machine-geo-aeo-oportunidades]] — oportunidades de GEO/AEO para o Growth Machine (2026-07-02), com destaque para a integração com [[03-Produtos/ideal-tracker]] ainda não explorada.
 - [[01-Ideias/anti-praticas-seo-growth-excellence]] — anti-práticas e boas práticas de SEO do evento interno Growth Excellence (2026-07-03), registradas soltas de propósito, sem linkar ainda aos PRDs/RNs dos projetos — servirá futuramente como filtro de revisão dos fluxos existentes.
+- [[01-Ideias/analise-mercado-concorrencia-growth-machine]] (2026-07-06) — hipótese de mercado/concorrência sobre o diferencial competitivo do Growth Machine, **sem fonte verificada** (conhecimento geral do assistente, não pesquisa ativa) — isolada de propósito das notas rastreáveis do produto até validação.
 
 ## Outras pastas de projeto no Drive (não aprofundadas ainda)
 Ideal Sync - Pix Automático BB, Auditoria Ideal, Procedimentos Depto Infraestrutura, Perfil Colaboradores, Infra Central, Ideal Sales, Ideal Multibusiness, SE - Sales Enablement, Ideal Pro, Soluções Industriais, Clínica Ideal, Projeto Matriz.
