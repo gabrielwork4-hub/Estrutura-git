@@ -6,18 +6,20 @@ ultima-revisao: 2026-07-06
 tags: [growth-machine, seo, geo, aeo, roadmap, rn, versao-final]
 ---
 
-# Versão final — O que temos hoje x O que será desenvolvido (SEO/GEO/AEO)
+# Versão final — Diagnóstico x Recomendação de Desenvolvimento (SEO/GEO/AEO)
 
 > Documento de fechamento da fase de diagnóstico. Consolida em formato
-> único (hoje x futuro, por frente) tudo o que foi construído em
+> único (hoje x oportunidades, por frente) tudo o que foi construído em
 > [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]] e
 > [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]], e adiciona
 > a seção de RNs que hoje vão contra boas práticas reconhecidas do Google
 > — para servir de base de validação final antes de virar backlog formal.
+> Estrutura: **diagnóstico** (o que já existe) x **recomendação de
+> desenvolvimento** (oportunidades identificadas).
 
 ## SEO tradicional (score atual: 75-80%)
 
-| O que temos hoje | O que será desenvolvido |
+| O que temos hoje | Oportunidades |
 |---|---|
 | Auditoria técnica em 10 dimensões (conteúdo, arquitetura, performance, schemas, indexabilidade, sinais externos, infra, leads) | Ajuste de RN-84: poda de conteúdo como sugestão ao analista (scoring de candidata: baixo tráfego + baixa relevância + sem backlink) — 2-3 sprints |
 | Anti-canibalização + arquitetura em silo semântico (RN-15, RN-85) | Log de crawler real — confirmar via log de servidor que o Googlebot rastreia o que o site declara — 1-2 trimestres |
@@ -27,7 +29,7 @@ tags: [growth-machine, seo, geo, aeo, roadmap, rn, versao-final]
 
 ## GEO (score atual: 20-25%)
 
-| O que temos hoje | O que será desenvolvido |
+| O que temos hoje | Oportunidades |
 |---|---|
 | Dimensão 2C estrutura conteúdo para mecanismos generativos (FAQ, headings, resumo, entidades) | Integração Ideal Tracker → aba GEO do projeto — direção já confirmada pelo PO (ver [[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]]) |
 | Cluster GEO local no prompt de keywords (variação geográfica real, não sprawl genérico) | Accessibility tree + Cumulative Layout Shift — reaproveita Core Web Vitals já existente (Dimensão 5), 2 de 6 pilares agênticos |
@@ -37,7 +39,7 @@ tags: [growth-machine, seo, geo, aeo, roadmap, rn, versao-final]
 
 ## AEO (não medido formalmente ainda)
 
-| O que temos hoje | O que será desenvolvido |
+| O que temos hoje | Oportunidades |
 |---|---|
 | Segmentação de nicho já coletada no briefing (Fase 1) | Priorização formal de AEO por nicho (local/prático vs. B2B complexo) — 1 sprint, reaproveita dado já coletado |
 | Base de conteúdo da Dimensão 2C reaproveitável | Extrabilidade/resposta única — cada bloco responde sozinho, sem ambiguidade — combinável com a mesma frente de GEO, 1 trimestre |
@@ -72,7 +74,7 @@ tags: [growth-machine, seo, geo, aeo, roadmap, rn, versao-final]
 - **RN-50** (Boletim ao cliente sempre em tom de "melhoria") — comunicação com cliente final, fora do escopo de práticas técnicas de SEO/GEO.
 
 ### Leitura consolidada
-De 122 RNs, **1 confirmada contra prática nomeada do Google** (RN-84), **3 candidatas de risco não confirmadas** (nenhuma delas pronta para virar item de backlog ainda), **2 verificadas e descartadas**. Proporção baixa — o produto está estruturalmente alinhado, com uma exceção clara e já endereçada na tabela de desenvolvimento acima.
+De 122 RNs, **1 confirmada contra prática nomeada do Google** (RN-84), **3 candidatas de risco não confirmadas** (nenhuma delas pronta para virar item de backlog ainda), **2 verificadas e descartadas**. Proporção baixa — o produto está estruturalmente alinhado, com uma exceção clara e já endereçada na tabela de oportunidades acima.
 
 ## Notas relacionadas
 - [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]]
