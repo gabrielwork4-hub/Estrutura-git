@@ -503,7 +503,10 @@ em [[03-Produtos/growth-machine/cheat-sheet]].
 Nota evolutiva, atualizada conforme houver progresso real: score atual
 (SEO ~75-80% / GEO/AEO ~25-30% / combinado ~55-60%, leitura de
 2026-07-03) e histórico de leituras em
-[[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
+[[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]]. Versão
+consolidada com os princípios-núcleo transversais aos 3 pilares e a fila
+única de prioridade (cruzando SEO/GEO/AEO em vez de 3 filas separadas) em
+[[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]].
 
 ## Preparação de reunião
 Nota de preparo para reuniões com o responsável pelos POs — RNs mais

@@ -358,6 +358,7 @@ conforme prioridade de negócio.
 | 2026-07-06 | ~75-80% | ~20-25% (revisado pra baixo) | ~50-55% | GEO Lacuna 2 detalhada com os 6 pilares agênticos reais (Lighthouse "Agentic Browsing"): accessibility tree, CLS, WebMCP form coverage/tools/schemas, llms.txt. Growth Machine cobre só 1 de 6 (llms.txt, parcial). Score de GEO revisado pra baixo porque a lacuna é maior/mais concreta do que o rascunho original sugeria — WebMCP é capability nova ausente por completo. |
 
 ## Notas relacionadas
+- [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]] — versão consolidada: princípios transversais aos 3 pilares e fila única de prioridade (cruzada, não por pilar separado)
 - [[03-Produtos/growth-machine]]
 - [[03-Produtos/growth-machine/avaliacao-fluxo]]
 - [[03-Produtos/growth-machine/cheat-sheet]]
