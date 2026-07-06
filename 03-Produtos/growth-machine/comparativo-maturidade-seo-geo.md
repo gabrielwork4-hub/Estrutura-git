@@ -363,3 +363,4 @@ conforme prioridade de negócio.
 - [[03-Produtos/growth-machine/cheat-sheet]]
 - [[01-Ideias/growth-machine-geo-aeo-oportunidades]]
 - [[03-Produtos/ideal-tracker]]
+- [[05-Backlog/gm-implementar-pilares-agenticos-webmcp]] — item de backlog formal para cobrir os 6 pilares agênticos (Agentic Browsing/WebMCP)

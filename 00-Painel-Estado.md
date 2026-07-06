@@ -56,6 +56,8 @@ tags: [painel, estado, core]
 - [[05-Backlog/gm-atribuir-dono-prazo-questoes-abertas]]
 - [[05-Backlog/gm-desenho-fino-prompts-agentes]]
 - [[05-Backlog/gm-alerta-envelhecimento-sem-prazo-automatico]]
+- [[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]] — direção confirmada pelo PO (aba GEO)
+- [[05-Backlog/gm-implementar-pilares-agenticos-webmcp]] — Agentic Browsing/WebMCP, 5 de 6 pilares ausentes
 - [[05-Backlog/ideal-track-definir-metodologia-sov]]
 
 **Média**
@@ -64,9 +66,14 @@ tags: [painel, estado, core]
 - [[05-Backlog/gm-criterio-desempate-fronteiras-componentes]]
 - [[05-Backlog/gm-escopo-sentinela-infraestrutura-cron]]
 - [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]]
+- [[05-Backlog/gm-segmentar-trafego-origem-ia]]
+- [[05-Backlog/gm-sinal-conteudo-original]]
+- [[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]]
 
 **Baixa**
 - [[05-Backlog/gm-salvaguarda-aprovacao-massa-telas]]
+- [[05-Backlog/gm-checagem-presenca-entidade]]
+- [[05-Backlog/gm-cobertura-video-como-dimensao]]
 
 ## Lacunas de onboarding conhecidas (não resolvidas ainda)
 - **Donos/responsáveis**: nenhum fluxo, produto ou decisão tem uma pessoa
