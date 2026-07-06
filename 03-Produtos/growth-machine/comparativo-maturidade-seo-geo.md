@@ -14,13 +14,13 @@ tags: [growth-machine, seo, geo, aeo, maturidade, comparativo]
 > primeira leitura: [[03-Produtos/growth-machine/avaliacao-fluxo]], bloco
 > "Alinhamento SEO/GEO/AEO com práticas atuais do Google".
 
-## Score atual (2026-07-03)
+## Score atual (revisado em 2026-07-06)
 
 | Pilar | Score | Leitura |
 |---|---|---|
 | **SEO tradicional** | **~75-80%** | Avançado — auditoria técnica completa, anti-canibalização, E-E-A-T como princípio, governança séria |
-| **GEO/AEO (busca generativa)** | **~25-30%** | Fundação existe (estrutura de conteúdo, dados estruturados), mas sem loop de mensuração |
-| **Combinado** | **~55-60%** | Puxado pra cima pelo SEO, pra baixo pelo GEO |
+| **GEO/AEO (busca generativa)** | **~20-25%** | Fundação existe (estrutura de conteúdo, dados estruturados), mas sem loop de mensuração — revisado pra baixo após detalhar os 6 pilares agênticos (Growth Machine cobre só 1 de 6) |
+| **Combinado** | **~50-55%** | Puxado pra cima pelo SEO, pra baixo pelo GEO |
 
 ## Por que SEO tradicional está avançado
 - Auditoria técnica completa: 10 dimensões cobrindo conteúdo, arquitetura, performance, schemas, indexabilidade, sinais externos, infra, leads.
@@ -154,25 +154,54 @@ bloco, não só a presença de uma seção de perguntas.
 escrita, não dá pra estender checagem determinística existente.
 **1–2 trimestres.**
 
-### Lacuna 2 — Não sabemos se os crawlers de IA sequer estão visitando o site
+### Lacuna 2 — Não sabemos se os crawlers de IA sequer estão visitando o site (Pilares Agênticos)
 
 **O que temos hoje:** RN-82 verifica se **existe** AI Instructions/LLM.txt
-— presença, não uso real.
+— presença, não uso real. Nenhuma outra checagem de "agentic readiness"
+existe no Growth Machine.
 
-**Caminho ideal:** Cada motor generativo tem crawler com user-agent
-próprio (GPTBot, PerplexityBot, ClaudeBot, Google-Extended). Prática
-correta: (1) confirmar que robots.txt não bloqueia esses bots sem querer,
-e (2) confirmar via log de servidor que eles de fato visitam o site — ter
-o arquivo certo não significa nada se o bot nunca passou por lá.
+**Caminho ideal — os 6 pilares agênticos (categoria "Agentic Browsing" do
+Lighthouse):** essa lacuna é mais concreta e ampla do que só "o crawler
+visita o site" — é sobre se um **agente de IA consegue navegar e interagir
+de verdade** com o site (ler, preencher formulário, usar ferramenta), não
+só "ler pra citar". Os 6 pilares auditados hoje pelo Lighthouse:
 
-**Tradução prática:** Mesmo tipo de lacuna da Lacuna 2 de SEO (log de
-servidor), aplicada a bots de IA em vez do Googlebot — faz sentido
-resolver as duas juntas, é a mesma infraestrutura de dado.
+1. **Accessibility tree is well-formed** — a árvore de acessibilidade
+   precisa estar bem formada para um agente "enxergar" a estrutura da
+   página corretamente.
+2. **Cumulative Layout Shift (CLS)** — instabilidade visual atrapalha
+   também a leitura/interação de um agente, não só a experiência humana.
+3. **WebMCP form coverage** — cobertura de formulários expostos via
+   protocolo WebMCP, pra agente conseguir preencher/submeter.
+4. **WebMCP tools registered** — ferramentas da página registradas via
+   WebMCP, pra agente conseguir invocar ações do site diretamente.
+5. **WebMCP schemas are valid** — os schemas WebMCP registrados precisam
+   ser válidos para o agente interpretar corretamente o que pode fazer.
+6. **llms.txt** — mesmo arquivo já coberto (parcialmente) pela RN-82.
 
-**Estimativa:** Parte de permissão (robots.txt) é barata — estende o
-Módulo Sentinela, que já roda diário. Parte de confirmação real (log)
-depende da mesma infraestrutura da Lacuna 2 de SEO. Bundle: **1
-trimestre** se feito junto com o log de servidor.
+Além disso, cada motor generativo tem crawler com user-agent próprio
+(GPTBot, PerplexityBot, ClaudeBot, Google-Extended) — prática correta
+complementar: (1) confirmar que robots.txt não bloqueia esses bots sem
+querer, e (2) confirmar via log de servidor que eles de fato visitam o
+site.
+
+**Tradução prática:** O Growth Machine hoje cobre só 1 dos 6 pilares
+(llms.txt, e só a presença dele, via RN-82) — os outros 5 (accessibility
+tree, CLS, os 3 critérios de WebMCP) são **ausência total**. WebMCP em
+particular é uma capability nova que não existe em nenhuma dimensão —
+não é ajuste de regra existente, é uma frente inteira nova.
+
+**Estimativa:** CLS já é medido indiretamente via Core Web Vitals
+(Dimensão 5) — reaproveitável. Accessibility tree exige nova checagem
+determinística (existem ferramentas prontas, tipo axe-core). WebPCP (os
+3 critérios) é o mais caro — depende de o site do cliente sequer
+implementar o protocolo, o que hoje não é nem cobrado no processo de
+entrega/dev do site. Confirmação real de crawler via log de servidor
+segue como no rascunho original: parte de permissão (robots.txt) é barata
+— estende o Módulo Sentinela; parte de confirmação real (log) depende da
+mesma infraestrutura da Lacuna 2 de SEO. **Bundle total: 1–2 trimestres**,
+com WebMCP como a parte mais incerta (depende de adoção de protocolo
+ainda emergente, não só de auditoria).
 
 ### Lacuna 3 — O produto só audita o site do cliente, nunca a presença dele fora do próprio domínio
 
@@ -326,6 +355,7 @@ conforme prioridade de negócio.
 |---|---|---|---|---|
 | 2026-07-03 | ~75-80% | ~25-30% | ~55-60% | Leitura inicial — baseline |
 | 2026-07-03 | ~75-80% | ~25-30% (AEO não medido, mais baixo) | ~55-60% | Adicionadas as 3 lacunas de pensamento por frente (SEO/GEO/AEO), tempo estimado pra "literalmente ideal" de cada uma, e tabela de Tendências de Busca 2026 x Growth Machine. Nenhuma mudança de score ainda — é aprofundamento de diagnóstico, não progresso real. |
+| 2026-07-06 | ~75-80% | ~20-25% (revisado pra baixo) | ~50-55% | GEO Lacuna 2 detalhada com os 6 pilares agênticos reais (Lighthouse "Agentic Browsing"): accessibility tree, CLS, WebMCP form coverage/tools/schemas, llms.txt. Growth Machine cobre só 1 de 6 (llms.txt, parcial). Score de GEO revisado pra baixo porque a lacuna é maior/mais concreta do que o rascunho original sugeria — WebMCP é capability nova ausente por completo. |
 
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
