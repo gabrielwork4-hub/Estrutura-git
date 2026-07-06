@@ -81,6 +81,13 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-55:** Múltiplos usuários por papel: transferência de projetos.
 - **RN-56:** SendGrid pull diário: obrigatório. Logs 3 meses.
 - **RN-57:** SendGrid plano atual: 7 dias de log. Armazenar localmente.
+  > **Nota de conciliação (2026-07-06):** RN-56 e RN-57 têm prazos de
+  > retenção diferentes (3 meses vs. 7 dias) para o mesmo dado — leitura
+  > mais provável é que RN-56 seja a meta/requisito do produto e RN-57 o
+  > limite do plano SendGrid contratado atualmente (por isso "armazenar
+  > localmente": o pull diário exporta o log antes que o plano descarte
+  > em 7 dias, viabilizando os 3 meses de retenção real da RN-56). **A
+  > confirmar com o time técnico** — não está explícito no PRD original.
 
 ## RN-58 a RN-68 — Ajustes da Reunião 09/06/2026
 - **RN-58:** Classificação macro de conteúdo: IA classifica em nível macro para evitar duplicação.
@@ -131,7 +138,7 @@ tags: [growth-machine, rn, catalogo, prd]
 ## RN-96 a RN-99 — Consolidação e Modelos
 - **RN-96:** Score de Saúde Técnica: nota determinística 0–100 = `100 − Σ(peso_dim × fator_severidade)` sobre as dimensões estruturais 2–10. Fica parcial com pesos renormalizados quando há dimensão não auditada.
 - **RN-97:** Parecer Consolidado (agente de IA): diagnóstico executivo do projeto unindo Índice de Performance, Score de Saúde, as 10 dimensões, Sentinela e histórico. Roda 1x por análise completa.
-- **RN-98:** Telas globais × contextuais: as telas de projeto não figuram no menu principal — são acessadas ao selecionar um cliente no Painel de Carteira.
+- **RN-98:** Telas globais × contextuais: as telas de projeto (Telas 3, 4, 5 e 10) não figuram no menu principal — são acessadas ao selecionar um cliente no Painel de Carteira.
 - **RN-99:** Modelo padrão dos agentes: GPT-5 é o modelo padrão dos agentes de IA do Growth Machine. Configurável por agente na Tela 9. As checagens determinísticas (Dim 4, 5, 6, 7, 9) não usam IA.
 
 ## RN-100 a RN-111 — Integração MPI Plus, Elegibilidade e Leads
@@ -154,7 +161,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-114:** Dimensão 3 como Auditoria de Arquitetura MPI/Silo/Linkagem (estudo aprovado = fonte de verdade; FireCrawl = grafo real; IA só resolve ambiguidades; execução via Salesforce após aprovação humana).
 - **RN-115:** Dimensão 4 como Checagem Determinística W3C (detecção é determinística; agrupa por página/template; classifica severidade por impacto e recorrência; warning leve é só exibido).
 - **RN-116:** Dimensão 5 como Checagem Determinística PageSpeed por URL (GM monta cobertura a partir de páginas MPI elegíveis; roda mobile e desktop por URL; Camada de Tradução por IA não detecta performance; problemas de servidor/TTFB → Dimensão 9/M3).
-- **RN-117:** Dimensão 6 como Checagem Determinística de Schemas JSON-LD (análise por URL elegível; MPI Plus define template esperado; IA traduz achados e apoia coerência semântica; sistema bloqueia sugestões de schema spam).
+- **RN-117:** Dimensão 6 como Checagem Determinística de Schemas JSON-LD (análise por URL elegível; MPI Plus define template esperado; IA traduz achados e apoia coerência semântica; sistema bloqueia sugestões de schema spam — ex: reviews, ratings, preços e FAQ fabricados/não verificáveis).
 - **RN-118:** Dimensão 7 como Checagem Determinística de Sitemap/Robots/Indexabilidade (não usa o MPI Plus como fonte de verdade; usa FireCrawl + parsers; problemas bloqueando rastreamento ou indexação de páginas relevantes são críticos).
 - **RN-119:** Dimensão 8 como Presença no Google/Sinais Externos (GSC como fonte principal; SemRush para backlinks; não substitui o Motor de Percepção; Agente Tradutor consolida achados e evita duplicidade; disavow sempre com revisão humana).
 - **RN-120:** Dimensão 9 como Servidor/TTFB/Infraestrutura (não mede performance front-end geral; GTmetrix por URL representativa; M3 não abre por medição isolada; evidência cruzada necessária).
