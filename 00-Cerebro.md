@@ -81,6 +81,7 @@ Itens de [[05-Backlog]] que nasceram de problemas listados acima.
 - [[05-Backlog/gm-implementar-pilares-agenticos-webmcp]] (alta, 2026-07-06) — cobrir os 6 pilares agênticos (Agentic Browsing/Lighthouse: accessibility tree, CLS, WebMCP form/tools/schemas, llms.txt); Growth Machine cobre hoje só 1 de 6. Motivou revisão do score de GEO em [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
 - [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]] (2026-07-06) — documento explicativo consolidando os princípios-núcleo transversais a SEO/GEO/AEO e uma fila única de prioridade (11 itens cruzando os 3 pilares), com o porquê de cada posição; matéria-prima para o template oficial de documentação em construção com o PO.
 - [[03-Produtos/growth-machine/versao-final-hoje-x-desenvolvimento-seo-geo-aeo]] (2026-07-06) — versão final de fechamento da fase de diagnóstico: diagnóstico x recomendação de desenvolvimento (oportunidades) por frente (SEO/GEO/AEO) e diagnóstico das RNs que hoje vão contra boas práticas do Google (RN-84 confirmada, RN-14/RN-59/RN-07 como candidatas não confirmadas).
+- [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] (2026-07-07) — documento de embasamento para conversa com a liderança: mapa de todos os documentos-fonte, linha de raciocínio única das 3 frentes (tese, scores, decidido vs. pendente, justificativa de investimento, riscos/lacunas em aberto) e 3 perguntas de decisão a levar.
 
 ## Produtos em desenvolvimento
 Linka para [[03-Produtos]] os produtos atualmente ativos. Validado contra a
