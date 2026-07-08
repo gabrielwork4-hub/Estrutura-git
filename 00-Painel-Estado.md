@@ -18,6 +18,7 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]] — termômetro evolutivo de maturidade SEO vs. GEO/AEO (score atual: SEO ~75-80% / GEO ~25-30% / combinado ~55-60%).
 - [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] — briefing pronto para conversa com liderança: mapa de fontes + linha de raciocínio única das 3 frentes + 3 perguntas de decisão (2026-07-07).
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — aderência da doc atual ao PRD ideal (13 blocos) + auditoria de qualidade das 122 RNs + esqueleto da v2 (2026-07-08). Base para projetar a nova documentação.
+- [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — **rascunho** (demonstração de formato aprovada): blocos 5 (RF numerado) e 8 (User Stories + CA Gherkin amarrado a RN). Aguarda liberação do PO para extração completa dos RF.
 
 ## Produtos
 

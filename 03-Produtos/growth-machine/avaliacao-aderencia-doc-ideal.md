@@ -190,6 +190,10 @@ que **criar do zero**. É o mapa para as próximas solicitações.
 12. **Rollout** — *criar*: faseamento, feature flag (RN-66), piloto, comms.
 13. **Glossário/Anexos** — reusar [[00-Glossario]] + anexar telas e schemas.
 
+> **Demonstração de formato dos blocos 5 e 8** (RF numerado + User Stories
+> com CA em Gherkin amarrado a RN) já rascunhada e aprovada em formato pelo
+> PO: [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]].
+
 ### Checklist "pronto para dev" aplicado ao GM hoje
 - [ ] Cada RF tem RN associada? — **não** (não há RF numerado)
 - [ ] Cada RN tem CA que a testa? — **não** (não há CA)
