@@ -190,8 +190,17 @@ pacote (10%).
 DataForSEO e KeywordTools são **condicionais** — só quando a auditoria
 indicar expansão/reformulação do estudo.
 
-Quando crítico (score <60%, canibalização crítica, páginas MPI fora do
-estudo, briefing sem cobertura): **trava toda a auditoria**.
+Quando crítico (score **<50%** **ou** canibalização crítica **ou** páginas
+MPI fora do estudo **ou** briefing sem cobertura): **trava toda a auditoria**.
+
+> **Threshold reconciliado (2026-07-08):** o gate numérico é **<50%**, não
+> <60% (resíduo de versões anteriores — achado F-03). O <50% alinha o
+> travamento à banda de "reformular" da régua de decisão do Estudo (uma
+> banda 50–79 "complementar" não deve travar toda a auditoria). Os 3
+> gatilhos qualitativos permanecem como condições **OU** independentes do
+> número — indispensáveis porque, por exemplo, canibalização pesa só 10% no
+> score composto e sozinha jamais derrubaria o score abaixo de 50%. Ver
+> [[03-Produtos/growth-machine/prd-v2-mvp]] Bloco 7.
 
 #### Dimensão 2 — Conteúdo / Imagem / GEO
 Agente Auditor de Conteúdo SERP. Pergunta central: *"esta página cobre a
