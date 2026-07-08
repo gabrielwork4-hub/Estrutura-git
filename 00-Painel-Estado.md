@@ -18,13 +18,14 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]] — termômetro evolutivo de maturidade SEO vs. GEO/AEO (score atual: SEO ~75-80% / GEO ~25-30% / combinado ~55-60%).
 - [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] — briefing pronto para conversa com liderança: mapa de fontes + linha de raciocínio única das 3 frentes + 3 perguntas de decisão (2026-07-07).
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — aderência da doc atual ao PRD ideal (13 blocos) + auditoria de qualidade das 122 RNs + esqueleto da v2 (2026-07-08). Base para projetar a nova documentação.
-- [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — **rascunho** (demonstração de formato aprovada): blocos 5 (RF numerado) e 8 (User Stories + CA Gherkin amarrado a RN). Aguarda liberação do PO para extração completa dos RF.
+- [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato dos blocos 5 e 8 (**absorvida** no PRD v2.0).
+- [[03-Produtos/growth-machine/prd-v2-mvp]] — **PRD v2.0 (MVP)** consolidado: 13 blocos, RF-00 a RF-46, User Stories/CA críticos, RNs reconciliadas, escopo SEO/GEO/AEO de MVP (2026-07-08).
 
 ## Produtos
 
 | Produto | Status | Prioridade | Nota |
 |---|---|---|---|
-| [[03-Produtos/growth-machine]] | Em desenvolvimento — PRD v1.9.14 completo, avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 17 questões do PRD sem dono/prazo |
+| [[03-Produtos/growth-machine]] | Em desenvolvimento — **PRD v2.0 (MVP) consolidado no cofre** ([[03-Produtos/growth-machine/prd-v2-mvp]]); PRD v1.9.14 no Drive; avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 7 questões de integração ainda bloqueiam build |
 | [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos | 2º | Dependência direta do Growth Machine (RN-108) |
 | [[03-Produtos/ideal-tracker]] | Em desenvolvimento — PRD/UX documentados | 3º | 6 pontos críticos em aberto, sem dependência cruzada |
 

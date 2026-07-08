@@ -17,6 +17,10 @@ tags: [growth-machine, prd, v2, requisitos-funcionais, user-story, criterio-acei
 > citadas estão em [[03-Produtos/growth-machine/catalogo-regras-negocio]].
 > O padrão de User Story/CA segue [[04-Decisões/padrao-historia-jira]].
 >
+> **Status (2026-07-08):** demonstração **absorvida** no PRD consolidado
+> [[03-Produtos/growth-machine/prd-v2-mvp]] (Blocos 5 e 8). Mantida por
+> rastreabilidade do formato aprovado.
+>
 > **Escopo do rascunho:** os RF abaixo são uma **fatia representativa**
 > (cobre as 4 fases + Sentinela + transversais para mostrar a forma), não a
 > lista completa. A extração total dos RF das 4 fases / 10 dimensões / 11
