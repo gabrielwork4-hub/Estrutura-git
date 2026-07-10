@@ -23,6 +23,8 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **4 conflitos de canibalização aguardando decisão do PO** (destaque: pesos 40/30/30 × 40/40/20) (2026-07-08).
 - [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — checklist SEO/GEO/AEO: Google 2026 × emtecorp real × Gregory × GM. Padrões recorrentes da GM + 4 oportunidades novas a virar backlog (2026-07-08).
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — mapa princípio→RN→Dimensão→ação; estrutura-alvo das dimensões (2D-AEO, 2E-E-E-A-T, Dim 11 GEO) para o PRD v2 (2026-07-08).
+- [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — **candidato a ADR**: cluster via /informacoes e /artigos sem alterar o contrato por keyword — antídoto ao doorway/scaled content (2026-07-08).
+- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — **tracker de fechamento do PRD**: 9 decisões-gate (G1-G9) + 5 trilhas paralelas + checklist dimensão a dimensão do PRD ajustado, com "Definição de PRD fechado" como critério de saída (2026-07-08).
 - [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — **candidato a ADR**: cluster em /informacoes como camada de ranqueamento fora do contrato (2026-07-08). Aguarda validação do PO.
 
 ## Produtos
