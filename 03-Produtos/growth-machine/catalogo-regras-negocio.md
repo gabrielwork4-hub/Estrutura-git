@@ -8,21 +8,24 @@ tags: [growth-machine, rn, catalogo, prd]
 
 # Catálogo Completo de Regras de Negócio — Growth Machine
 
-> As **122 RNs** do PRD v1.9.14 (RN-01 a RN-122), extraídas na íntegra, +
-> **6 regras do sub-PRD de estudo do Gregory** (`RN-EST-*`) + **16
-> propostas de estruturação SEO/GEO/AEO** desta sessão (`RN-SGA-*`) —
-> **144 no total**. `growth-machine.md` traz só um subconjunto "chave" (27
+> As **122 RNs** do PRD v1.9.19 (RN-01 a RN-122), extraídas na íntegra, +
+> **RN-123/RN-124** propostas pela vault externa (confirmação de entrega
+> multicanal) + **6 regras do sub-PRD de estudo do Gregory** (`RN-EST-*`) +
+> **16 propostas de estruturação SEO/GEO/AEO** desta sessão (`RN-SGA-*`) —
+> **146 no total**. `growth-machine.md` traz só um subconjunto "chave" (27
 > RNs mais citadas); esta nota é a referência completa. Ver
 > [[03-Produtos/growth-machine]] para o produto e [[00-Glossario]] para o
 > que significa "RN".
 >
-> **Reconciliação aplicada em 2026-07-10:** RNs supersedidas marcadas,
-> resíduo textual do Bright Data removido, RNs em ajuste pendente
-> sinalizadas. Ver [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]
-> e [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] para
-> o histórico completo das decisões. **RN-EST-\* e RN-SGA-\* seguem
-> pendentes de reconciliação final** contra a pasta `10-modelo-proposto-v2`
-> da vault externa (acesso ainda não liberado).
+> **Reconciliação com a vault externa concluída em 2026-07-10** (acesso
+> liberado, "Vault PRD GROWTH MACHINE MODIFICADO" — autoria Lucas
+> Bevilacqua/Gabriel Santos): RNs supersedidas marcadas, resíduo textual do
+> Bright Data removido, RNs em ajuste pendente sinalizadas, pesos revertidos
+> para 40/40/20 sob revisão. Ver
+> [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] e
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] para o
+> histórico completo. **RN-123/RN-124, RN-EST-\* e RN-SGA-\* seguem como
+> propostas**, não oficiais.
 
 ## RN-01 a RN-10 — Briefing e Estrutura
 - **RN-01:** Validação do briefing pelo cliente via CS — a análise não avança até validação ativa do cliente. Sem prazo automático.
@@ -42,9 +45,9 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-13:** Menu Header e Footer: mesmos itens.
 - **RN-14:** Geração de texto baseada no padrão da SERP. Removida a distinção "texto épico vs texto comum".
 - **RN-15:** Bonificação de palavras: similaridade vetorial ≥70% → fila de sugestões. Sujeita à trava de 50% do pacote (RN-85). Não fura aprovação humana.
-- **RN-16:** Fronteiras de CTR: sem arredondamento. Posição 10,5 = CTR 1%.
+- **RN-16:** Fronteiras de CTR: sem arredondamento. Posição 10,5 = CTR 1%. `[🔧 ajuste pendente]` a tabela única (Top3/Top10/>10) erra sistematicamente para clientes locais — Local Pack tem curva muito mais achatada que busca orgânica clássica (cair de #1→#3 no mapa custa ~2,5pp; na orgânica custa ~30pp). Segmentar em 2 curvas (Local Pack × orgânica) via [[04-Decisões/adr-camada-calibracao-continua]].
 - **RN-17:** Maturidade: interpolação linear. Mês 5 = 22,5%.
-- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = **35 posicionamento / 20 tráfego / 45 leads** (revisado 2026-07-10 — ver [[04-Decisões/adr-pesos-indice-performance-2026]]; substitui os 40/40/20 originais e os 40/30/30 do Gregory, à luz do consenso de mercado 2026 de que tráfego é o sinal mais erodido pelo zero-click/AI Overview).
+- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = **40 posicionamento / 40 tráfego / 20 leads** — `[⚠️ sob revisão, 2026-07-10]` diverge do documento original do Gregory (40/30/30) e da ata da Reunião 05 ("lead é a principal grandeza"), achado F-30. Calibração final depende de dado real (correlação peso×outcome de negócio), não de decreto — ver [[04-Decisões/adr-camada-calibracao-continua]].
 - **RN-19:** Thresholds inclusivos: índice no limite sobe de categoria.
 - **RN-20:** Volume zero: `volume_total = 0` → "Sem estudo válido" → alerta.
 
@@ -73,7 +76,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-40:** Site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 
 ## RN-41 a RN-50 — Performance e Aprovação
-- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3.
+- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3. `[❓ termo não identificado]` "Tintambi" não é termo técnico reconhecido — precisa esclarecimento de Lucas/Growth antes de reescrever (achado F-07, confirmado por fonte externa).
 - **RN-42:** Scripts de terceiros: sinaliza scripts pesados.
 - **RN-43:** Histórico real: baixo recurso (CPU) = timeout = desindexação.
 - **RN-44:** Sistema prioriza, não pergunta: ordem de impacto calculada.
@@ -181,6 +184,23 @@ tags: [growth-machine, rn, catalogo, prd]
 
 ---
 
+## RN-123 e RN-124 — Confirmação de Entrega Multicanal (proposta, vault externa)
+> Números **legítimos** — confirmados na vault externa (autoria Lucas
+> Bevilacqua/Gabriel Santos, achado F-40), auditoria à Dimensão 10.
+> **Não confundir com nossas propostas anteriores**, renumeradas para
+> `RN-SGA-*` justamente para liberar este espaço. Status: proposta em
+> avaliação, não oficial ainda.
+
+| ID | Regra | Origem | Prioridade |
+|---|---|---|---|
+| **RN-123** | Confirmação de Entrega Multicanal — estender o padrão já existente para e-mail (SendGrid: delivered/bounce/blocked/spam_report) ao WhatsApp, via webhook de status nativo das APIs de WhatsApp Business (enviado/entregue/lido/falhou). Fecha a lacuna que a RN-23 supersedida cobria só para e-mail. | Vault externa (F-40) | Alta |
+| **RN-124** | Paridade de Detecção de Qualidade/Spam entre Canais — a subcheck 10E deve rodar sobre o formato de mensagem de **cada canal**, não só formulário; ajustar critérios para o formato mais curto/informal do WhatsApp (sem campo "assunto"). | Vault externa (F-40) | Alta |
+
+**Emenda proposta à RN-107:** substituir "demais canais" (vago) por lista
+fechada, decidida com o líder de área — fecha o guarda-chuva antes que
+esconda outras lacunas do mesmo tipo. **Referência cruzada pendente:**
+RN-121 deve ganhar linha apontando para RN-123/RN-124.
+
 ## RN-EST-01 a RN-EST-06 — Método de Construção do Estudo (Gregory)
 > Namespace próprio (não `RN-01…122`) para não colidir com o catálogo
 > mestre — ver decisão C2 em
@@ -234,5 +254,5 @@ tags: [growth-machine, rn, catalogo, prd]
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões C1-C5 aplicadas aqui
 - [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — pendências RN-EST-*/RN-SGA-*
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — origem das RN-SGA-*
-- [[04-Decisões/adr-pesos-indice-performance-2026]] · [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
+- [[04-Decisões/adr-camada-calibracao-continua]] · [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
 - [[00-Glossario]]

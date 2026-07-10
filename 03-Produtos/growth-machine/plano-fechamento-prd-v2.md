@@ -24,7 +24,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 
 | # | Decisão | Bloqueava | Resolução |
 |---|---|---|---|
-| **G1** | Pesos do índice: Gregory 40/30/30 × cofre 40/40/20 | Track A, Bloco 2/5 | ✅ **35/20/45** — nem um nem outro refletia o consenso 2026 (zero-click/AI Overview). [[04-Decisões/adr-pesos-indice-performance-2026]] |
+| **G1** | Pesos do índice: Gregory 40/30/30 × cofre 40/40/20 × ata "lead é principal" | Track A, Bloco 2/5 | ✅ **Mantido 40/40/20, sob revisão** — calibração por dado real (correlação peso×outcome), não por decreto. [[04-Decisões/adr-camada-calibracao-continua]] (corrige a tentativa inicial 35/20/45, superada) |
 | **G2** | Convenção de numeração de RN | Track A/C | ✅ Novas = `RN-SGA-01+`; regras do Gregory = `RN-EST-*` |
 | **G3** | Concatenação (Gregory) × anti-concatenação/cluster | Track C, Dim 1/3 | ✅ **Cluster em /informacoes** substitui a concatenação em escala |
 | **G4** | Fluxo de keywords: Google Suggest × AI-first | Track C, Dim 1 | ✅ Inversão AI-first prevalece (já oficial/Jira) |
@@ -74,6 +74,20 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 - [ ] Desenho fino dos prompts dos agentes
 - [ ] **Golden-set** + processo de validação antes de produção
 - [ ] `confidence` mínimo por agente + calibração
+
+### Track F — Achados novos da reconciliação com a vault externa (2026-07-10)
+- [ ] **Frente Z1 (mais urgente do documento inteiro deles)** — auditar a
+  carteira atual com FireCrawl atrás de páginas quase-duplicatas por
+  região/tipo. Sem dependência, pode rodar já.
+- [ ] **C3** — backtest da curva `posicionamento_esperado` (quick win, sem dependência)
+- [ ] **C4** — correlação peso×outcome de negócio (quick win, sem dependência)
+- [ ] Emenda à RN-107 — enumerar "demais canais" antes de implementar RN-123/RN-124
+- [ ] Implementar RN-123 (confirmação de entrega WhatsApp) e RN-124 (paridade spam por canal)
+- [ ] Referência cruzada RN-121 → RN-123/RN-124
+- [ ] Esclarecer RN-41 "Tintambi" com Lucas/Growth
+- [ ] Segmentar curva de CTR (Local Pack × orgânica clássica), RN-16
+- [ ] Baseline defasada do `ctr_estimado` (janela saudável trimestral)
+- [ ] Avaliar expansão GSC (6→9-10 contas) ou alocação dinâmica
 
 ## 3. Checklist de implementação no PRD ajustado (Track C detalhado)
 O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
@@ -135,11 +149,12 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 - [ ] 7 questões de integração resolvidas
 - [ ] Golden-set dos prompts definido
 - [ ] ERD + máquinas de estado anexados
-- [ ] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — acesso pendente, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]]
+- [x] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — concluída 2026-07-10, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] (Track F lista os achados novos ainda não executados)
 
 ## Notas relacionadas
-- [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR da G1
+- [[04-Decisões/adr-camada-calibracao-continua]] — ADR vigente da G1
 - [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR da G3/G8
+- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — reconciliação completa, Track F
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — o PRD a fechar
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — gaps dos 13 blocos
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões-gate G1–G5

@@ -128,14 +128,15 @@ indice_posicionamento = posicionamento_real / posicionamento_esperado
 indice_trafego = trafego_real / trafego_esperado
 indice_leads = leads_real / leads_esperados
 
-indice_final = (indice_pos × 0.35) + (indice_traf × 0.20) + (indice_lead × 0.45)
+indice_final = (indice_pos × 0.40) + (indice_traf × 0.40) + (indice_lead × 0.20)
 ```
 
-**Pesos: 35 posicionamento / 20 tráfego / 45 leads** (configuráveis na Tela
-8, RN-18). Revisado em 2026-07-10 — substitui o 40/40/20 original: tráfego
-foi rebaixado por ser o sinal mais erodido pelo zero-click/AI Overview
-(60% das buscas terminam sem clique em 2026); leads passa a dominar como o
-resultado real de negócio. Ver [[04-Decisões/adr-pesos-indice-performance-2026]].
+**Pesos: 40 posicionamento / 40 tráfego / 20 leads** (configuráveis na Tela
+8, RN-18). `[⚠️ sob revisão, 2026-07-10]` — diverge do documento original
+do Gregory (40/30/30) e da ata da Reunião 05 ("lead é a principal
+grandeza"), achado F-30. Mantido como vigente até calibração por dado real
+(correlação peso×outcome de negócio da própria carteira), via a **Camada
+de Calibração Contínua** — ver [[04-Decisões/adr-camada-calibracao-continua]].
 
 **Classificação (thresholds inclusivos, RN-19):**
 
@@ -203,6 +204,17 @@ editorial fora do escopo contratado por keyword, que envelopa e eleva a
 página MPI (pilar) sem alterar o contrato. Ver
 [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
 
+**Portão de Diferenciação Real (2026-07-10, validado externamente):** antes
+de gerar página/artigo (MPI ou cluster) por combinação palavra×região×tipo,
+checar sinais de diferenciação real (dado local específico, prova social da
+combinação, resposta a pergunta real do contexto). Sem sinal suficiente:
+página MPI não gera isolada — avalia cluster de suporte; artigo de cluster
+não gera — incorpora como seção de outro artigo do mesmo cluster. Todo
+gerado recebe `nivel_diferenciacao` (alto/médio/baixo) para auditoria.
+Métrica: `taxa_diferenciacao_real` = páginas+artigos com nível alto/médio ÷
+total — reportada no Score de Saúde (Dim 2) e como alerta de risco de
+penalização.
+
 > **Threshold reconciliado (2026-07-08):** o gate numérico é **<50%**, não
 > <60% (resíduo de versões anteriores — achado F-03). O <50% alinha o
 > travamento à banda de "reformular" da régua de decisão do Estudo (uma
@@ -253,6 +265,17 @@ quebrados, ≥3 páginas fora da regra de linkagem.
 `/informacoes`/`/artigos` linka **para cima**, para a página MPI pilar —
 é o mecanismo que eleva o ranqueamento do que foi contratado sem alterar o
 contrato. Ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
+
+**Auditoria retroativa de quase-duplicatas (validado externamente):**
+detecta páginas MPI existentes com estrutura/texto muito parecidos,
+diferindo essencialmente na cidade ou tipo de negócio — sinal de que um
+grupo deveria virar cluster ao redor de um pilar mais forte, em vez de
+competir isoladamente. Ação hoje: só via aditiva (prioriza onde construir
+cluster); consolidar as páginas fracas fica para Fase 2, condicionado ao
+ajuste da RN-84. **Anti-canibalização dentro do próprio cluster:** a mesma
+lógica de RN-15/RN-85 (bonificação) se estende à cobertura de tópicos do
+cluster — não pode haver dois artigos respondendo essencialmente à mesma
+pergunta.
 
 #### Dimensão 4 — W3C / Validação Estrutural de HTML
 Checagem **determinística**. W3C Validator self-hosted em Docker. A IA não
@@ -405,7 +428,7 @@ O agente nunca busca dados sozinho.
 | 5 — Revisão de Conteúdo | Projeto | 4 colunas: Página atual / Padrão SERP / Diagnóstico / Conteúdo MPI Plus |
 | 6 — Status de Execução | Global | Visão somente leitura do status sincronizado do Salesforce |
 | 7 — Gestão de Perfis | Global | ACL, BUs, transferência de projetos |
-| 8 — Parametrização do Modelo | Global | Calibrar pesos 35/20/45, CTRs, thresholds, curva de maturidade, Score de Saúde |
+| 8 — Parametrização do Modelo | Global | Calibrar pesos 40/40/20 (sob revisão), CTRs, thresholds, curva de maturidade, Score de Saúde — futuro lar da Camada de Calibração Contínua |
 | 9 — Central de Agentes | Global | Configurar agentes, prompts, whitelists, schemas JSON, versionamento + rollback |
 | 10 — Briefing e Estudo | Projeto | 3 colunas: Briefing / Estudo MPI Plus / Site real (FireCrawl) |
 | 11 — Monitor Sentinela | Global | Saúde de infra diária de todos os sites |
@@ -461,7 +484,7 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 - **RN-01:** análise não avança sem validação ativa do cliente/CS — sem prazo automático.
 - **RN-02:** cadência Ruim/Regular = mensal; Bom/Ótimo = trimestral.
 - **RN-16:** sem arredondamento de CTR — posição 10,5 = CTR 1%.
-- **RN-18:** pesos configuráveis, soma=100%. Default: **35/20/45** (posição/tráfego/leads, revisado 2026-07-10).
+- **RN-18:** pesos configuráveis, soma=100%. Default: **40/40/20** (posição/tráfego/leads) — `[⚠️ sob revisão]`, calibração pendente via Camada de Calibração Contínua.
 - **RN-27:** janela de maturação = 60 dias fixos.
 - **RN-40:** site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 - **RN-47:** aprovação humana obrigatória — nada publicado automaticamente.
@@ -573,8 +596,8 @@ confirmação (sem reabrir debate técnico já mapeado) em
 ## Decisões relacionadas
 - [[04-Decisões/migracao-prompt-keywords-v2]] — migração do prompt de keywords
   (v1→v2) impacta diretamente a Dim 1 (Estudo) e Dim 2 (Conteúdo) do GM.
-- [[04-Decisões/adr-pesos-indice-performance-2026]] (2026-07-10) — RN-18 revisado para 35/20/45, à luz do consenso 2026 sobre zero-click/AI Overview.
-- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] (2026-07-10) — cluster via /informacoes/artigos como camada de ranqueamento aditiva, sem alterar o contrato por keyword.
+- [[04-Decisões/adr-camada-calibracao-continua]] (2026-07-10) — RN-18 mantida em 40/40/20 sob revisão; calibração por dado real via Camada de Calibração Contínua (substitui a tentativa inicial 35/20/45, [[04-Decisões/adr-pesos-indice-performance-2026]], superada).
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] (2026-07-10) — cluster via /informacoes/artigos como camada de ranqueamento aditiva, sem alterar o contrato por keyword; validada externamente e enriquecida com o Portão de Diferenciação Real.
 
 ## Ideias relacionadas
 -

@@ -36,7 +36,7 @@ numeração local do Gregory (ver C2 em
 ## Princípio 2 — Anti-canibalização como regra estrutural
 | Oportunidade | RN atual | Dim atual | Estado | Ação | Fase |
 |---|---|---|---|---|---|
-| **Anti-doorway / scaled content** (core 2026) | RN-14, RN-15, RN-85 (só no estudo) | Dim 1 + Dim 3 | 🟡 | Nova **RN-SGA-05**: limite de variação por intenção + camada editorial (bate no C3 Gregory) | MVP (risco alto) |
+| **Anti-doorway / scaled content** (core 2026) | RN-14, RN-15, RN-85 (só no estudo) | Dim 1 + Dim 3 | 🟡 | Nova **RN-SGA-05**: limite de variação por intenção + camada editorial + **Portão de Diferenciação Real** (validado externamente: dado local, prova social, resposta a pergunta real; sem sinal → cluster em vez de página isolada; métrica `taxa_diferenciacao_real`) | MVP (risco alto — Frente Z1 da vault externa é o item mais urgente: auditar carteira já) |
 | Canibalização **www × loja** (subdomínios) | RN-15/85 (só estudo) | Dim 3 | 🟡→🔴 | Estender **Dim 3** para arquitetura multi-subdomínio + RN-SGA-06 | MVP |
 | Poda / consolidação de conteúdo fraco | **RN-84** (proíbe) | Dim 2 | 🟢 | **Ajustar RN-84** (bloqueio → sugestão) + scoring de candidata | MVP (fila #1) |
 
@@ -64,7 +64,7 @@ numeração local do Gregory (ver C2 em
 ## Princípio 6 — Alinhamento com sistemas do Google nomeados
 | Oportunidade | RN atual | Dim atual | Estado | Ação | Fase |
 |---|---|---|---|---|---|
-| **Controle de crawler de IA** (GPTBot/ClaudeBot/Perplexity/Google-Extended) | RN-82 (só llms.txt) | Dim 7 + Sentinela | 🟡 | **Incorporar o PRD robots do Gregory** à Dim 7/Sentinela + RN-SGA-13 | MVP (barato, já existe no Gregory) |
+| **Controle de crawler de IA** (GPTBot/ClaudeBot/Perplexity/Google-Extended) | RN-82 (só llms.txt) | Dim 7 + Sentinela | 🟡 | **Incorporar o PRD robots do Gregory** à Dim 7/Sentinela + RN-SGA-13. **Refinamento validado externamente:** não tratar bloqueio de bots de IA como binário — distinguir "bloqueio de treino" (sem custo de GEO) de "bloqueio de citação ao vivo" (custo real, principalmente Perplexity); matriz treino×citação revisada trimestralmente | MVP (barato, já existe no Gregory) |
 | Qualidade do **llms.txt / AI Instructions** | **RN-82** (só presença) | Dim 7 | 🟢 | **Evoluir RN-82**: presença → qualidade/eficácia ([[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]]) | Fase 2 |
 | Autoridade de **entidade** (sameAs/Knowledge Graph) | RN-117 (schema base) | Dim 6 + Dim 8 | 🟡 | `sameAs` no schema (Dim 6) + presença de entidade (Dim 8) + RN-SGA-14 ([[05-Backlog/gm-checagem-presenca-entidade]]) | Fase 2 |
 | Presença **off-site** (Reddit/fóruns/reviews) | — | — | 🔴 | Capability nova (Dim 8 estendida ou Dim 12) | Fase 2/3 |

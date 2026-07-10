@@ -1,19 +1,26 @@
 ---
 tipo: decisao
-status: aceita
+status: superada-por-camada-calibracao-continua
 criado: 2026-07-10
+ultima-revisao: 2026-07-10
 tags: [growth-machine, indice-performance, rn-18, gregory, seo, geo, google-2026]
 ---
 
 # Pesos do Índice de Performance: 35 posicionamento / 20 tráfego / 45 leads
 
-> **Ressalva (2026-07-10):** uma vault externa descrita pelo PO cita uma
-> "Camada de Calibração Contínua" (CTR/pesos/régua adaptativos) como
-> mecanismo formal para este tipo de mudança, e uma versão do PRD (v1.9.19)
-> ainda em 40/40/20. Acesso ao conteúdo real está pendente — ver
-> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]].
-> Esta ADR permanece **aceita** até o PO decidir se ela deve, em vez disso,
-> alimentar aquela camada formal.
+> **SUPERADA (2026-07-10) — acesso à vault externa liberado e reconciliado.**
+> A vault real (autoria Lucas Bevilacqua/Gabriel Santos, cruzando as mesmas
+> 3 fontes: PRD, Gregory, ata) chegou a uma resposta mais rigorosa: manter
+> **40/40/20 vigente, com flag explícita "sob revisão"**, e calibrar por
+> **correlação real com outcome de negócio** (renovação/upsell/churn) via
+> uma **Camada de Calibração Contínua** formal — não por leitura de mercado
+> genérica. Essa decisão é estritamente mais forte (dado da própria
+> operação > estatística de mercado). **A decisão vigente agora é
+> [[04-Decisões/adr-camada-calibracao-continua]].** Esta nota permanece
+> como registro histórico do racional de zero-click/AI Overview, que passa
+> a ser **insumo** da calibração, não substituto dela. Ver
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] para o
+> episódio completo.
 
 ## Contexto
 O PRD original do Growth Machine (v1.9.14) fixava o Índice de Performance

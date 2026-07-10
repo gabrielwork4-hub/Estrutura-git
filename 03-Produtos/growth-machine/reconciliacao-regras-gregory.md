@@ -50,16 +50,22 @@ tags: [growth-machine, prd, reconciliacao, gregory, regua, seo, geo, aeo, core-u
 > escrito no cofre/PRD. Não vou propagar nada sem sua decisão — é
 > exatamente o risco de canibalização que você pediu para evitar.
 
-### ✅ C1 — RESOLVIDO (2026-07-10): Pesos do Índice fixados em 35/20/45
+### ✅ C1 — RESOLVIDO (2026-07-10, revisado): pesos mantidos 40/40/20 sob revisão
 - **Gregory:** `indice_final = (pos × 0,4) + (traf × 0,3) + (leads × 0,3)`.
-- **Cofre (era):** 40 pos / 40 traf / 20 leads.
-- **Decisão final:** nem 40/40/20 nem 40/30/30 refletiam o consenso 2026 de
-  que tráfego é o sinal mais erodido por zero-click/AI Overview (60% das
-  buscas sem clique). Fixado em **35 posicionamento / 20 tráfego / 45
-  leads** — reduz tráfego além do que o Gregory propôs, eleva leads ainda
-  mais. Ver ADR completo: [[04-Decisões/adr-pesos-indice-performance-2026]].
-  Propagado em RN-18, growth-machine.md, cheat-sheet, prep-reuniao,
-  prd-v2-mvp (RF-11).
+- **Cofre:** 40 pos / 40 traf / 20 leads (RN-18).
+- **Ata da Reunião 05:** "lead é a principal grandeza" — terceira resposta
+  incompatível (achado F-30, confirmado de forma independente pela vault
+  externa "Vault PRD GROWTH MACHINE MODIFICADO").
+- **Decisão final (revisada):** primeira tentativa deste cofre propôs
+  35/20/45 por leitura de mercado (zero-click/AI Overview) — **superada**.
+  A reconciliação com a vault externa trouxe resposta mais rigorosa: manter
+  **40/40/20 vigente, com flag explícita "sob revisão"**, calibrando por
+  **correlação real com outcome de negócio** (renovação/upsell/churn) via
+  uma **Camada de Calibração Contínua** formal — dado da própria carteira
+  Ideal Trends, não estatística de mercado genérica. Nosso racional de
+  zero-click vira insumo dessa calibração, não substituto dela. Ver
+  [[04-Decisões/adr-camada-calibracao-continua]] (substitui
+  [[04-Decisões/adr-pesos-indice-performance-2026]], agora superada).
 
 ### 🔴 C2 — Colisão de numeração de RN (Gregory usa RN01–RN06 locais)
 - O sub-PRD do estudo traz **RN01–RN06 próprios** (ex.: "RN02: palavra
@@ -103,6 +109,13 @@ tags: [growth-machine, prd, reconciliacao, gregory, regua, seo, geo, aeo, core-u
   Gregory (2.2) descreve como esse relatório é montado, não uma integração
   paralela do GM ao Search Console. Toca as Q27–Q30 — mantidas em aberto
   para confirmação técnica de como o relatório é gerado.
+- **Confirmado (2026-07-10, achado F-32):** a vault externa confirma essa
+  leitura com o motivo real, não só suposição — a migração de GSC direto
+  (Gregory) para relatório mensal (PRD) provavelmente aconteceu pelo teto
+  de cobertura do GSC (só 6 contas para ~2.500 clientes, achado F-14).
+  Mitigação proposta: expandir para 9-10 contas/service accounts, ou
+  alocação dinâmica de GSC enquanto isso não sai — ver
+  [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]].
 
 ### 🟡 C6 — Palavra épica e crawl do estudo
 - **Épica:** Gregory = "maior volume da categoria, ≤3 palavras"; nosso v3 =
@@ -160,7 +173,8 @@ Se as decisões da Parte 2 forem confirmadas:
 Tracker de execução destas decisões: [[03-Produtos/growth-machine/plano-fechamento-prd-v2]].
 
 ## Notas relacionadas
-- [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR da decisão C1
+- [[04-Decisões/adr-camada-calibracao-continua]] — ADR vigente da decisão C1
+- [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR original, superada
 - [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR da decisão C3
 - [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — tracker de execução
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — PRD que incorpora estas fontes

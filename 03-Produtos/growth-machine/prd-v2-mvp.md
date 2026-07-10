@@ -128,7 +128,7 @@ Cada RF é uma capacidade; a coluna RN aponta a restrição que o governa
 | **RF-08** | Hard Stop total quando o relatório mensal estiver ausente | RN-64 | ✅ |
 | **RF-09** | Converter posição média em CTR por faixa, sem arredondamento | RN-16 | ✅ |
 | **RF-10** | Calcular maturidade por interpolação linear e aplicar teto de crescimento | RN-17 | ✅ |
-| **RF-11** | Calcular o Índice de Performance com pesos parametrizáveis (default **35/20/45** — revisado 2026-07-10) | RN-18 | ✅ |
+| **RF-11** | Calcular o Índice de Performance com pesos parametrizáveis (default **40/40/20**, ⚠️ sob revisão — Camada de Calibração Contínua) | RN-18 | ✅ |
 | **RF-12** | Classificar em Ruim/Regular/Bom/Ótimo (thresholds inclusivos) e definir cadência | RN-19, RN-02 | ✅ |
 | **RF-13** | Usar `trafego_real` só orgânico e `leads_real` multicanal | RN-86, RN-107, RN-110 | ✅ |
 | **RF-14** | Alertar "sem estudo válido" quando `volume_total = 0` | RN-20 | ✅ |
@@ -204,7 +204,7 @@ registra só o que a v2 **muda/reconcilia** para eliminar canibalização:
 
 | Ação de reconciliação | RNs | Origem do achado |
 |---|---|---|
-| **Pesos revisados** — 40/40/20 → **35/20/45** (posição/tráfego/leads), à luz do consenso 2026 sobre zero-click/AI Overview | RN-18 | [[04-Decisões/adr-pesos-indice-performance-2026]] |
+| **Pesos mantidos em 40/40/20, sob revisão** — divergem do Gregory (40/30/30) e da ata ("lead é a principal"), achado F-30; calibração real via Camada de Calibração Contínua (C3/C4), não decreto | RN-18 | [[04-Decisões/adr-camada-calibracao-continua]] |
 | **Marcar `[SUPERSEDIDA]`** — lead só formulário → multicanal | RN-21, RN-22, RN-23 → RN-107/RN-121 | F-05 (Will) |
 | **Marcar `[SUPERSEDIDA]`** — contradiz réguas por dimensão | RN-29 | F-05 |
 | **Marcar `[SUPERSEDIDA]`** — contradiz travamento condicional | RN-32 → RN-88 | F-05 |
@@ -366,9 +366,13 @@ explícita (ver [[03-Produtos/growth-machine]] › Ferramentas externas).
   doorway/scaled content punido pelos core updates 2026. Auditado por Dim 1
   (mapeamento) e Dim 3 (linkagem cluster→pilar). Ver
   [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
-- **Pesos do Índice revisados** (35/20/45, 2026-07-10) — reduz a distorção
-  do zero-click/AI Overview sobre a classificação de clientes bem
-  posicionados. Ver [[04-Decisões/adr-pesos-indice-performance-2026]].
+- **Pesos do Índice mantidos em 40/40/20, sob revisão** (2026-07-10) —
+  achado F-30 (três fontes incompatíveis) registrado explicitamente;
+  calibração real depende de dado próprio da carteira, via **Camada de
+  Calibração Contínua**. Ver [[04-Decisões/adr-camada-calibracao-continua]].
+- **Portão de Diferenciação Real** (2026-07-10, validado externamente) —
+  regra de decisão antes de gerar página/artigo por combinação, com métrica
+  `taxa_diferenciacao_real` reportada no Score de Saúde (Dim 2).
 
 **Fica para a sequência (as "estruturações e divisões" que você citou):**
 inserir as frentes SEO/GEO/AEO em profundidade — as divisões por pilar
@@ -397,5 +401,5 @@ e [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões-gate G1-G5 resolvidas
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — RNs/dimensões novas (Track C)
 - [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — tracker de fechamento do PRD
-- [[04-Decisões/adr-pesos-indice-performance-2026]] · [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
+- [[04-Decisões/adr-camada-calibracao-continua]] · [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
 - [[03-Produtos/growth-machine]] · [[00-Painel-Estado]] · [[00-Cerebro]]

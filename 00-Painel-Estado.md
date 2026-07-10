@@ -20,12 +20,12 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — aderência da doc atual ao PRD ideal (13 blocos) + auditoria de qualidade das 122 RNs + esqueleto da v2 (2026-07-08). Base para projetar a nova documentação.
 - [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato dos blocos 5 e 8 (**absorvida** no PRD v2.0).
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — **PRD v2.0 (MVP)** consolidado: 13 blocos, RF-00 a RF-46, User Stories/CA críticos, RNs reconciliadas, escopo SEO/GEO/AEO de MVP (2026-07-08).
-- [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **5 conflitos resolvidos em 2026-07-10** (pesos 35/20/45, numeração RN, cluster, fluxo keywords, fonte posicionamento) (2026-07-08).
+- [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **5 conflitos resolvidos em 2026-07-10** (pesos 40/40/20 sob revisão, numeração RN, cluster, fluxo keywords, fonte posicionamento) (2026-07-08).
 - [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — checklist SEO/GEO/AEO: Google 2026 × emtecorp real × Gregory × GM. Padrões recorrentes da GM + 4 oportunidades novas a virar backlog (2026-07-08).
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — mapa princípio→RN→Dimensão→ação; estrutura-alvo das dimensões (2D-AEO, 2E-E-E-A-T, Dim 11 GEO) para o PRD v2 (2026-07-08).
 - [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — análise de apoio, **formalizada em ADR** ([[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]) em 2026-07-10 (2026-07-08).
 - [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — **tracker de fechamento do PRD**: 9 decisões-gate **todas resolvidas** (2026-07-10) + 5 trilhas paralelas + checklist dimensão a dimensão do PRD ajustado, com "Definição de PRD fechado" como critério de saída (2026-07-08).
-- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **🔴 bloqueada, aguardando acesso**: vault externa com PRD v1.9.19 + pasta de propostas; colisão RN-123/124 já corrigida (renumeradas p/ `RN-SGA-*`); "Cluster Wrapping" validado externamente; pesos ainda divergem (2026-07-10).
+- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **✅ concluída**: acesso liberado, vault externa lida (índice + roadmap + Cluster Wrapping + Camada de Calibração Contínua). Pesos revertidos p/ 40/40/20 sob revisão; RN-123/124 reais (entrega multicanal) incorporadas; Cluster Wrapping validado e enriquecido com Portão de Diferenciação Real (2026-07-10).
 
 ## Produtos
 
@@ -50,7 +50,8 @@ tags: [painel, estado, core]
 |---|---|
 | [[04-Decisões/migracao-prompt-keywords-v2]] | Histórico (superado pelo v3) |
 | [[04-Decisões/padrao-historia-jira]] | Aceita — vigente |
-| [[04-Decisões/adr-pesos-indice-performance-2026]] | Aceita — vigente (RN-18 = 35/20/45) |
+| [[04-Decisões/adr-camada-calibracao-continua]] | Aceita — vigente (RN-18 = 40/40/20 sob revisão) |
+| [[04-Decisões/adr-pesos-indice-performance-2026]] | Superada por adr-camada-calibracao-continua |
 | [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] | Aceita — vigente (cluster aditivo via /informacoes) |
 
 ## Histórias/prompts do MPI Plus

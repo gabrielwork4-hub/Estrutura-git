@@ -1,121 +1,109 @@
 ---
 tipo: produto
-status: bloqueada-aguardando-acesso
+status: concluida
 criado: 2026-07-10
 ultima-revisao: 2026-07-10
-tags: [growth-machine, reconciliacao, vault-externa, canibalizacao, rn, seo, geo, aeo, google-2026]
+tags: [growth-machine, reconciliacao, vault-externa, canibalizacao, rn, seo, geo, aeo, google-2026, calibracao-continua]
 ---
 
-# Reconciliação com vault externa (PRD v1.9.19 + pasta "10-modelo-proposto-v2")
+# Reconciliação com a vault externa — "Vault PRD GROWTH MACHINE MODIFICADO" (v1.9.19)
 
-> Registra um episódio crítico: o PO descreveu, em texto, o conteúdo de uma
-> **vault externa** (não este cofre, não o Drive já mapeado) contendo uma
-> versão do PRD mais avançada (**v1.9.19**, contra a v1.9.14 que temos no
-> Drive) e uma pasta de propostas não aprovadas
-> (**`10-modelo-proposto-v2`**). O cruzamento revelou uma **colisão real de
-> numeração de RN** contra o que construímos nesta sessão — corrigida na
-> hora. Acesso ao arquivo real segue **pendente**.
+> **Acesso liberado e reconciliação concluída em 2026-07-10.** Registra o
+> episódio completo: da colisão de numeração detectada só pela descrição
+> do PO, passando pelo bloqueio de acesso, até a leitura completa da vault
+> real e a reconciliação ponto a ponto. A vault existe em
+> `drive.google.com/drive/folders/1PipUHjPCfWR7L2Op7n4Dc9_cK5hpOZ_T`,
+> autoria **Lucas Bevilacqua / Gabriel Santos (gabriel.santos@idealtrends.com.br)**,
+> estruturada em 11 pastas temáticas (00-overview a 10-modelo-proposto-v2),
+> reorganizando o mesmo PRD monolítico (2.461 linhas) que este cofre também
+> trabalha, na versão **v1.9.19** (08/07/2026).
 
-## O que o PO descreveu (v1.9.19, resumo)
-Mesmo produto, mesmas 4 fases + 10 dimensões + módulo Sentinela + 11 telas
-já conhecidos deste cofre, com 3 diferenças relevantes em relação ao que
-tínhamos mapeado:
+## Descoberta central
+A vault externa fez, **de forma independente**, essencialmente o mesmo
+trabalho que este cofre: cruzar o PRD oficial, o documento original do
+Gregory e boas práticas/dados de mercado 2026, chegando aos **mesmos
+achados críticos** (doorway pages, Cluster Wrapping como solução, pesos do
+índice incompatíveis) — em alguns pontos com mais rigor que nós. Isso não é
+coincidência de nome: é convergência de raciocínio a partir das mesmas
+fontes.
 
-1. **Índice de Performance ainda em 40/40/20`** (posição/tráfego/leads) —
-   **diferente** da nossa ADR (35/20/45,
-   [[04-Decisões/adr-pesos-indice-performance-2026]]).
-2. **Dimensão 8 (Search Console) já inclui CWV real** ("evidência real de
-   indexação, impressões, cliques, CWV") — dado novo, não estava explícito
-   no que tínhamos antes; mitiga parte da preocupação com RN-07 (PageSpeed
-   Score como proxy), se esse dado de fato alimentar decisão.
-3. **3 correções já presentes**: resíduo de Bright Data removido, threshold
-   da Dim 1 em `<50%`, RNs supersedidas marcadas — **idênticas** ao que
-   fechamos no F-01/F-03/F-05. Convergência ainda não explicada (aplicado
-   lá a partir daqui, ou paralelo independente) — **pergunta em aberto**.
+## O que confirma, ponto a ponto
 
-### Pasta "10-modelo-proposto-v2" (não aprovada, resumo)
-- **Camada de Calibração Contínua** — CTR/pesos/régua adaptativos. É,
-  pelo nome, o mecanismo formal de governança para o tipo de mudança que
-  fizemos na ADR de pesos. Recomendação: tratar a ADR como **entrada para
-  essa camada**, não como decisão unilateral fechada e paralela a ela.
-- **Cluster Wrapping** — **mesmo nome, mesma lógica** da nossa
-  [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]. Validação
-  cruzada forte: chegamos à mesma solução por caminhos diferentes (caso
-  real emtecorp + exclusão de `/informacoes` no PRD do Gregory + core
-  update 2026) — não é coincidência de nome à toa, é o mesmo problema
-  (doorway pages) com a mesma resposta.
-- **RN-123 / RN-124 = "paridade de canal em leads"** — **colide** com as
-  RN-123/RN-124 que este cofre havia proposto (extrabilidade / resposta
-  única AEO). Ver ação abaixo. Conteúdo completo dessas RNs ainda
-  **desconhecido** — só o rótulo foi descrito; possível relação com
-  RN-107/RN-110 (leads multicanal), não confirmada.
+| Item | Nossa leitura (antes) | Vault externa | Resultado |
+|---|---|---|---|
+| Cluster Wrapping | ADR própria (2026-07-10) | Mesma solução, mesmo nome, **cita o emtecorp como exemplo confirmado** | ✅ Validado quase palavra por palavra — ver enriquecimento abaixo |
+| Ambiguidade Dim 1 (`<50%`) | Fechada (F-03) | Confirma `<50%` como decisão do PO | ✅ Igual |
+| Bright Data / RNs supersedidas | Fechadas (F-01/F-05) | Mesmas correções, já na v1.9.19 | ✅ Igual — convergência confirmada, não coincidência |
+| Fonte de posicionamento (relatório mensal × GSC) | C5 — relatório mensal vence | Confirma, **com o motivo real**: teto de cobertura do GSC (6 contas p/ 2.500 clientes, F-14/F-32) | ✅ Reforçado com causa raiz que não tínhamos |
+| Pesos do índice | Propusemos 35/20/45 (leitura de mercado) | **Manter 40/40/20 sob revisão**, calibrar por correlação real com outcome de negócio | 🔄 **Nossa ADR corrigida** — ver [[04-Decisões/adr-camada-calibracao-continua]] |
+| RN-123/RN-124 | Propusemos extrabilidade/AEO (renumeadas p/ `RN-SGA-*`) | São, na verdade, **confirmação de entrega multicanal + paridade de spam** (achado F-40, auditoria à Dim 10) | ✅ Colisão evitada; RN-123/124 reais incorporadas ao catálogo |
 
-## Tentativa de acesso (resultado: bloqueado)
-- Busca por texto no Drive já mapeado (`fullText contains 'Cluster
-  Wrapping'`, `'10-modelo-proposto'`, `'v1.9.19'`): **nada encontrado** —
-  confirma que é uma fonte genuinamente separada do Drive que já
-  cruzamos.
-- Link de pasta fornecido pelo PO
-  (`drive.google.com/drive/folders/1PipUHjPCfWR7L2Op7n4Dc9_cK5hpOZ_T`):
-  `search_files` retornou vazio e `read_file_content` retornou "Requested
-  entity was not found" — **sem acesso** com a conta conectada nesta
-  sessão.
-- **Ação pendente do PO**: compartilhar a pasta com a conta usada por este
-  agente, ou colar/anexar o conteúdo real diretamente na conversa.
+## O que a vault externa traz de genuinamente novo (não tínhamos)
 
-## Ação tomada agora (não esperou o acesso): renumeração RN-SGA-*
-Para não deixar a colisão viva enquanto o acesso não é liberado, as 16 RNs
-propostas nesta sessão foram **renumeradas de RN-123–138 para
-`RN-SGA-01` a `RN-SGA-16`** (SEO/GEO/AEO), liberando 123/124 para a vault
-externa. Mesmo padrão de namespace já usado para as regras do Gregory
-(`RN-EST-*`). Atualizado em:
-- [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]]
-- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]]
-- [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] (convenção G2)
+1. **Camada de Calibração Contínua** — mecanismo formal de recalibração
+   periódica (trimestral/semestral) com proposta→aprovação→log, extensão do
+   padrão `ruleset_version_id` já existente. Adotado como novo caminho para
+   RN-18 e outros parâmetros hoje fixos. Ver
+   [[04-Decisões/adr-camada-calibracao-continua]].
+2. **Portão de Diferenciação Real** — regra de decisão antes de gerar
+   qualquer página/artigo por combinação (dado local, prova social
+   específica, resposta a pergunta real), com métrica `taxa_diferenciacao_real`
+   — complementa o Cluster Wrapping, incorporado à
+   [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] e à Dim 1/2/3
+   em [[03-Produtos/growth-machine]].
+3. **Frente Z1 — auditoria imediata da carteira** por quase-duplicatas
+   (FireCrawl sobre a base atual), sem depender de nenhuma decisão — é o
+   item mais urgente do roadmap deles inteiro.
+4. **Circularidade do `ctr_estimado`** (F-08/F-31): se a posição cai, o
+   "potencial" cai junto, mascarando queda real. Proposta: baseline
+   defasada (janela saudável, trimestral).
+5. **Curva de CTR única erra para clientes locais** — Local Pack tem curva
+   muito mais achatada que busca orgânica; precisa de 2 curvas segmentadas.
+6. **RN-41 "Tintambi"** é termo não identificado — precisa esclarecimento
+   de Lucas/Growth antes de reescrever.
+7. **Cobertura de GSC insuficiente** (6 contas para ~2.500 clientes) é o
+   teto real por trás de várias decisões já tomadas — expandir para 9-10
+   contas ou implementar alocação dinâmica.
 
-**Isto é uma correção provisória**, não a reconciliação final — quando o
-conteúdo real da pasta `10-modelo-proposto-v2` for acessível, este
-namespace pode precisar de novo ajuste (e o próprio conteúdo das 16 RNs
-precisa ser comparado ponto a ponto com o que já existe lá, para não
-duplicar proposta).
+## O que ficou por ler (não esgotado, por economia de esforço)
+A vault tem ~50 arquivos. Lemos os documentos decisórios centrais (índice,
+roadmap consolidado, Cluster Wrapping, anti-doorway, Camada de Calibração
+Contínua, Motor Adaptativo, confirmação multicanal). **Não lidos ainda**:
+os 14 ADRs individuais (`07-adrs/`), as 10 notas de dimensão detalhadas
+(`02-dimensoes/`), o radar de schema (`04-schemas-radar-de-politica.md`),
+a matriz de bots de IA (`05-robots-matriz-adaptativa-bots-ia.md`), a
+alocação de GSC (`06-gsc-alocacao-dinamica.md`), o loop de GEO
+(`03-geo-loop-de-resultado.md`), a revisão crítica completa (29 achados) e
+as questões em aberto (Q1-Q30) por extenso. Ficam disponíveis para
+aprofundar quando o PO quiser — nada impede leitura pontual sob demanda.
 
-## Veredito direto — as 4 dores, hoje (v1.9.19 oficial, sem a pasta proposta)
+## Ações executadas nesta reconciliação
+- [x] RN-18 revertida para 40/40/20, sinalizada "sob revisão" em todas as
+  notas que a citavam (catálogo, nota-mãe, cheat-sheet, prep-reunião, PRD v2)
+- [x] ADR de pesos original marcada `superada-por-camada-calibracao-continua`
+- [x] Nova ADR criada: [[04-Decisões/adr-camada-calibracao-continua]]
+- [x] RN-123/RN-124 reais (confirmação de entrega multicanal) incorporadas
+  ao catálogo, distintas das nossas `RN-SGA-*`
+- [x] RN-41 sinalizada como termo não identificado
+- [x] RN-16 sinalizada para segmentação Local Pack × orgânica
+- [x] Portão de Diferenciação Real incorporado à nota-mãe e à ADR de cluster
+- [x] Anti-canibalização dentro do cluster + auditoria de quase-duplicatas
+  incorporadas à Dim 3
 
-| Dor | Atende hoje? | Leitura |
-|---|---|---|
-| **Canibalização** | 🟡 Parcial | Prevenida só na etapa de **planejamento** (Dim 1 audita conformidade estudo↔briefing; Dim 3 audita se a linkagem segue o pilar→variação *previsto*). Nenhuma dimensão audita canibalização **viva na SERP** nem entre subdomínios (o caso www×loja do emtecorp não seria pego hoje). |
-| **Ranqueamento** | 🟢 Sim, de forma abrangente | As 10 dimensões cobrem os fatores clássicos (conteúdo vs. SERP, link equity, HTML/schema/sitemap determinísticos, infra). Se a Dim 8 realmente traz CWV real via GSC, resolve parte do gap de RN-07. Falta: nenhuma ofensiva de autoridade/backlink foi mencionada na descrição — se não existe, é o maior buraco de ranqueamento hoje. |
-| **Intenção de busca** | 🟡 Parcial | Resolvida na **geração** (MPI Plus classifica intenção), auditada só **indiretamente** na Dim 2 via comparação com padrão da SERP — proxy razoável, mas sem checagem explícita de conformidade de intenção pós-publicação. |
-| **AEO × GEO** | 🔴 Não | Confirma o diagnóstico já feito: GEO existe só como preparação estrutural (FAQ/headings, Dim 2), zero medição, zero peso no Índice. AEO não existe como conceito na v1.9.19 oficial. Bate com a decisão F-28 (medição de GEO = Fase 2). |
-
-## As novas análises desta sessão fazem sentido? Veredito
-**Sim na direção, com 2 status rebaixados até reconciliar:**
-1. **Cluster Wrapping** — validado de forma independente (mesmo nome, mesma
-   lógica já na pasta proposta da vault externa). Reforça priorizar a
-   promoção de "proposta" para "aprovada".
-2. **Pesos 35/20/45** — racional se sustenta (zero-click 60%, CTR pos.1
-   ~27%→~11% com AI Overview), mas como a v1.9.19 oficial ainda mostra
-   40/40/20 e existe uma "Camada de Calibração Contínua" que parece ser o
-   canal certo, a ADR deveria alimentar essa camada, não competir com ela
-   — **rever status de "aceita" para "proposta" até confirmar o canal**.
-3. **RN-SGA-01–16** — bloqueadas de virar "oficiais" até o conteúdo real
-   da pasta proposta ser lido e comparado ponto a ponto.
-
-## Próximos passos
-- [ ] PO libera acesso à pasta `10-modelo-proposto-v2` (ou cola o conteúdo)
-- [ ] Ler v1.9.19 completa e comparar linha a linha contra
-  [[03-Produtos/growth-machine/prd-v2-mvp]] (base ainda é v1.9.14)
-- [ ] Confirmar se as 3 correções (Bright Data, threshold Dim 1,
-  supersedidas) já vieram deste cofre ou foram paralelas
-- [ ] Comparar RN-123/RN-124 reais (paridade de canal em leads) com
-  RN-107/RN-110
-- [ ] Decidir se a ADR de pesos vira input formal da Camada de Calibração
-  Contínua, mantendo ou revertendo o status "aceita"
+## Próximos passos (não executados ainda — ficam para o PO priorizar)
+- [ ] Frente Z1 — rodar auditoria de quase-duplicatas na carteira (FireCrawl)
+- [ ] Quick wins C3 (backtest `posicionamento_esperado`) e C4 (correlação
+  peso×outcome) — sem dependência, podem começar já
+- [ ] Emenda à RN-107 (enumerar "demais canais") antes de implementar
+  RN-123/RN-124
+- [ ] Ler os 14 ADRs individuais e as 10 notas de dimensão da vault externa,
+  se o PO quiser aprofundar além do que já foi reconciliado aqui
 
 ## Notas relacionadas
-- [[04-Decisões/adr-pesos-indice-performance-2026]] — status a revisar
-- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — validado externamente
-- [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — RN-SGA-01–16 renumeradas aqui
-- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — tracker principal
+- [[04-Decisões/adr-camada-calibracao-continua]] — substitui a ADR de pesos original
+- [[04-Decisões/adr-pesos-indice-performance-2026]] — superada
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — validada e enriquecida
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — mesma classe de reconciliação, fonte diferente
+- [[03-Produtos/growth-machine/catalogo-regras-negocio]] — RN-123/124 reais + todas as correções aplicadas
+- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — tracker principal
 - [[03-Produtos/growth-machine/prd-v2-mvp]] · [[03-Produtos/growth-machine]] · [[00-Painel-Estado]] · [[00-Cerebro]]

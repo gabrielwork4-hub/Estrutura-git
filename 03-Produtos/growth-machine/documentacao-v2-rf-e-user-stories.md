@@ -2,7 +2,7 @@
 tipo: produto
 status: rascunho
 criado: 2026-07-08
-ultima-revisao: 2026-07-08
+ultima-revisao: 2026-07-10
 tags: [growth-machine, prd, v2, requisitos-funcionais, user-story, criterio-aceite, demonstracao]
 ---
 
@@ -20,8 +20,10 @@ tags: [growth-machine, prd, v2, requisitos-funcionais, user-story, criterio-acei
 > **Status (2026-07-08):** demonstração **absorvida** no PRD consolidado
 > [[03-Produtos/growth-machine/prd-v2-mvp]] (Blocos 5 e 8). Mantida por
 > rastreabilidade do formato aprovado. **Nota (2026-07-10):** o valor de
-> RF-11 abaixo (40/40/20) é o default histórico da época — foi revisado
-> para **35/20/45**, ver [[04-Decisões/adr-pesos-indice-performance-2026]].
+> RF-11 abaixo (40/40/20) segue como o vigente — passou por uma tentativa
+> de revisão para 35/20/45 (superada) e voltou a 40/40/20, agora sinalizado
+> "sob revisão" e calibrado por dado real via
+> [[04-Decisões/adr-camada-calibracao-continua]].
 >
 > **Escopo do rascunho:** os RF abaixo são uma **fatia representativa**
 > (cobre as 4 fases + Sentinela + transversais para mostrar a forma), não a
