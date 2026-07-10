@@ -149,7 +149,7 @@ Se as decisões da Parte 2 forem confirmadas:
 
 ## Parte 5 — Decisões (todas fechadas em 2026-07-10)
 1. **C1 — Pesos: 35/20/45.** ✅ [[04-Decisões/adr-pesos-indice-performance-2026]]
-2. **C2 — Numeração:** RNs novas seguem `RN-123+`; regras do Gregory viram
+2. **C2 — Numeração:** RNs novas seguem `RN-SGA-01+`; regras do Gregory viram
    `RN-EST-*`, sem colidir com o catálogo mestre. ✅
 3. **C3 — Concatenação → cluster:** substituída pelo cluster aditivo via
    /informacoes. ✅ [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]

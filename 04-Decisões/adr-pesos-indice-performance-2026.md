@@ -7,6 +7,14 @@ tags: [growth-machine, indice-performance, rn-18, gregory, seo, geo, google-2026
 
 # Pesos do Índice de Performance: 35 posicionamento / 20 tráfego / 45 leads
 
+> **Ressalva (2026-07-10):** uma vault externa descrita pelo PO cita uma
+> "Camada de Calibração Contínua" (CTR/pesos/régua adaptativos) como
+> mecanismo formal para este tipo de mudança, e uma versão do PRD (v1.9.19)
+> ainda em 40/40/20. Acesso ao conteúdo real está pendente — ver
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]].
+> Esta ADR permanece **aceita** até o PO decidir se ela deve, em vez disso,
+> alimentar aquela camada formal.
+
 ## Contexto
 O PRD original do Growth Machine (v1.9.14) fixava o Índice de Performance
 em **40% posicionamento / 40% tráfego / 20% leads**, sem origem documentada

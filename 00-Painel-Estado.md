@@ -25,6 +25,7 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — mapa princípio→RN→Dimensão→ação; estrutura-alvo das dimensões (2D-AEO, 2E-E-E-A-T, Dim 11 GEO) para o PRD v2 (2026-07-08).
 - [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — análise de apoio, **formalizada em ADR** ([[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]) em 2026-07-10 (2026-07-08).
 - [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — **tracker de fechamento do PRD**: 9 decisões-gate **todas resolvidas** (2026-07-10) + 5 trilhas paralelas + checklist dimensão a dimensão do PRD ajustado, com "Definição de PRD fechado" como critério de saída (2026-07-08).
+- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **🔴 bloqueada, aguardando acesso**: vault externa com PRD v1.9.19 + pasta de propostas; colisão RN-123/124 já corrigida (renumeradas p/ `RN-SGA-*`); "Cluster Wrapping" validado externamente; pesos ainda divergem (2026-07-10).
 
 ## Produtos
 

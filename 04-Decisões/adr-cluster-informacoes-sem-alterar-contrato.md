@@ -7,6 +7,11 @@ tags: [growth-machine, cluster, contrato, informacoes, artigos, seo, geo, aeo, g
 
 # Cluster via /informacoes e /artigos como camada de ranqueamento fora do contrato
 
+> **Validação externa (2026-07-10):** uma vault externa descrita pelo PO
+> traz uma proposta pendente com o **mesmo nome** ("Cluster Wrapping"),
+> convergência independente que reforça esta decisão. Ver
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]].
+
 ## Contexto
 O contrato comercial vende **páginas por palavra-chave** (modelo
 keyword-a-keyword), mas o Google recompensa **cluster, entidade e

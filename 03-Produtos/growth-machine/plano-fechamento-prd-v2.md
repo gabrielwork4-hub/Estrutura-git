@@ -25,7 +25,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 | # | Decisão | Bloqueava | Resolução |
 |---|---|---|---|
 | **G1** | Pesos do índice: Gregory 40/30/30 × cofre 40/40/20 | Track A, Bloco 2/5 | ✅ **35/20/45** — nem um nem outro refletia o consenso 2026 (zero-click/AI Overview). [[04-Decisões/adr-pesos-indice-performance-2026]] |
-| **G2** | Convenção de numeração de RN | Track A/C | ✅ Novas = `RN-123+`; regras do Gregory = `RN-EST-*` |
+| **G2** | Convenção de numeração de RN | Track A/C | ✅ Novas = `RN-SGA-01+`; regras do Gregory = `RN-EST-*` |
 | **G3** | Concatenação (Gregory) × anti-concatenação/cluster | Track C, Dim 1/3 | ✅ **Cluster em /informacoes** substitui a concatenação em escala |
 | **G4** | Fluxo de keywords: Google Suggest × AI-first | Track C, Dim 1 | ✅ Inversão AI-first prevalece (já oficial/Jira) |
 | **G5** | Fonte de posicionamento: GSC direto × relatório MPI Plus | Track D, Fase 2 | ✅ Relatório mensal MPI Plus é a fonte única |
@@ -39,7 +39,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 ### Track A — Reconciliar o catálogo de RN (fecha a canibalização)
 - [x] Aplicar **G1** (pesos 35/20/45) em todas as notas — feito 2026-07-10
 - [x] Threshold da Dim 1 fixado em **<50%** (feito 2026-07-08)
-- [x] Convenção de numeração decidida (**G2**: RN-123+ / `RN-EST-*`) — feito 2026-07-10
+- [x] Convenção de numeração decidida (**G2**: RN-SGA-01+ / `RN-EST-*`) — feito 2026-07-10
 - [ ] Marcar **`[SUPERSEDIDA]`**: RN-21/22/23/29/32
 - [ ] Remover resíduo **Bright Data** do texto
 - [ ] Adicionar colunas **Origem + Prioridade** ao catálogo
@@ -59,7 +59,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 ### Track C — Estruturação SEO/GEO/AEO (o "PRD ajustado") — ver checklist §3
 - [x] Formalizar **ADR do cluster /informacoes** (G8) — [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], feito 2026-07-10
 - [ ] Ajustes de RN existente (RN-07, RN-82, RN-84)
-- [ ] Criar RN-123 a RN-138 (16 novas)
+- [ ] Criar RN-SGA-01 a RN-SGA-16 (16 novas)
 - [ ] Sub-dimensões 2D (AEO), 2E (E-E-A-T); Dimensão 11 (GEO/Citação)
 - [ ] Expandir Dim 3/5/7/8
 
@@ -80,40 +80,40 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 
 **Dim 1 — Estudo**
 - [ ] Estudo passa a mapear **cluster** (pilar contratado + apoio /informacoes) — ✅
-- [ ] Regra anti-doorway / limite de variação por intenção (RN-127) — ✅
+- [ ] Regra anti-doorway / limite de variação por intenção (RN-SGA-05) — ✅
 
 **Dim 2 — Conteúdo (maior expansão)**
-- [ ] Meta description ≤160 / title ≤60 determinístico (RN-125) — ✅
+- [ ] Meta description ≤160 / title ≤60 determinístico (RN-SGA-03) — ✅
 - [ ] Ajuste **RN-84** (poda: bloqueio → sugestão + scoring) — ✅
-- [ ] Sinal "conteúdo preso em PDF → HTML" (RN-138) — ✅
-- [ ] Sub-dim **2D-AEO** (resposta única + priorização por nicho, RN-124/126) — 🕒
-- [ ] Sub-dim **2E-E-E-A-T** (autor/sobre/fontes, RN-129) — ✅
-- [ ] Extrabilidade / answer-first (RN-123) — 🕒
-- [ ] Sinal de conteúdo original / information gain (RN-130) — 🕒
+- [ ] Sinal "conteúdo preso em PDF → HTML" (RN-SGA-16) — ✅
+- [ ] Sub-dim **2D-AEO** (resposta única + priorização por nicho, RN-SGA-02/04) — 🕒
+- [ ] Sub-dim **2E-E-E-A-T** (autor/sobre/fontes, RN-SGA-07) — ✅
+- [ ] Extrabilidade / answer-first (RN-SGA-01) — 🕒
+- [ ] Sinal de conteúdo original / information gain (RN-SGA-08) — 🕒
 
 **Dim 3 — Arquitetura/Silo**
 - [ ] Auditar linkagem **cluster → pilar** (/informacoes sobe p/ página vendida) — ✅
-- [ ] Canibalização **www × loja** multi-subdomínio (RN-128) — ✅
+- [ ] Canibalização **www × loja** multi-subdomínio (RN-SGA-06) — ✅
 
 **Dim 5 — PageSpeed**
 - [ ] **Ajuste RN-07**: régua por **CWV real** (LCP/INP/CLS), não só Score ≥80 — ✅
 - [ ] Accessibility tree / CLS (pilar agêntico) — 🕒
 
 **Dim 6 — Schemas**
-- [ ] `sameAs` / entidade (RN-136) — 🕒
+- [ ] `sameAs` / entidade (RN-SGA-14) — 🕒
 
 **Dim 7 — Robots/Indexação**
-- [ ] Incorporar **controle de crawler de IA** do PRD robots do Gregory (RN-135) — ✅
+- [ ] Incorporar **controle de crawler de IA** do PRD robots do Gregory (RN-SGA-13) — ✅
 - [ ] Evoluir **RN-82** (llms.txt: presença → qualidade) — 🕒
-- [ ] Crawl-log real (RN-134) — 🕒
+- [ ] Crawl-log real (RN-SGA-12) — 🕒
 
 **Dim 8 — Sinais externos**
-- [ ] Reativa → propositiva (ofensiva de backlink, RN-131) — 🕒
+- [ ] Reativa → propositiva (ofensiva de backlink, RN-SGA-09) — 🕒
 - [ ] Presença de entidade / off-site — 🕒
-- [ ] Tráfego de origem IA (RN-133) — 🕒
+- [ ] Tráfego de origem IA (RN-SGA-11) — 🕒
 
 **Dim 11 — GEO/Citação (NOVA)**
-- [ ] Loop de mensuração via Ideal Tracker (RN-132) — 🕒
+- [ ] Loop de mensuração via Ideal Tracker (RN-SGA-10) — 🕒
 
 **Transversal**
 - [ ] Camada editorial humana reforçada (anti-scaled, core 2026) — ✅
