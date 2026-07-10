@@ -21,6 +21,7 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato dos blocos 5 e 8 (**absorvida** no PRD v2.0).
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — **PRD v2.0 (MVP)** consolidado: 13 blocos, RF-00 a RF-46, User Stories/CA críticos, RNs reconciliadas, escopo SEO/GEO/AEO de MVP (2026-07-08).
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **4 conflitos de canibalização aguardando decisão do PO** (destaque: pesos 40/30/30 × 40/40/20) (2026-07-08).
+- [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — checklist SEO/GEO/AEO: Google 2026 × emtecorp real × Gregory × GM. Padrões recorrentes da GM + 4 oportunidades novas a virar backlog (2026-07-08).
 
 ## Produtos
 
