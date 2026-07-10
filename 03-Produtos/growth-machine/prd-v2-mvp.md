@@ -212,9 +212,18 @@ registra só o que a v2 **muda/reconcilia** para eliminar canibalização:
 | **Remover resíduo Bright Data** — posicionamento vem só do relatório mensal | RN-64, RN-105 | F-01 |
 | **Adicionar colunas Origem + Prioridade** ao catálogo | todas | [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] |
 | **Tirar o "como" de RN de implementação** (ex: RN-99 não deve fixar GPT-5 no texto, já que é parametrizável) | RN-93, RN-99 | idem |
+| **Sinalizar `[🔧 ajuste pendente]`** — régua deve migrar de proxy para métrica real (CWV) | RN-07 | [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] |
+| **Sinalizar `[🔧 ajuste pendente]`** — presença → qualidade do AI Instructions/llms.txt | RN-82 | [[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]] |
+| **Sinalizar `[🔧 ajuste pendente]`** — bloqueio total → sugestão de poda com scoring | RN-84 | [[03-Produtos/growth-machine/versao-final-hoje-x-desenvolvimento-seo-geo-aeo]] |
+| **Adicionar blocos novos** `RN-EST-01–06` (Gregory) e `RN-SGA-01–16` (proposta SEO/GEO/AEO, ex-RN-123–138) | novo | [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] |
 
-> Estas mudanças devem ser aplicadas **no catálogo**, não duplicadas aqui —
-> este bloco é só o registro da decisão.
+> ✅ **Aplicado no catálogo em 2026-07-10** — todas as linhas acima já
+> refletem no [[03-Produtos/growth-machine/catalogo-regras-negocio]], fonte
+> única. Este bloco é o registro da decisão, não uma cópia paralela.
+> Pendência remanescente: coluna Origem/Prioridade só foi preenchida para
+> os blocos novos (`RN-EST-*`/`RN-SGA-*`) — as 122 RNs originais ainda não
+> têm Origem/Prioridade retroativas (exigiria validação por RN com quem
+> decidiu cada uma, não é seguro inferir em massa).
 
 ## Bloco 8 — User Stories + Critérios de Aceite
 Padrão Dado/Quando/Então; cada CA amarra a uma RN. Abaixo, as histórias

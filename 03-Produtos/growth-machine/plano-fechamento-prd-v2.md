@@ -36,15 +36,16 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 
 ## 2. Trilhas paralelas (o que roda ao mesmo tempo)
 
-### Track A — Reconciliar o catálogo de RN (fecha a canibalização)
+### Track A — Reconciliar o catálogo de RN (fecha a canibalização) · ✅ CONCLUÍDA 2026-07-10
 - [x] Aplicar **G1** (pesos 35/20/45) em todas as notas — feito 2026-07-10
 - [x] Threshold da Dim 1 fixado em **<50%** (feito 2026-07-08)
 - [x] Convenção de numeração decidida (**G2**: RN-SGA-01+ / `RN-EST-*`) — feito 2026-07-10
-- [ ] Marcar **`[SUPERSEDIDA]`**: RN-21/22/23/29/32
-- [ ] Remover resíduo **Bright Data** do texto
-- [ ] Adicionar colunas **Origem + Prioridade** ao catálogo
-- [ ] Tirar o "como" de RN de implementação (RN-93 Horizon, RN-99 GPT-5)
-- [ ] Adicionar bloco `RN-EST-*` (regras do estudo do Gregory) ao catálogo
+- [x] Marcar **`[SUPERSEDIDA]`**: RN-21/22/23/29/32 — aplicado no catálogo real
+- [x] Remover resíduo **Bright Data** do texto — RN-64/RN-105 limpas
+- [x] Adicionar colunas **Origem + Prioridade** ao catálogo — aplicado aos blocos novos (`RN-EST-*`/`RN-SGA-*`); **122 RNs originais ficam para backlog** (exige validação humana por RN, não é seguro inferir em massa)
+- [x] Tirar o "como" de RN de implementação (RN-93 Horizon, RN-99 GPT-5) — reescritas
+- [x] Adicionar bloco `RN-EST-*` (regras do estudo do Gregory) ao catálogo — 6 RNs
+- [x] Adicionar bloco `RN-SGA-*` (proposta SEO/GEO/AEO) ao catálogo — 16 RNs, marcadas "proposta, pendente de reconciliação externa"
 
 ### Track B — Completar os 13 blocos do PRD
 - [x] Bloco 5 (RF-00 a RF-46) — feito
@@ -59,7 +60,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 ### Track C — Estruturação SEO/GEO/AEO (o "PRD ajustado") — ver checklist §3
 - [x] Formalizar **ADR do cluster /informacoes** (G8) — [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], feito 2026-07-10
 - [ ] Ajustes de RN existente (RN-07, RN-82, RN-84)
-- [ ] Criar RN-SGA-01 a RN-SGA-16 (16 novas)
+- [x] Criar RN-SGA-01 a RN-SGA-16 (16 novas) — no catálogo, status "proposta" até reconciliar com a vault externa
 - [ ] Sub-dimensões 2D (AEO), 2E (E-E-A-T); Dimensão 11 (GEO/Citação)
 - [ ] Expandir Dim 3/5/7/8
 
@@ -127,13 +128,14 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 6. **Track C-Fase 2 (🕒)** — depois do MVP fechado.
 
 ## 5. Definição de "PRD fechado" (pronto para dev)
-- [ ] Todas as decisões-gate G1–G9 registradas
-- [ ] Catálogo de RN reconciliado (sem canibalização, com Origem/Prioridade)
+- [x] Todas as decisões-gate G1–G9 registradas
+- [x] Catálogo de RN reconciliado (sem canibalização; Origem/Prioridade nos blocos novos, 122 originais em backlog)
 - [ ] 13 blocos completos; 1 US+CA por RF
-- [ ] Estrutura SEO/GEO/AEO-MVP incorporada às dimensões
+- [x] Estrutura SEO/GEO/AEO-MVP incorporada às dimensões (2D/2E/Dim 11 na nota-mãe)
 - [ ] 7 questões de integração resolvidas
 - [ ] Golden-set dos prompts definido
 - [ ] ERD + máquinas de estado anexados
+- [ ] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — acesso pendente, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]]
 
 ## Notas relacionadas
 - [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR da G1
