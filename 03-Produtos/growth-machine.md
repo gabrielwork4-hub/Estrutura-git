@@ -150,7 +150,7 @@ resultado real de negócio. Ver [[04-Decisões/adr-pesos-indice-performance-2026
 
 ---
 
-### Fase 3 — Auditoria em 10 Dimensões
+### Fase 3 — Auditoria em 10 Dimensões *(+ Dimensão 11, Fase 2 — ver abaixo)*
 
 **Regra fundamental (RN-88):** a auditoria só é interrompida quando o problema
 crítico está na **Dimensão 1 (Estudo)**. Se o Estudo está OK, as dimensões 2–10
@@ -220,7 +220,12 @@ essa busca?"*
 Fluxo: DataForSEO identifica concorrentes → crawler extrai conteúdo dos
 concorrentes → monta padrão SERP → FireCrawl lê página do cliente → compara.
 
-Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO.
+Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO /
+**2D — AEO** (resposta única por pergunta do nicho, priorização por
+segmento; Fase 2, exceto priorização por nicho que é MVP) / **2E —
+E-E-A-T** (autor, página "sobre", fontes citadas; MVP). 2D e 2E propostas
+em 2026-07-10 — ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]]
+e RN-SGA-01/02/04/07 em [[03-Produtos/growth-machine/catalogo-regras-negocio]].
 
 Régua de decisão:
 | Faixa | Score | Decisão |
@@ -287,6 +292,16 @@ Agente Auditor de Captação. Subchecagens: 10A Lead total multicanal /
 10B Formulário / 10C SendGrid/DNS-MX / 10D WhatsApp e CTAs / 10E
 Qualidade/spam. O sistema não bloqueia spam automaticamente — recomenda
 CAPTCHA/honeypot.
+
+#### Dimensão 11 — GEO / Citação *(nova, Fase 2 — não implementada no MVP)*
+Fecha o loop de mensuração que falta hoje: o GM prepara o site para ser
+citável (Dim 2C/2D/RN-82), mas não mede se está sendo citado. Alimentada
+pelo [[03-Produtos/ideal-tracker]] (Share of Voice em respostas de LLM) —
+direção já confirmada pelo PO. RN-SGA-10. **Não entra na fórmula do Score
+de Saúde Técnica (RN-96, restrita às dimensões estruturais 2–10)** — é um
+sinal de mensuração separado, cujo peso no Índice Final (se algum) fica
+para decisão futura. Ver
+[[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]].
 
 Cenários de alerta:
 | Cenário | Condição | Ação |
