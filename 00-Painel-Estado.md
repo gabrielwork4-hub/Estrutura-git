@@ -26,6 +26,8 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — análise de apoio, **formalizada em ADR** ([[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]) em 2026-07-10 (2026-07-08).
 - [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — **tracker de fechamento do PRD**: 9 decisões-gate **todas resolvidas** (2026-07-10) + 5 trilhas paralelas + checklist dimensão a dimensão do PRD ajustado, com "Definição de PRD fechado" como critério de saída (2026-07-08).
 - [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **✅ concluída**: acesso liberado, vault externa lida (índice + roadmap + Cluster Wrapping + Camada de Calibração Contínua). Pesos revertidos p/ 40/40/20 sob revisão; RN-123/124 reais (entrega multicanal) incorporadas; Cluster Wrapping validado e enriquecido com Portão de Diferenciação Real (2026-07-10).
+- [[03-Produtos/growth-machine/validacao-fluxos-principios]] — validação das 5 correntes operacionais × 6 princípios-núcleo: nenhuma contradição lógica encontrada, 3 correções de fluxo aplicadas, 1 gap real confirmado (loop de GEO/Dim 11 segue Fase 2) (2026-07-10).
+- [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]] — **reescrito**: fila de prioridade agora com 17 itens, anti-doorway/Cluster Wrapping como #1 (era ausente na versão original), todos os itens amarrados a RN-SGA (2026-07-10).
 
 ## Produtos
 

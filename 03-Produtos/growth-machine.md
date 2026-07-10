@@ -184,9 +184,16 @@ fator_severidade: OK=0 / aviso=0,4 / crítico=1,0
 | 9 | Servidor / TTFB / Infraestrutura | 7 |
 | 10 | Captação / Entrega / Leads | 8 |
 
+**Sub-dimensões 2D/2E não alteram o peso de Dim 2 (18):** são checagens
+adicionais **dentro** do peso já alocado, não pontos extra — evita
+desbalancear a soma=100 ao adicionar as sub-checks propostas (RN-SGA-01/02/03/04/07/08).
+
 **Parecer Consolidado:** agente de IA lê Índice + Score + 10 dimensões +
 Sentinela + histórico → diagnóstico executivo em linguagem natural. 1x por
-análise completa. Os 3 indicadores são mantidos **separados** — sem score único.
+análise completa. Os 3 indicadores são mantidos **separados** — sem score
+único. `[nota futura]` quando a Dimensão 11 (GEO/Citação) for implementada,
+o Parecer deve incorporá-la como 4º indicador citado, sem fundir no Score
+de Saúde (RN-96 continua restrito às dimensões 2–10).
 
 #### Dimensão 1 — Estudo / Auditoria MPI
 Agente Auditor de Estudo MPI. Valida o estudo contra: briefing aprovado,
@@ -451,7 +458,11 @@ Embeddings: `text-embedding-3-small`.
 
 **Separação crítica (RN-100):** os agentes de Dim 1 e Dim 2 detectam o gap
 — não geram. A geração ocorre no MPI Plus e só é acionada após clique do
-analista.
+analista. **Portão de Diferenciação Real (RN-SGA-05) entra exatamente
+neste clique (Gate 1):** antes de a geração ser acionada, verifica sinais
+de diferenciação real; sem sinal suficiente, a ação vira "recomendar
+cluster de suporte" em vez de "gerar página isolada" — o gate não é um
+mecanismo novo, é uma condição a mais dentro do Gate 1 já existente.
 
 **Mecânica das entradas:** o orquestrador (context builder) coleta os dados
 do projeto, monta um pacote JSON e injeta no prompt via placeholders
