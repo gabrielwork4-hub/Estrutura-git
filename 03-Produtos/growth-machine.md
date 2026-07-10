@@ -623,6 +623,13 @@ Resumo de 1 página com só os números/regras que valem memorizar (pesos,
 thresholds, ordem das fases/dimensões, os 5 padrões de risco recorrentes)
 em [[03-Produtos/growth-machine/cheat-sheet]].
 
+## PRD final
+A estrutura final do PRD (13 blocos, RFs, User Stories/CA, checagem de
+aderência a boas práticas Google 2026 cruzada com RN/Dimensão) está
+consolidada em [[PRDFINAL]] (2026-07-10) — cópia de leitura para build,
+substitui [[03-Produtos/growth-machine/prd-v2-mvp]] (mantido como histórico
+da consolidação).
+
 ## Aderência à documentação ideal (base da v2)
 Avaliação da documentação atual contra a estrutura de PRD ideal (13 blocos)
 e auditoria das 122 RNs contra critérios de qualidade, cruzando vault +
@@ -656,6 +663,7 @@ confirmação (sem reabrir debate técnico já mapeado) em
 - Depende do **MPI Plus** como pré-requisito de carteira — ver [[03-Produtos/mpi-plus]].
 
 ## Decisões relacionadas
+- [[PRDFINAL]] (2026-07-10) — PRD final consolidado, com checagem de aderência a boas práticas Google 2026.
 - [[04-Decisões/migracao-prompt-keywords-v2]] — migração do prompt de keywords
   (v1→v2) impacta diretamente a Dim 1 (Estudo) e Dim 2 (Conteúdo) do GM.
 - [[04-Decisões/adr-camada-calibracao-continua]] (2026-07-10) — RN-18 mantida em 40/40/20 sob revisão; calibração por dado real via Camada de Calibração Contínua (substitui a tentativa inicial 35/20/45, [[04-Decisões/adr-pesos-indice-performance-2026]], superada).

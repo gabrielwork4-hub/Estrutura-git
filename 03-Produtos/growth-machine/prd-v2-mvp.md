@@ -1,9 +1,9 @@
 ---
 tipo: produto
-status: rascunho
+status: consolidado-em-prd-final
 criado: 2026-07-08
 ultima-revisao: 2026-07-10
-versao-doc: "v2.0-mvp (consolidação do cofre)"
+versao-doc: "v2.0-mvp (consolidação do cofre) — consolidado em PRDFINAL.MD"
 consolida:
   - "Drive — PRD_Growth_Machine_v1_9_14.md"
   - "Drive — revisao-critica-prd-growth-machine.md (29 achados, Will)"
@@ -14,6 +14,13 @@ tags: [growth-machine, prd, v2, mvp, requisitos-funcionais, user-story, rn, seo,
 
 # PRD Growth Machine — v2.0 (MVP)
 
+> ✅ **CONSOLIDADO em [[PRDFINAL]]** (2026-07-10) — esta nota deixou de ser
+> a cópia de leitura para build. Todo o conteúdo abaixo foi absorvido,
+> reconciliado e expandido (8 RFs novas, checagem de boas práticas Google
+> 2026) em `PRDFINAL.MD`, na raiz do cofre. Esta nota é preservada como o
+> **histórico da consolidação inicial** que originou o PRD final — mantém
+> valor de rastreabilidade, não é mais atualizada como fonte corrente.
+>
 > **O que é esta nota:** a consolidação do cofre do PRD do Growth Machine no
 > formato de PRD ideal (13 blocos), reconciliando o PRD v1.9.14 do Drive, a
 > revisão crítica do Will (29 achados) e toda a análise já feita no cofre —
@@ -391,6 +398,7 @@ e [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]].
 - [ ] Prompts dos agentes com golden-set (bloqueador — mitigado pelo faseamento)
 
 ## Notas relacionadas
+- [[PRDFINAL]] — **PRD final**, consolida e substitui esta nota como cópia de leitura para build (2026-07-10)
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — plano dos 13 blocos e auditoria de RN
 - [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato (absorvida aqui)
 - [[03-Produtos/growth-machine/catalogo-regras-negocio]] — fonte única das RNs

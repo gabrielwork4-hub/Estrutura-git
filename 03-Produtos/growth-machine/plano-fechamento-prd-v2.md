@@ -150,6 +150,7 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 - [ ] Golden-set dos prompts definido
 - [ ] ERD + máquinas de estado anexados
 - [x] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — concluída 2026-07-10, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] (Track F lista os achados novos ainda não executados)
+- [x] **PRD final estruturado** — [[PRDFINAL]] (2026-07-10): 13 blocos com as reconciliações como texto principal, 8 RFs novas (RF-47 a RF-54) formalizando RN-SGA/RN-EST já ✅ MVP no checklist §3, e checagem dedicada de aderência a boas práticas Google 2026
 - [ ] **RFs do PRD atualizadas quando Track F fechar** — Track F não é
   critério de fechamento do PRD em si (é execução/calibração, roda depois),
   mas 3 itens **alteram RN já citadas em RF existentes** e precisam
@@ -157,13 +158,17 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
   - RN-123/RN-124 (entrega multicanal) → `RF-24` (Dim 10)
   - Emenda RN-107 ("demais canais") → `RF-13` e `RF-24`
   - Segmentação RN-16 (Local Pack × orgânica) → `RF-09`
-  Marcadas `[⚠️ pendente]` inline nas RFs em [[03-Produtos/growth-machine/prd-v2-mvp]].
+  Marcadas `[⚠️ pendente]` inline nas RFs em [[PRDFINAL]].
+- [ ] **7 questões de integração**, **golden-set dos prompts** e **ERD/máquinas
+  de estado** seguem em aberto — [[PRDFINAL]] não declara o produto "pronto
+  para codar" enquanto esses 3 itens (linhas acima) não fecharem.
 
 ## Notas relacionadas
+- [[PRDFINAL]] — **PRD final (2026-07-10)**, já incorpora G1–G9, RN-SGA/RN-EST/RN-123-124 como RF (RF-47 a RF-54) e a checagem de boas práticas Google 2026; segue sendo esta nota o tracker do que falta para ele ser "fechado" de fato
 - [[04-Decisões/adr-camada-calibracao-continua]] — ADR vigente da G1
 - [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR da G3/G8
 - [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — reconciliação completa, Track F
-- [[03-Produtos/growth-machine/prd-v2-mvp]] — o PRD a fechar
+- [[03-Produtos/growth-machine/prd-v2-mvp]] — rascunho de consolidação, histórico (consolidado em PRDFINAL)
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — gaps dos 13 blocos
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões-gate G1–G5
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — RNs/dimensões novas (Track C)

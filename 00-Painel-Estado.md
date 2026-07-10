@@ -19,7 +19,8 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] — briefing pronto para conversa com liderança: mapa de fontes + linha de raciocínio única das 3 frentes + 3 perguntas de decisão (2026-07-07).
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — aderência da doc atual ao PRD ideal (13 blocos) + auditoria de qualidade das 122 RNs + esqueleto da v2 (2026-07-08). Base para projetar a nova documentação.
 - [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato dos blocos 5 e 8 (**absorvida** no PRD v2.0).
-- [[03-Produtos/growth-machine/prd-v2-mvp]] — **PRD v2.0 (MVP)** consolidado: 13 blocos, RF-00 a RF-46, User Stories/CA críticos, RNs reconciliadas, escopo SEO/GEO/AEO de MVP (2026-07-08).
+- [[PRDFINAL]] — **PRD final (v1.0)**: 13 blocos, RF-00 a RF-54 (8 novas formalizando RN-SGA/RN-EST ✅ MVP), User Stories/CA, checagem dedicada de aderência a boas práticas Google 2026 × estrutura interna. Substitui [[03-Produtos/growth-machine/prd-v2-mvp]] como cópia de leitura para build (2026-07-10).
+- [[03-Produtos/growth-machine/prd-v2-mvp]] — rascunho de consolidação (13 blocos, RF-00 a RF-46) que originou o PRD final — **histórico**, não mais atualizado (2026-07-08).
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **5 conflitos resolvidos em 2026-07-10** (pesos 40/40/20 sob revisão, numeração RN, cluster, fluxo keywords, fonte posicionamento) (2026-07-08).
 - [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — checklist SEO/GEO/AEO: Google 2026 × emtecorp real × Gregory × GM. Padrões recorrentes da GM + 4 oportunidades novas a virar backlog (2026-07-08).
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — mapa princípio→RN→Dimensão→ação; estrutura-alvo das dimensões (2D-AEO, 2E-E-E-A-T, Dim 11 GEO) para o PRD v2 (2026-07-08).
@@ -33,7 +34,7 @@ tags: [painel, estado, core]
 
 | Produto | Status | Prioridade | Nota |
 |---|---|---|---|
-| [[03-Produtos/growth-machine]] | Em desenvolvimento — **PRD v2.0 (MVP) consolidado no cofre** ([[03-Produtos/growth-machine/prd-v2-mvp]]); PRD v1.9.14 no Drive; avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 7 questões de integração ainda bloqueiam build |
+| [[03-Produtos/growth-machine]] | Em desenvolvimento — **PRD final estruturado** ([[PRDFINAL]]); PRD v1.9.14 no Drive; avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 7 questões de integração ainda bloqueiam build |
 | [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos | 2º | Dependência direta do Growth Machine (RN-108) |
 | [[03-Produtos/ideal-tracker]] | Em desenvolvimento — PRD/UX documentados | 3º | 6 pontos críticos em aberto, sem dependência cruzada |
 
