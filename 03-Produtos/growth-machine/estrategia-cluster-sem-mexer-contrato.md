@@ -1,19 +1,23 @@
 ---
 tipo: produto
-status: rascunho
+status: formalizada-em-adr
 criado: 2026-07-08
-ultima-revisao: 2026-07-08
+ultima-revisao: 2026-07-10
 tags: [growth-machine, estrategia, contrato, cluster, entidade, intencao, seo, geo, aeo, informacoes]
-candidato-adr: true
 ---
 
 # Estratégia — ranquear por cluster/entidade/intenção SEM mexer no contrato
 
+> **Status (2026-07-10): decisão formalizada.** Ver
+> [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] para o ADR
+> completo (contexto, decisão, alternativas, consequências). Esta nota
+> permanece como a análise detalhada de apoio.
+>
 > **Problema:** o contrato vende **páginas por palavra-chave** (modelo
 > keyword-a-keyword), mas o Google 2026 recompensa **cluster, entidade e
 > intenção** (topical authority + Helpful Content). Como melhorar o
 > ranqueamento dos ~2.500 sites da casa, alinhado às boas práticas e aos
-> core updates, **sem renegociar o contrato**? Nota candidata a ADR.
+> core updates, **sem renegociar o contrato**?
 
 ## A chave já existe na estrutura: `/informacoes` e `/artigos`
 O próprio PRD de estudo do Gregory (Etapa 0) **exclui `/informacoes` e
@@ -93,12 +97,15 @@ Reaproveita o [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]]:
   depende do ajuste da RN-84 (já na fila #1).
 
 ## Próximo passo
-Se validado, isto vira: (a) uma **decisão formal em [[04-Decisões]]** (ADR:
-"cluster em /informacoes como camada de ranqueamento fora do contrato"), e
-(b) entra na estruturação do PRD v2 como o **modelo de arquitetura** que a
-Dim 1 e a Dim 3 passam a auditar. Aguardando validação do PO.
+✅ Validado pelo PO (2026-07-10). Formalizado como
+[[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] e incorporado
+à estruturação do PRD v2 ([[03-Produtos/growth-machine/prd-v2-mvp]]) como o
+modelo de arquitetura que a Dim 1 e a Dim 3 passam a auditar. Escopo
+confirmado: **só aditivo** por ora — consolidar as LPs-doorway existentes
+fica para depois, condicionado ao ajuste da RN-84.
 
 ## Notas relacionadas
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR formal desta decisão
 - [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — onde cada frente se pluga (Dim 1/2/3)
 - [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — doorway/scaled content e o caso emtecorp
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — PRD de estudo do Gregory (exclui /informacoes e /artigos)

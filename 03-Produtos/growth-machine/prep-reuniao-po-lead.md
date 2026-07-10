@@ -2,7 +2,7 @@
 tipo: produto
 status: vivo
 criado: 2026-07-03
-ultima-revisao: 2026-07-03
+ultima-revisao: 2026-07-10
 tags: [growth-machine, reuniao, po, preparacao]
 ---
 
@@ -32,7 +32,7 @@ sozinho — Front-end executa via Salesforce.
 | O quê | Valor |
 |---|---|
 | Pré-requisito de carteira | **RN-108** — só atende quem já está no MPI Plus |
-| Pesos do Índice de Performance | **40 posicionamento / 40 tráfego / 20 leads** |
+| Pesos do Índice de Performance | **35 posicionamento / 20 tráfego / 45 leads** (revisado 2026-07-10, ver ADR) |
 | Thresholds de status | Ruim &lt;0,60 · Regular 0,60–0,79 · Bom 0,80–0,89 · Ótimo ≥0,90 |
 | Janela de maturação | **60 dias fixos**, começa só após OK do analista (RN-27, RN-79) |
 | Gatilho do ciclo | Relatório mensal MPI Plus, ~dia 1º/2 (RN-106) |

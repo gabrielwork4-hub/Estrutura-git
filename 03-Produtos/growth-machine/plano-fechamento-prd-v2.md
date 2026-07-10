@@ -2,7 +2,7 @@
 tipo: produto
 status: vivo
 criado: 2026-07-08
-ultima-revisao: 2026-07-08
+ultima-revisao: 2026-07-10
 tags: [growth-machine, prd, v2, plano, checklist, roadmap, tracker]
 ---
 
@@ -18,31 +18,33 @@ tags: [growth-machine, prd, v2, plano, checklist, roadmap, tracker]
 > (RNs/dimensões novas) e
 > [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] (ADR).
 
-## 1. Decisões-gate (destravam as trilhas — precisam do PO)
-Sem estas, algumas trilhas ficam bloqueadas. Prioridade de decidir primeiro.
+## 1. Decisões-gate — TODAS FECHADAS (2026-07-10)
+Sem estas, algumas trilhas ficavam bloqueadas. As 9 foram resolvidas em
+sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 
-| # | Decisão | Bloqueia | Recomendação |
+| # | Decisão | Bloqueava | Resolução |
 |---|---|---|---|
-| **G1** | Pesos do índice **40/30/30 (Gregory)** × 40/40/20 | Track A, Bloco 2/5 | Adotar 40/30/30 (fonte autoritativa) |
-| **G2** | Convenção de numeração de RN (novas = RN-123+; Gregory = namespear) | Track A/C | RN-123+ p/ novas; `RN-EST-*` p/ Gregory |
-| **G3** | Concatenação (Gregory) × anti-concatenação/cluster | Track C, Dim 1/3 | Substituir doorway por **cluster em /informacoes** (G8) |
-| **G4** | Fluxo de keywords: Google Suggest × AI-first | Track C, Dim 1 | Alinhar com a inversão já no Jira |
-| **G5** | Fonte de posicionamento: GSC direto × relatório MPI Plus | Track D, Fase 2 | Reconciliar (relatório provavelmente monta do GSC) |
-| **G6** | **North Star** do produto | Bloco 2 | "% carteira diagnosticada na cadência, com fila aprovada" |
-| **G7** | Faseamento das dimensões no MVP (1+determinísticas+10; 2/3/8 fast-follow) | Bloco 3/9, Track E | Confirmar (tira o MVP da refém dos 9 prompts) |
-| **G8** | ADR cluster /informacoes: só aditivo × + consolidar doorway | Track C | Só aditivo agora; consolidação depois (depende RN-84) |
-| **G9** | Numeração oficial do PRD (v1.0 × v1.9.14 × v2.0-cofre) | Cabeçalho | Confirmar com quem gere o PRD do Drive |
+| **G1** | Pesos do índice: Gregory 40/30/30 × cofre 40/40/20 | Track A, Bloco 2/5 | ✅ **35/20/45** — nem um nem outro refletia o consenso 2026 (zero-click/AI Overview). [[04-Decisões/adr-pesos-indice-performance-2026]] |
+| **G2** | Convenção de numeração de RN | Track A/C | ✅ Novas = `RN-123+`; regras do Gregory = `RN-EST-*` |
+| **G3** | Concatenação (Gregory) × anti-concatenação/cluster | Track C, Dim 1/3 | ✅ **Cluster em /informacoes** substitui a concatenação em escala |
+| **G4** | Fluxo de keywords: Google Suggest × AI-first | Track C, Dim 1 | ✅ Inversão AI-first prevalece (já oficial/Jira) |
+| **G5** | Fonte de posicionamento: GSC direto × relatório MPI Plus | Track D, Fase 2 | ✅ Relatório mensal MPI Plus é a fonte única |
+| **G6** | **North Star** do produto | Bloco 2 | ✅ "% carteira diagnosticada na cadência, com fila aprovada" |
+| **G7** | Faseamento das dimensões no MVP | Bloco 3/9, Track E | ✅ Dim 1+determinísticas+10 no MVP; Dim 2/3/8 fast-follow |
+| **G8** | ADR cluster /informacoes: só aditivo × + consolidar doorway | Track C | ✅ **Só aditivo** agora; consolidação depende do ajuste da RN-84 |
+| **G9** | Numeração oficial do PRD (v1.0 × v1.9.14 × v2.0-cofre) | Cabeçalho | ✅ Cofre segue com `v2.0-mvp` interno; numeração do Drive fica pendente de confirmação externa |
 
 ## 2. Trilhas paralelas (o que roda ao mesmo tempo)
 
 ### Track A — Reconciliar o catálogo de RN (fecha a canibalização)
-- [ ] Aplicar **G1** (pesos) em todas as notas, se aprovado
+- [x] Aplicar **G1** (pesos 35/20/45) em todas as notas — feito 2026-07-10
 - [x] Threshold da Dim 1 fixado em **<50%** (feito 2026-07-08)
+- [x] Convenção de numeração decidida (**G2**: RN-123+ / `RN-EST-*`) — feito 2026-07-10
 - [ ] Marcar **`[SUPERSEDIDA]`**: RN-21/22/23/29/32
 - [ ] Remover resíduo **Bright Data** do texto
 - [ ] Adicionar colunas **Origem + Prioridade** ao catálogo
 - [ ] Tirar o "como" de RN de implementação (RN-93 Horizon, RN-99 GPT-5)
-- [ ] Namespear regras do Gregory (**G2**)
+- [ ] Adicionar bloco `RN-EST-*` (regras do estudo do Gregory) ao catálogo
 
 ### Track B — Completar os 13 blocos do PRD
 - [x] Bloco 5 (RF-00 a RF-46) — feito
@@ -55,11 +57,11 @@ Sem estas, algumas trilhas ficam bloqueadas. Prioridade de decidir primeiro.
 - [ ] Bloco 12 — detalhar **rollout** (piloto, critérios de saída de fase)
 
 ### Track C — Estruturação SEO/GEO/AEO (o "PRD ajustado") — ver checklist §3
+- [x] Formalizar **ADR do cluster /informacoes** (G8) — [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], feito 2026-07-10
 - [ ] Ajustes de RN existente (RN-07, RN-82, RN-84)
 - [ ] Criar RN-123 a RN-138 (16 novas)
 - [ ] Sub-dimensões 2D (AEO), 2E (E-E-A-T); Dimensão 11 (GEO/Citação)
 - [ ] Expandir Dim 3/5/7/8
-- [ ] Formalizar **ADR do cluster /informacoes** (G8)
 
 ### Track D — Integração & engenharia (bloqueadores de build)
 - [ ] Resolver as **7 questões** (Q18-21 Salesforce; Q27-30 MPI Plus)
@@ -134,6 +136,8 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 - [ ] ERD + máquinas de estado anexados
 
 ## Notas relacionadas
+- [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR da G1
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR da G3/G8
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — o PRD a fechar
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — gaps dos 13 blocos
 - [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões-gate G1–G5

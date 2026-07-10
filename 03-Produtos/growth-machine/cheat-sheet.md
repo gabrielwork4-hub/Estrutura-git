@@ -2,7 +2,7 @@
 tipo: produto
 status: vivo
 criado: 2026-07-02
-ultima-revisao: 2026-07-02
+ultima-revisao: 2026-07-10
 tags: [growth-machine, cheat-sheet, resumo]
 ---
 
@@ -24,7 +24,7 @@ entra lá primeiro.
 
 | O quê | Valor |
 |---|---|
-| Pesos do Índice de Performance | **40 posicionamento / 40 tráfego / 20 leads** |
+| Pesos do Índice de Performance | **35 posicionamento / 20 tráfego / 45 leads** (revisado 2026-07-10) |
 | Thresholds de status | Ruim **&lt;0,60** · Regular **0,60–0,79** · Bom **0,80–0,89** · Ótimo **≥0,90** |
 | Cadência de análise | Ruim/Regular → **mensal** · Bom/Ótimo → **trimestral** |
 | Janela de maturação | **60 dias fixos**, começa só após OK do analista |
@@ -81,5 +81,6 @@ de build de ponta a ponta.
 - [[03-Produtos/growth-machine]] — nota completa
 - [[03-Produtos/growth-machine/avaliacao-fluxo]] — avaliação crítica
 - [[03-Produtos/growth-machine/catalogo-regras-negocio]] — todas as 122 RNs
+- [[04-Decisões/adr-pesos-indice-performance-2026]] — origem dos pesos 35/20/45
 - [[00-Painel-Estado]]
 - [[00-Glossario]]

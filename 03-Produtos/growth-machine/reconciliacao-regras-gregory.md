@@ -2,7 +2,7 @@
 tipo: produto
 status: vivo
 criado: 2026-07-08
-ultima-revisao: 2026-07-08
+ultima-revisao: 2026-07-10
 origem: "Upload do PO — 'Regras Growth Machine — Entregue pelo Gregory' (.docx→PDF), 4 sub-PRDs"
 tags: [growth-machine, prd, reconciliacao, gregory, regua, seo, geo, aeo, core-update, canibalizacao]
 ---
@@ -50,17 +50,16 @@ tags: [growth-machine, prd, reconciliacao, gregory, regua, seo, geo, aeo, core-u
 > escrito no cofre/PRD. Não vou propagar nada sem sua decisão — é
 > exatamente o risco de canibalização que você pediu para evitar.
 
-### 🔴 C1 — Pesos do Índice: Gregory **40/30/30** × nossa doc **40/40/20**
+### ✅ C1 — RESOLVIDO (2026-07-10): Pesos do Índice fixados em 35/20/45
 - **Gregory:** `indice_final = (pos × 0,4) + (traf × 0,3) + (leads × 0,3)`.
-- **Cofre (RN-18, growth-machine, cheat-sheet, prep-reuniao, prd-v2-mvp,
-  principios-nucleo):** **40 pos / 40 traf / 20 leads**.
-- **Impacto:** muda o índice de **todos** os ~2.500 clientes. O Gregory dá
-  **mais peso a leads** (30 vs 20) e menos a tráfego (30 vs 40) — coerente
-  com o kickoff ("Lead é a principal").
-- **Leitura:** o Gregory é o dono da régua; o 40/40/20 do PRD v1.9.14 era
-  provável placeholder anterior à entrega dele. **Recomendação:** adotar
-  **40/30/30** como oficial e propagar (como fizemos com o <50%). **Precisa
-  do seu aval** porque contradiz o RN-18 documentado em todo o cofre.
+- **Cofre (era):** 40 pos / 40 traf / 20 leads.
+- **Decisão final:** nem 40/40/20 nem 40/30/30 refletiam o consenso 2026 de
+  que tráfego é o sinal mais erodido por zero-click/AI Overview (60% das
+  buscas sem clique). Fixado em **35 posicionamento / 20 tráfego / 45
+  leads** — reduz tráfego além do que o Gregory propôs, eleva leads ainda
+  mais. Ver ADR completo: [[04-Decisões/adr-pesos-indice-performance-2026]].
+  Propagado em RN-18, growth-machine.md, cheat-sheet, prep-reuniao,
+  prd-v2-mvp (RF-11).
 
 ### 🔴 C2 — Colisão de numeração de RN (Gregory usa RN01–RN06 locais)
 - O sub-PRD do estudo traz **RN01–RN06 próprios** (ex.: "RN02: palavra
@@ -72,31 +71,38 @@ tags: [growth-machine, prd, reconciliacao, gregory, regua, seo, geo, aeo, core-u
   `RN-EST-01…`) ou são mapeadas para RNs já existentes, **sem reusar
   números do catálogo mestre**. Decisão de convenção sua.
 
-### 🟡 C3 — Concatenação prescrita × nossa história anti-concatenação
+### ✅ C3 — RESOLVIDO (2026-07-10): cluster substitui a concatenação em escala
 - **Gregory (4.3.7/4.3.8):** concatenar 3 palavras × 2 regiões e palavra ×
   tipo (com "ajuste semântico via IA para naturalidade").
 - **Cofre:** [[03-Produtos/mpi-plus/historia-prompt-endurecimento-anti-concatenacao-geo]]
   — história **oficial**, motivada por QA de produção real, que
   **endurece contra** concatenação mecânica / GEO genérico.
-- **Tensão real** (ver Parte 3, core update): concatenação em escala é o
-  gatilho clássico de "scaled content abuse". O Gregory mitiga com IA, mas
-  nossa QA já pegou o problema. **Precisa alinhar Gregory × QA do MPI Plus.**
+- **Decisão final:** a concatenação em escala não é adotada como estratégia
+  primária — é exatamente o padrão de "scaled content abuse" punido pelos
+  core updates 2026. No lugar, adota-se o **cluster via /informacoes e
+  /artigos** (aditivo, sem tocar as páginas MPI contratadas) como caminho
+  de ranqueamento. Ver
+  [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] e o caso real
+  em [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]].
 
-### 🟡 C4 — Fluxo de descoberta de keywords
+### ✅ C4 — RESOLVIDO (2026-07-10): inversão AI-first prevalece
 - **Gregory:** KeywordTool + **SEMrush** + **Google Suggest** como descoberta.
-- **Cofre:** [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]]
-  (enviada ao Jira) inverte o fluxo — **geração via IA primeiro**, Google
-  Autocomplete/KeywordTool passam a só **enriquecer**, não descobrir.
-- **Divergência de direção.** Confirmar qual vale para o build.
+- **Decisão final:** prevalece
+  [[03-Produtos/mpi-plus/historia-prompt-inversao-fluxo-keywords]] (já
+  oficial, enviada ao Jira) — geração via IA primeiro; as ferramentas do
+  Gregory (SEMrush/KeywordTool/Suggest) passam a **enriquecer** (volume,
+  CPC, concorrência), não a descobrir.
 
-### 🟡 C5 — Fonte do posicionamento: Search Console × relatório mensal MPI Plus
+### ✅ C5 — RESOLVIDO (2026-07-10): relatório mensal MPI Plus é a fonte única
 - **Gregory (2.2):** processa **Search Console** direto (posição média das
   palavras base).
-- **Cofre (RN-105/RN-106/RN-64):** fonte primária é o **relatório mensal do
-  MPI Plus**; Hard Stop se ele faltar; Bright Data removido.
-- Provavelmente o relatório mensal É construído a partir do GSC — mas o PRD
-  trata o relatório como SPOF único. Vale reconciliar: GSC é fonte direta
-  (Gregory) ou sempre via relatório (RN-105)? Toca a Q27–Q30.
+- **Decisão final:** mantém RN-105/RN-106/RN-64 como fonte primária — o
+  **relatório mensal do MPI Plus** segue como fonte única de posicionamento
+  (Hard Stop se ausente). Leitura adotada: o relatório mensal já é
+  construído a partir do GSC internamente; o processamento descrito pelo
+  Gregory (2.2) descreve como esse relatório é montado, não uma integração
+  paralela do GM ao Search Console. Toca as Q27–Q30 — mantidas em aberto
+  para confirmação técnica de como o relatório é gerado.
 
 ### 🟡 C6 — Palavra épica e crawl do estudo
 - **Épica:** Gregory = "maior volume da categoria, ≤3 palavras"; nosso v3 =
@@ -141,17 +147,22 @@ Se as decisões da Parte 2 forem confirmadas:
 
 ---
 
-## Parte 5 — Decisões que preciso de você
-1. **C1 — adotar 40/30/30 do Gregory como oficial** (e eu propago), ou manter
-   40/40/20 até validar com ele?
-2. **C2 — convenção de numeração** para as regras do Gregory (bloco próprio
-   `RN-EST-*` vs. mapear nas existentes)?
-3. **C3/C4 — concatenação e fluxo de keywords**: a régua do Gregory
-   prevalece, ou a QA/inversão do MPI Plus prevalece? (ou levar aos dois?)
-4. **C5 — fonte de posicionamento**: GSC direto ou sempre via relatório
-   mensal MPI Plus?
+## Parte 5 — Decisões (todas fechadas em 2026-07-10)
+1. **C1 — Pesos: 35/20/45.** ✅ [[04-Decisões/adr-pesos-indice-performance-2026]]
+2. **C2 — Numeração:** RNs novas seguem `RN-123+`; regras do Gregory viram
+   `RN-EST-*`, sem colidir com o catálogo mestre. ✅
+3. **C3 — Concatenação → cluster:** substituída pelo cluster aditivo via
+   /informacoes. ✅ [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
+4. **C4 — Fluxo de keywords:** inversão AI-first prevalece. ✅
+5. **C5 — Fonte de posicionamento:** relatório mensal MPI Plus é a fonte
+   única. ✅
+
+Tracker de execução destas decisões: [[03-Produtos/growth-machine/plano-fechamento-prd-v2]].
 
 ## Notas relacionadas
+- [[04-Decisões/adr-pesos-indice-performance-2026]] — ADR da decisão C1
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] — ADR da decisão C3
+- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — tracker de execução
 - [[03-Produtos/growth-machine/prd-v2-mvp]] — PRD que incorpora estas fontes
 - [[03-Produtos/growth-machine/catalogo-regras-negocio]] — catálogo mestre de RN (alvo da reconciliação)
 - [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — auditoria de qualidade de RN

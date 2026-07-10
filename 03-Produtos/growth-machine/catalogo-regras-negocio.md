@@ -2,7 +2,7 @@
 tipo: produto
 status: vivo
 criado: 2026-07-02
-ultima-revisao: 2026-07-02
+ultima-revisao: 2026-07-10
 tags: [growth-machine, rn, catalogo, prd]
 ---
 
@@ -33,7 +33,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-15:** Bonificação de palavras: similaridade vetorial ≥70% → fila de sugestões. Sujeita à trava de 50% do pacote (RN-85). Não fura aprovação humana.
 - **RN-16:** Fronteiras de CTR: sem arredondamento. Posição 10,5 = CTR 1%.
 - **RN-17:** Maturidade: interpolação linear. Mês 5 = 22,5%.
-- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = 40 posicionamento / 40 tráfego / 20 leads.
+- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = **35 posicionamento / 20 tráfego / 45 leads** (revisado 2026-07-10 — ver [[04-Decisões/adr-pesos-indice-performance-2026]]; substitui os 40/40/20 originais e os 40/30/30 do Gregory, à luz do consenso de mercado 2026 de que tráfego é o sinal mais erodido pelo zero-click/AI Overview).
 - **RN-19:** Thresholds inclusivos: índice no limite sobe de categoria.
 - **RN-20:** Volume zero: `volume_total = 0` → "Sem estudo válido" → alerta.
 

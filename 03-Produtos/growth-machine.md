@@ -2,7 +2,7 @@
 tipo: produto
 status: em-desenvolvimento
 criado: 2026-06-30
-ultima-revisao: 2026-07-01
+ultima-revisao: 2026-07-10
 origem:
   - "Notion — transcrição @hoje 10:39 (BRT)"
   - "Drive — PRD_Growth_Machine_v1_9_14.md (16/06/2026)"
@@ -128,10 +128,14 @@ indice_posicionamento = posicionamento_real / posicionamento_esperado
 indice_trafego = trafego_real / trafego_esperado
 indice_leads = leads_real / leads_esperados
 
-indice_final = (indice_pos × 0.40) + (indice_traf × 0.40) + (indice_lead × 0.20)
+indice_final = (indice_pos × 0.35) + (indice_traf × 0.20) + (indice_lead × 0.45)
 ```
 
-**Pesos: 40 posicionamento / 40 tráfego / 20 leads** (configuráveis na Tela 8, RN-18).
+**Pesos: 35 posicionamento / 20 tráfego / 45 leads** (configuráveis na Tela
+8, RN-18). Revisado em 2026-07-10 — substitui o 40/40/20 original: tráfego
+foi rebaixado por ser o sinal mais erodido pelo zero-click/AI Overview
+(60% das buscas terminam sem clique em 2026); leads passa a dominar como o
+resultado real de negócio. Ver [[04-Decisões/adr-pesos-indice-performance-2026]].
 
 **Classificação (thresholds inclusivos, RN-19):**
 
@@ -193,6 +197,12 @@ indicar expansão/reformulação do estudo.
 Quando crítico (score **<50%** **ou** canibalização crítica **ou** páginas
 MPI fora do estudo **ou** briefing sem cobertura): **trava toda a auditoria**.
 
+**Cluster via /informacoes (2026-07-10):** o estudo passa a mapear também
+o **cluster de suporte** em `/informacoes` e `/artigos` — conteúdo
+editorial fora do escopo contratado por keyword, que envelopa e eleva a
+página MPI (pilar) sem alterar o contrato. Ver
+[[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
+
 > **Threshold reconciliado (2026-07-08):** o gate numérico é **<50%**, não
 > <60% (resíduo de versões anteriores — achado F-03). O <50% alinha o
 > travamento à banda de "reformular" da régua de decisão do Estudo (uma
@@ -233,6 +243,11 @@ estudo), linkagem, âncoras, páginas órfãs, links quebrados, canonicals.
 
 Crítico quando: variações sem link para pilar, páginas MPI órfãs, links
 quebrados, ≥3 páginas fora da regra de linkagem.
+
+**Linkagem do cluster (2026-07-10):** também audita se o conteúdo de
+`/informacoes`/`/artigos` linka **para cima**, para a página MPI pilar —
+é o mecanismo que eleva o ranqueamento do que foi contratado sem alterar o
+contrato. Ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
 
 #### Dimensão 4 — W3C / Validação Estrutural de HTML
 Checagem **determinística**. W3C Validator self-hosted em Docker. A IA não
@@ -375,7 +390,7 @@ O agente nunca busca dados sozinho.
 | 5 — Revisão de Conteúdo | Projeto | 4 colunas: Página atual / Padrão SERP / Diagnóstico / Conteúdo MPI Plus |
 | 6 — Status de Execução | Global | Visão somente leitura do status sincronizado do Salesforce |
 | 7 — Gestão de Perfis | Global | ACL, BUs, transferência de projetos |
-| 8 — Parametrização do Modelo | Global | Calibrar pesos 40/40/20, CTRs, thresholds, curva de maturidade, Score de Saúde |
+| 8 — Parametrização do Modelo | Global | Calibrar pesos 35/20/45, CTRs, thresholds, curva de maturidade, Score de Saúde |
 | 9 — Central de Agentes | Global | Configurar agentes, prompts, whitelists, schemas JSON, versionamento + rollback |
 | 10 — Briefing e Estudo | Projeto | 3 colunas: Briefing / Estudo MPI Plus / Site real (FireCrawl) |
 | 11 — Monitor Sentinela | Global | Saúde de infra diária de todos os sites |
@@ -431,7 +446,7 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 - **RN-01:** análise não avança sem validação ativa do cliente/CS — sem prazo automático.
 - **RN-02:** cadência Ruim/Regular = mensal; Bom/Ótimo = trimestral.
 - **RN-16:** sem arredondamento de CTR — posição 10,5 = CTR 1%.
-- **RN-18:** pesos configuráveis, soma=100%. Default: 40/40/20.
+- **RN-18:** pesos configuráveis, soma=100%. Default: **35/20/45** (posição/tráfego/leads, revisado 2026-07-10).
 - **RN-27:** janela de maturação = 60 dias fixos.
 - **RN-40:** site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 - **RN-47:** aprovação humana obrigatória — nada publicado automaticamente.
@@ -543,6 +558,8 @@ confirmação (sem reabrir debate técnico já mapeado) em
 ## Decisões relacionadas
 - [[04-Decisões/migracao-prompt-keywords-v2]] — migração do prompt de keywords
   (v1→v2) impacta diretamente a Dim 1 (Estudo) e Dim 2 (Conteúdo) do GM.
+- [[04-Decisões/adr-pesos-indice-performance-2026]] (2026-07-10) — RN-18 revisado para 35/20/45, à luz do consenso 2026 sobre zero-click/AI Overview.
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] (2026-07-10) — cluster via /informacoes/artigos como camada de ranqueamento aditiva, sem alterar o contrato por keyword.
 
 ## Ideias relacionadas
 -
