@@ -126,11 +126,11 @@ Cada RF é uma capacidade; a coluna RN aponta a restrição que o governa
 |---|---|---|---|
 | **RF-07** | Disparar o ciclo para toda a carteira na chegada do relatório mensal | RN-106 | ✅ |
 | **RF-08** | Hard Stop total quando o relatório mensal estiver ausente | RN-64 | ✅ |
-| **RF-09** | Converter posição média em CTR por faixa, sem arredondamento | RN-16 | ✅ |
+| **RF-09** | Converter posição média em CTR por faixa, sem arredondamento [⚠️ pendente: segmentação Local Pack × orgânica, Track F] | RN-16 | ✅ |
 | **RF-10** | Calcular maturidade por interpolação linear e aplicar teto de crescimento | RN-17 | ✅ |
 | **RF-11** | Calcular o Índice de Performance com pesos parametrizáveis (default **40/40/20**, ⚠️ sob revisão — Camada de Calibração Contínua) | RN-18 | ✅ |
 | **RF-12** | Classificar em Ruim/Regular/Bom/Ótimo (thresholds inclusivos) e definir cadência | RN-19, RN-02 | ✅ |
-| **RF-13** | Usar `trafego_real` só orgânico e `leads_real` multicanal | RN-86, RN-107, RN-110 | ✅ |
+| **RF-13** | Usar `trafego_real` só orgânico e `leads_real` multicanal [⚠️ pendente: emenda RN-107 enumerando "demais canais", Track F] | RN-86, RN-107, RN-110 | ✅ |
 | **RF-14** | Alertar "sem estudo válido" quando `volume_total = 0` | RN-20 | ✅ |
 
 ### Fase 3 — Auditoria em 10 Dimensões
@@ -145,7 +145,7 @@ Cada RF é uma capacidade; a coluna RN aponta a restrição que o governa
 | **RF-21** | Dim 6 — validar schemas e **bloquear** schema fabricado (reviews/preços/FAQ não verificáveis) | RN-117 | ✅ |
 | **RF-22** | Dim 7 — validar sitemap/robots + presença de AI Instructions/LLM.txt | RN-118, RN-82 | ✅ |
 | **RF-23** | Dim 8 — consolidar GSC + backlinks; disavow sempre com revisão humana | RN-119 | 🕒 |
-| **RF-24** | Dim 10 — auditar captação/entrega/qualidade de leads e disparar alertas A/B/C/D | RN-121, RN-107, RN-109 | ✅ |
+| **RF-24** | Dim 10 — auditar captação/entrega/qualidade de leads e disparar alertas A/B/C/D [⚠️ pendente: incorporar RN-123/RN-124 (confirmação de entrega multicanal, vault externa) quando implementadas, Track F] | RN-121, RN-107, RN-109 | ✅ |
 | **RF-25** | Gerar o Parecer Consolidado por IA (1x/análise), mantendo Índice + Score + dimensões separados | RN-97 | ✅ |
 | **RF-26** | Rodar a Camada de Tradução de Diagnóstico (traduz/enriquece, não detecta) | RN-89 | ✅ |
 

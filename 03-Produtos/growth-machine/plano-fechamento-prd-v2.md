@@ -81,11 +81,11 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
   região/tipo. Sem dependência, pode rodar já.
 - [ ] **C3** — backtest da curva `posicionamento_esperado` (quick win, sem dependência)
 - [ ] **C4** — correlação peso×outcome de negócio (quick win, sem dependência)
-- [ ] Emenda à RN-107 — enumerar "demais canais" antes de implementar RN-123/RN-124
-- [ ] Implementar RN-123 (confirmação de entrega WhatsApp) e RN-124 (paridade spam por canal)
+- [ ] Emenda à RN-107 — enumerar "demais canais" antes de implementar RN-123/RN-124 → afeta `RF-13`/`RF-24` do PRD
+- [ ] Implementar RN-123 (confirmação de entrega WhatsApp) e RN-124 (paridade spam por canal) → afeta `RF-24` do PRD
 - [ ] Referência cruzada RN-121 → RN-123/RN-124
 - [ ] Esclarecer RN-41 "Tintambi" com Lucas/Growth
-- [ ] Segmentar curva de CTR (Local Pack × orgânica clássica), RN-16
+- [ ] Segmentar curva de CTR (Local Pack × orgânica clássica), RN-16 → afeta `RF-09` do PRD
 - [ ] Baseline defasada do `ctr_estimado` (janela saudável trimestral)
 - [ ] Avaliar expansão GSC (6→9-10 contas) ou alocação dinâmica
 
@@ -150,6 +150,14 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 - [ ] Golden-set dos prompts definido
 - [ ] ERD + máquinas de estado anexados
 - [x] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — concluída 2026-07-10, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] (Track F lista os achados novos ainda não executados)
+- [ ] **RFs do PRD atualizadas quando Track F fechar** — Track F não é
+  critério de fechamento do PRD em si (é execução/calibração, roda depois),
+  mas 3 itens **alteram RN já citadas em RF existentes** e precisam
+  atualizar o PRD quando implementados, para não deixar a doc dessincronizada:
+  - RN-123/RN-124 (entrega multicanal) → `RF-24` (Dim 10)
+  - Emenda RN-107 ("demais canais") → `RF-13` e `RF-24`
+  - Segmentação RN-16 (Local Pack × orgânica) → `RF-09`
+  Marcadas `[⚠️ pendente]` inline nas RFs em [[03-Produtos/growth-machine/prd-v2-mvp]].
 
 ## Notas relacionadas
 - [[04-Decisões/adr-camada-calibracao-continua]] — ADR vigente da G1
