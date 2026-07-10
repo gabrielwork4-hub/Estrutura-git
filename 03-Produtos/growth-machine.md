@@ -96,8 +96,14 @@ direta na v1.9.16 — o SPOF real é o próprio MPI Plus.
 3. Filtrar só palavras do conjunto base
 4. Calcular posição média
 5. Converter posição em CTR: Top 3 → 20% / Top 10 → 5% / acima Top 10 → 1%
-   (sem arredondamento — posição 10,5 = CTR 1%, RN-16)
+   (sem arredondamento — posição 10,5 = CTR 1%, RN-16) `[🔧 ajuste
+   pendente]` curva única erra p/ Local Pack (mais achatada que orgânica) —
+   segmentar via [[04-Decisões/adr-camada-calibracao-continua]]
 6. Calcular `percentual_posicionamento_real`
+
+**Tráfego de origem IA (RN-SGA-11, proposta, Fase 2):** segmentar no GA4 o
+tráfego vindo de respostas de IA (ChatGPT, Perplexity), hoje invisível
+neste motor.
 
 **Curva de Maturidade (interpolação linear, RN-17):**
 
@@ -195,6 +201,12 @@ pacote (10%).
 DataForSEO e KeywordTools são **condicionais** — só quando a auditoria
 indicar expansão/reformulação do estudo.
 
+**O que a Dim 1 audita** vem construído fora do GM (RN-112: audita, não
+gera) — as regras de **construção** do estudo (palavra épica, regiões,
+tipos de produto/serviço) vivem em `RN-EST-01` a `RN-EST-06` no
+[[03-Produtos/growth-machine/catalogo-regras-negocio]], origem Gregory/MPI
+Plus, e no fluxo [[02-Fluxos/estudo-de-keywords]].
+
 Quando crítico (score **<50%** **ou** canibalização crítica **ou** páginas
 MPI fora do estudo **ou** briefing sem cobertura): **trava toda a auditoria**.
 
@@ -204,8 +216,9 @@ editorial fora do escopo contratado por keyword, que envelopa e eleva a
 página MPI (pilar) sem alterar o contrato. Ver
 [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
 
-**Portão de Diferenciação Real (2026-07-10, validado externamente):** antes
-de gerar página/artigo (MPI ou cluster) por combinação palavra×região×tipo,
+**Portão de Diferenciação Real (RN-SGA-05, proposta, MVP — 2026-07-10,
+validado externamente):** antes de gerar página/artigo (MPI ou cluster) por
+combinação palavra×região×tipo,
 checar sinais de diferenciação real (dado local específico, prova social da
 combinação, resposta a pergunta real do contexto). Sem sinal suficiente:
 página MPI não gera isolada — avalia cluster de suporte; artigo de cluster
@@ -232,12 +245,14 @@ essa busca?"*
 Fluxo: DataForSEO identifica concorrentes → crawler extrai conteúdo dos
 concorrentes → monta padrão SERP → FireCrawl lê página do cliente → compara.
 
-Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO /
-**2D — AEO** (resposta única por pergunta do nicho, priorização por
-segmento; Fase 2, exceto priorização por nicho que é MVP) / **2E —
-E-E-A-T** (autor, página "sobre", fontes citadas; MVP). 2D e 2E propostas
-em 2026-07-10 — ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]]
-e RN-SGA-01/02/04/07 em [[03-Produtos/growth-machine/catalogo-regras-negocio]].
+Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO
+(extrabilidade, **RN-SGA-01**, Fase 2) / **2D — AEO** (resposta única por
+pergunta do nicho — **RN-SGA-02**, Fase 2; priorização por nicho —
+**RN-SGA-04**, MVP) / **2E — E-E-A-T** (autor, página "sobre", fontes
+citadas — **RN-SGA-07**, MVP). Também nesta dimensão: meta description
+≤160/title ≤60 determinístico (**RN-SGA-03**, MVP) e sinal de conteúdo
+original/information gain (**RN-SGA-08**, Fase 2). 2D e 2E propostas em
+2026-07-10 — ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]].
 
 Régua de decisão:
 | Faixa | Score | Decisão |
@@ -266,16 +281,21 @@ quebrados, ≥3 páginas fora da regra de linkagem.
 é o mecanismo que eleva o ranqueamento do que foi contratado sem alterar o
 contrato. Ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
 
-**Auditoria retroativa de quase-duplicatas (validado externamente):**
-detecta páginas MPI existentes com estrutura/texto muito parecidos,
-diferindo essencialmente na cidade ou tipo de negócio — sinal de que um
-grupo deveria virar cluster ao redor de um pilar mais forte, em vez de
-competir isoladamente. Ação hoje: só via aditiva (prioriza onde construir
-cluster); consolidar as páginas fracas fica para Fase 2, condicionado ao
-ajuste da RN-84. **Anti-canibalização dentro do próprio cluster:** a mesma
-lógica de RN-15/RN-85 (bonificação) se estende à cobertura de tópicos do
-cluster — não pode haver dois artigos respondendo essencialmente à mesma
-pergunta.
+**Canibalização entre subdomínios (RN-SGA-06, proposta, MVP):** estende a
+auditoria a arquiteturas multi-subdomínio (ex: `www` × `loja`) — caso real
+identificado no emtecorp, onde os dois competiam pela mesma keyword sem
+nenhuma dimensão detectar.
+
+**Auditoria retroativa de quase-duplicatas (validado externamente, alimenta
+RN-SGA-05):** detecta páginas MPI existentes com estrutura/texto muito
+parecidos, diferindo essencialmente na cidade ou tipo de negócio — sinal de
+que um grupo deveria virar cluster ao redor de um pilar mais forte, em vez
+de competir isoladamente. Ação hoje: só via aditiva (prioriza onde
+construir cluster); consolidar as páginas fracas fica para Fase 2,
+condicionado ao ajuste da RN-84. **Anti-canibalização dentro do próprio
+cluster:** a mesma lógica de RN-15/RN-85 (bonificação) se estende à
+cobertura de tópicos do cluster — não pode haver dois artigos respondendo
+essencialmente à mesma pergunta.
 
 #### Dimensão 4 — W3C / Validação Estrutural de HTML
 Checagem **determinística**. W3C Validator self-hosted em Docker. A IA não
@@ -285,25 +305,43 @@ páginas = problema de template = macroatividade única.
 #### Dimensão 5 — PageSpeed / Performance Front-end
 Checagem **determinística por URL**. PageSpeed API/Lighthouse por URL,
 separando mobile e desktop. Score ≥80 = régua operacional MPI. Problemas
-de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota.
+de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota. `[🔧 ajuste
+pendente, RN-07]` migrar para os 3 Core Web Vitals reais. **Pilares
+agênticos (RN-SGA-15, proposta, Fase 2):** accessibility tree bem formada +
+Cumulative Layout Shift — reaproveita a infraestrutura de PageSpeed já
+existente aqui.
 
 #### Dimensão 6 — Schemas JSON-LD / Dados Estruturados
 Checagem **determinística**. Schemas mínimos por tipo de página (Organization
 + LocalBusiness em todas; Service+ItemPage+BreadcrumbList em landing pages
 de serviço, etc.). **Regra anti-spam (RN-117):** reviews, ratings, preços, FAQ
-só marcados quando existirem real e visivelmente na página.
+só marcados quando existirem real e visivelmente na página. **Autoridade de
+entidade (RN-SGA-14, proposta, Fase 2):** `sameAs` no schema + presença
+fora do site.
 
 #### Dimensão 7 — Sitemap / Robots / Indexabilidade Técnica
 Checagem **determinística**. Não usa MPI Plus como fonte de verdade — usa
 FireCrawl + parsers. Valida: sitemap acessível, robots sem bloqueio indevido,
 canonical correto, noindex indevido, conflitos. Inclui checagem de LLM.txt e
-AI Instructions (RN-82).
+AI Instructions (RN-82, `[🔧 ajuste pendente]` presença → qualidade).
+**Controle de crawler de IA (RN-SGA-13, proposta, MVP):** GPTBot/ClaudeBot/
+PerplexityBot/Google-Extended via robots.txt. **Refinamento validado
+externamente:** distinguir bloqueio de treino (sem custo de GEO) de
+bloqueio de citação ao vivo (custo real, principalmente Perplexity) —
+matriz revisada trimestralmente. **Crawl-log real (RN-SGA-12, Fase 2):**
+confirma se bots de IA/Googlebot de fato visitam, não só se têm permissão.
+**Sinal PDF→HTML (RN-SGA-16, MVP):** conteúdo importante preso em PDF
+sinaliza migração.
 
 #### Dimensão 8 — Search Console / Presença no Google / Sinais Externos
-Agente Tradutor de Presença no Google. 6 contas GSC. Não substitui o Motor
-de Percepção. Subchecagens: 8A Indexação real / 8B Consultas e visibilidade /
-8C Core Web Vitals reais / 8D Backlinks tóxicos (SemRush). Disavow sempre
-com revisão humana — nunca automático.
+Agente Tradutor de Presença no Google. 6 contas GSC `[🔧 teto de cobertura
+identificado — 2.500 clientes/6 contas; expandir p/ 9-10 ou alocação
+dinâmica, achado F-14/F-32]`. Não substitui o Motor de Percepção.
+Subchecagens: 8A Indexação real / 8B Consultas e visibilidade / 8C Core Web
+Vitals reais / 8D Backlinks tóxicos (SemRush). Disavow sempre com revisão
+humana — nunca automático. **Ofensiva de autoridade (RN-SGA-09, proposta,
+Fase 2):** 8D passa de reativa (só disavow) para propositiva (prospecção de
+domínios/menções sem link ainda).
 
 #### Dimensão 9 — Servidor / TTFB / Infraestrutura
 GTmetrix por URL representativa. Não confundir com Dim 5 (performance
@@ -314,7 +352,12 @@ exige recorrência + evidência cruzada entre GTmetrix/PageSpeed/Sentinela.
 Agente Auditor de Captação. Subchecagens: 10A Lead total multicanal /
 10B Formulário / 10C SendGrid/DNS-MX / 10D WhatsApp e CTAs / 10E
 Qualidade/spam. O sistema não bloqueia spam automaticamente — recomenda
-CAPTCHA/honeypot.
+CAPTCHA/honeypot. **Confirmação de entrega multicanal (RN-123/RN-124,
+proposta, achado F-40):** 10D hoje só valida se o botão/link do WhatsApp
+funciona — falta confirmação de entrega equivalente ao SendGrid
+(delivered/bounce/read), via webhook da API WhatsApp Business (RN-123); e
+10E precisa confirmar explicitamente que roda sobre o formato de mensagem
+de cada canal, não só formulário (RN-124).
 
 #### Dimensão 11 — GEO / Citação *(nova, Fase 2 — não implementada no MVP)*
 Fecha o loop de mensuração que falta hoje: o GM prepara o site para ser
@@ -436,6 +479,13 @@ O agente nunca busca dados sozinho.
 **RN-98:** telas de projeto (3, 4, 5, 10) não ficam no menu — acessadas ao
 selecionar um cliente no Painel de Carteira.
 
+**Gap de amarração (2026-07-10):** nenhuma tela tem menção explícita de
+onde `taxa_diferenciacao_real`/`nivel_diferenciacao` (Portão de
+Diferenciação Real) ou o sinal da Dimensão 11 (GEO/Citação) aparecem para o
+usuário — candidatos naturais são Tela 1 (badge) e Tela 3 (Prontuário),
+mas isso não foi decidido, só apontado como lacuna a fechar antes do build
+dessas features.
+
 ---
 
 ## Ferramentas externas integradas
@@ -458,6 +508,7 @@ selecionar um cliente no Painel de Carteira.
 | **SemRush Business** | Backlinks tóxicos (Dim 8) |
 | **DNS/MX checker** | SPF/DKIM/DMARC (Dim 10) |
 | **HTTP checker** | Status, latência, CTAs (Dim 7, 9, 10, Sentinela) |
+| **WhatsApp Business API** (webhook de status) | `[proposta, RN-123]` Confirmação de entrega multicanal — enviado/entregue/lido/falhou (Dim 10). Distinto do WhatsApp API de notificação (RN-51) |
 
 ---
 

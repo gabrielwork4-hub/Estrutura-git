@@ -191,10 +191,10 @@ tags: [growth-machine, rn, catalogo, prd]
 > `RN-SGA-*` justamente para liberar este espaço. Status: proposta em
 > avaliação, não oficial ainda.
 
-| ID | Regra | Origem | Prioridade |
-|---|---|---|---|
-| **RN-123** | Confirmação de Entrega Multicanal — estender o padrão já existente para e-mail (SendGrid: delivered/bounce/blocked/spam_report) ao WhatsApp, via webhook de status nativo das APIs de WhatsApp Business (enviado/entregue/lido/falhou). Fecha a lacuna que a RN-23 supersedida cobria só para e-mail. | Vault externa (F-40) | Alta |
-| **RN-124** | Paridade de Detecção de Qualidade/Spam entre Canais — a subcheck 10E deve rodar sobre o formato de mensagem de **cada canal**, não só formulário; ajustar critérios para o formato mais curto/informal do WhatsApp (sem campo "assunto"). | Vault externa (F-40) | Alta |
+| ID | Regra | Dimensão | Origem | Prioridade |
+|---|---|---|---|---|
+| **RN-123** | Confirmação de Entrega Multicanal — estender o padrão já existente para e-mail (SendGrid: delivered/bounce/blocked/spam_report) ao WhatsApp, via webhook de status nativo das APIs de WhatsApp Business (enviado/entregue/lido/falhou). Fecha a lacuna que a RN-23 supersedida cobria só para e-mail. | Dim 10 (10D) | Vault externa (F-40) | Alta |
+| **RN-124** | Paridade de Detecção de Qualidade/Spam entre Canais — a subcheck 10E deve rodar sobre o formato de mensagem de **cada canal**, não só formulário; ajustar critérios para o formato mais curto/informal do WhatsApp (sem campo "assunto"). | Dim 10 (10E) | Vault externa (F-40) | Alta |
 
 **Emenda proposta à RN-107:** substituir "demais canais" (vago) por lista
 fechada, decidida com o líder de área — fecha o guarda-chuva antes que
@@ -209,14 +209,14 @@ RN-121 deve ganhar linha apontando para RN-123/RN-124.
 > (upload direto, 2026-07-08). Prioridade: Alta (governa a Dim 1/Etapa 0-3
 > do estudo).
 
-| ID | Regra | Origem | Prioridade |
-|---|---|---|---|
-| **RN-EST-01** | Não iniciar estudo sem validação do cliente. | Gregory | Alta |
-| **RN-EST-02** | Palavra épica: máximo 3 termos, maior volume da categoria. | Gregory | Alta |
-| **RN-EST-03** | Mínimo de 2 regiões por categoria no estudo. | Gregory | Média |
-| **RN-EST-04** | Seleção de tipo de produto/serviço permite múltiplas opções. | Gregory | Média |
-| **RN-EST-05** | `[condicionada]` Combinações (concatenação) devem respeitar semântica de busca — **não usar em escala como estratégia primária**; substituída pelo cluster (ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], decisão C3). | Gregory | Alta |
-| **RN-EST-06** | Páginas `/informacoes` e `/artigos` são ignoradas no crawling do estudo — base do ADR de cluster. | Gregory | Alta |
+| ID | Regra | Dimensão / Fase | Origem | Prioridade |
+|---|---|---|---|---|
+| **RN-EST-01** | Não iniciar estudo sem validação do cliente. | Fase 1 (briefing) | Gregory | Alta |
+| **RN-EST-02** | Palavra épica: máximo 3 termos, maior volume da categoria. | Dim 1 (Estudo) | Gregory | Alta |
+| **RN-EST-03** | Mínimo de 2 regiões por categoria no estudo. | Dim 1 (Estudo) | Gregory | Média |
+| **RN-EST-04** | Seleção de tipo de produto/serviço permite múltiplas opções. | Dim 1 (Estudo) | Gregory | Média |
+| **RN-EST-05** | `[condicionada]` Combinações (concatenação) devem respeitar semântica de busca — **não usar em escala como estratégia primária**; substituída pelo cluster (ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], decisão C3). | Dim 1 + Dim 3 | Gregory | Alta |
+| **RN-EST-06** | Páginas `/informacoes` e `/artigos` são ignoradas no crawling do estudo — base do ADR de cluster. | Dim 1 (Estudo) | Gregory | Alta |
 
 ## RN-SGA-01 a RN-SGA-16 — Estruturação SEO/GEO/AEO (proposta)
 > Namespace próprio, renumerado de RN-123–138 em 2026-07-10 após colisão
