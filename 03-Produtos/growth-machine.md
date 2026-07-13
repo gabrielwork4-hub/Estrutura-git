@@ -33,6 +33,14 @@ Cliente fora do MPI Plus entra primeiro nele.
 - **MPI Plus** = geração de estudo/conteúdo/imagem + aprovação do cliente (portal-cliente).
 - **Salesforce** = gestão de execução de atividades.
 
+> **Posicionamento do MPI Plus (confirmado 2026-07-13):** o recorte acima
+> descreve o papel do MPI Plus **dentro do fluxo do GM**, mas o produto em
+> si é mais amplo — é o **sistema interno do Grupo**, que centraliza as
+> informações do cliente desde o onboarding até a validação final. O GM é
+> uma camada de diagnóstico que roda por cima de um cliente já dentro
+> desse ciclo, não o dono do histórico do cliente. Ver
+> [[03-Produtos/mpi-plus]] e [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]].
+
 ---
 
 ## Impacto esperado

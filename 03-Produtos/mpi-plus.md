@@ -11,6 +11,15 @@ tags: [produto, mpi-plus, keywords]
 # MPI Plus
 
 ## Visão geral
+**Posicionamento (confirmado pelo usuário, 2026-07-13): o MPI Plus é o
+sistema interno do Grupo** (Ideal Marketing · Busca Cliente · MPI
+Solutions) — centraliza as informações do cliente **desde o onboarding até
+a validação final**. Não é "só" a ferramenta de geração de estudo/
+conteúdo/imagem que [[03-Produtos/growth-machine]] cita como dependência —
+é o sistema de registro de todo o ciclo de vida do cliente; o GM roda por
+cima dele como camada de diagnóstico especializada, consumindo dados e
+devolvendo fila de ações, mas sem ser o dono do histórico do cliente.
+
 Citado na transcrição de kick-off como produto que passou por uma
 refatoração completa de processo e palavras-chave (v2). O conteúdo de
 negócio real do MPI Plus está referenciado dentro do PRD da
@@ -22,7 +31,8 @@ apenas templates de Wordpress e Demonstração.
 menu Dashboard/Clientes/Relatórios/Usuários/Configurações, com o "Hub do
 Cliente" (Resumo/Briefing/Estudo/Relatório) sendo a peça central — é onde
 o relatório mensal que dispara o Motor de Percepção do GM (RN-106) de fato
-é gerado, e onde a aprovação do cliente (RN-103) acontece na prática. Ver
+é gerado (**confirmado: geração automática**, não manual), e onde a
+aprovação do cliente (RN-103) acontece na prática. Ver
 [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] para o mapa completo,
 cruzado com as RNs do GM que dependem dessas telas.
 

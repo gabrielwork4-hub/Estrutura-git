@@ -19,6 +19,26 @@ tags: [mpi-plus, ux, funcionalidades, painel, ideal-trends]
 > peças que só existiam como conceito ("o relatório mensal", "a aprovação
 > do cliente no MPI Plus") agora têm uma tela concreta associada.
 
+## Posicionamento (confirmado pelo usuário, 2026-07-13)
+O **MPI Plus é o sistema interno do Grupo** (Ideal Marketing · Busca
+Cliente · MPI Solutions) — centraliza as informações do cliente **desde o
+onboarding até a validação final**. Isso reposiciona o produto: não é "só"
+a ferramenta de geração de estudo/conteúdo/imagem citada em
+[[03-Produtos/growth-machine]] — é o **sistema de registro** de todo o
+ciclo de vida do cliente, e o pipeline "Diagnóstico → Briefing → Estudo →
+Conteúdo → Aprovação → Publicação → Site no ar" (Bloco 2 abaixo) é esse
+ciclo completo, não uma etapa isolada. O Growth Machine roda **por cima**
+de um cliente já dentro desse ciclo — consome os dados (briefing, estudo,
+relatório) e devolve fila de ações, mas quem é "dono" do histórico do
+cliente é o MPI Plus.
+
+**Implicação para a lacuna "Diagnóstico" ambíguo (abaixo):** essa
+confirmação torna mais provável que o "Diagnóstico" do pipeline do MPI+
+seja o passo único de onboarding (antes do briefing), distinto do ciclo
+mensal recorrente de auditoria do GM (Fase 3) — mas isso **ainda não foi
+confirmado explicitamente**, só ficou mais plausível; mantido como
+pergunta em aberto até confirmação direta.
+
 ## Estrutura global
 - Menu lateral: Dashboard, Clientes, Relatórios, Usuários, Configurações.
 - Topo: busca global (cliente/cor), notificações, modo escuro, perfil/sair.
@@ -83,7 +103,7 @@ aprovação ocorre no MPI Plus"):
 
 | Tela/bloco do MPI+ | RN/RF do GM que depende dela | Observação |
 |---|---|---|
-| **Hub do Cliente › Relatório** (GA4, Search Console, leads legado, envio automático mensal) | **RN-105/RN-106** (fonte única de posicionamento/tráfego/leads, gatilho mensal ~dia 1º/2), **RN-64** (Hard Stop se ausente) | Confirma que o "relatório mensal" citado dezenas de vezes no catálogo de RN **é literalmente esta aba** — não uma integração separada. Não confirma, porém, **se a geração é automática na virada do mês ou depende de disparo manual** — abre pergunta nova, ver "Lacunas" abaixo. |
+| **Hub do Cliente › Relatório** (GA4, Search Console, leads legado, envio automático mensal) | **RN-105/RN-106** (fonte única de posicionamento/tráfego/leads, gatilho mensal ~dia 1º/2), **RN-64** (Hard Stop se ausente) | Confirma que o "relatório mensal" citado dezenas de vezes no catálogo de RN **é literalmente esta aba** — não uma integração separada. **Confirmado pelo usuário (2026-07-13): geração automática**, não depende de disparo manual — o que RN-64 protege é a **ausência real** do relatório (falha de integração GA4/GSC/leads na virada do mês), não um esquecimento humano de gerar. |
 | **Hub do Cliente › Estudo** (import CSV, status, aprovação, progresso do pacote) | **RN-101/RN-102** (import via API), **RN-103** (aprovação do cliente ocorre no MPI Plus, não no GM), auditado por **RN-112** (Dim 1) | Confirma RN-103 com tela concreta — a aprovação do estudo pelo cliente acontece aqui, não no GM. |
 | **Hub do Cliente › Briefing** (formulário + IA de resumo + aprovação) | **RF-01/RF-03** (import + validação pelo CS), **RN-01** | A "IA de resumo" é um componente novo, não documentado antes em nenhuma RN do GM — provavelmente upstream do que o GM importa, não algo que o GM audita. |
 | **Configurações › Templates IA** (6 etapas: classificador de domínio, padrão, estrutura, seção, coesão, QA) | Já documentado em [[03-Produtos/mpi-plus]] › "Pipeline de prompts" (SERP Search → Domain Classification → Pattern Analysis → Structure → Section → Cohesion → QA) | **Convergência confirma o pipeline já registrado** — a única diferença é que aqui a etapa "SERP Search" não aparece nomeada como "template" (provavelmente é coleta de dado upstream, não um template editável). Não é contradição, é nível de detalhe diferente. |
@@ -91,12 +111,6 @@ aprovação ocorre no MPI Plus"):
 | **Configurações › Templates WP** (temas WordPress, upload ZIP) | **RN-62** (formato de entrega = HTML "tagueado") | Não fica claro se "tema WordPress" e "HTML tagueado" são o mesmo formato de entrega visto por ângulos diferentes, ou dois mecanismos distintos — sinalizado como pergunta aberta. |
 
 ## O que este mapa NÃO confirma (lacunas/perguntas em aberto)
-- **Geração do relatório mensal — automática ou manual?** A aba Relatório
-  mostra "envio automático mensal por e-mail" e "histórico de relatórios
-  gerados", mas não diz se a **geração** (consolidação de GA4+GSC+leads) é
-  automática no fechamento do mês ou depende de ação humana — isso importa
-  para RN-106 (gatilho de calendário) e para o Hard Stop RN-64 (o que
-  exatamente conta como "ausente"?).
 - **Dois sistemas de papéis/permissão não conversam entre si.** O MPI+ tem
   seus próprios cargos (Administrador, Analista de CS/Estudo/
   Implementação/Produção, Gestor de CS/Estudo/Implementação), distintos
@@ -117,10 +131,11 @@ aprovação ocorre no MPI Plus"):
   paralelo e desconectado.
 - **"Diagnóstico" como 1º passo do pipeline do MPI+** (Diagnóstico →
   Briefing → Estudo → Conteúdo → Aprovação → Publicação → Site no ar) usa o
-  mesmo termo que o GM usa para a auditoria recorrente mensal (Fase 3) —
-  aqui parece ser um passo único de onboarding, não um ciclo repetido.
-  Vale confirmar que não é o mesmo conceito antes de reusar terminologia
-  entre os dois produtos.
+  mesmo termo que o GM usa para a auditoria recorrente mensal (Fase 3).
+  Com o posicionamento confirmado (MPI Plus = ciclo de vida completo do
+  cliente), fica **mais plausível** que seja o passo único de onboarding,
+  distinto do ciclo mensal do GM — mas segue **não confirmado
+  explicitamente**, mantido em aberto.
 
 ## Cruzamento com outras notas
 - [[03-Produtos/mpi-plus]] — nota-mãe do produto; esta nota preenche a
