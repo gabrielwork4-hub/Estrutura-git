@@ -34,7 +34,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-04:** Alerta de 28 dias: ação gerada e não executada após 28 dias = alerta ao gerente.
 - **RN-05:** Briefing sem páginas institucionais: resolvido na v1.7 (crawler varre todas as páginas).
 - **RN-06:** Cliente rejeita ativamente o briefing/estudo (via CS): máximo 2 iterações. 3ª rejeição → escala pro gerente. Sem resposta = sem prazo automático.
-- **RN-07:** PageSpeed/Performance Front-end: análise por URL, mobile e desktop separados. Score ≥80 é a régua operacional MPI. `[🔧 ajuste pendente]` régua deve migrar para os 3 Core Web Vitals reais (LCP/INP/CLS) — Score é proxy, não o fator real do Google. Ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]].
+- **RN-07:** PageSpeed/Performance Front-end: análise por URL, mobile e desktop separados. Score ≥80 é a régua operacional MPI. `[📝 nota do PO, 2026-07-13]` o relatório do PageSpeed/Lighthouse já retorna LCP, INP (via TBT) e CLS individualmente — o Score ≥80 já dá direcionamento para os 3 pilares de Core Web Vitals, por serem componentes do próprio cálculo do score. `[🔧 ajuste pendente, atenuado]` o que falta formalizar na régua é usar os **3 valores individuais como critério de gate**, não só o score agregado — um score alto ainda pode mascarar 1 pilar isolado fora do threshold, e o dado que o Google usa para ranquear é de campo (CrUX/GSC), não o score de laboratório do Lighthouse. Ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]].
 - **RN-08:** Servidor/TTFB/Infraestrutura: GTmetrix por URL representativa; M3 não abre em medição isolada; decisão considera recorrência, escopo, origem provável e evidência cruzada.
 - **RN-09:** Tipo de projeto: E-commerce, Loja, Revendedor, Marketplace = Produto. Demais = Serviço.
 - **RN-10:** Arquitetura MPI/Silo/Linkagem: estudo aprovado no MPI Plus é fonte de verdade. Direção padrão: variações → lateral + pilar; pilar não linka para baixo.
@@ -76,7 +76,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-40:** Site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 
 ## RN-41 a RN-50 — Performance e Aprovação
-- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3. `[❓ termo não identificado]` "Tintambi" não é termo técnico reconhecido — precisa esclarecimento de Lucas/Growth antes de reescrever (achado F-07, confirmado por fonte externa).
+- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3. `[📝 esclarecido pelo PO, 2026-07-13]` Tintambi era o centralizador de páginas MPI, formadas por imagem + tópico segmentado — um padrão legado de página que o sistema detecta e sinaliza ao analista, sem abrir macroatividade automática. Termo resolvido (achado F-07 fechado).
 - **RN-42:** Scripts de terceiros: sinaliza scripts pesados.
 - **RN-43:** Histórico real: baixo recurso (CPU) = timeout = desindexação.
 - **RN-44:** Sistema prioriza, não pergunta: ordem de impacto calculada.

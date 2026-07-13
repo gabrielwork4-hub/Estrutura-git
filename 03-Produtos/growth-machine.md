@@ -320,8 +320,11 @@ páginas = problema de template = macroatividade única.
 #### Dimensão 5 — PageSpeed / Performance Front-end
 Checagem **determinística por URL**. PageSpeed API/Lighthouse por URL,
 separando mobile e desktop. Score ≥80 = régua operacional MPI. Problemas
-de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota. `[🔧 ajuste
-pendente, RN-07]` migrar para os 3 Core Web Vitals reais. **Pilares
+de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota. `[📝 nota do
+PO, 2026-07-13]` o score já dá direcionamento para os 3 pilares de CWV
+(LCP/INP/CLS são componentes do próprio cálculo). `[🔧 ajuste pendente,
+atenuado, RN-07]` falta formalizar os 3 valores individuais como critério
+de gate, em vez de só o score agregado. **Pilares
 agênticos (RN-SGA-15, proposta, Fase 2):** accessibility tree bem formada +
 Cumulative Layout Shift — reaproveita a infraestrutura de PageSpeed já
 existente aqui.

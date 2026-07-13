@@ -84,7 +84,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 - [ ] Emenda à RN-107 — enumerar "demais canais" antes de implementar RN-123/RN-124 → afeta `RF-13`/`RF-24` do PRD
 - [ ] Implementar RN-123 (confirmação de entrega WhatsApp) e RN-124 (paridade spam por canal) → afeta `RF-24` do PRD
 - [ ] Referência cruzada RN-121 → RN-123/RN-124
-- [ ] Esclarecer RN-41 "Tintambi" com Lucas/Growth
+- [x] Esclarecer RN-41 "Tintambi" — **resolvido pelo PO (2026-07-13)**: era o centralizador de páginas MPI formadas por imagem + tópico segmentado
 - [ ] Segmentar curva de CTR (Local Pack × orgânica clássica), RN-16 → afeta `RF-09` do PRD
 - [ ] Baseline defasada do `ctr_estimado` (janela saudável trimestral)
 - [ ] Avaliar expansão GSC (6→9-10 contas) ou alocação dinâmica
