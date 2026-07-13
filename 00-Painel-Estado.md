@@ -29,13 +29,14 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **✅ concluída**: acesso liberado, vault externa lida (índice + roadmap + Cluster Wrapping + Camada de Calibração Contínua). Pesos revertidos p/ 40/40/20 sob revisão; RN-123/124 reais (entrega multicanal) incorporadas; Cluster Wrapping validado e enriquecido com Portão de Diferenciação Real (2026-07-10).
 - [[03-Produtos/growth-machine/validacao-fluxos-principios]] — validação das 5 correntes operacionais × 6 princípios-núcleo: nenhuma contradição lógica encontrada, 3 correções de fluxo aplicadas, 1 gap real confirmado (loop de GEO/Dim 11 segue Fase 2) (2026-07-10).
 - [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]] — **reescrito**: fila de prioridade agora com 17 itens, anti-doorway/Cluster Wrapping como #1 (era ausente na versão original), todos os itens amarrados a RN-SGA (2026-07-10).
+- [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] — primeira UX/UI do painel MPI+ mapeada: Dashboard/Clientes/Relatórios/Usuários/Configurações; confirma que o "relatório mensal" (RN-105/RN-106) e a aprovação do cliente (RN-103) do GM têm tela concreta no Hub do Cliente; expõe 5 lacunas novas (geração automática × manual do relatório, papéis MPI+ × personas GM sem de-para, módulos do portal do cliente, logs, termo "Diagnóstico" ambíguo entre os dois produtos) (2026-07-13).
 
 ## Produtos
 
 | Produto | Status | Prioridade | Nota |
 |---|---|---|---|
 | [[03-Produtos/growth-machine]] | Em desenvolvimento — **PRD final estruturado** ([[PRDFINAL]]); PRD v1.9.14 no Drive; avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 7 questões de integração ainda bloqueiam build |
-| [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos | 2º | Dependência direta do Growth Machine (RN-108) |
+| [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos, **UI/UX mapeada** ([[03-Produtos/mpi-plus/mapa-funcionalidades-painel]], 2026-07-13) | 2º | Dependência direta do Growth Machine (RN-108) |
 | [[03-Produtos/ideal-tracker]] | Em desenvolvimento — PRD/UX documentados | 3º | 6 pontos críticos em aberto, sem dependência cruzada |
 
 ## Fluxos
