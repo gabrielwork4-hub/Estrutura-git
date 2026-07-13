@@ -592,7 +592,7 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 | Q14 | Limite de links por página |
 | Q16 | Padrão de nomes de arquivo de imagem |
 | Q17 | Origem do conteúdo dos concorrentes na Dim 2 (FireCrawl ou outra camada) |
-| Q18–Q21 | Mapeamento GM↔Salesforce (objeto, direção do sync, relatório como nota ou só no GM) |
+| Q18 | Qual objeto do Salesforce recebe a nota mensal de status (Task, objeto customizado, Case) — pergunta técnica p/ quem administra o Salesforce |
 | Q24 | Limite de tentativas de ajuste de conteúdo antes de escalar ao gestor |
 | Q25–Q26 | Escopo exato do Sentinela por projeto + infraestrutura do cron |
 | Q27–Q30 | Autenticação GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress, idempotência de geração |
@@ -602,6 +602,15 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]. Removida
 > desta tabela em 2026-07-13 (estava marcada aberta por engano, achado
 > nesta sessão).
+
+> ✅ **Q19/Q20/Q21 resolvidas pelo PO (2026-07-13)** — mecanismo é
+> **pooling mensal** (não webhook), atrelado ao ciclo do Motor de
+> Percepção; conteúdo = status/data/especificidades técnicas do ajuste;
+> relatório ao cliente é incondicional (mensal, sempre), mas a **nota
+> dentro do Salesforce** só é criada quando a classificação do ciclo fica
+> **abaixo da régua ("Ruim")**. Detalhe completo em
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
+> Resta só **Q18** (qual objeto do Salesforce recebe a nota).
 
 > ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
 > **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30

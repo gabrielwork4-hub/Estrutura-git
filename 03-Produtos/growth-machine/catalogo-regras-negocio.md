@@ -129,6 +129,28 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-76:** Atividades exportadas são agrupadas por área/função; detalhe técnico permanece no GM.
 - **RN-77:** Conclusão de atividade no Salesforce sincroniza o status automaticamente no GM (ida-e-volta).
 - **RN-78:** Nenhum conteúdo/detalhe técnico trafega para o Salesforce — somente título e escopo da atividade.
+
+> **Esclarecimento do PO (2026-07-13) — resolve Q19/Q20/Q21:** o
+> Salesforce é o **CRM global** onde a empresa reporta demandas
+> internamente — junto com o MPI Plus, os dois centralizadores da jornada
+> do cliente (MPI Plus: onboarding→validação; Salesforce: demanda/execução).
+> O relatório mensal do MPI Plus é **enviado automaticamente ao cliente
+> todo mês, incondicional** (já mapeado em
+> [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]]) e **sempre**
+> alimenta o Motor de Percepção do GM (RN-106/RN-64 — precisa disso pra
+> calcular o Índice em primeiro lugar). O que é **condicional**: quando a
+> classificação mensal (RN-19) resulta **abaixo da régua definida
+> ("Ruim", Índice <0,60)**, o sistema cria uma **nota dentro do
+> Salesforce** com status, data e as especificidades técnicas do que
+> precisa ser ajustado — pooling mensal, não webhook em tempo real.
+> Regular/Bom/Ótimo **não** geram essa nota. Por ser comunicação
+> **interna** (não chega ao cliente), não conflita com **RN-50**
+> ("boletim ao cliente sempre como melhoria, nunca problema") — essa regra
+> segue valendo só para a comunicação client-facing.
+> `[❓ ainda em aberto, Q18]` falta confirmar **qual objeto do Salesforce**
+> recebe essa nota (Task padrão, objeto customizado, Case) — pergunta
+> técnica para quem administra o Salesforce, não decisão de produto.
+
 - **RN-79:** A reativação dos robôs de validação só ocorre via botão de validação acionado pelo analista no GM; gatilho da maturação de 60 dias.
 - **RN-80:** Briefing auto-incrementado: toda ação validada incrementa o briefing (nunca substitui o aprovado).
 - **RN-81:** Validação automática por IA pós-execução: ao acionar a validação, o sistema relê o site e confere se cada ação do plano foi executada.

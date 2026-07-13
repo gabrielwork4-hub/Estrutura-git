@@ -11,12 +11,20 @@ tags: [growth-machine, integracao, salesforce, mpi-plus, spof]
 
 ## Problema
 17 das 30 questões em aberto do PRD do Growth Machine não têm dono nem
-prazo. Dentre elas, 7 estão concentradas exatamente na camada de integração
-mais crítica do sistema — a que o próprio PRD reconhece como SPOF (MPI
-Plus): Q18-Q21 (mapeamento GM↔Salesforce, objeto usado, direção do sync,
-relatório como nota ou só no GM) e Q27-Q30 (autenticação GM→API MPI Plus,
-reconciliação de assets gerados, publicação WordPress, idempotência de
-geração delegada).
+prazo. Dentre elas, 7 estavam concentradas exatamente na camada de
+integração mais crítica do sistema — a que o próprio PRD reconhece como
+SPOF (MPI Plus): Q18-Q21 (mapeamento GM↔Salesforce) e Q27-Q30 (autenticação
+GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress,
+idempotência de geração delegada).
+
+> ✅ **Q19/Q20/Q21 resolvidas pelo PO (2026-07-13)**: mecanismo = pooling
+> mensal (não webhook); conteúdo = status/data/especificidades técnicas;
+> relatório ao cliente é incondicional, nota no Salesforce só quando o
+> ciclo classifica o cliente abaixo da régua ("Ruim"). Ver
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
+> **Restam 5 das 7**: Q18 (qual objeto do Salesforce recebe a nota) e
+> Q27-Q30 (MPI Plus), todas pendentes de resposta técnica (Tech Lead +
+> quem administra Salesforce/MPI Plus).
 
 ## Impacto
 Sem essas definições, não há como iniciar a construção de ponta a ponta —
