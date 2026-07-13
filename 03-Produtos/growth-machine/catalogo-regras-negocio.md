@@ -134,16 +134,25 @@ tags: [growth-machine, rn, catalogo, prd]
 > Salesforce é o **CRM global** onde a empresa reporta demandas
 > internamente — junto com o MPI Plus, os dois centralizadores da jornada
 > do cliente (MPI Plus: onboarding→validação; Salesforce: demanda/execução).
-> O relatório mensal do MPI Plus é **enviado automaticamente ao cliente
-> todo mês, incondicional** (já mapeado em
+> **Objetivo do Salesforce:** centralizar e registrar **todo o backlog do
+> cliente na jornada** — não é ferramenta de exceção, é o histórico
+> completo. O relatório mensal do MPI Plus é **enviado automaticamente ao
+> cliente todo mês, incondicional** (já mapeado em
 > [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]]) e **sempre**
 > alimenta o Motor de Percepção do GM (RN-106/RN-64 — precisa disso pra
-> calcular o Índice em primeiro lugar). O que é **condicional**: quando a
-> classificação mensal (RN-19) resulta **abaixo da régua definida
-> ("Ruim", Índice <0,60)**, o sistema cria uma **nota dentro do
-> Salesforce** com status, data e as especificidades técnicas do que
-> precisa ser ajustado — pooling mensal, não webhook em tempo real.
-> Regular/Bom/Ótimo **não** geram essa nota. Por ser comunicação
+> calcular o Índice em primeiro lugar).
+>
+> **Correção (PO, 2026-07-13) sobre a nota no Salesforce:** ela é criada
+> **todo mês, para todo cliente, em toda "percepção"** (ciclo do Motor) —
+> não só quando Ruim; é o registro completo do backlog na jornada, coerente
+> com o objetivo acima. O que é **condicional a estar abaixo da régua
+> definida ("Ruim", Índice <0,60)** é se esse registro **reporta de volta
+> para o fluxo do GM** (vira alerta/entra na fila de ações do analista) —
+> Regular/Bom/Ótimo ficam registrados no Salesforce, mas **não** voltam a
+> acionar o GM. `[❓ mecânica exata ainda não confirmada]` o que
+> especificamente dispara essa volta ao fluxo GM (webhook, item na fila de
+> ações RN-44, alerta ao analista) não foi detalhado — pooling mensal,
+> não webhook em tempo real, é o que se sabe até aqui. Por ser comunicação
 > **interna** (não chega ao cliente), não conflita com **RN-50**
 > ("boletim ao cliente sempre como melhoria, nunca problema") — essa regra
 > segue valendo só para a comunicação client-facing.

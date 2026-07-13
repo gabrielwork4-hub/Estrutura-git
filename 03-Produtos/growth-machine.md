@@ -606,11 +606,15 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > ✅ **Q19/Q20/Q21 resolvidas pelo PO (2026-07-13)** — mecanismo é
 > **pooling mensal** (não webhook), atrelado ao ciclo do Motor de
 > Percepção; conteúdo = status/data/especificidades técnicas do ajuste;
-> relatório ao cliente é incondicional (mensal, sempre), mas a **nota
-> dentro do Salesforce** só é criada quando a classificação do ciclo fica
-> **abaixo da régua ("Ruim")**. Detalhe completo em
-> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
-> Resta só **Q18** (qual objeto do Salesforce recebe a nota).
+> relatório ao cliente é incondicional (mensal, sempre). **A nota no
+> Salesforce também é criada todo mês, para todo cliente** (registro
+> completo do backlog do cliente na jornada — objetivo do Salesforce,
+> não é ferramenta de exceção) — o que é condicional a estar **abaixo da
+> régua ("Ruim")** é se esse registro **volta a acionar o fluxo do GM**
+> (Regular/Bom/Ótimo ficam só registrados, não geram retorno ao GM).
+> Mecânica exata do retorno (webhook, fila de ações, alerta) ainda não
+> detalhada. Ver [[03-Produtos/growth-machine/catalogo-regras-negocio]] ›
+> RN-74 a RN-78. Resta só **Q18** (qual objeto do Salesforce recebe a nota).
 
 > ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
 > **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30
