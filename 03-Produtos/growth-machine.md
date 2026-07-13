@@ -588,12 +588,31 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 | ID | O que falta definir |
 |---|---|
 | Q9 | SLA de revisão/geração de conteúdo — a definir com a área |
+| Q10 | Calibração da curva de rampagem por segmento |
+| Q14 | Limite de links por página |
+| Q16 | Padrão de nomes de arquivo de imagem |
 | Q17 | Origem do conteúdo dos concorrentes na Dim 2 (FireCrawl ou outra camada) |
 | Q18–Q21 | Mapeamento GM↔Salesforce (objeto, direção do sync, relatório como nota ou só no GM) |
-| Q23 | Régua de posicionamento por período (análoga à curva de tráfego) |
 | Q24 | Limite de tentativas de ajuste de conteúdo antes de escalar ao gestor |
 | Q25–Q26 | Escopo exato do Sentinela por projeto + infraestrutura do cron |
 | Q27–Q30 | Autenticação GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress, idempotência de geração |
+
+> ✅ **Q23 resolvida** (2026-07-08) — `posicionamento_esperado = maturidade_final`,
+> a própria curva de maturidade já responde a régua por período. Ver
+> [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]. Removida
+> desta tabela em 2026-07-13 (estava marcada aberta por engano, achado
+> nesta sessão).
+
+> ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
+> **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30
+> foram transcritas — só **15 IDs** têm texto conhecido (os 13 acima + Q23,
+> resolvida). Os outros **~15 IDs (Q1-8, Q11-13, Q15, Q22, entre outros)
+> nunca foram lidos nem resumidos aqui** — não sabemos nem do que tratam.
+> [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] já
+> registrava essa mesma divergência ("17 questões sem dono/prazo" citado
+> vs. 15 somados nas notas de origem) como não reconciliada. Fechar esta
+> frente de verdade exige voltar ao PRD v1.9.14 no Drive para extrair a
+> lista literal — nenhuma leitura adicional do cofre resolve isso.
 
 **Ponto mais crítico do PRD:**
 > *"A casa é entregue vazia; os móveis são os prompts"* — o conteúdo fino
