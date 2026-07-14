@@ -59,7 +59,7 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 
 ### Track C — Estruturação SEO/GEO/AEO (o "PRD ajustado") — ver checklist §3
 - [x] Formalizar **ADR do cluster /informacoes** (G8) — [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], feito 2026-07-10
-- [ ] Ajustes de RN existente (RN-07, RN-82, RN-84)
+- [x] Ajuste RN-84 concluído (2026-07-13, ver §3) — [ ] RN-07, RN-82 seguem pendentes
 - [x] Criar RN-SGA-01 a RN-SGA-16 (16 novas) — no catálogo, status "proposta" até reconciliar com a vault externa
 - [ ] Sub-dimensões 2D (AEO), 2E (E-E-A-T); Dimensão 11 (GEO/Citação)
 - [ ] Expandir Dim 3/5/7/8
@@ -101,7 +101,7 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 
 **Dim 2 — Conteúdo (maior expansão)**
 - [ ] Meta description ≤160 / title ≤60 determinístico (RN-SGA-03) — ✅
-- [ ] Ajuste **RN-84** (poda: bloqueio → sugestão + scoring) — ✅
+- [x] Ajuste **RN-84** (poda: bloqueio → sugestão + scoring, formalizado como **RF-55**, 2026-07-13) — ✅
 - [ ] Sinal "conteúdo preso em PDF → HTML" (RN-SGA-16) — ✅
 - [ ] Sub-dim **2D-AEO** (resposta única + priorização por nicho, RN-SGA-02/04) — 🕒
 - [ ] Sub-dim **2E-E-E-A-T** (autor/sobre/fontes, RN-SGA-07) — ✅

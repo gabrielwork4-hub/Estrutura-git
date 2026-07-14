@@ -3,7 +3,7 @@ tipo: produto
 status: vivo
 criado: 2026-07-10
 ultima-revisao: 2026-07-13
-versao-doc: "PRD Final v1.1 — 7 questões de integração fechadas"
+versao-doc: "PRD Final v1.2 — RF-55 (Helpful Content/RN-84) formalizada"
 consolida:
   - "[[03-Produtos/growth-machine/prd-v2-mvp]]"
   - "[[03-Produtos/growth-machine/catalogo-regras-negocio]]"
@@ -17,7 +17,7 @@ consolida:
 tags: [growth-machine, prd, final, mvp, seo, geo, aeo, google-2026, rn, build]
 ---
 
-# PRD Final — Growth Machine (v1.1)
+# PRD Final — Growth Machine (v1.2)
 
 > **O que é este arquivo:** a estrutura final do PRD do Growth Machine —
 > os 13 blocos consolidados, com **todas as reconciliações já fechadas no
@@ -57,7 +57,8 @@ dois papéis, ele está no lugar errado.
 |---|---|---|
 | v2.0-mvp (cofre) | 2026-07-08 | [[03-Produtos/growth-machine/prd-v2-mvp]] — consolidação inicial nos 13 blocos |
 | v1.0-final | 2026-07-10 | Reconciliações aplicadas como texto principal (pesos 40/40/20 sob revisão, Cluster Wrapping, Portão de Diferenciação Real, RN-SGA/RN-EST/RN-123-124); **8 RFs novas** (RF-47 a RF-54) formalizando itens que só existiam em prosa; seção dedicada de aderência a boas práticas Google 2026 |
-| **v1.1-final (este arquivo)** | 2026-07-13 | **7 questões de integração Salesforce/MPI Plus fechadas** (maior bloqueador de build do PRD) — 6 com resposta concreta do PO, Q18 adiada por decisão de fase. Bloco 10 e "Estado de fechamento" atualizados; item migrou de 🕒 Aberto para ✅ Fechado. |
+| v1.1-final | 2026-07-13 | **7 questões de integração Salesforce/MPI Plus fechadas** (maior bloqueador de build do PRD) — 6 com resposta concreta do PO, Q18 adiada por decisão de fase. Bloco 10 e "Estado de fechamento" atualizados; item migrou de 🕒 Aberto para ✅ Fechado. |
+| **v1.2-final (este arquivo)** | 2026-07-13 | **RF-55 (poda por scoring, RN-84 revisada)** formaliza a regra do Helpful Content System com base em prática real do Google ("content pruning"): scoring objetivo + 3 ações (consolidar/melhorar/remover), nunca automático. US-08 adicionada. Schema/entidade mantido como já planejado (Fase 2, sem mudança). |
 
 ---
 
@@ -139,10 +140,12 @@ diagnosticada dentro da cadência correta, com fila de ações aprovada.**
 > de briefings pendentes).
 
 ## Bloco 5 — Requisitos Funcionais (RF)
-Coluna **MVP**: ✅ dentro · 🕒 fast-follow · ⏭️ Fase 2. **RF-47 a RF-54 são
+Coluna **MVP**: ✅ dentro · 🕒 fast-follow · ⏭️ Fase 2. **RF-47 a RF-55 são
 novas nesta consolidação** — formalizam itens que já estavam decididos
 (ADRs, catálogo RN-SGA marcado "✅ MVP") mas só existiam em prosa no PRD
-anterior, sem número de RF próprio.
+anterior, sem número de RF próprio. **RF-55 (2026-07-13)** formaliza o
+ajuste da RN-84 (poda de conteúdo), alinhado ao Helpful Content System do
+Google.
 
 ### Elegibilidade e Fase 1 — Entrada e Briefing
 | RF | O sistema deve… | RN | MVP |
@@ -185,6 +188,7 @@ anterior, sem número de RF próprio.
 | **RF-22** | Dim 7 — validar sitemap/robots + presença de AI Instructions/LLM.txt | RN-118, RN-82 | ✅ |
 | **RF-52** | **[NOVO]** Dim 7 — controlar crawlers de IA (GPTBot/ClaudeBot/PerplexityBot/Google-Extended) via robots.txt, distinguindo bloqueio de treino × bloqueio de citação ao vivo | RN-SGA-13 | ✅ |
 | **RF-53** | **[NOVO]** Dim 2 + Dim 7 — sinalizar conteúdo importante preso em PDF, sugerindo migração para HTML | RN-SGA-16 | ✅ |
+| **RF-55** | **[NOVO]** Dim 2 — classificar páginas MPI como candidatas a poda (consolidar/melhorar/remover) por scoring objetivo (tráfego GSC ≥6 meses ~0, quase-duplicata, backlinks) — antídoto ao Helpful Content System; nunca remove automaticamente | RN-84 | ✅ |
 | **RF-23** | Dim 8 — consolidar GSC + backlinks; disavow sempre com revisão humana | RN-119 | 🕒 |
 | **RF-24** | Dim 10 — auditar captação/entrega/qualidade de leads e disparar alertas A/B/C/D [⚠️ pendente: incorporar RN-123/RN-124 quando implementadas, Track F] | RN-121, RN-107, RN-109 | ✅ |
 | **RF-25** | Gerar o Parecer Consolidado por IA (1x/análise), mantendo Índice + Score + dimensões separados | RN-97 | ✅ |
@@ -331,6 +335,20 @@ Padrão Dado/Quando/Então; cada CA amarra a uma RN.
    *Então* é reportada como alerta de risco no Score de Saúde (Dim 2). →
    **RN-SGA-05**
 
+### US-08 — [NOVO] Poda de conteúdo por scoring *(RF-55)*
+> **Como** analista, **quero** que o sistema sugira candidatas a poda com
+> critério objetivo, **para** reduzir conteúdo fraco acumulado (Helpful
+> Content System) sem remover nada sem minha aprovação.
+1. **CA-08.1** — *Dado* página com tráfego ~0 no GSC por ≥6 meses **e**
+   identificada como quase-duplicata de outra página do cluster, *Então* o
+   sistema sugere **"consolidar"** (mesclar + redirect 301). → **RN-84**
+2. **CA-08.2** — *Dado* página com tráfego residual mas conteúdo fino,
+   *Então* o sistema sugere **"melhorar"**, nunca remove. → **RN-84**
+3. **CA-08.3** — *Dado* os 3 critérios confirmados (tráfego zero, sem
+   backlink, sem quase-duplicata útil), *Então* o sistema sugere
+   **"remover"**, mas só executa após aprovação do analista **e**
+   confirmação do CS com o cliente. → **RN-84, RN-47**
+
 > ⚠️ **Gaps expostos ao escrever os CA** (viram decisão/backlog, não
 > surpresa em produção): (a) sem CA de "briefing/validação parada há X
 > dias" — falta regra de envelhecimento; (b) sem CA de desempate quando
@@ -431,7 +449,7 @@ explícita.
 
 | Sistema Google | O que exige | Situação no GM hoje | Mecanismo interno | Veredito |
 |---|---|---|---|---|
-| **Helpful Content System** | Qualidade do domínio inteiro é avaliada, não só página a página; conteúdo fraco acumulado arrasta o resto | RN-84 **proibia** sugerir remoção — contradição direta identificada e já na fila #2 de correção | Ajuste RN-84 (bloqueio → sugestão de poda com scoring) | 🟡 **Em correção** — decisão tomada, implementação pendente |
+| **Helpful Content System** | Qualidade do domínio inteiro é avaliada, não só página a página; conteúdo fraco acumulado arrasta o resto | RN-84 **proibia** sugerir remoção — contradição corrigida em 2026-07-13 | **RF-55 / RN-84 revisada** — scoring objetivo (tráfego GSC ≥6 meses ~0, quase-duplicata, backlinks) → consolidar/melhorar/remover, sempre com aprovação humana | 🟡 **Especificado (RF-55/US-08)**, implementação pendente |
 | **E-E-A-T (reforçado em YMYL)** | Autor transparente, fonte crível, marca forte, insight original | Só existe **no prompt de geração** (MPI Plus); auditoria estrutural on-page não existia até esta rodada | **RF-50 / RN-SGA-07** (Dim 2E) — nesta consolidação, formalizada como RF ✅ MVP | 🟡 **Desenhado e no MVP**, falta build |
 | **Scaled Content Abuse / Doorway Pages** | Não gerar página em massa por combinação palavra×região×tipo sem valor/diferenciação real; sites flagrados perdem 50–80% de tráfego em semanas | **O método de geração do produto era, textualmente, o exemplo que o Google usa para definir o padrão punido** (achado F-39, confirmado por 2 análises independentes) | **RF-47/51/54 (Cluster Wrapping + Portão de Diferenciação Real)** — antídoto desenhado nesta rodada | 🔴→🟡 **Risco real mitigado no desenho, não confirmado em produção** — falta a auditoria retroativa da carteira (Frente Z1) para saber a exposição real hoje |
 
@@ -446,7 +464,7 @@ em produção, não só lacuna de auditoria.
 
 | Pilar | Itens ✅ cobertos | Itens 🟡 parciais/desenhados nesta rodada | Itens 🔴 ainda sem RN/mecanismo |
 |---|---|---|---|
-| **SEO** | Intenção de busca (Dim 1/2), schema por template (Dim 6, RN-117) | Anti-doorway (RF-47/51/54), poda (RN-84 ajuste), E-E-A-T on-page (RF-50), meta/title (RF-48), PDF→HTML (RF-53), CWV real (RN-07 ajuste) | Autoridade/backlink propositiva (RN-SGA-09, Fase 2), conteúdo original/information gain (RN-SGA-08, Fase 2), log de crawler real (RN-SGA-12, Fase 2) |
+| **SEO** | Intenção de busca (Dim 1/2), schema por template (Dim 6, RN-117) | Anti-doorway (RF-47/51/54), poda por scoring (RF-55), E-E-A-T on-page (RF-50), meta/title (RF-48), PDF→HTML (RF-53), CWV real (RN-07 ajuste) | Autoridade/backlink propositiva (RN-SGA-09, Fase 2), conteúdo original/information gain (RN-SGA-08, Fase 2), log de crawler real (RN-SGA-12, Fase 2) |
 | **GEO** | Controle de crawler de IA (RF-52) | — | Medição de citação/SoV (Dimensão 11, Fase 2), entidade/`sameAs` (RN-SGA-14, Fase 2), presença off-site (sem RN ainda), tráfego de origem IA (RN-SGA-11, Fase 2), pilares agênticos (RN-SGA-15, Fase 2) |
 | **AEO** | — | Priorização por nicho (RF-49) | Resposta única/inequívoca (RN-SGA-02, Fase 2), extrabilidade (RN-SGA-01, Fase 2), medir "resposta escolhida" em voz (sem RN, especulativo) |
 
@@ -483,7 +501,7 @@ dos três — só 1 item endereçado nesta consolidação.
 - Catálogo de RN reconciliado, sem canibalização (146 RNs, `RN-EST-*`/
   `RN-SGA-*` com Origem/Prioridade).
 - Estrutura SEO/GEO/AEO incorporada às dimensões, com RF própria por item
-  MVP (RF-47 a RF-54, nesta consolidação).
+  MVP (RF-47 a RF-55, nesta consolidação).
 - Validação de fluxo × princípios sem contradição lógica
   ([[03-Produtos/growth-machine/validacao-fluxos-principios]]).
 - Checagem de aderência a boas práticas Google 2026 (seção acima).

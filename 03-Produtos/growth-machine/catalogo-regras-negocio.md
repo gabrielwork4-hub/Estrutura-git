@@ -169,7 +169,29 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-81:** Validação automática por IA pós-execução: ao acionar a validação, o sistema relê o site e confere se cada ação do plano foi executada.
 - **RN-82:** Otimização para IA (GEO/AEO): o sistema valida a presença de página AI Instructions (HTML em formato de prompt) e LLM.txt, referenciados no robots.txt e em meta tag no header. `[🔧 ajuste pendente]` evoluir de "existe sim/não" para avaliar qualidade/eficácia real. Ver [[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]].
 - **RN-83:** WebP no robots: o sistema detecta e sinaliza robots.txt que bloqueie indexação de WebP. Recomenda fallback JPEG por navegador.
-- **RN-84:** Sem sugestão de remoção de páginas: o sistema nunca sugere remover páginas, exceto quando o CS informa pedido explícito do cliente. `[🔧 ajuste pendente]` única RN confirmada contra boa prática do Google (Helpful Content System pune conteúdo fraco acumulado) — evoluir de bloqueio total para sugestão de candidata a poda, com scoring (baixo tráfego + baixa relevância + sem backlink). Ver [[03-Produtos/growth-machine/versao-final-hoje-x-desenvolvimento-seo-geo-aeo]].
+- **RN-84 `[revisada 2026-07-13]`:** Poda de conteúdo por scoring objetivo,
+  não bloqueio total — substitui a regra anterior ("nunca sugere remover,
+  exceto pedido do CS"), que contrariava o Helpful Content System do Google
+  (pune conteúdo fraco acumulado no domínio inteiro). Alinhada à prática de
+  **"content pruning"** que o próprio Google recomenda publicamente: página
+  MPI vira candidata quando cumpre, cumulativamente:
+  1. Tráfego orgânico ~0 no GSC por **≥6 meses consecutivos** (mesma janela
+     já usada em RN-59 para reavaliação de conteúdo);
+  2. Conteúdo fino **ou** identificado como quase-duplicata de outra página
+     do cluster/carteira (auditoria retroativa da Dim 3);
+  3. Ausência de backlinks externos relevantes (Dim 8).
+
+  **Ação sugerida (nunca automática — RN-47 continua valendo):**
+  - **Consolidar** — mesclar com a página mais forte do cluster + redirect
+    301. Prioridade quando critério 2 (quase-duplicata) se confirma.
+  - **Melhorar** — sinaliza reforço de conteúdo quando há tráfego residual
+    mas qualidade baixa (não remove).
+  - **Remover** — só quando os 3 critérios se confirmam **e** o CS valida
+    com o cliente (mantém o gatilho original do CS como um caso, não como
+    único caminho).
+
+  Ver F-39/achado do Helpful Content System e
+  [[03-Produtos/growth-machine/versao-final-hoje-x-desenvolvimento-seo-geo-aeo]].
 - **RN-85:** Trava de bonificação/criação de páginas: limitada a 50% do tamanho do pacote contratado; a IA deve evitar canibalização.
 - **RN-86:** Tráfego orgânico: o `trafego_real` do motor considera apenas tráfego orgânico (exclui pago/patrocinado).
 - **RN-87:** Medição de evolução por página alterada: após uma ação, a página é rastreada; reanálise da etapa de conteúdo só após evolução insuficiente em ≥60 dias.

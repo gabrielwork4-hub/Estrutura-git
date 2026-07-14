@@ -38,7 +38,7 @@ numeração local do Gregory (ver C2 em
 |---|---|---|---|---|---|
 | **Anti-doorway / scaled content** (core 2026) | RN-14, RN-15, RN-85 (só no estudo) | Dim 1 + Dim 3 | 🟡 | Nova **RN-SGA-05**: limite de variação por intenção + camada editorial + **Portão de Diferenciação Real** (validado externamente: dado local, prova social, resposta a pergunta real; sem sinal → cluster em vez de página isolada; métrica `taxa_diferenciacao_real`) | MVP (risco alto — Frente Z1 da vault externa é o item mais urgente: auditar carteira já) |
 | Canibalização **www × loja** (subdomínios) | RN-15/85 (só estudo) | Dim 3 | 🟡→🔴 | Estender **Dim 3** para arquitetura multi-subdomínio + RN-SGA-06 | MVP |
-| Poda / consolidação de conteúdo fraco | **RN-84** (proíbe) | Dim 2 | 🟢 | **Ajustar RN-84** (bloqueio → sugestão) + scoring de candidata | MVP (fila #1) |
+| Poda / consolidação de conteúdo fraco | **RN-84 revisada** (2026-07-13) | Dim 2 | 🟢 | Formalizada como **RF-55** — scoring objetivo + consolidar/melhorar/remover | MVP (fila #2) |
 
 ## Princípio 3 — E-E-A-T como filtro de qualidade
 | Oportunidade | RN atual | Dim atual | Estado | Ação | Fase |
