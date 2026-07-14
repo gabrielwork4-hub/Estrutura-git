@@ -769,4 +769,5 @@ priorizados pela Síntese Executiva:
 
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
+- [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — lente complementar: aderência aos 13 blocos do PRD ideal + auditoria de qualidade das RNs + esqueleto da v2
 - [[00-Cerebro]]

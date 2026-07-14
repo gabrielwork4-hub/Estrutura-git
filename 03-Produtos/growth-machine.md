@@ -2,7 +2,7 @@
 tipo: produto
 status: em-desenvolvimento
 criado: 2026-06-30
-ultima-revisao: 2026-07-01
+ultima-revisao: 2026-07-10
 origem:
   - "Notion — transcrição @hoje 10:39 (BRT)"
   - "Drive — PRD_Growth_Machine_v1_9_14.md (16/06/2026)"
@@ -32,6 +32,14 @@ Cliente fora do MPI Plus entra primeiro nele.
 - **Growth Machine** = diagnóstico, 100% interno. Não gera, não publica. Cliente não acessa.
 - **MPI Plus** = geração de estudo/conteúdo/imagem + aprovação do cliente (portal-cliente).
 - **Salesforce** = gestão de execução de atividades.
+
+> **Posicionamento do MPI Plus (confirmado 2026-07-13):** o recorte acima
+> descreve o papel do MPI Plus **dentro do fluxo do GM**, mas o produto em
+> si é mais amplo — é o **sistema interno do Grupo**, que centraliza as
+> informações do cliente desde o onboarding até a validação final. O GM é
+> uma camada de diagnóstico que roda por cima de um cliente já dentro
+> desse ciclo, não o dono do histórico do cliente. Ver
+> [[03-Produtos/mpi-plus]] e [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]].
 
 ---
 
@@ -96,8 +104,14 @@ direta na v1.9.16 — o SPOF real é o próprio MPI Plus.
 3. Filtrar só palavras do conjunto base
 4. Calcular posição média
 5. Converter posição em CTR: Top 3 → 20% / Top 10 → 5% / acima Top 10 → 1%
-   (sem arredondamento — posição 10,5 = CTR 1%, RN-16)
+   (sem arredondamento — posição 10,5 = CTR 1%, RN-16) `[🔧 ajuste
+   pendente]` curva única erra p/ Local Pack (mais achatada que orgânica) —
+   segmentar via [[04-Decisões/adr-camada-calibracao-continua]]
 6. Calcular `percentual_posicionamento_real`
+
+**Tráfego de origem IA (RN-SGA-11, proposta, Fase 2):** segmentar no GA4 o
+tráfego vindo de respostas de IA (ChatGPT, Perplexity), hoje invisível
+neste motor.
 
 **Curva de Maturidade (interpolação linear, RN-17):**
 
@@ -131,7 +145,12 @@ indice_leads = leads_real / leads_esperados
 indice_final = (indice_pos × 0.40) + (indice_traf × 0.40) + (indice_lead × 0.20)
 ```
 
-**Pesos: 40 posicionamento / 40 tráfego / 20 leads** (configuráveis na Tela 8, RN-18).
+**Pesos: 40 posicionamento / 40 tráfego / 20 leads** (configuráveis na Tela
+8, RN-18). `[⚠️ sob revisão, 2026-07-10]` — diverge do documento original
+do Gregory (40/30/30) e da ata da Reunião 05 ("lead é a principal
+grandeza"), achado F-30. Mantido como vigente até calibração por dado real
+(correlação peso×outcome de negócio da própria carteira), via a **Camada
+de Calibração Contínua** — ver [[04-Decisões/adr-camada-calibracao-continua]].
 
 **Classificação (thresholds inclusivos, RN-19):**
 
@@ -146,7 +165,7 @@ indice_final = (indice_pos × 0.40) + (indice_traf × 0.40) + (indice_lead × 0.
 
 ---
 
-### Fase 3 — Auditoria em 10 Dimensões
+### Fase 3 — Auditoria em 10 Dimensões *(+ Dimensão 11, Fase 2 — ver abaixo)*
 
 **Regra fundamental (RN-88):** a auditoria só é interrompida quando o problema
 crítico está na **Dimensão 1 (Estudo)**. Se o Estudo está OK, as dimensões 2–10
@@ -173,9 +192,16 @@ fator_severidade: OK=0 / aviso=0,4 / crítico=1,0
 | 9 | Servidor / TTFB / Infraestrutura | 7 |
 | 10 | Captação / Entrega / Leads | 8 |
 
+**Sub-dimensões 2D/2E não alteram o peso de Dim 2 (18):** são checagens
+adicionais **dentro** do peso já alocado, não pontos extra — evita
+desbalancear a soma=100 ao adicionar as sub-checks propostas (RN-SGA-01/02/03/04/07/08).
+
 **Parecer Consolidado:** agente de IA lê Índice + Score + 10 dimensões +
 Sentinela + histórico → diagnóstico executivo em linguagem natural. 1x por
-análise completa. Os 3 indicadores são mantidos **separados** — sem score único.
+análise completa. Os 3 indicadores são mantidos **separados** — sem score
+único. `[nota futura]` quando a Dimensão 11 (GEO/Citação) for implementada,
+o Parecer deve incorporá-la como 4º indicador citado, sem fundir no Score
+de Saúde (RN-96 continua restrito às dimensões 2–10).
 
 #### Dimensão 1 — Estudo / Auditoria MPI
 Agente Auditor de Estudo MPI. Valida o estudo contra: briefing aprovado,
@@ -190,8 +216,41 @@ pacote (10%).
 DataForSEO e KeywordTools são **condicionais** — só quando a auditoria
 indicar expansão/reformulação do estudo.
 
-Quando crítico (score <60%, canibalização crítica, páginas MPI fora do
-estudo, briefing sem cobertura): **trava toda a auditoria**.
+**O que a Dim 1 audita** vem construído fora do GM (RN-112: audita, não
+gera) — as regras de **construção** do estudo (palavra épica, regiões,
+tipos de produto/serviço) vivem em `RN-EST-01` a `RN-EST-06` no
+[[03-Produtos/growth-machine/catalogo-regras-negocio]], origem Gregory/MPI
+Plus, e no fluxo [[02-Fluxos/estudo-de-keywords]].
+
+Quando crítico (score **<50%** **ou** canibalização crítica **ou** páginas
+MPI fora do estudo **ou** briefing sem cobertura): **trava toda a auditoria**.
+
+**Cluster via /informacoes (2026-07-10):** o estudo passa a mapear também
+o **cluster de suporte** em `/informacoes` e `/artigos` — conteúdo
+editorial fora do escopo contratado por keyword, que envelopa e eleva a
+página MPI (pilar) sem alterar o contrato. Ver
+[[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
+
+**Portão de Diferenciação Real (RN-SGA-05, proposta, MVP — 2026-07-10,
+validado externamente):** antes de gerar página/artigo (MPI ou cluster) por
+combinação palavra×região×tipo,
+checar sinais de diferenciação real (dado local específico, prova social da
+combinação, resposta a pergunta real do contexto). Sem sinal suficiente:
+página MPI não gera isolada — avalia cluster de suporte; artigo de cluster
+não gera — incorpora como seção de outro artigo do mesmo cluster. Todo
+gerado recebe `nivel_diferenciacao` (alto/médio/baixo) para auditoria.
+Métrica: `taxa_diferenciacao_real` = páginas+artigos com nível alto/médio ÷
+total — reportada no Score de Saúde (Dim 2) e como alerta de risco de
+penalização.
+
+> **Threshold reconciliado (2026-07-08):** o gate numérico é **<50%**, não
+> <60% (resíduo de versões anteriores — achado F-03). O <50% alinha o
+> travamento à banda de "reformular" da régua de decisão do Estudo (uma
+> banda 50–79 "complementar" não deve travar toda a auditoria). Os 3
+> gatilhos qualitativos permanecem como condições **OU** independentes do
+> número — indispensáveis porque, por exemplo, canibalização pesa só 10% no
+> score composto e sozinha jamais derrubaria o score abaixo de 50%. Ver
+> [[03-Produtos/growth-machine/prd-v2-mvp]] Bloco 7.
 
 #### Dimensão 2 — Conteúdo / Imagem / GEO
 Agente Auditor de Conteúdo SERP. Pergunta central: *"esta página cobre a
@@ -201,7 +260,14 @@ essa busca?"*
 Fluxo: DataForSEO identifica concorrentes → crawler extrai conteúdo dos
 concorrentes → monta padrão SERP → FireCrawl lê página do cliente → compara.
 
-Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO.
+Subchecagens: 2A Conteúdo textual / 2B Imagens (WebP ≤200KB) / 2C GEO/AEO
+(extrabilidade, **RN-SGA-01**, Fase 2) / **2D — AEO** (resposta única por
+pergunta do nicho — **RN-SGA-02**, Fase 2; priorização por nicho —
+**RN-SGA-04**, MVP) / **2E — E-E-A-T** (autor, página "sobre", fontes
+citadas — **RN-SGA-07**, MVP). Também nesta dimensão: meta description
+≤160/title ≤60 determinístico (**RN-SGA-03**, MVP) e sinal de conteúdo
+original/information gain (**RN-SGA-08**, Fase 2). 2D e 2E propostas em
+2026-07-10 — ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]].
 
 Régua de decisão:
 | Faixa | Score | Decisão |
@@ -225,6 +291,27 @@ estudo), linkagem, âncoras, páginas órfãs, links quebrados, canonicals.
 Crítico quando: variações sem link para pilar, páginas MPI órfãs, links
 quebrados, ≥3 páginas fora da regra de linkagem.
 
+**Linkagem do cluster (2026-07-10):** também audita se o conteúdo de
+`/informacoes`/`/artigos` linka **para cima**, para a página MPI pilar —
+é o mecanismo que eleva o ranqueamento do que foi contratado sem alterar o
+contrato. Ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]].
+
+**Canibalização entre subdomínios (RN-SGA-06, proposta, MVP):** estende a
+auditoria a arquiteturas multi-subdomínio (ex: `www` × `loja`) — caso real
+identificado no emtecorp, onde os dois competiam pela mesma keyword sem
+nenhuma dimensão detectar.
+
+**Auditoria retroativa de quase-duplicatas (validado externamente, alimenta
+RN-SGA-05):** detecta páginas MPI existentes com estrutura/texto muito
+parecidos, diferindo essencialmente na cidade ou tipo de negócio — sinal de
+que um grupo deveria virar cluster ao redor de um pilar mais forte, em vez
+de competir isoladamente. Ação hoje: só via aditiva (prioriza onde
+construir cluster); consolidar as páginas fracas fica para Fase 2,
+condicionado ao ajuste da RN-84. **Anti-canibalização dentro do próprio
+cluster:** a mesma lógica de RN-15/RN-85 (bonificação) se estende à
+cobertura de tópicos do cluster — não pode haver dois artigos respondendo
+essencialmente à mesma pergunta.
+
 #### Dimensão 4 — W3C / Validação Estrutural de HTML
 Checagem **determinística**. W3C Validator self-hosted em Docker. A IA não
 detecta — apenas traduz, agrupa e prioriza. Regra: erro repetido em várias
@@ -233,25 +320,46 @@ páginas = problema de template = macroatividade única.
 #### Dimensão 5 — PageSpeed / Performance Front-end
 Checagem **determinística por URL**. PageSpeed API/Lighthouse por URL,
 separando mobile e desktop. Score ≥80 = régua operacional MPI. Problemas
-de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota.
+de servidor/TTFB → encaminha para Dim 9. 400 req/dia de cota. `[📝 nota do
+PO, 2026-07-13]` o score já dá direcionamento para os 3 pilares de CWV
+(LCP/INP/CLS são componentes do próprio cálculo). `[🔧 ajuste pendente,
+atenuado, RN-07]` falta formalizar os 3 valores individuais como critério
+de gate, em vez de só o score agregado. **Pilares
+agênticos (RN-SGA-15, proposta, Fase 2):** accessibility tree bem formada +
+Cumulative Layout Shift — reaproveita a infraestrutura de PageSpeed já
+existente aqui.
 
 #### Dimensão 6 — Schemas JSON-LD / Dados Estruturados
 Checagem **determinística**. Schemas mínimos por tipo de página (Organization
 + LocalBusiness em todas; Service+ItemPage+BreadcrumbList em landing pages
 de serviço, etc.). **Regra anti-spam (RN-117):** reviews, ratings, preços, FAQ
-só marcados quando existirem real e visivelmente na página.
+só marcados quando existirem real e visivelmente na página. **Autoridade de
+entidade (RN-SGA-14, proposta, Fase 2):** `sameAs` no schema + presença
+fora do site.
 
 #### Dimensão 7 — Sitemap / Robots / Indexabilidade Técnica
 Checagem **determinística**. Não usa MPI Plus como fonte de verdade — usa
 FireCrawl + parsers. Valida: sitemap acessível, robots sem bloqueio indevido,
 canonical correto, noindex indevido, conflitos. Inclui checagem de LLM.txt e
-AI Instructions (RN-82).
+AI Instructions (RN-82, `[🔧 ajuste pendente]` presença → qualidade).
+**Controle de crawler de IA (RN-SGA-13, proposta, MVP):** GPTBot/ClaudeBot/
+PerplexityBot/Google-Extended via robots.txt. **Refinamento validado
+externamente:** distinguir bloqueio de treino (sem custo de GEO) de
+bloqueio de citação ao vivo (custo real, principalmente Perplexity) —
+matriz revisada trimestralmente. **Crawl-log real (RN-SGA-12, Fase 2):**
+confirma se bots de IA/Googlebot de fato visitam, não só se têm permissão.
+**Sinal PDF→HTML (RN-SGA-16, MVP):** conteúdo importante preso em PDF
+sinaliza migração.
 
 #### Dimensão 8 — Search Console / Presença no Google / Sinais Externos
-Agente Tradutor de Presença no Google. 6 contas GSC. Não substitui o Motor
-de Percepção. Subchecagens: 8A Indexação real / 8B Consultas e visibilidade /
-8C Core Web Vitals reais / 8D Backlinks tóxicos (SemRush). Disavow sempre
-com revisão humana — nunca automático.
+Agente Tradutor de Presença no Google. 6 contas GSC `[🔧 teto de cobertura
+identificado — 2.500 clientes/6 contas; expandir p/ 9-10 ou alocação
+dinâmica, achado F-14/F-32]`. Não substitui o Motor de Percepção.
+Subchecagens: 8A Indexação real / 8B Consultas e visibilidade / 8C Core Web
+Vitals reais / 8D Backlinks tóxicos (SemRush). Disavow sempre com revisão
+humana — nunca automático. **Ofensiva de autoridade (RN-SGA-09, proposta,
+Fase 2):** 8D passa de reativa (só disavow) para propositiva (prospecção de
+domínios/menções sem link ainda).
 
 #### Dimensão 9 — Servidor / TTFB / Infraestrutura
 GTmetrix por URL representativa. Não confundir com Dim 5 (performance
@@ -262,7 +370,22 @@ exige recorrência + evidência cruzada entre GTmetrix/PageSpeed/Sentinela.
 Agente Auditor de Captação. Subchecagens: 10A Lead total multicanal /
 10B Formulário / 10C SendGrid/DNS-MX / 10D WhatsApp e CTAs / 10E
 Qualidade/spam. O sistema não bloqueia spam automaticamente — recomenda
-CAPTCHA/honeypot.
+CAPTCHA/honeypot. **Confirmação de entrega multicanal (RN-123/RN-124,
+proposta, achado F-40):** 10D hoje só valida se o botão/link do WhatsApp
+funciona — falta confirmação de entrega equivalente ao SendGrid
+(delivered/bounce/read), via webhook da API WhatsApp Business (RN-123); e
+10E precisa confirmar explicitamente que roda sobre o formato de mensagem
+de cada canal, não só formulário (RN-124).
+
+#### Dimensão 11 — GEO / Citação *(nova, Fase 2 — não implementada no MVP)*
+Fecha o loop de mensuração que falta hoje: o GM prepara o site para ser
+citável (Dim 2C/2D/RN-82), mas não mede se está sendo citado. Alimentada
+pelo [[03-Produtos/ideal-tracker]] (Share of Voice em respostas de LLM) —
+direção já confirmada pelo PO. RN-SGA-10. **Não entra na fórmula do Score
+de Saúde Técnica (RN-96, restrita às dimensões estruturais 2–10)** — é um
+sinal de mensuração separado, cujo peso no Índice Final (se algum) fica
+para decisão futura. Ver
+[[05-Backlog/gm-integrar-sinal-citacao-llm-ideal-tracker]].
 
 Cenários de alerta:
 | Cenário | Condição | Ação |
@@ -346,7 +469,11 @@ Embeddings: `text-embedding-3-small`.
 
 **Separação crítica (RN-100):** os agentes de Dim 1 e Dim 2 detectam o gap
 — não geram. A geração ocorre no MPI Plus e só é acionada após clique do
-analista.
+analista. **Portão de Diferenciação Real (RN-SGA-05) entra exatamente
+neste clique (Gate 1):** antes de a geração ser acionada, verifica sinais
+de diferenciação real; sem sinal suficiente, a ação vira "recomendar
+cluster de suporte" em vez de "gerar página isolada" — o gate não é um
+mecanismo novo, é uma condição a mais dentro do Gate 1 já existente.
 
 **Mecânica das entradas:** o orquestrador (context builder) coleta os dados
 do projeto, monta um pacote JSON e injeta no prompt via placeholders
@@ -366,13 +493,20 @@ O agente nunca busca dados sozinho.
 | 5 — Revisão de Conteúdo | Projeto | 4 colunas: Página atual / Padrão SERP / Diagnóstico / Conteúdo MPI Plus |
 | 6 — Status de Execução | Global | Visão somente leitura do status sincronizado do Salesforce |
 | 7 — Gestão de Perfis | Global | ACL, BUs, transferência de projetos |
-| 8 — Parametrização do Modelo | Global | Calibrar pesos 40/40/20, CTRs, thresholds, curva de maturidade, Score de Saúde |
+| 8 — Parametrização do Modelo | Global | Calibrar pesos 40/40/20 (sob revisão), CTRs, thresholds, curva de maturidade, Score de Saúde — futuro lar da Camada de Calibração Contínua |
 | 9 — Central de Agentes | Global | Configurar agentes, prompts, whitelists, schemas JSON, versionamento + rollback |
 | 10 — Briefing e Estudo | Projeto | 3 colunas: Briefing / Estudo MPI Plus / Site real (FireCrawl) |
 | 11 — Monitor Sentinela | Global | Saúde de infra diária de todos os sites |
 
 **RN-98:** telas de projeto (3, 4, 5, 10) não ficam no menu — acessadas ao
 selecionar um cliente no Painel de Carteira.
+
+**Gap de amarração (2026-07-10):** nenhuma tela tem menção explícita de
+onde `taxa_diferenciacao_real`/`nivel_diferenciacao` (Portão de
+Diferenciação Real) ou o sinal da Dimensão 11 (GEO/Citação) aparecem para o
+usuário — candidatos naturais são Tela 1 (badge) e Tela 3 (Prontuário),
+mas isso não foi decidido, só apontado como lacuna a fechar antes do build
+dessas features.
 
 ---
 
@@ -396,6 +530,7 @@ selecionar um cliente no Painel de Carteira.
 | **SemRush Business** | Backlinks tóxicos (Dim 8) |
 | **DNS/MX checker** | SPF/DKIM/DMARC (Dim 10) |
 | **HTTP checker** | Status, latência, CTAs (Dim 7, 9, 10, Sentinela) |
+| **WhatsApp Business API** (webhook de status) | `[proposta, RN-123]` Confirmação de entrega multicanal — enviado/entregue/lido/falhou (Dim 10). Distinto do WhatsApp API de notificação (RN-51) |
 
 ---
 
@@ -422,7 +557,7 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 - **RN-01:** análise não avança sem validação ativa do cliente/CS — sem prazo automático.
 - **RN-02:** cadência Ruim/Regular = mensal; Bom/Ótimo = trimestral.
 - **RN-16:** sem arredondamento de CTR — posição 10,5 = CTR 1%.
-- **RN-18:** pesos configuráveis, soma=100%. Default: 40/40/20.
+- **RN-18:** pesos configuráveis, soma=100%. Default: **40/40/20** (posição/tráfego/leads) — `[⚠️ sob revisão]`, calibração pendente via Camada de Calibração Contínua.
 - **RN-27:** janela de maturação = 60 dias fixos.
 - **RN-40:** site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 - **RN-47:** aprovação humana obrigatória — nada publicado automaticamente.
@@ -453,12 +588,61 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 | ID | O que falta definir |
 |---|---|
 | Q9 | SLA de revisão/geração de conteúdo — a definir com a área |
+| Q10 | Calibração da curva de rampagem por segmento |
+| Q14 | Limite de links por página |
+| Q16 | Padrão de nomes de arquivo de imagem |
 | Q17 | Origem do conteúdo dos concorrentes na Dim 2 (FireCrawl ou outra camada) |
-| Q18–Q21 | Mapeamento GM↔Salesforce (objeto, direção do sync, relatório como nota ou só no GM) |
-| Q23 | Régua de posicionamento por período (análoga à curva de tráfego) |
+| Q18 | Qual objeto do Salesforce recebe a nota mensal de status — **adiado para a 2ª etapa da vinculação Salesforce** (decisão de faseamento, 2026-07-13) |
 | Q24 | Limite de tentativas de ajuste de conteúdo antes de escalar ao gestor |
 | Q25–Q26 | Escopo exato do Sentinela por projeto + infraestrutura do cron |
-| Q27–Q30 | Autenticação GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress, idempotência de geração |
+
+> ✅ **Q23 resolvida** (2026-07-08) — `posicionamento_esperado = maturidade_final`,
+> a própria curva de maturidade já responde a régua por período. Ver
+> [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]. Removida
+> desta tabela em 2026-07-13 (estava marcada aberta por engano, achado
+> nesta sessão).
+
+> ✅ **Q19/Q20/Q21 resolvidas pelo PO (2026-07-13)** — mecanismo é
+> **pooling mensal** (não webhook), atrelado ao ciclo do Motor de
+> Percepção; conteúdo = status/data/especificidades técnicas do ajuste;
+> relatório ao cliente é incondicional (mensal, sempre). **A nota no
+> Salesforce também é criada todo mês, para todo cliente** (registro
+> completo do backlog do cliente na jornada — objetivo do Salesforce,
+> não é ferramenta de exceção) — o que é condicional a estar **abaixo da
+> régua ("Ruim")** é se esse registro **volta a acionar o fluxo do GM**
+> (Regular/Bom/Ótimo ficam só registrados, não geram retorno ao GM).
+> **Mecânica do retorno resolvida (2026-07-13):** quando "Ruim", o
+> registro cai na **fila de ações do GM (RN-44)** para análise e
+> otimizações, seguindo para o analista de Growth demandar/executar (RN-47).
+> **Q18 adiada explicitamente** para a 2ª etapa da vinculação Salesforce —
+> não é mais pendência técnica em aberto, é decisão de faseamento. Ver
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
+>
+> ✅ **Q27/Q28/Q29/Q30 também resolvidas (2026-07-13):** autenticação
+> GM→MPI Plus é **via API, mecânica interna** — MPI Plus foi desenvolvido
+> dentro do próprio Grupo, não é integração com fornecedor terceiro
+> exigindo OAuth externo (Q27); reconciliação de assets confirmada como o
+> `IntegrationJob.id` do padrão assíncrono já descrito na RN-101 — não era
+> mecanismo novo (Q28); MPI Plus publica diretamente no WordPress (Q29);
+> existe proteção contra geração duplicada, mecanismo técnico exato não
+> detalhado (Q30). Ver
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-100 a RN-102.
+>
+> **✅ As 7 questões de integração Salesforce/MPI Plus estão todas
+> endereçadas** (2026-07-13) — 6 com resposta concreta, Q18 adiada
+> explicitamente para fase 2. Maior bloqueador de build do PRD, fechado.
+> Ver [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
+
+> ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
+> **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30
+> foram transcritas — só **15 IDs** têm texto conhecido (os 13 acima + Q23,
+> resolvida). Os outros **~15 IDs (Q1-8, Q11-13, Q15, Q22, entre outros)
+> nunca foram lidos nem resumidos aqui** — não sabemos nem do que tratam.
+> [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] já
+> registrava essa mesma divergência ("17 questões sem dono/prazo" citado
+> vs. 15 somados nas notas de origem) como não reconciliada. Fechar esta
+> frente de verdade exige voltar ao PRD v1.9.14 no Drive para extrair a
+> lista literal — nenhuma leitura adicional do cofre resolve isso.
 
 **Ponto mais crítico do PRD:**
 > *"A casa é entregue vazia; os móveis são os prompts"* — o conteúdo fino
@@ -499,6 +683,19 @@ Resumo de 1 página com só os números/regras que valem memorizar (pesos,
 thresholds, ordem das fases/dimensões, os 5 padrões de risco recorrentes)
 em [[03-Produtos/growth-machine/cheat-sheet]].
 
+## PRD final
+A estrutura final do PRD (13 blocos, RFs, User Stories/CA, checagem de
+aderência a boas práticas Google 2026 cruzada com RN/Dimensão) está
+consolidada em [[PRDFINAL]] (2026-07-10) — cópia de leitura para build,
+substitui [[03-Produtos/growth-machine/prd-v2-mvp]] (mantido como histórico
+da consolidação).
+
+## Aderência à documentação ideal (base da v2)
+Avaliação da documentação atual contra a estrutura de PRD ideal (13 blocos)
+e auditoria das 122 RNs contra critérios de qualidade, cruzando vault +
+Drive — com o esqueleto proposto da nova documentação e o checklist "pronto
+para dev": [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]].
+
 ## Comparativo de maturidade SEO vs. GEO/AEO
 Nota evolutiva, atualizada conforme houver progresso real: score atual
 (SEO ~75-80% / GEO/AEO ~25-30% / combinado ~55-60%, leitura de
@@ -526,8 +723,11 @@ confirmação (sem reabrir debate técnico já mapeado) em
 - Depende do **MPI Plus** como pré-requisito de carteira — ver [[03-Produtos/mpi-plus]].
 
 ## Decisões relacionadas
+- [[PRDFINAL]] (2026-07-10) — PRD final consolidado, com checagem de aderência a boas práticas Google 2026.
 - [[04-Decisões/migracao-prompt-keywords-v2]] — migração do prompt de keywords
   (v1→v2) impacta diretamente a Dim 1 (Estudo) e Dim 2 (Conteúdo) do GM.
+- [[04-Decisões/adr-camada-calibracao-continua]] (2026-07-10) — RN-18 mantida em 40/40/20 sob revisão; calibração por dado real via Camada de Calibração Contínua (substitui a tentativa inicial 35/20/45, [[04-Decisões/adr-pesos-indice-performance-2026]], superada).
+- [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] (2026-07-10) — cluster via /informacoes/artigos como camada de ranqueamento aditiva, sem alterar o contrato por keyword; validada externamente e enriquecida com o Portão de Diferenciação Real.
 
 ## Ideias relacionadas
 -

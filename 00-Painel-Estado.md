@@ -2,7 +2,7 @@
 tipo: cerebro
 status: vivo
 criado: 2026-07-02
-ultima-revisao: 2026-07-02
+ultima-revisao: 2026-07-10
 tags: [painel, estado, core]
 ---
 
@@ -17,13 +17,26 @@ tags: [painel, estado, core]
 - [[03-Produtos/growth-machine/prep-reuniao-po-lead]] — preparo para reunião com o responsável pelos POs (2026-07-03).
 - [[03-Produtos/growth-machine/comparativo-maturidade-seo-geo]] — termômetro evolutivo de maturidade SEO vs. GEO/AEO (score atual: SEO ~75-80% / GEO ~25-30% / combinado ~55-60%).
 - [[03-Produtos/growth-machine/briefing-lideranca-seo-geo-aeo]] — briefing pronto para conversa com liderança: mapa de fontes + linha de raciocínio única das 3 frentes + 3 perguntas de decisão (2026-07-07).
+- [[03-Produtos/growth-machine/avaliacao-aderencia-doc-ideal]] — aderência da doc atual ao PRD ideal (13 blocos) + auditoria de qualidade das 122 RNs + esqueleto da v2 (2026-07-08). Base para projetar a nova documentação.
+- [[03-Produtos/growth-machine/documentacao-v2-rf-e-user-stories]] — demonstração de formato dos blocos 5 e 8 (**absorvida** no PRD v2.0).
+- [[PRDFINAL]] — **PRD final (v1.0)**: 13 blocos, RF-00 a RF-54 (8 novas formalizando RN-SGA/RN-EST ✅ MVP), User Stories/CA, checagem dedicada de aderência a boas práticas Google 2026 × estrutura interna. Substitui [[03-Produtos/growth-machine/prd-v2-mvp]] como cópia de leitura para build (2026-07-10).
+- [[03-Produtos/growth-machine/prd-v2-mvp]] — rascunho de consolidação (13 blocos, RF-00 a RF-46) que originou o PRD final — **histórico**, não mais atualizado (2026-07-08).
+- [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — ultra-análise das regras do Gregory (4 sub-PRDs) × cofre × boas práticas/core updates. **5 conflitos resolvidos em 2026-07-10** (pesos 40/40/20 sob revisão, numeração RN, cluster, fluxo keywords, fonte posicionamento) (2026-07-08).
+- [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]] — checklist SEO/GEO/AEO: Google 2026 × emtecorp real × Gregory × GM. Padrões recorrentes da GM + 4 oportunidades novas a virar backlog (2026-07-08).
+- [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — mapa princípio→RN→Dimensão→ação; estrutura-alvo das dimensões (2D-AEO, 2E-E-E-A-T, Dim 11 GEO) para o PRD v2 (2026-07-08).
+- [[03-Produtos/growth-machine/estrategia-cluster-sem-mexer-contrato]] — análise de apoio, **formalizada em ADR** ([[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]) em 2026-07-10 (2026-07-08).
+- [[03-Produtos/growth-machine/plano-fechamento-prd-v2]] — **tracker de fechamento do PRD**: 9 decisões-gate **todas resolvidas** (2026-07-10) + 5 trilhas paralelas + checklist dimensão a dimensão do PRD ajustado, com "Definição de PRD fechado" como critério de saída (2026-07-08).
+- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — **✅ concluída**: acesso liberado, vault externa lida (índice + roadmap + Cluster Wrapping + Camada de Calibração Contínua). Pesos revertidos p/ 40/40/20 sob revisão; RN-123/124 reais (entrega multicanal) incorporadas; Cluster Wrapping validado e enriquecido com Portão de Diferenciação Real (2026-07-10).
+- [[03-Produtos/growth-machine/validacao-fluxos-principios]] — validação das 5 correntes operacionais × 6 princípios-núcleo: nenhuma contradição lógica encontrada, 3 correções de fluxo aplicadas, 1 gap real confirmado (loop de GEO/Dim 11 segue Fase 2) (2026-07-10).
+- [[03-Produtos/growth-machine/principios-nucleo-seo-geo-aeo]] — **reescrito**: fila de prioridade agora com 17 itens, anti-doorway/Cluster Wrapping como #1 (era ausente na versão original), todos os itens amarrados a RN-SGA (2026-07-10).
+- [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] — primeira UX/UI do painel MPI+ mapeada: Dashboard/Clientes/Relatórios/Usuários/Configurações; confirma que o "relatório mensal" (RN-105/RN-106) e a aprovação do cliente (RN-103) do GM têm tela concreta no Hub do Cliente. **Confirmado pelo usuário:** geração do relatório mensal é automática (não manual); MPI Plus é o sistema interno do Grupo, centraliza o cliente do onboarding à validação final. 4 lacunas seguem abertas (papéis MPI+ × personas GM sem de-para, módulos do portal do cliente, logs, termo "Diagnóstico" — agora mais plausivelmente distinto do GM, mas não confirmado) (2026-07-13).
 
 ## Produtos
 
 | Produto | Status | Prioridade | Nota |
 |---|---|---|---|
-| [[03-Produtos/growth-machine]] | Em desenvolvimento — PRD v1.9.14 completo, avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 17 questões do PRD sem dono/prazo |
-| [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos | 2º | Dependência direta do Growth Machine (RN-108) |
+| [[03-Produtos/growth-machine]] | Em desenvolvimento — **PRD final estruturado** ([[PRDFINAL]]); PRD v1.9.14 no Drive; avaliação crítica concluída | **Foco atual** | 10 itens de backlog abertos, 7 questões de integração ainda bloqueiam build |
+| [[03-Produtos/mpi-plus]] | Em desenvolvimento — sem PRD próprio, prompts oficiais definidos, **UI/UX mapeada** ([[03-Produtos/mpi-plus/mapa-funcionalidades-painel]], 2026-07-13) | 2º | Dependência direta do Growth Machine (RN-108) |
 | [[03-Produtos/ideal-tracker]] | Em desenvolvimento — PRD/UX documentados | 3º | 6 pontos críticos em aberto, sem dependência cruzada |
 
 ## Fluxos
@@ -41,6 +54,9 @@ tags: [painel, estado, core]
 |---|---|
 | [[04-Decisões/migracao-prompt-keywords-v2]] | Histórico (superado pelo v3) |
 | [[04-Decisões/padrao-historia-jira]] | Aceita — vigente |
+| [[04-Decisões/adr-camada-calibracao-continua]] | Aceita — vigente (RN-18 = 40/40/20 sob revisão) |
+| [[04-Decisões/adr-pesos-indice-performance-2026]] | Superada por adr-camada-calibracao-continua |
+| [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]] | Aceita — vigente (cluster aditivo via /informacoes) |
 
 ## Histórias/prompts do MPI Plus
 

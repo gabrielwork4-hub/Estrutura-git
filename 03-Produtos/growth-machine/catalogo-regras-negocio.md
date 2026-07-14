@@ -2,16 +2,30 @@
 tipo: produto
 status: vivo
 criado: 2026-07-02
-ultima-revisao: 2026-07-02
+ultima-revisao: 2026-07-10
 tags: [growth-machine, rn, catalogo, prd]
 ---
 
-# Catálogo Completo de Regras de Negócio (RN-01 a RN-122) — Growth Machine
+# Catálogo Completo de Regras de Negócio — Growth Machine
 
-> As **122 RNs** do PRD v1.9.14, extraídas na íntegra. `growth-machine.md`
-> traz só um subconjunto "chave" (27 RNs mais citadas); esta nota é a
-> referência completa. Ver [[03-Produtos/growth-machine]] para o produto e
-> [[00-Glossario]] para o que significa "RN".
+> As **122 RNs** do PRD v1.9.19 (RN-01 a RN-122), extraídas na íntegra, +
+> **RN-123/RN-124** propostas pela vault externa (confirmação de entrega
+> multicanal) + **6 regras do sub-PRD de estudo do Gregory** (`RN-EST-*`) +
+> **16 propostas de estruturação SEO/GEO/AEO** desta sessão (`RN-SGA-*`) —
+> **146 no total**. `growth-machine.md` traz só um subconjunto "chave" (27
+> RNs mais citadas); esta nota é a referência completa. Ver
+> [[03-Produtos/growth-machine]] para o produto e [[00-Glossario]] para o
+> que significa "RN".
+>
+> **Reconciliação com a vault externa concluída em 2026-07-10** (acesso
+> liberado, "Vault PRD GROWTH MACHINE MODIFICADO" — autoria Lucas
+> Bevilacqua/Gabriel Santos): RNs supersedidas marcadas, resíduo textual do
+> Bright Data removido, RNs em ajuste pendente sinalizadas, pesos revertidos
+> para 40/40/20 sob revisão. Ver
+> [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] e
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] para o
+> histórico completo. **RN-123/RN-124, RN-EST-\* e RN-SGA-\* seguem como
+> propostas**, não oficiais.
 
 ## RN-01 a RN-10 — Briefing e Estrutura
 - **RN-01:** Validação do briefing pelo cliente via CS — a análise não avança até validação ativa do cliente. Sem prazo automático.
@@ -20,7 +34,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-04:** Alerta de 28 dias: ação gerada e não executada após 28 dias = alerta ao gerente.
 - **RN-05:** Briefing sem páginas institucionais: resolvido na v1.7 (crawler varre todas as páginas).
 - **RN-06:** Cliente rejeita ativamente o briefing/estudo (via CS): máximo 2 iterações. 3ª rejeição → escala pro gerente. Sem resposta = sem prazo automático.
-- **RN-07:** PageSpeed/Performance Front-end: análise por URL, mobile e desktop separados. Score ≥80 é a régua operacional MPI.
+- **RN-07:** PageSpeed/Performance Front-end: análise por URL, mobile e desktop separados. Score ≥80 é a régua operacional MPI. `[📝 nota do PO, 2026-07-13]` o relatório do PageSpeed/Lighthouse já retorna LCP, INP (via TBT) e CLS individualmente — o Score ≥80 já dá direcionamento para os 3 pilares de Core Web Vitals, por serem componentes do próprio cálculo do score. `[🔧 ajuste pendente, atenuado]` o que falta formalizar na régua é usar os **3 valores individuais como critério de gate**, não só o score agregado — um score alto ainda pode mascarar 1 pilar isolado fora do threshold, e o dado que o Google usa para ranquear é de campo (CrUX/GSC), não o score de laboratório do Lighthouse. Ver [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]].
 - **RN-08:** Servidor/TTFB/Infraestrutura: GTmetrix por URL representativa; M3 não abre em medição isolada; decisão considera recorrência, escopo, origem provável e evidência cruzada.
 - **RN-09:** Tipo de projeto: E-commerce, Loja, Revendedor, Marketplace = Produto. Demais = Serviço.
 - **RN-10:** Arquitetura MPI/Silo/Linkagem: estudo aprovado no MPI Plus é fonte de verdade. Direção padrão: variações → lateral + pilar; pilar não linka para baixo.
@@ -31,27 +45,27 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-13:** Menu Header e Footer: mesmos itens.
 - **RN-14:** Geração de texto baseada no padrão da SERP. Removida a distinção "texto épico vs texto comum".
 - **RN-15:** Bonificação de palavras: similaridade vetorial ≥70% → fila de sugestões. Sujeita à trava de 50% do pacote (RN-85). Não fura aprovação humana.
-- **RN-16:** Fronteiras de CTR: sem arredondamento. Posição 10,5 = CTR 1%.
+- **RN-16:** Fronteiras de CTR: sem arredondamento. Posição 10,5 = CTR 1%. `[🔧 ajuste pendente]` a tabela única (Top3/Top10/>10) erra sistematicamente para clientes locais — Local Pack tem curva muito mais achatada que busca orgânica clássica (cair de #1→#3 no mapa custa ~2,5pp; na orgânica custa ~30pp). Segmentar em 2 curvas (Local Pack × orgânica) via [[04-Decisões/adr-camada-calibracao-continua]].
 - **RN-17:** Maturidade: interpolação linear. Mês 5 = 22,5%.
-- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = 40 posicionamento / 40 tráfego / 20 leads.
+- **RN-18:** Pesos configuráveis via admin. Soma = 100%. Default oficial = **40 posicionamento / 40 tráfego / 20 leads** — `[⚠️ sob revisão, 2026-07-10]` diverge do documento original do Gregory (40/30/30) e da ata da Reunião 05 ("lead é a principal grandeza"), achado F-30. Calibração final depende de dado real (correlação peso×outcome de negócio), não de decreto — ver [[04-Decisões/adr-camada-calibracao-continua]].
 - **RN-19:** Thresholds inclusivos: índice no limite sobe de categoria.
 - **RN-20:** Volume zero: `volume_total = 0` → "Sem estudo válido" → alerta.
 
 ## RN-21 a RN-30 — Cenários e Alertas
-- **RN-21:** Lead zerado é alerta extremo: sempre dispara.
-- **RN-22:** Detecção de spam: padrões no campo assunto/mensagem. Não bloqueia — apenas alerta.
-- **RN-23:** Formulário e SendGrid: lead salvo na base E log "entregue" = funcionando.
+- **RN-21:** `[SUPERSEDIDA por RN-107/RN-121]` Lead zerado é alerta extremo: sempre dispara. *(tratava só formulário; RN-107 trata multicanal)*
+- **RN-22:** `[SUPERSEDIDA por RN-121]` Detecção de spam: padrões no campo assunto/mensagem. Não bloqueia — apenas alerta. *(absorvida pela subcheck 10E de RN-121)*
+- **RN-23:** `[SUPERSEDIDA por RN-107/RN-121]` Formulário e SendGrid: lead salvo na base E log "entregue" = funcionando. *(critério de "funcionando" só por formulário; RN-107 é multicanal)*
 - **RN-24:** Trigger de upsell: ≥70% posicionamento E tráfego bom OU lead consistente.
 - **RN-25:** Cadência do alerta de upsell: imediato, 24/7.
 - **RN-26:** Bloqueio pós-ação: 60 dias (2 ciclos).
 - **RN-27:** Janela de maturação: 60 dias fixos (corrige contradição da v1.7.2).
 - **RN-28:** Alerta de ação não executada: 28 dias sem execução = alerta ao gerente.
-- **RN-29:** Escore por etapa: 100% = não mexe. Abaixo = entra como ação.
+- **RN-29:** `[SUPERSEDIDA por réguas por dimensão]` Escore por etapa: 100% = não mexe. Abaixo = entra como ação. *(contradiz as réguas específicas de cada dimensão, ex: Dim 2 mantém em 80-89%, Dim 5 mantém em Score ≥80 — não existe corte único de 100%)*
 - **RN-30:** Ações isoladas: Linkagem, W3C, GTmetrix, PageSpeed podem ser executados sozinhos.
 
 ## RN-31 a RN-40 — Workflow e Casos Especiais
 - **RN-31:** Pacote obrigatório: causa raiz = Estudo → gera Estudo + Conteúdo + Imagem.
-- **RN-32:** Análise em fases: 1ª Estudo/Conteúdo/Imagem. 2ª Silo/W3C/etc.
+- **RN-32:** `[SUPERSEDIDA por RN-88]` Análise em fases: 1ª Estudo/Conteúdo/Imagem. 2ª Silo/W3C/etc. *(fases incondicionais contradizem o travamento condicional da RN-88 — dimensões 2-10 rodam juntas quando o Estudo está OK)*
 - **RN-33:** Cliente novo (&lt;28 dias): bloqueado até 28 dias.
 - **RN-34:** Site em reformulação: flag "pausado". Reativado = começa do zero.
 - **RN-35:** Cliente com múltiplos sites: cada site = projeto separado.
@@ -62,7 +76,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-40:** Site fora do ar: 3 tentativas falhas em dias diferentes = alerta.
 
 ## RN-41 a RN-50 — Performance e Aprovação
-- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3.
+- **RN-41:** Tintambi: identifica e informa ao analista. Não abre M3. `[📝 esclarecido pelo PO, 2026-07-13]` Tintambi era o centralizador de páginas MPI, formadas por imagem + tópico segmentado — um padrão legado de página que o sistema detecta e sinaliza ao analista, sem abrir macroatividade automática. Termo resolvido (achado F-07 fechado).
 - **RN-42:** Scripts de terceiros: sinaliza scripts pesados.
 - **RN-43:** Histórico real: baixo recurso (CPU) = timeout = desindexação.
 - **RN-44:** Sistema prioriza, não pergunta: ordem de impacto calculada.
@@ -96,7 +110,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-61:** Padrão de nomes de imagem: nomenclatura definida.
 - **RN-62:** Formato de entrega: HTML "tagueado".
 - **RN-63:** Vínculo de BU a usuários: múltiplas BUs por analista; visão consolidada.
-- **RN-64:** Hard Stop por ausência de posicionamento: o GM exige dado de posicionamento para rodar. Fonte = relatório mensal do MPI Plus. Bright Data não é integração direta do GM. Se relatório ausente → Hard Stop completo.
+- **RN-64:** Hard Stop por ausência de posicionamento: o GM exige dado de posicionamento para rodar. Fonte única = relatório mensal do MPI Plus. Se relatório ausente → Hard Stop completo. *(v1.9.16: Bright Data removido como integração direta — resíduo textual de "fallback Bright Data" limpo em 2026-07-10, F-01)*
 - **RN-65:** Tempo de bloqueio de interface: 10 minutos.
 - **RN-66:** Automação parametrizável: global ou por cliente; avanço sem validação = aprovação admin.
 - **RN-67:** Sitemap/Robots/Indexabilidade: Dimensão 7 não usa o MPI Plus como fonte de verdade. Base é o site real descoberto pelo FireCrawl.
@@ -115,12 +129,69 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-76:** Atividades exportadas são agrupadas por área/função; detalhe técnico permanece no GM.
 - **RN-77:** Conclusão de atividade no Salesforce sincroniza o status automaticamente no GM (ida-e-volta).
 - **RN-78:** Nenhum conteúdo/detalhe técnico trafega para o Salesforce — somente título e escopo da atividade.
+
+> **Esclarecimento do PO (2026-07-13) — resolve Q19/Q20/Q21:** o
+> Salesforce é o **CRM global** onde a empresa reporta demandas
+> internamente — junto com o MPI Plus, os dois centralizadores da jornada
+> do cliente (MPI Plus: onboarding→validação; Salesforce: demanda/execução).
+> **Objetivo do Salesforce:** centralizar e registrar **todo o backlog do
+> cliente na jornada** — não é ferramenta de exceção, é o histórico
+> completo. O relatório mensal do MPI Plus é **enviado automaticamente ao
+> cliente todo mês, incondicional** (já mapeado em
+> [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]]) e **sempre**
+> alimenta o Motor de Percepção do GM (RN-106/RN-64 — precisa disso pra
+> calcular o Índice em primeiro lugar).
+>
+> **Correção (PO, 2026-07-13) sobre a nota no Salesforce:** ela é criada
+> **todo mês, para todo cliente, em toda "percepção"** (ciclo do Motor) —
+> não só quando Ruim; é o registro completo do backlog na jornada, coerente
+> com o objetivo acima. O que é **condicional a estar abaixo da régua
+> definida ("Ruim", Índice <0,60)** é se esse registro **reporta de volta
+> para o fluxo do GM** (vira alerta/entra na fila de ações do analista) —
+> Regular/Bom/Ótimo ficam registrados no Salesforce, mas **não** voltam a
+> acionar o GM.
+>
+> **Mecânica resolvida (PO, 2026-07-13):** quando o Salesforce sinaliza
+> "Ruim", o registro **cai na fila de ações do GM (RN-44)** para análise e
+> otimizações; a partir daí segue o fluxo padrão de governança — vai para
+> o **analista de Growth demandar/executar** (mesma trilha de aprovação de
+> RN-47). Não é webhook disparando um alerta separado — é o próprio
+> pooling mensal que alimenta a fila. Por ser comunicação **interna** (não
+> chega ao cliente), não conflita com **RN-50** ("boletim ao cliente
+> sempre como melhoria, nunca problema") — essa regra segue valendo só
+> para a comunicação client-facing.
+> `[🕒 adiado, Q18]` qual objeto do Salesforce recebe a nota fica para a
+> **segunda etapa da vinculação Salesforce** — decisão explícita de
+> faseamento do PO (2026-07-13), não pendência técnica não-endereçada.
+
 - **RN-79:** A reativação dos robôs de validação só ocorre via botão de validação acionado pelo analista no GM; gatilho da maturação de 60 dias.
 - **RN-80:** Briefing auto-incrementado: toda ação validada incrementa o briefing (nunca substitui o aprovado).
 - **RN-81:** Validação automática por IA pós-execução: ao acionar a validação, o sistema relê o site e confere se cada ação do plano foi executada.
-- **RN-82:** Otimização para IA (GEO/AEO): o sistema valida a presença de página AI Instructions (HTML em formato de prompt) e LLM.txt, referenciados no robots.txt e em meta tag no header.
+- **RN-82:** Otimização para IA (GEO/AEO): o sistema valida a presença de página AI Instructions (HTML em formato de prompt) e LLM.txt, referenciados no robots.txt e em meta tag no header. `[🔧 ajuste pendente]` evoluir de "existe sim/não" para avaliar qualidade/eficácia real. Ver [[05-Backlog/gm-evoluir-rn82-qualidade-ai-instructions]].
 - **RN-83:** WebP no robots: o sistema detecta e sinaliza robots.txt que bloqueie indexação de WebP. Recomenda fallback JPEG por navegador.
-- **RN-84:** Sem sugestão de remoção de páginas: o sistema nunca sugere remover páginas, exceto quando o CS informa pedido explícito do cliente.
+- **RN-84 `[revisada 2026-07-13]`:** Poda de conteúdo por scoring objetivo,
+  não bloqueio total — substitui a regra anterior ("nunca sugere remover,
+  exceto pedido do CS"), que contrariava o Helpful Content System do Google
+  (pune conteúdo fraco acumulado no domínio inteiro). Alinhada à prática de
+  **"content pruning"** que o próprio Google recomenda publicamente: página
+  MPI vira candidata quando cumpre, cumulativamente:
+  1. Tráfego orgânico ~0 no GSC por **≥6 meses consecutivos** (mesma janela
+     já usada em RN-59 para reavaliação de conteúdo);
+  2. Conteúdo fino **ou** identificado como quase-duplicata de outra página
+     do cluster/carteira (auditoria retroativa da Dim 3);
+  3. Ausência de backlinks externos relevantes (Dim 8).
+
+  **Ação sugerida (nunca automática — RN-47 continua valendo):**
+  - **Consolidar** — mesclar com a página mais forte do cluster + redirect
+    301. Prioridade quando critério 2 (quase-duplicata) se confirma.
+  - **Melhorar** — sinaliza reforço de conteúdo quando há tráfego residual
+    mas qualidade baixa (não remove).
+  - **Remover** — só quando os 3 critérios se confirmam **e** o CS valida
+    com o cliente (mantém o gatilho original do CS como um caso, não como
+    único caminho).
+
+  Ver F-39/achado do Helpful Content System e
+  [[03-Produtos/growth-machine/versao-final-hoje-x-desenvolvimento-seo-geo-aeo]].
 - **RN-85:** Trava de bonificação/criação de páginas: limitada a 50% do tamanho do pacote contratado; a IA deve evitar canibalização.
 - **RN-86:** Tráfego orgânico: o `trafego_real` do motor considera apenas tráfego orgânico (exclui pago/patrocinado).
 - **RN-87:** Medição de evolução por página alterada: após uma ação, a página é rastreada; reanálise da etapa de conteúdo só após evolução insuficiente em ≥60 dias.
@@ -131,7 +202,7 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-90:** Módulo Sentinela: monitoramento diário de disponibilidade, independente do ciclo de auditoria.
 - **RN-91:** Escopo total: roda para todos os projetos ativos, inclusive bloqueados/em maturação.
 - **RN-92:** Checks diários: uptime, SSL, DNS/MX, redirecionamento, robots/sitemap acessíveis, latência básica, AI Instructions/LLM.txt, mixed content.
-- **RN-93:** Execução leve e noturna: janela noturna em lotes; não consome APIs caras. Fila via Laravel Horizon (Redis).
+- **RN-93:** Execução leve e noturna: janela noturna em lotes; não consome APIs caras. `[🔧 ajuste pendente]` "Fila via Laravel Horizon (Redis)" é detalhe de implementação, não regra de negócio — mover a stack técnica para a documentação de arquitetura, mantendo aqui só o comportamento (leve, noturno, sem APIs caras).
 - **RN-94:** Sobreposição ao bloqueio: problema crítico de infra (site fora ≥3d, SSL expirado) dispara alerta e reabre análise mesmo em maturação.
 - **RN-95:** Alerta antecipado de SSL: 30/15/7 dias antes do vencimento, ao analista + gerente.
 
@@ -139,15 +210,42 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-96:** Score de Saúde Técnica: nota determinística 0–100 = `100 − Σ(peso_dim × fator_severidade)` sobre as dimensões estruturais 2–10. Fica parcial com pesos renormalizados quando há dimensão não auditada.
 - **RN-97:** Parecer Consolidado (agente de IA): diagnóstico executivo do projeto unindo Índice de Performance, Score de Saúde, as 10 dimensões, Sentinela e histórico. Roda 1x por análise completa.
 - **RN-98:** Telas globais × contextuais: as telas de projeto (Telas 3, 4, 5 e 10) não figuram no menu principal — são acessadas ao selecionar um cliente no Painel de Carteira.
-- **RN-99:** Modelo padrão dos agentes: GPT-5 é o modelo padrão dos agentes de IA do Growth Machine. Configurável por agente na Tela 9. As checagens determinísticas (Dim 4, 5, 6, 7, 9) não usam IA.
+- **RN-99:** Modelo padrão dos agentes: configurável por agente na Tela 9 (default atual: GPT-5). As checagens determinísticas (Dim 4, 5, 6, 7, 9) não usam IA. `[🔧 ajustado 2026-07-10]` texto anterior fixava "GPT-5" como se fosse a regra, contradizendo a própria RN (que já diz ser configurável) — modelo é detalhe de implementação, a regra é "configurável por agente + determinísticas não usam IA".
 
 ## RN-100 a RN-111 — Integração MPI Plus, Elegibilidade e Leads
 - **RN-100:** Geração delegada e sob comando humano: o GM não gera estudo/conteúdo/imagem; ele detecta o gap e o apresenta ao analista. A geração no MPI Plus só é acionada quando o analista decide e clica "Gerar" (Gate 1). O asset gerado retorna ao GM via API e passa pela revisão interna do analista (Gate 2) antes de ser liberado ao cliente no MPI Plus.
 - **RN-101:** Conexão via MPI Plus: o GM aciona a API do MPI Plus (que internamente usa a API Idealplus e o portal-cliente), não a API Idealplus direta. Padrão assíncrono: request → IntegrationJob → webhook assinado/importação de status.
 - **RN-102:** Origem dos dados por completude: cliente no MPI Plus com dados completos → importação direta; cliente no MPI Plus com briefing legado/incompleto → FireCrawl complementa. Cliente fora do MPI Plus está fora de escopo (RN-108).
+
+> **Esclarecimento do PO (2026-07-13) — Q27/Q29/Q30:**
+> - **Q27 (autenticação GM→API MPI Plus):** ✅ resolvida — **via API**,
+>   mecânica **interna**: MPI Plus foi desenvolvido internamente (mesmo
+>   Grupo), não é integração com fornecedor terceiro exigindo OAuth
+>   externo. O lado do MPI Plus é o ativo da credencial, consistente com
+>   o modelo de SSO já definido (NFR-06: GM não guarda senha).
+> - **Q29 (publicação WordPress):** ✅ confirmado — **o MPI Plus publica
+>   diretamente no WordPress do cliente**, fecha a leitura já obtida do
+>   [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] (módulo "Templates WP").
+> - **Q30 (idempotência):** ✅ confirmado que **existe proteção contra
+>   geração duplicada** ao clicar "Gerar" mais de uma vez.
+>   `[❓ mecanismo técnico exato ainda não detalhado]` chave de
+>   idempotência, trava de UI ou verificação de estado — não especificado.
+> - **Q28 (reconciliação de assets gerados):** ✅ **confirmado pelo PO
+>   (2026-07-13)** — é exatamente o que a RN-101 já descrevia: o
+>   `IntegrationJob.id` do padrão assíncrono (`request → IntegrationJob →
+>   webhook assinado/importação de status`) é o mecanismo de correlação
+>   entre a ação pedida e o asset que volta. Não era mecanismo novo, já
+>   estava na arquitetura — só precisava ser formalizado como resposta ao
+>   Q28.
+>
+> **As 7 questões de integração Salesforce/MPI Plus estão todas
+> endereçadas** (2026-07-13): Q19/Q20/Q21/Q27/Q28/Q29/Q30 resolvidas com
+> resposta concreta; Q18 adiada explicitamente para a 2ª etapa da
+> vinculação Salesforce (decisão de fase, não lacuna). Ver
+> [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
 - **RN-103:** Dois níveis de aprovação, sem duplicar: revisão interna (analista, com apoio do CS) ocorre no GM; aprovação do cliente (briefing, estudo novo, conteúdo, imagens) ocorre no MPI Plus (portal-cliente).
 - **RN-104:** Growth Machine é exclusivamente interno: nenhuma persona externa (cliente) acessa o GM. O cliente acessa apenas o MPI Plus.
-- **RN-105:** Relatório mensal como fonte primária: Motor de Percepção consome o relatório mensal do MPI Plus (dia 1º, fotografia do mês fechado) como fonte primária de posicionamento, tráfego orgânico e leads. Bright Data e SendGrid passam a fallback.
+- **RN-105:** Relatório mensal como fonte única: Motor de Percepção consome o relatório mensal do MPI Plus (dia 1º, fotografia do mês fechado) como fonte de posicionamento, tráfego orgânico e leads. *(resíduo "Bright Data/SendGrid fallback" removido em 2026-07-10, F-01 — reconfirmado C5 em [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]: o processamento de Search Console do Gregory descreve como o relatório é montado internamente, não uma integração paralela)*
 - **RN-106:** Gatilho mensal + precedência: a chegada do relatório (~dia 1º/2) é o único gatilho de calendário, disparando o ciclo para toda a carteira.
 - **RN-107:** Leads multicanal: o `leads_real` do índice é o total do relatório (formulário + WhatsApp + demais canais). O alerta de lead zerado dispara quando o total multicanal é 0.
 - **RN-108:** Elegibilidade = estar no MPI Plus: ter contrato/projeto no MPI Plus é pré-requisito para um cliente ser monitorado pelo Growth Machine.
@@ -168,8 +266,77 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-121:** Dimensão 10 como Captação, Entrega e Qualidade de Leads (não recalcula o índice de leads; diagnostica se os canais estão captando, salvando, entregando e qualificando leads; falha de formulário só gera alerta se houver formulário ativo).
 - **RN-122:** Contrato Parametrização × Agentes × Ferramentas (réguas, pesos, thresholds ficam na Tela 8; agentes, prompts, whitelists e schemas ficam na Tela 9; nenhum prompt pode hardcodar regra parametrizável; toda execução deve registrar `prompt_version_id`, `ruleset_version_id`, entradas, ferramentas, saída JSON, confiança e auditoria).
 
+---
+
+## RN-123 e RN-124 — Confirmação de Entrega Multicanal (proposta, vault externa)
+> Números **legítimos** — confirmados na vault externa (autoria Lucas
+> Bevilacqua/Gabriel Santos, achado F-40), auditoria à Dimensão 10.
+> **Não confundir com nossas propostas anteriores**, renumeradas para
+> `RN-SGA-*` justamente para liberar este espaço. Status: proposta em
+> avaliação, não oficial ainda.
+
+| ID | Regra | Dimensão | Origem | Prioridade |
+|---|---|---|---|---|
+| **RN-123** | Confirmação de Entrega Multicanal — estender o padrão já existente para e-mail (SendGrid: delivered/bounce/blocked/spam_report) ao WhatsApp, via webhook de status nativo das APIs de WhatsApp Business (enviado/entregue/lido/falhou). Fecha a lacuna que a RN-23 supersedida cobria só para e-mail. | Dim 10 (10D) | Vault externa (F-40) | Alta |
+| **RN-124** | Paridade de Detecção de Qualidade/Spam entre Canais — a subcheck 10E deve rodar sobre o formato de mensagem de **cada canal**, não só formulário; ajustar critérios para o formato mais curto/informal do WhatsApp (sem campo "assunto"). | Dim 10 (10E) | Vault externa (F-40) | Alta |
+
+**Emenda proposta à RN-107:** substituir "demais canais" (vago) por lista
+fechada, decidida com o líder de área — fecha o guarda-chuva antes que
+esconda outras lacunas do mesmo tipo. **Referência cruzada pendente:**
+RN-121 deve ganhar linha apontando para RN-123/RN-124.
+
+## RN-EST-01 a RN-EST-06 — Método de Construção do Estudo (Gregory)
+> Namespace próprio (não `RN-01…122`) para não colidir com o catálogo
+> mestre — ver decisão C2 em
+> [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]. Origem:
+> sub-PRD "Método de construção do estudo", entregue pelo Gregory
+> (upload direto, 2026-07-08). Prioridade: Alta (governa a Dim 1/Etapa 0-3
+> do estudo).
+
+| ID | Regra | Dimensão / Fase | Origem | Prioridade |
+|---|---|---|---|---|
+| **RN-EST-01** | Não iniciar estudo sem validação do cliente. | Fase 1 (briefing) | Gregory | Alta |
+| **RN-EST-02** | Palavra épica: máximo 3 termos, maior volume da categoria. | Dim 1 (Estudo) | Gregory | Alta |
+| **RN-EST-03** | Mínimo de 2 regiões por categoria no estudo. | Dim 1 (Estudo) | Gregory | Média |
+| **RN-EST-04** | Seleção de tipo de produto/serviço permite múltiplas opções. | Dim 1 (Estudo) | Gregory | Média |
+| **RN-EST-05** | `[condicionada]` Combinações (concatenação) devem respeitar semântica de busca — **não usar em escala como estratégia primária**; substituída pelo cluster (ver [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]], decisão C3). | Dim 1 + Dim 3 | Gregory | Alta |
+| **RN-EST-06** | Páginas `/informacoes` e `/artigos` são ignoradas no crawling do estudo — base do ADR de cluster. | Dim 1 (Estudo) | Gregory | Alta |
+
+## RN-SGA-01 a RN-SGA-16 — Estruturação SEO/GEO/AEO (proposta)
+> Namespace próprio, renumerado de RN-123–138 em 2026-07-10 após colisão
+> detectada com a vault externa (ver
+> [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]]).
+> Origem: [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]],
+> cruzando [[03-Produtos/growth-machine/checklist-google-2026-emtecorp-gregory]]
+> com boas práticas e core updates 2026. **Status: proposta — pendente de
+> reconciliação com a pasta `10-modelo-proposto-v2` da vault externa**,
+> ainda sem acesso liberado. Nenhuma destas é oficial até essa reconciliação.
+
+| ID | Regra | Dimensão | Fase | Prioridade |
+|---|---|---|---|---|
+| **RN-SGA-01** | Extrabilidade: cada bloco de conteúdo responde sozinho, sem depender do parágrafo anterior. | Dim 2 (2C) | Fase 2 | Média |
+| **RN-SGA-02** | Resposta única e inequívoca para AEO — 1 frase objetiva por pergunta relevante do nicho. | Dim 2 (2D nova) | Fase 2 | Média |
+| **RN-SGA-03** | Meta description ≤160 caracteres / title ≤60 — checagem determinística. | Dim 2 | MVP | Alta (barato) |
+| **RN-SGA-04** | Priorização de AEO por nicho, reaproveitando a segmentação já coletada no briefing. | Dim 2 (2D nova) | MVP | Alta (barato) |
+| **RN-SGA-05** | Limite de variação por intenção + camada editorial obrigatória — antídoto ao doorway/scaled content. | Dim 1 + Dim 3 | MVP | Alta (risco) |
+| **RN-SGA-06** | Canibalização entre subdomínios (ex: www × loja) passa a ser auditada. | Dim 3 | MVP | Alta |
+| **RN-SGA-07** | Sinais de E-E-A-T on-page: autor, página "sobre", fontes citadas. | Dim 2 (2E nova) | MVP | Alta (core 2026) |
+| **RN-SGA-08** | Sinal de conteúdo original / information gain frente à SERP. | Dim 2 | Fase 2 | Média |
+| **RN-SGA-09** | Dimensão 8 passa de reativa (só disavow) para propositiva (prospecção de autoridade). | Dim 8 | Fase 2 | Média |
+| **RN-SGA-10** | Loop de mensuração de GEO via integração com o Ideal Tracker (Share of Voice em LLM). | Dim 11 (nova) | Fase 2 | Alta |
+| **RN-SGA-11** | Segmentação de tráfego de origem IA (ChatGPT, Perplexity) no GA4/Motor de Percepção. | Fase 2 (Motor) | Fase 2 | Média |
+| **RN-SGA-12** | Crawl-log real: confirma se bots de IA/Googlebot de fato visitam o site. | Dim 7 | Fase 2 | Média |
+| **RN-SGA-13** | Controle de crawlers de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) via robots.txt. | Dim 7 + Sentinela | MVP | Alta (barato) |
+| **RN-SGA-14** | Autoridade de entidade: `sameAs` no schema + presença fora do site. | Dim 6 + Dim 8 | Fase 2 | Média |
+| **RN-SGA-15** | Pilares agênticos: accessibility tree bem formada + Cumulative Layout Shift + WebMCP. | Dim 5 + Dim 7 | Fase 2 | Média |
+| **RN-SGA-16** | Sinal "conteúdo importante preso em PDF" — sugere migração para HTML. | Dim 2 + Dim 7 | MVP | Alta (barato) |
+
 ## Notas relacionadas
 - [[03-Produtos/growth-machine]]
 - [[03-Produtos/growth-machine/cheat-sheet]]
 - [[03-Produtos/growth-machine/avaliacao-fluxo]]
+- [[03-Produtos/growth-machine/reconciliacao-regras-gregory]] — decisões C1-C5 aplicadas aqui
+- [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] — pendências RN-EST-*/RN-SGA-*
+- [[03-Produtos/growth-machine/mapa-estruturacao-seo-geo-aeo]] — origem das RN-SGA-*
+- [[04-Decisões/adr-camada-calibracao-continua]] · [[04-Decisões/adr-cluster-informacoes-sem-alterar-contrato]]
 - [[00-Glossario]]

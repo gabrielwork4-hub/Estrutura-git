@@ -11,12 +11,30 @@ tags: [produto, mpi-plus, keywords]
 # MPI Plus
 
 ## Visão geral
-> _A preencher._ Citado na transcrição de kick-off como produto que passou
-> por uma refatoração completa de processo e palavras-chave (v2). O conteúdo
-> de negócio real do MPI Plus está referenciado dentro do PRD da
-> [[03-Produtos/growth-machine]] (que depende dele como pré-requisito de
-> carteira, RN-108) — não há um PRD próprio do MPI Plus na pasta do Drive,
-> apenas templates de Wordpress e Demonstração.
+**Posicionamento (confirmado pelo usuário, 2026-07-13): o MPI Plus é o
+sistema interno do Grupo** (Ideal Marketing · Busca Cliente · MPI
+Solutions) — centraliza as informações do cliente **desde o onboarding até
+a validação final**. Não é "só" a ferramenta de geração de estudo/
+conteúdo/imagem que [[03-Produtos/growth-machine]] cita como dependência —
+é o sistema de registro de todo o ciclo de vida do cliente; o GM roda por
+cima dele como camada de diagnóstico especializada, consumindo dados e
+devolvendo fila de ações, mas sem ser o dono do histórico do cliente.
+
+Citado na transcrição de kick-off como produto que passou por uma
+refatoração completa de processo e palavras-chave (v2). O conteúdo de
+negócio real do MPI Plus está referenciado dentro do PRD da
+[[03-Produtos/growth-machine]] (que depende dele como pré-requisito de
+carteira, RN-108) — não há um PRD próprio do MPI Plus na pasta do Drive,
+apenas templates de Wordpress e Demonstração.
+
+**UI/painel mapeada em 2026-07-13** (avaliação de UX via assistente web):
+menu Dashboard/Clientes/Relatórios/Usuários/Configurações, com o "Hub do
+Cliente" (Resumo/Briefing/Estudo/Relatório) sendo a peça central — é onde
+o relatório mensal que dispara o Motor de Percepção do GM (RN-106) de fato
+é gerado (**confirmado: geração automática**, não manual), e onde a
+aprovação do cliente (RN-103) acontece na prática. Ver
+[[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] para o mapa completo,
+cruzado com as RNs do GM que dependem dessas telas.
 
 ## Status atual (10:12 — hoje)
 - Refatorou todo o processo e as palavras-chave (**v2**).
@@ -26,7 +44,11 @@ tags: [produto, mpi-plus, keywords]
 _A preencher — PO ainda mapeando stakeholders (ver [[00-Painel-Estado]])._
 
 ## Funcionalidades
-- [ ] Documentar o PRD próprio do MPI Plus (não encontrado no Drive ainda — só templates)
+- [~] Documentar o PRD próprio do MPI Plus (não encontrado no Drive ainda —
+  só templates) — **UI/UX mapeada em 2026-07-13**
+  ([[03-Produtos/mpi-plus/mapa-funcionalidades-painel]]), mas ainda não é
+  um PRD (sem RN/RF/NFR formalizados do lado do MPI Plus, só descrição de
+  tela).
 
 ## Pipeline de prompts (Estudo + Conteúdo)
 Guia de processos e prompts do IdealPlus (documento técnico anexado em
@@ -63,6 +85,9 @@ original + o endurecimento), sem alterar a stack/schema já usado — é a
 que deve ser considerada vigente para geração de termos.
 
 ## Cruzamento com outras notas
+- [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] — mapa de UI/UX do
+  painel MPI+, cruzado com as RNs do GM que dependem de cada tela
+  (relatório mensal, aprovação do estudo, notificações).
 - O conteúdo do MPI Plus é citado em [[03-Produtos/growth-machine]] como
   dependência da implementação de blog.
 - A refatoração de palavras-chave (v2) deve seguir a lógica de
