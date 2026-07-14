@@ -2,8 +2,8 @@
 tipo: produto
 status: vivo
 criado: 2026-07-10
-ultima-revisao: 2026-07-10
-versao-doc: "PRD Final v1.0 — estrutura consolidada, pendências explícitas"
+ultima-revisao: 2026-07-13
+versao-doc: "PRD Final v1.1 — 7 questões de integração fechadas"
 consolida:
   - "[[03-Produtos/growth-machine/prd-v2-mvp]]"
   - "[[03-Produtos/growth-machine/catalogo-regras-negocio]]"
@@ -56,7 +56,8 @@ dois papéis, ele está no lugar errado.
 | Versão | Data | Mudança |
 |---|---|---|
 | v2.0-mvp (cofre) | 2026-07-08 | [[03-Produtos/growth-machine/prd-v2-mvp]] — consolidação inicial nos 13 blocos |
-| **v1.0-final (este arquivo)** | 2026-07-10 | Reconciliações aplicadas como texto principal (pesos 40/40/20 sob revisão, Cluster Wrapping, Portão de Diferenciação Real, RN-SGA/RN-EST/RN-123-124); **8 RFs novas** (RF-47 a RF-54) formalizando itens que só existiam em prosa; seção dedicada de aderência a boas práticas Google 2026 |
+| v1.0-final | 2026-07-10 | Reconciliações aplicadas como texto principal (pesos 40/40/20 sob revisão, Cluster Wrapping, Portão de Diferenciação Real, RN-SGA/RN-EST/RN-123-124); **8 RFs novas** (RF-47 a RF-54) formalizando itens que só existiam em prosa; seção dedicada de aderência a boas práticas Google 2026 |
+| **v1.1-final (este arquivo)** | 2026-07-13 | **7 questões de integração Salesforce/MPI Plus fechadas** (maior bloqueador de build do PRD) — 6 com resposta concreta do PO, Q18 adiada por decisão de fase. Bloco 10 e "Estado de fechamento" atualizados; item migrou de 🕒 Aberto para ✅ Fechado. |
 
 ---
 
