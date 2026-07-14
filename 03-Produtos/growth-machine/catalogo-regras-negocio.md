@@ -196,11 +196,11 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-102:** Origem dos dados por completude: cliente no MPI Plus com dados completos → importação direta; cliente no MPI Plus com briefing legado/incompleto → FireCrawl complementa. Cliente fora do MPI Plus está fora de escopo (RN-108).
 
 > **Esclarecimento do PO (2026-07-13) — Q27/Q29/Q30:**
-> - **Q27 (autenticação GM→API MPI Plus):** o **lado do MPI Plus é o
->   ativo** da autenticação — consistente com o modelo de SSO já definido
->   (NFR-06: GM não guarda senha). `[❓ mecanismo técnico exato ainda não
->   detalhado]` falta confirmar se é token de serviço, OAuth ou outro; a
->   direção (MPI Plus comanda a credencial, não o GM) está definida.
+> - **Q27 (autenticação GM→API MPI Plus):** ✅ resolvida — **via API**,
+>   mecânica **interna**: MPI Plus foi desenvolvido internamente (mesmo
+>   Grupo), não é integração com fornecedor terceiro exigindo OAuth
+>   externo. O lado do MPI Plus é o ativo da credencial, consistente com
+>   o modelo de SSO já definido (NFR-06: GM não guarda senha).
 > - **Q29 (publicação WordPress):** ✅ confirmado — **o MPI Plus publica
 >   diretamente no WordPress do cliente**, fecha a leitura já obtida do
 >   [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] (módulo "Templates WP").

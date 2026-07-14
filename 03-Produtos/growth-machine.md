@@ -619,11 +619,12 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > não é mais pendência técnica em aberto, é decisão de faseamento. Ver
 > [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
 >
-> ✅ **Q29/Q30 também resolvidas (2026-07-13):** MPI Plus publica
-> diretamente no WordPress (Q29); existe proteção contra geração
-> duplicada, mecanismo técnico exato não detalhado (Q30). **Q27**
-> (autenticação) parcialmente resolvida — MPI Plus é o lado ativo da
-> credencial, mecanismo exato pendente. Ver
+> ✅ **Q27/Q29/Q30 também resolvidas (2026-07-13):** autenticação
+> GM→MPI Plus é **via API, mecânica interna** — MPI Plus foi desenvolvido
+> dentro do próprio Grupo, não é integração com fornecedor terceiro
+> exigindo OAuth externo (Q27); MPI Plus publica diretamente no WordPress
+> (Q29); existe proteção contra geração duplicada, mecanismo técnico exato
+> não detalhado (Q30). Ver
 > [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-100 a RN-102.
 > Resta em aberto de fato: **Q28** (reconciliação de assets).
 

@@ -29,14 +29,13 @@ idempotência de geração delegada).
 > - **Q29** (publicação WordPress): confirmado, MPI Plus publica direto.
 > - **Q30** (idempotência): confirmado que existe proteção contra
 >   duplicidade; mecanismo técnico exato não detalhado.
-> - **Q27** (autenticação): parcialmente — MPI Plus é o lado ativo da
->   credencial (consistente com NFR-06/SSO); mecanismo exato (token/OAuth)
->   não detalhado.
+> - **Q27** (autenticação): ✅ resolvida — via API, mecânica interna (MPI
+>   Plus desenvolvido dentro do próprio Grupo, sem OAuth de terceiro).
 >
 > Ver [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a
 > RN-78 e RN-100 a RN-102. **Resta genuinamente em aberto: Q28**
 > (reconciliação de assets gerados) — pergunta reformulada, aguardando
-> resposta.
+> resposta. **6 das 7 questões originais fechadas.**
 
 ## Impacto
 Sem essas definições, não há como iniciar a construção de ponta a ponta —
