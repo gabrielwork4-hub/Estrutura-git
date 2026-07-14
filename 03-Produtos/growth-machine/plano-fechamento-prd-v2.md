@@ -65,7 +65,9 @@ sequência com o PO; 2 viraram ADR formal em [[04-Decisões]].
 - [ ] Expandir Dim 3/5/7/8
 
 ### Track D — Integração & engenharia (bloqueadores de build)
-- [ ] Resolver as **7 questões** (Q18-21 Salesforce; Q27-30 MPI Plus)
+- [x] Resolver as **7 questões** (Q18-21 Salesforce; Q27-30 MPI Plus) —
+  **endereçadas pelo PO em 2026-07-13** (6 com resposta concreta, Q18
+  adiada para fase 2). Ver [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
 - [ ] **Dimensionar cotas** (PageSpeed 400/dia, 6 GSC, SemRush)
 - [ ] **ERD** + contratos de API (F-23/F-24)
 - [ ] Fonte de posicionamento (**G5**)
@@ -146,7 +148,7 @@ O que efetivamente entra/muda no PRD por dimensão. Marca de fase: ✅ MVP ·
 - [x] Catálogo de RN reconciliado (sem canibalização; Origem/Prioridade nos blocos novos, 122 originais em backlog)
 - [ ] 13 blocos completos; 1 US+CA por RF
 - [x] Estrutura SEO/GEO/AEO-MVP incorporada às dimensões (2D/2E/Dim 11 na nota-mãe)
-- [ ] 7 questões de integração resolvidas
+- [x] 7 questões de integração resolvidas (2026-07-13)
 - [ ] Golden-set dos prompts definido
 - [ ] ERD + máquinas de estado anexados
 - [x] **Reconciliação com a vault externa (v1.9.19 + `10-modelo-proposto-v2`)** — concluída 2026-07-10, ver [[03-Produtos/growth-machine/reconciliacao-vault-externa-v1-9-19]] (Track F lista os achados novos ainda não executados)

@@ -362,9 +362,17 @@ sobreposição do Sentinela ao bloqueio (RN-94), execução parcial (RN-46).
 16 ferramentas externas + Salesforce + MPI Plus, com divisão de papéis
 explícita.
 
-**Bloqueadores de build (fechar antes de codar):**
-- **7 questões de integração** — Q18-21 (Salesforce) e Q27-30 (MPI Plus) →
-  [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
+**Bloqueadores de build:**
+- ✅ **7 questões de integração** (Q18-21 Salesforce; Q27-30 MPI Plus) —
+  **endereçadas pelo PO em 2026-07-13** (6 com resposta concreta: pooling
+  mensal atrelado ao ciclo do Motor; nota no Salesforce registra todo
+  cliente todo mês, só volta a acionar o GM se "Ruim", via fila de ações
+  RN-44; autenticação GM→MPI Plus via API interna; publicação WordPress
+  pelo próprio MPI Plus; proteção contra geração duplicada existe;
+  reconciliação de assets = `IntegrationJob.id`, RN-101. Q18 — objeto do
+  Salesforce — adiada para a 2ª etapa da vinculação). Detalhe completo em
+  [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78 e
+  RN-100 a RN-102. Ver [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
 - **Cotas não dimensionadas** — PageSpeed 400/dia, 6 contas GSC (teto real
   de cobertura para ~2.500 clientes, achado F-14/F-32), SemRush →
   [[05-Backlog/gm-dimensionamento-cotas-ferramentas-externas]].
@@ -478,12 +486,13 @@ dos três — só 1 item endereçado nesta consolidação.
 - Validação de fluxo × princípios sem contradição lógica
   ([[03-Produtos/growth-machine/validacao-fluxos-principios]]).
 - Checagem de aderência a boas práticas Google 2026 (seção acima).
+- **7 questões de integração Salesforce/MPI Plus** (Bloco 10) —
+  endereçadas pelo PO em 2026-07-13, maior bloqueador de build do PRD.
 
 **🕒 Aberto — não bloqueia leitura deste PRD, bloqueia codar:**
 - 13 blocos: faltam Bloco 2 (North Star confirmado com PO), Bloco 4
   (persona CS dedicada), Bloco 6 (gaps de NFR), 1 US+CA por RF (hoje só
   fluxos críticos), Bloco 9 (máquinas de estado formais).
-- **7 questões de integração** Salesforce/MPI Plus (Bloco 10).
 - **Golden-set dos prompts** dos agentes de IA (risco "casa vazia").
 - **ERD** + contratos de API.
 - **Frente Z1** — auditoria da carteira atual por doorway/quase-duplicatas

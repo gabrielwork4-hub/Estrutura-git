@@ -595,7 +595,6 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 | Q18 | Qual objeto do Salesforce recebe a nota mensal de status — **adiado para a 2ª etapa da vinculação Salesforce** (decisão de faseamento, 2026-07-13) |
 | Q24 | Limite de tentativas de ajuste de conteúdo antes de escalar ao gestor |
 | Q25–Q26 | Escopo exato do Sentinela por projeto + infraestrutura do cron |
-| Q28 | Reconciliação de assets gerados (como o GM sabe que o asset X do MPI Plus corresponde à ação Y pedida) |
 
 > ✅ **Q23 resolvida** (2026-07-08) — `posicionamento_esperado = maturidade_final`,
 > a própria curva de maturidade já responde a régua por período. Ver
@@ -619,17 +618,20 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > não é mais pendência técnica em aberto, é decisão de faseamento. Ver
 > [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
 >
-> ✅ **Q27/Q29/Q30 também resolvidas (2026-07-13):** autenticação
+> ✅ **Q27/Q28/Q29/Q30 também resolvidas (2026-07-13):** autenticação
 > GM→MPI Plus é **via API, mecânica interna** — MPI Plus foi desenvolvido
 > dentro do próprio Grupo, não é integração com fornecedor terceiro
-> exigindo OAuth externo (Q27); MPI Plus publica diretamente no WordPress
-> (Q29); existe proteção contra geração duplicada, mecanismo técnico exato
-> não detalhado (Q30). Ver
+> exigindo OAuth externo (Q27); reconciliação de assets confirmada como o
+> `IntegrationJob.id` do padrão assíncrono já descrito na RN-101 — não era
+> mecanismo novo (Q28); MPI Plus publica diretamente no WordPress (Q29);
+> existe proteção contra geração duplicada, mecanismo técnico exato não
+> detalhado (Q30). Ver
 > [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-100 a RN-102.
-> Resta em aberto de fato: **Q28** (reconciliação de assets) — não é
-decisão do PO, é técnica; hipótese forte é que o `IntegrationJob.id` já
-usado no padrão assíncrono (RN-101) resolve isso, só falta o Tech Lead
-confirmar.
+>
+> **✅ As 7 questões de integração Salesforce/MPI Plus estão todas
+> endereçadas** (2026-07-13) — 6 com resposta concreta, Q18 adiada
+> explicitamente para fase 2. Maior bloqueador de build do PRD, fechado.
+> Ver [[05-Backlog/gm-fechar-questoes-integracao-salesforce-mpiplus]].
 
 > ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
 > **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30
