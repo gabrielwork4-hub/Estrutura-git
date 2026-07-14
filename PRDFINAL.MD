@@ -17,7 +17,7 @@ consolida:
 tags: [growth-machine, prd, final, mvp, seo, geo, aeo, google-2026, rn, build]
 ---
 
-# PRD Final — Growth Machine (v1.0)
+# PRD Final — Growth Machine (v1.1)
 
 > **O que é este arquivo:** a estrutura final do PRD do Growth Machine —
 > os 13 blocos consolidados, com **todas as reconciliações já fechadas no
