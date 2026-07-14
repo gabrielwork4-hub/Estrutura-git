@@ -208,8 +208,14 @@ tags: [growth-machine, rn, catalogo, prd]
 >   geração duplicada** ao clicar "Gerar" mais de uma vez.
 >   `[❓ mecanismo técnico exato ainda não detalhado]` chave de
 >   idempotência, trava de UI ou verificação de estado — não especificado.
-> - **Q28 (reconciliação de assets gerados)** segue **em aberto** —
->   pergunta reformulada para clareza, resposta pendente.
+> - **Q28 (reconciliação de assets gerados):** `[🔧 técnica, não é decisão
+>   do PO]` — design de API/integração, mesma categoria de Q18/Q30.
+>   **Hipótese técnica forte (não confirmada):** RN-101 já define o padrão
+>   assíncrono `request → IntegrationJob → webhook assinado/importação de
+>   status` — muito provavelmente o `IntegrationJob.id` já É o mecanismo de
+>   correlação (cada ação gera seu próprio job; o webhook de retorno
+>   referencia esse ID). Não pareceria mecanismo novo a desenhar, só falta
+>   **Tech Lead confirmar** que é isso mesmo.
 - **RN-103:** Dois níveis de aprovação, sem duplicar: revisão interna (analista, com apoio do CS) ocorre no GM; aprovação do cliente (briefing, estudo novo, conteúdo, imagens) ocorre no MPI Plus (portal-cliente).
 - **RN-104:** Growth Machine é exclusivamente interno: nenhuma persona externa (cliente) acessa o GM. O cliente acessa apenas o MPI Plus.
 - **RN-105:** Relatório mensal como fonte única: Motor de Percepção consome o relatório mensal do MPI Plus (dia 1º, fotografia do mês fechado) como fonte de posicionamento, tráfego orgânico e leads. *(resíduo "Bright Data/SendGrid fallback" removido em 2026-07-10, F-01 — reconfirmado C5 em [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]: o processamento de Search Console do Gregory descreve como o relatório é montado internamente, não uma integração paralela)*

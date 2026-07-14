@@ -626,7 +626,10 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > (Q29); existe proteção contra geração duplicada, mecanismo técnico exato
 > não detalhado (Q30). Ver
 > [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-100 a RN-102.
-> Resta em aberto de fato: **Q28** (reconciliação de assets).
+> Resta em aberto de fato: **Q28** (reconciliação de assets) — não é
+decisão do PO, é técnica; hipótese forte é que o `IntegrationJob.id` já
+usado no padrão assíncrono (RN-101) resolve isso, só falta o Tech Lead
+confirmar.
 
 > ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
 > **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30
