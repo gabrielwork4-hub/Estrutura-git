@@ -17,16 +17,26 @@ SPOF (MPI Plus): Q18-Q21 (mapeamento GM↔Salesforce) e Q27-Q30 (autenticação
 GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress,
 idempotência de geração delegada).
 
-> ✅ **Q19/Q20/Q21 resolvidas pelo PO (2026-07-13)**: mecanismo = pooling
-> mensal (não webhook); conteúdo = status/data/especificidades técnicas;
-> relatório ao cliente é incondicional. A nota no Salesforce é criada todo
-> mês, para todo cliente (registro completo do backlog na jornada — não é
-> ferramenta de exceção); o que é condicional a "Ruim" é se esse registro
-> **volta a acionar o fluxo do GM** — mecânica exata do retorno ainda não
-> detalhada. Ver [[03-Produtos/growth-machine/catalogo-regras-negocio]] ›
-> RN-74 a RN-78. **Restam 5 das 7**: Q18 (qual objeto do Salesforce recebe
-> a nota) e Q27-Q30 (MPI Plus), todas pendentes de resposta técnica (Tech
-> Lead + quem administra Salesforce/MPI Plus).
+> ✅ **6 das 7 substancialmente resolvidas pelo PO (2026-07-13):**
+> - **Q19/Q20/Q21** (Salesforce): pooling mensal; conteúdo =
+>   status/data/especificidades técnicas; nota criada todo mês pra todo
+>   cliente (registro completo do backlog na jornada); quando "Ruim", cai
+>   na **fila de ações do GM (RN-44)** → analista de Growth
+>   demanda/executa (RN-47).
+> - **Q18** (objeto do Salesforce): não é mais pendência técnica em
+>   aberto — **adiada explicitamente para a 2ª etapa da vinculação
+>   Salesforce** (decisão de faseamento do PO).
+> - **Q29** (publicação WordPress): confirmado, MPI Plus publica direto.
+> - **Q30** (idempotência): confirmado que existe proteção contra
+>   duplicidade; mecanismo técnico exato não detalhado.
+> - **Q27** (autenticação): parcialmente — MPI Plus é o lado ativo da
+>   credencial (consistente com NFR-06/SSO); mecanismo exato (token/OAuth)
+>   não detalhado.
+>
+> Ver [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a
+> RN-78 e RN-100 a RN-102. **Resta genuinamente em aberto: Q28**
+> (reconciliação de assets gerados) — pergunta reformulada, aguardando
+> resposta.
 
 ## Impacto
 Sem essas definições, não há como iniciar a construção de ponta a ponta —

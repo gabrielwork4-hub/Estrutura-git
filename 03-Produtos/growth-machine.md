@@ -592,10 +592,10 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 | Q14 | Limite de links por página |
 | Q16 | Padrão de nomes de arquivo de imagem |
 | Q17 | Origem do conteúdo dos concorrentes na Dim 2 (FireCrawl ou outra camada) |
-| Q18 | Qual objeto do Salesforce recebe a nota mensal de status (Task, objeto customizado, Case) — pergunta técnica p/ quem administra o Salesforce |
+| Q18 | Qual objeto do Salesforce recebe a nota mensal de status — **adiado para a 2ª etapa da vinculação Salesforce** (decisão de faseamento, 2026-07-13) |
 | Q24 | Limite de tentativas de ajuste de conteúdo antes de escalar ao gestor |
 | Q25–Q26 | Escopo exato do Sentinela por projeto + infraestrutura do cron |
-| Q27–Q30 | Autenticação GM→API MPI Plus, reconciliação de assets gerados, publicação WordPress, idempotência de geração |
+| Q28 | Reconciliação de assets gerados (como o GM sabe que o asset X do MPI Plus corresponde à ação Y pedida) |
 
 > ✅ **Q23 resolvida** (2026-07-08) — `posicionamento_esperado = maturidade_final`,
 > a própria curva de maturidade já responde a régua por período. Ver
@@ -612,9 +612,20 @@ Subconjunto das mais citadas. Catálogo completo (RN-01 a RN-122) em
 > não é ferramenta de exceção) — o que é condicional a estar **abaixo da
 > régua ("Ruim")** é se esse registro **volta a acionar o fluxo do GM**
 > (Regular/Bom/Ótimo ficam só registrados, não geram retorno ao GM).
-> Mecânica exata do retorno (webhook, fila de ações, alerta) ainda não
-> detalhada. Ver [[03-Produtos/growth-machine/catalogo-regras-negocio]] ›
-> RN-74 a RN-78. Resta só **Q18** (qual objeto do Salesforce recebe a nota).
+> **Mecânica do retorno resolvida (2026-07-13):** quando "Ruim", o
+> registro cai na **fila de ações do GM (RN-44)** para análise e
+> otimizações, seguindo para o analista de Growth demandar/executar (RN-47).
+> **Q18 adiada explicitamente** para a 2ª etapa da vinculação Salesforce —
+> não é mais pendência técnica em aberto, é decisão de faseamento. Ver
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-74 a RN-78.
+>
+> ✅ **Q29/Q30 também resolvidas (2026-07-13):** MPI Plus publica
+> diretamente no WordPress (Q29); existe proteção contra geração
+> duplicada, mecanismo técnico exato não detalhado (Q30). **Q27**
+> (autenticação) parcialmente resolvida — MPI Plus é o lado ativo da
+> credencial, mecanismo exato pendente. Ver
+> [[03-Produtos/growth-machine/catalogo-regras-negocio]] › RN-100 a RN-102.
+> Resta em aberto de fato: **Q28** (reconciliação de assets).
 
 > ⚠️ **Lacuna de contagem, não reconciliada:** o PRD original (Drive) cita
 > **30 questões em aberto** no total, mas em nenhuma nota do cofre as 30

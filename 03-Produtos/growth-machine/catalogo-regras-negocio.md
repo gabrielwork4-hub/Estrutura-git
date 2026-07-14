@@ -149,16 +149,20 @@ tags: [growth-machine, rn, catalogo, prd]
 > definida ("Ruim", Índice <0,60)** é se esse registro **reporta de volta
 > para o fluxo do GM** (vira alerta/entra na fila de ações do analista) —
 > Regular/Bom/Ótimo ficam registrados no Salesforce, mas **não** voltam a
-> acionar o GM. `[❓ mecânica exata ainda não confirmada]` o que
-> especificamente dispara essa volta ao fluxo GM (webhook, item na fila de
-> ações RN-44, alerta ao analista) não foi detalhado — pooling mensal,
-> não webhook em tempo real, é o que se sabe até aqui. Por ser comunicação
-> **interna** (não chega ao cliente), não conflita com **RN-50**
-> ("boletim ao cliente sempre como melhoria, nunca problema") — essa regra
-> segue valendo só para a comunicação client-facing.
-> `[❓ ainda em aberto, Q18]` falta confirmar **qual objeto do Salesforce**
-> recebe essa nota (Task padrão, objeto customizado, Case) — pergunta
-> técnica para quem administra o Salesforce, não decisão de produto.
+> acionar o GM.
+>
+> **Mecânica resolvida (PO, 2026-07-13):** quando o Salesforce sinaliza
+> "Ruim", o registro **cai na fila de ações do GM (RN-44)** para análise e
+> otimizações; a partir daí segue o fluxo padrão de governança — vai para
+> o **analista de Growth demandar/executar** (mesma trilha de aprovação de
+> RN-47). Não é webhook disparando um alerta separado — é o próprio
+> pooling mensal que alimenta a fila. Por ser comunicação **interna** (não
+> chega ao cliente), não conflita com **RN-50** ("boletim ao cliente
+> sempre como melhoria, nunca problema") — essa regra segue valendo só
+> para a comunicação client-facing.
+> `[🕒 adiado, Q18]` qual objeto do Salesforce recebe a nota fica para a
+> **segunda etapa da vinculação Salesforce** — decisão explícita de
+> faseamento do PO (2026-07-13), não pendência técnica não-endereçada.
 
 - **RN-79:** A reativação dos robôs de validação só ocorre via botão de validação acionado pelo analista no GM; gatilho da maturação de 60 dias.
 - **RN-80:** Briefing auto-incrementado: toda ação validada incrementa o briefing (nunca substitui o aprovado).
@@ -190,6 +194,22 @@ tags: [growth-machine, rn, catalogo, prd]
 - **RN-100:** Geração delegada e sob comando humano: o GM não gera estudo/conteúdo/imagem; ele detecta o gap e o apresenta ao analista. A geração no MPI Plus só é acionada quando o analista decide e clica "Gerar" (Gate 1). O asset gerado retorna ao GM via API e passa pela revisão interna do analista (Gate 2) antes de ser liberado ao cliente no MPI Plus.
 - **RN-101:** Conexão via MPI Plus: o GM aciona a API do MPI Plus (que internamente usa a API Idealplus e o portal-cliente), não a API Idealplus direta. Padrão assíncrono: request → IntegrationJob → webhook assinado/importação de status.
 - **RN-102:** Origem dos dados por completude: cliente no MPI Plus com dados completos → importação direta; cliente no MPI Plus com briefing legado/incompleto → FireCrawl complementa. Cliente fora do MPI Plus está fora de escopo (RN-108).
+
+> **Esclarecimento do PO (2026-07-13) — Q27/Q29/Q30:**
+> - **Q27 (autenticação GM→API MPI Plus):** o **lado do MPI Plus é o
+>   ativo** da autenticação — consistente com o modelo de SSO já definido
+>   (NFR-06: GM não guarda senha). `[❓ mecanismo técnico exato ainda não
+>   detalhado]` falta confirmar se é token de serviço, OAuth ou outro; a
+>   direção (MPI Plus comanda a credencial, não o GM) está definida.
+> - **Q29 (publicação WordPress):** ✅ confirmado — **o MPI Plus publica
+>   diretamente no WordPress do cliente**, fecha a leitura já obtida do
+>   [[03-Produtos/mpi-plus/mapa-funcionalidades-painel]] (módulo "Templates WP").
+> - **Q30 (idempotência):** ✅ confirmado que **existe proteção contra
+>   geração duplicada** ao clicar "Gerar" mais de uma vez.
+>   `[❓ mecanismo técnico exato ainda não detalhado]` chave de
+>   idempotência, trava de UI ou verificação de estado — não especificado.
+> - **Q28 (reconciliação de assets gerados)** segue **em aberto** —
+>   pergunta reformulada para clareza, resposta pendente.
 - **RN-103:** Dois níveis de aprovação, sem duplicar: revisão interna (analista, com apoio do CS) ocorre no GM; aprovação do cliente (briefing, estudo novo, conteúdo, imagens) ocorre no MPI Plus (portal-cliente).
 - **RN-104:** Growth Machine é exclusivamente interno: nenhuma persona externa (cliente) acessa o GM. O cliente acessa apenas o MPI Plus.
 - **RN-105:** Relatório mensal como fonte única: Motor de Percepção consome o relatório mensal do MPI Plus (dia 1º, fotografia do mês fechado) como fonte de posicionamento, tráfego orgânico e leads. *(resíduo "Bright Data/SendGrid fallback" removido em 2026-07-10, F-01 — reconfirmado C5 em [[03-Produtos/growth-machine/reconciliacao-regras-gregory]]: o processamento de Search Console do Gregory descreve como o relatório é montado internamente, não uma integração paralela)*
